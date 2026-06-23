@@ -1,0 +1,508 @@
+<div class="vq">
+
+  <div class="vq__hero">
+    <div class="vq__container">
+      <h1 class="vq__heading">{{ section.settings.heading }}</h1>
+      <p class="vq__intro">{{ section.settings.description }}</p>
+    </div>
+  </div>
+
+  <div class="vq__body">
+    <div class="vq__container">
+      <div class="vq__layout">
+
+        <div class="vq__left">
+          <h2 class="vq__h2">{{ section.settings.why_heading }}</h2>
+          <ul class="vq__bullets">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'bullet_item' -%}
+                <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          <div class="vq__trust">
+            <div class="vq__trust-item">
+              <span class="vq__trust-val">{{ section.settings.trust_1_value }}</span>
+              <span class="vq__trust-label">{{ section.settings.trust_1_label }}</span>
+            </div>
+            <div class="vq__trust-item">
+              <span class="vq__trust-val">{{ section.settings.trust_2_value }}</span>
+              <span class="vq__trust-label">{{ section.settings.trust_2_label }}</span>
+            </div>
+            <div class="vq__trust-item">
+              <span class="vq__trust-val">{{ section.settings.trust_3_value }}</span>
+              <span class="vq__trust-label">{{ section.settings.trust_3_label }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vq__right">
+          <div class="vq__card">
+            <h3 class="vq__card-title">{{ section.settings.form_heading }}</h3>
+            <p class="vq__card-sub">{{ section.settings.form_subtext }}</p>
+
+            {%- form 'contact', id: 'quote-form' -%}
+
+              {%- if form.posted_successfully? -%}
+                <div class="vq__success">
+                  <p>{{ section.settings.success_message }}</p>
+                </div>
+              {%- else -%}
+
+                {%- if form.errors -%}
+                  <div class="vq__error">
+                    <p>{{ form.errors | default_errors }}</p>
+                  </div>
+                {%- endif -%}
+
+                <div class="vq__row">
+                  <div class="vq__field">
+                    <label for="contact-name">{{ section.settings.label_name }}</label>
+                    <input type="text" id="contact-name" name="contact[name]" required placeholder="{{ section.settings.label_name }}">
+                  </div>
+                  <div class="vq__field">
+                    <label for="contact-phone">{{ section.settings.label_phone }}</label>
+                    <input type="tel" id="contact-phone" name="contact[phone]" required placeholder="{{ section.settings.label_phone }}">
+                  </div>
+                </div>
+
+                <div class="vq__field">
+                  <label for="contact-email">{{ section.settings.label_email }}</label>
+                  <input type="email" id="contact-email" name="contact[email]" required placeholder="{{ section.settings.label_email }}">
+                </div>
+
+                <div class="vq__field">
+                  <label for="contact-address">{{ section.settings.label_address }}</label>
+                  <input type="text" id="contact-address" name="contact[address]" placeholder="{{ section.settings.label_address }}">
+                </div>
+
+                <div class="vq__row">
+                  <div class="vq__field">
+                    <label for="contact-city">{{ section.settings.label_city }}</label>
+                    <input type="text" id="contact-city" name="contact[city]" placeholder="{{ section.settings.label_city }}">
+                  </div>
+                  <div class="vq__field">
+                    <label for="contact-pump">{{ section.settings.label_pump_type }}</label>
+                    <select id="contact-pump" name="contact[pump_type]">
+                      <option value="">{{ section.settings.pump_placeholder }}</option>
+                      <option value="Air-to-air">{{ section.settings.pump_opt_1 }}</option>
+                      <option value="Air-to-water">{{ section.settings.pump_opt_2 }}</option>
+                      <option value="Ground source">{{ section.settings.pump_opt_3 }}</option>
+                      <option value="Exhaust air">{{ section.settings.pump_opt_4 }}</option>
+                      <option value="Not sure">{{ section.settings.pump_opt_5 }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="vq__field">
+                  <label for="contact-body">{{ section.settings.label_message }}</label>
+                  <textarea id="contact-body" name="contact[body]" rows="4" placeholder="{{ section.settings.message_placeholder }}"></textarea>
+                </div>
+
+                <button type="submit" class="vq__submit">{{ section.settings.submit_text }}</button>
+                <p class="vq__privacy">{{ section.settings.privacy_text }}</p>
+
+              {%- endif -%}
+
+            {%- endform -%}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% stylesheet %}
+  .vq__hero {
+    background: #EFF4FF;
+    padding: 48px 0 56px;
+  }
+  .vq__container {
+    max-width: 1072px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .vq__heading {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    color: #0f1c3f;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    max-width: 680px;
+  }
+  .vq__intro {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.65;
+    max-width: 580px;
+  }
+  .vq__body {
+    padding: 72px 0 80px;
+    background: #fff;
+  }
+  .vq__layout {
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 64px;
+    align-items: start;
+  }
+  .vq__h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f1c3f;
+    margin-bottom: 20px;
+  }
+  .vq__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .vq__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5;
+  }
+  .vq__bullets li::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    background: #19aaf8;
+    border-radius: 50%;
+    margin-top: 6px;
+  }
+  .vq__trust {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 1px solid #eee;
+    padding-top: 32px;
+  }
+  .vq__trust-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .vq__trust-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f1c3f;
+  }
+  .vq__trust-label {
+    font-size: 13px;
+    color: #888;
+  }
+  .vq__card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .vq__card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f1c3f;
+    margin-bottom: 8px;
+  }
+  .vq__card-sub {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .vq__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .vq__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .vq__field label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+  }
+  .vq__field input,
+  .vq__field select,
+  .vq__field textarea {
+    padding: 10px 14px;
+    border: 1px solid #dde3ed;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #222;
+    background: #fff;
+    transition: border-color 0.15s;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .vq__field input:focus,
+  .vq__field select:focus,
+  .vq__field textarea:focus {
+    outline: none;
+    border-color: #19aaf8;
+  }
+  .vq__field textarea { resize: vertical; }
+  .vq__submit {
+    width: 100%;
+    padding: 14px;
+    background: #19aaf8;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-family: inherit;
+    margin-top: 4px;
+  }
+  .vq__submit:hover { background: #0e96e0; }
+  .vq__privacy {
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 12px;
+  }
+  .vq__success {
+    background: #ecfdf5;
+    border: 1px solid #6ee7b7;
+    border-radius: 8px;
+    padding: 20px;
+    color: #065f46;
+    font-size: 15px;
+    text-align: center;
+  }
+  .vq__error {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    border-radius: 8px;
+    padding: 16px;
+    color: #b91c1c;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 900px) {
+    .vq__layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .vq__trust { flex-direction: row; flex-wrap: wrap; }
+  }
+  @media (max-width: 640px) {
+    .vq__hero { padding: 36px 0 40px; }
+    .vq__body { padding: 48px 0; }
+    .vq__container { padding: 0 20px; }
+    .vq__row { grid-template-columns: 1fr; }
+    .vq__card { padding: 24px 20px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Quote form page",
+  "blocks": [
+    {
+      "type": "bullet_item",
+      "name": "Bullet point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Bullet point"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Page heading",
+      "default": "Get a free quote"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Hero description",
+      "default": "Tell us about your home and we'll get back to you with a fixed price within 48 hours. No obligation."
+    },
+    {
+      "type": "text",
+      "id": "why_heading",
+      "label": "Left column heading",
+      "default": "Why choose VARMA Energy?"
+    },
+    {
+      "type": "text",
+      "id": "trust_1_value",
+      "label": "Trust stat 1 – value",
+      "default": "4.9/5"
+    },
+    {
+      "type": "text",
+      "id": "trust_1_label",
+      "label": "Trust stat 1 – label",
+      "default": "Customer rating"
+    },
+    {
+      "type": "text",
+      "id": "trust_2_value",
+      "label": "Trust stat 2 – value",
+      "default": "10-year warranty"
+    },
+    {
+      "type": "text",
+      "id": "trust_2_label",
+      "label": "Trust stat 2 – label",
+      "default": "On all installations"
+    },
+    {
+      "type": "text",
+      "id": "trust_3_value",
+      "label": "Trust stat 3 – value",
+      "default": "48 hours"
+    },
+    {
+      "type": "text",
+      "id": "trust_3_label",
+      "label": "Trust stat 3 – label",
+      "default": "Fixed quote turnaround"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form card heading",
+      "default": "Request a quote"
+    },
+    {
+      "type": "text",
+      "id": "form_subtext",
+      "label": "Form card subtext",
+      "default": "We'll get back to you with a free site analysis and a fixed price."
+    },
+    {
+      "type": "text",
+      "id": "label_name",
+      "label": "Name field label",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "label_phone",
+      "label": "Phone field label",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email field label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "label_address",
+      "label": "Address field label",
+      "default": "Address"
+    },
+    {
+      "type": "text",
+      "id": "label_city",
+      "label": "City field label",
+      "default": "City"
+    },
+    {
+      "type": "text",
+      "id": "label_pump_type",
+      "label": "Pump type field label",
+      "default": "Type of heat pump"
+    },
+    {
+      "type": "text",
+      "id": "pump_placeholder",
+      "label": "Pump type – placeholder",
+      "default": "Select (or let us advise)"
+    },
+    {
+      "type": "text",
+      "id": "pump_opt_1",
+      "label": "Pump option 1",
+      "default": "Air-to-air"
+    },
+    {
+      "type": "text",
+      "id": "pump_opt_2",
+      "label": "Pump option 2",
+      "default": "Air-to-water"
+    },
+    {
+      "type": "text",
+      "id": "pump_opt_3",
+      "label": "Pump option 3",
+      "default": "Ground source"
+    },
+    {
+      "type": "text",
+      "id": "pump_opt_4",
+      "label": "Pump option 4",
+      "default": "Exhaust air"
+    },
+    {
+      "type": "text",
+      "id": "pump_opt_5",
+      "label": "Pump option 5",
+      "default": "Not sure – advise me"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "label": "Message field label",
+      "default": "Tell us a bit about your home (optional)"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "House type, size, current heating system..."
+    },
+    {
+      "type": "text",
+      "id": "submit_text",
+      "label": "Submit button text",
+      "default": "Send request"
+    },
+    {
+      "type": "text",
+      "id": "privacy_text",
+      "label": "Privacy note",
+      "default": "We store your information in accordance with our privacy policy."
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! We'll be in touch within 48 hours."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote form page"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,82 @@
+{
+	"sections": {
+		"main": {
+			"type": "varma-quote",
+			"blocks": {
+				"b-1": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "Free home visit and site analysis"
+					}
+				},
+				"b-2": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "Fixed price – no hidden costs"
+					}
+				},
+				"b-3": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "ROT deduction deducted directly on the invoice"
+					}
+				},
+				"b-4": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "Certified installers with 10-year warranty"
+					}
+				},
+				"b-5": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "We reply within 48 hours"
+					}
+				}
+			},
+			"block_order": ["b-1", "b-2", "b-3", "b-4", "b-5"],
+			"settings": {
+				"heading": "Get a free quote",
+				"description": "Tell us about your home and we'll get back to you with a fixed price within 48 hours. No obligation, no cost.",
+				"why_heading": "Why choose VARMA Energy?",
+				"trust_1_value": "4.9/5",
+				"trust_1_label": "Customer rating",
+				"trust_2_value": "10-year warranty",
+				"trust_2_label": "On all installations",
+				"trust_3_value": "48 hours",
+				"trust_3_label": "Fixed quote turnaround",
+				"form_heading": "Request a quote",
+				"form_subtext": "We'll get back to you with a free site analysis and a fixed price.",
+				"label_name": "Name",
+				"label_phone": "Phone",
+				"label_email": "Email",
+				"label_address": "Address",
+				"label_city": "City",
+				"label_pump_type": "Type of heat pump",
+				"pump_placeholder": "Select (or let us advise)",
+				"pump_opt_1": "Air-to-air",
+				"pump_opt_2": "Air-to-water",
+				"pump_opt_3": "Ground source",
+				"pump_opt_4": "Exhaust air",
+				"pump_opt_5": "Not sure – advise me",
+				"label_message": "Tell us a bit about your home (optional)",
+				"message_placeholder": "House type, size, current heating system...",
+				"submit_text": "Send request",
+				"privacy_text": "We store your information in accordance with our privacy policy.",
+				"success_message": "Thank you! We'll be in touch within 48 hours."
+			}
+		},
+		"cta": {
+			"type": "varma-cta",
+			"settings": {
+				"heading": "Prefer to talk?",
+				"description": "Call us directly and we'll answer your questions right away.",
+				"btn1_text": "Call 08-12 34 56 78",
+				"btn1_url": "tel:0812345678",
+				"btn2_text": "",
+				"btn2_url": ""
+			}
+		}
+	},
+	"order": ["main", "cta"]
+}
