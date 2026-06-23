@@ -264,6 +264,38 @@
     </div>
   {% endif %}
 
+  <!-- CUSTOMER CASE -->
+  {% if section.settings.case_project != blank %}
+    <div class="vcp__section">
+      <div class="vcp__inner">
+        <div class="vcp__case-card">
+          <div class="vcp__case-left">
+            {% if section.settings.case_label != blank %}
+              <span class="vcp__label">{{ section.settings.case_label }}</span>
+            {% endif %}
+            {% if section.settings.case_location != blank %}
+              <p class="vcp__case-location">{{ section.settings.case_location }}</p>
+            {% endif %}
+            <h3 class="vcp__case-title">{{ section.settings.case_project }}</h3>
+            {% if section.settings.case_result != blank %}
+              <span class="vcp__case-result-label">Result</span>
+              <p class="vcp__case-result">{{ section.settings.case_result }}</p>
+            {% endif %}
+          </div>
+          <div class="vcp__case-right">
+            <div class="vcp__case-quotemark" aria-hidden="true">"</div>
+            {% if section.settings.case_quote != blank %}
+              <p class="vcp__case-quote">"{{ section.settings.case_quote }}"</p>
+            {% endif %}
+            {% if section.settings.case_attribution != blank %}
+              <p class="vcp__case-attr">— {{ section.settings.case_attribution }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
   <!-- WHY US -->
   {%- assign why_items = section.blocks | where: 'type', 'why_item' -%}
   {% if why_items.size > 0 %}
@@ -764,11 +796,31 @@
     border-radius: 12px;
     padding: 14px 18px;
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
-  .vcp__local-key { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5b6474; }
-  .vcp__local-val { font-size: 15px; font-weight: 700; color: #222299; }
+  .vcp__local-key { font-size: 14px; color: #5b6474; }
+  .vcp__local-val { font-size: 14px; font-weight: 700; color: #222299; text-align: right; }
+
+  /* --- CUSTOMER CASE --- */
+  .vcp__case-card {
+    border: 1.5px solid #e6e8ef;
+    border-radius: 16px;
+    padding: 40px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .vcp__case-location { font-size: 13px; color: #5b6474; margin: 6px 0 4px; }
+  .vcp__case-title { font-size: 22px; font-weight: 800; color: #0d1b2e; margin-bottom: 20px; line-height: 1.2; }
+  .vcp__case-result-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #5b6474; display: block; margin-bottom: 6px; }
+  .vcp__case-result { font-size: 16px; font-weight: 700; color: #19aaf8; line-height: 1.4; }
+  .vcp__case-quotemark { font-size: 80px; font-family: Georgia, serif; color: #e6e8ef; line-height: 0.8; margin-bottom: 16px; }
+  .vcp__case-quote { font-size: 18px; font-style: italic; color: #0d1b2e; line-height: 1.6; }
+  .vcp__case-attr { font-size: 14px; color: #5b6474; margin-top: 16px; }
 
   /* --- WHY US --- */
   .vcp__why-grid {
@@ -1010,6 +1062,13 @@
     { "type": "text", "id": "local_house_type", "label": "Most common house type", "default": "Villas & terraced houses" },
     { "type": "text", "id": "local_pump_type", "label": "Best pump type", "default": "Ground source heat pump" },
     { "type": "text", "id": "local_savings", "label": "Average savings", "default": "38,400 SEK/yr" },
+    { "type": "header", "content": "Customer case" },
+    { "type": "text", "id": "case_label", "label": "Case label", "default": "Customer case" },
+    { "type": "text", "id": "case_location", "label": "Case location", "default": "Bromma, Stockholm" },
+    { "type": "text", "id": "case_project", "label": "Case project/title", "default": "Ground source heat pump NIBE S1255" },
+    { "type": "textarea", "id": "case_result", "label": "Case result", "default": "Reduced heating cost from 52,000 SEK to 14,500 SEK/yr" },
+    { "type": "textarea", "id": "case_quote", "label": "Customer quote", "default": "The whole process from quote to commissioned installation took three weeks. Incredibly smooth." },
+    { "type": "text", "id": "case_attribution", "label": "Quote attribution", "default": "Verified customer, Bromma" },
     { "type": "header", "content": "Why us" },
     { "type": "text", "id": "why_label", "label": "Why us label", "default": "Why us" },
     { "type": "text", "id": "why_heading", "label": "Why us heading", "default": "Why Stockholm chooses Varma" },
