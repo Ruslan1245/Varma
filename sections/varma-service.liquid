@@ -63,14 +63,24 @@
                   <label class="vsp__label" for="vsp-email">Email</label>
                   <input class="vsp__input" id="vsp-email" type="email" name="contact[email]" autocomplete="email" required>
                 </div>
+                <div class="vsp__form-group">
+                  <label class="vsp__label" for="vsp-address">Address</label>
+                  <input class="vsp__input" id="vsp-address" type="text" name="contact[address]" autocomplete="street-address">
+                </div>
                 <div class="vsp__form-row">
-                  <div class="vsp__form-group">
-                    <label class="vsp__label" for="vsp-address">Address</label>
-                    <input class="vsp__input" id="vsp-address" type="text" name="contact[address]" autocomplete="street-address">
-                  </div>
                   <div class="vsp__form-group">
                     <label class="vsp__label" for="vsp-city">City</label>
                     <input class="vsp__input" id="vsp-city" type="text" name="contact[city]" autocomplete="address-level2">
+                  </div>
+                  <div class="vsp__form-group">
+                    <label class="vsp__label" for="vsp-pump">{{ section.settings.label_pump | default: 'Heat pump type' }}</label>
+                    <select class="vsp__input vsp__select" id="vsp-pump" name="contact[pump_type]">
+                      {%- unless section.settings.pump_opt_1 == blank -%}<option value="{{ section.settings.pump_opt_1 }}" selected>{{ section.settings.pump_opt_1 }}</option>{%- endunless -%}
+                      {%- unless section.settings.pump_opt_2 == blank -%}<option value="{{ section.settings.pump_opt_2 }}">{{ section.settings.pump_opt_2 }}</option>{%- endunless -%}
+                      {%- unless section.settings.pump_opt_3 == blank -%}<option value="{{ section.settings.pump_opt_3 }}">{{ section.settings.pump_opt_3 }}</option>{%- endunless -%}
+                      {%- unless section.settings.pump_opt_4 == blank -%}<option value="{{ section.settings.pump_opt_4 }}">{{ section.settings.pump_opt_4 }}</option>{%- endunless -%}
+                      {%- unless section.settings.pump_opt_5 == blank -%}<option value="{{ section.settings.pump_opt_5 }}">{{ section.settings.pump_opt_5 }}</option>{%- endunless -%}
+                    </select>
                   </div>
                 </div>
                 <div class="vsp__form-group">
@@ -338,6 +348,7 @@
   }
   .vsp__input:focus { outline: none; border-color: #19aaf8; }
   .vsp__textarea { resize: vertical; min-height: 72px; }
+  .vsp__select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' viewBox='0 0 24 24' stroke='%235b6474' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; cursor: pointer; box-sizing: border-box; }
   .vsp__form-submit {
     display: inline-flex;
     align-items: center;
@@ -629,6 +640,13 @@
       "id": "cta_2_url",
       "label": "Secondary CTA URL"
     },
+    { "type": "header", "content": "Contact form" },
+    { "type": "text", "id": "label_pump", "label": "Pump type label", "default": "Heat pump type" },
+    { "type": "text", "id": "pump_opt_1", "label": "Pump option 1 (pre-selected)", "default": "Air-to-air heat pump" },
+    { "type": "text", "id": "pump_opt_2", "label": "Pump option 2", "default": "Air-to-water heat pump" },
+    { "type": "text", "id": "pump_opt_3", "label": "Pump option 3", "default": "Ground source" },
+    { "type": "text", "id": "pump_opt_4", "label": "Pump option 4", "default": "Exhaust air heat pump" },
+    { "type": "text", "id": "pump_opt_5", "label": "Pump option 5", "default": "Not sure – advise me" },
     {
       "type": "header",
       "content": "Stats bar"

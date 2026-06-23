@@ -73,6 +73,7 @@
                       {%- unless section.settings.pump_opt_2 == blank -%}<option value="{{ section.settings.pump_opt_2 }}">{{ section.settings.pump_opt_2 }}</option>{%- endunless -%}
                       {%- unless section.settings.pump_opt_3 == blank -%}<option value="{{ section.settings.pump_opt_3 }}">{{ section.settings.pump_opt_3 }}</option>{%- endunless -%}
                       {%- unless section.settings.pump_opt_4 == blank -%}<option value="{{ section.settings.pump_opt_4 }}">{{ section.settings.pump_opt_4 }}</option>{%- endunless -%}
+                      {%- unless section.settings.pump_opt_5 == blank -%}<option value="{{ section.settings.pump_opt_5 }}">{{ section.settings.pump_opt_5 }}</option>{%- endunless -%}
                     </select>
                   </div>
                 </div>
@@ -82,7 +83,7 @@
                 </div>
                 <input type="hidden" name="contact[service_type]" value="{{ section.settings.heading }}">
                 <button type="submit" class="vlv__form-submit">{{ section.settings.submit_text | default: 'Send request' }}</button>
-                <p class="vlv__form-privacy">{{ section.settings.privacy_text | default: 'We store your information according to our privacy policy.' }}</p>
+                <p class="vlv__form-privacy">{{ section.settings.privacy_text | default: 'We store your information according to our' }} <a href="/pages/privacy-policy">privacy policy</a>.</p>
               {%- endif -%}
             {%- endform -%}
           </div>
@@ -289,6 +290,7 @@
   .vlv__form-submit { display: flex; align-items: center; justify-content: center; width: 100%; height: 40px; background: #222299; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; margin-top: 4px; transition: background 0.15s; }
   .vlv__form-submit:hover { background: rgba(34,34,153,0.9); }
   .vlv__form-privacy { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 10px; }
+  .vlv__form-privacy a { color: #19aaf8; }
   .vlv__form-success { display: flex; align-items: center; gap: 10px; color: #10a971; font-weight: 600; padding: 16px; background: #f0fdf4; border-radius: 10px; }
   .vlv__form-error { color: #e74c3c; font-size: 13px; margin-bottom: 12px; }
 
@@ -395,7 +397,8 @@
     { "type": "text", "id": "pump_opt_1", "label": "Pump option 1", "default": "Air-to-water heat pump" },
     { "type": "text", "id": "pump_opt_2", "label": "Pump option 2", "default": "Air-to-air heat pump" },
     { "type": "text", "id": "pump_opt_3", "label": "Pump option 3", "default": "Ground source" },
-    { "type": "text", "id": "pump_opt_4", "label": "Pump option 4", "default": "Not sure – advise me" },
+    { "type": "text", "id": "pump_opt_4", "label": "Pump option 4", "default": "Exhaust air heat pump" },
+    { "type": "text", "id": "pump_opt_5", "label": "Pump option 5", "default": "Not sure – advise me" },
     { "type": "text", "id": "label_message", "label": "Message label", "default": "About your home (optional)" },
     { "type": "text", "id": "message_placeholder", "label": "Message placeholder", "default": "Type of house, size, current heating..." },
     { "type": "text", "id": "submit_text", "label": "Submit button text", "default": "Send request" },
