@@ -172,52 +172,7 @@
     <div class="vlv__section">
       <div class="vlv__inner">
         <div class="vlv__two-col">
-          <div class="vlv__calc-card">
-            <div class="vlv__calc-header">
-              <span class="vlv__calc-icon" aria-hidden="true">
-                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-              </span>
-              <div>
-                <div class="vlv__calc-title">{{ section.settings.calc_title | default: 'Savings calculator' }}</div>
-                <div class="vlv__calc-subtitle">{{ section.settings.calc_subtitle | default: 'Estimate your savings with a heat pump' }}</div>
-              </div>
-            </div>
-            <div class="vlv__calc-field">
-              <div class="vlv__calc-field-top">
-                <label for="vlv-size" class="vlv__calc-lbl">{{ section.settings.calc_size_label | default: 'House size' }}</label>
-                <span class="vlv__calc-size-val">150 m²</span>
-              </div>
-              <input type="range" id="vlv-size" class="vlv__range" min="50" max="350" step="10" value="150">
-            </div>
-            <div class="vlv__calc-field">
-              <label for="vlv-heating" class="vlv__calc-lbl">{{ section.settings.calc_heating_label | default: 'Current heating' }}</label>
-              <select id="vlv-heating" class="vlv__input">
-                <option value="el">{{ section.settings.calc_opt_el | default: 'Direct electric' }}</option>
-                <option value="olja">{{ section.settings.calc_opt_oil | default: 'Oil' }}</option>
-                <option value="gas">{{ section.settings.calc_opt_gas | default: 'Natural gas' }}</option>
-                <option value="fjarrvarme">{{ section.settings.calc_opt_district | default: 'District heating' }}</option>
-              </select>
-            </div>
-            <div class="vlv__calc-field">
-              <label for="vlv-annual" class="vlv__calc-lbl">{{ section.settings.calc_annual_label | default: 'Annual heating cost (optional)' }}</label>
-              <input type="number" id="vlv-annual" class="vlv__input" placeholder="{{ section.settings.calc_annual_placeholder | default: 'Leave blank for estimate' }}" min="0">
-            </div>
-            <div class="vlv__calc-field">
-              <label for="vlv-price" class="vlv__calc-lbl">{{ section.settings.calc_price_label | default: 'Installation price' }}</label>
-              <input type="number" id="vlv-price" class="vlv__input" value="{{ section.settings.calc_price_default | default: 140000 }}" min="0">
-            </div>
-            <div class="vlv__calc-result">
-              <div class="vlv__calc-result-lbl">{{ section.settings.calc_result_label | default: 'ESTIMATED ANNUAL SAVINGS' }}</div>
-              <div class="vlv__calc-saving" id="vlv-saving">28 800 kr</div>
-              <div class="vlv__calc-stats">
-                <div class="vlv__calc-stat-item"><div class="vlv__calc-stat-name">{{ section.settings.calc_cur_label | default: 'Current cost' }}</div><div class="vlv__calc-stat-num" id="vlv-cur">36 000 kr</div></div>
-                <div class="vlv__calc-stat-item"><div class="vlv__calc-stat-name">{{ section.settings.calc_new_label | default: 'New cost' }}</div><div class="vlv__calc-stat-num" id="vlv-new">7 200 kr</div></div>
-                <div class="vlv__calc-stat-item"><div class="vlv__calc-stat-name">{{ section.settings.calc_payback_label | default: 'Payback period' }}</div><div class="vlv__calc-stat-num" id="vlv-payback">4.9 yr</div></div>
-                <div class="vlv__calc-stat-item"><div class="vlv__calc-stat-name">{{ section.settings.calc_co2_label | default: 'CO₂ reduction' }}</div><div class="vlv__calc-stat-num" id="vlv-co2">720 kg/yr</div></div>
-              </div>
-            </div>
-            <a href="{{ section.settings.calc_cta_url | default: '/pages/contact' }}" class="vlv__calc-cta-btn">{{ section.settings.calc_cta_text | default: 'Get exact quote' }}</a>
-          </div>
+          <div class="vlv__calc-slot"></div>
           <div class="vlv__steps-wrap">
             <h3 class="vlv__steps-h">{{ section.settings.steps_title | default: 'How installation works' }}</h3>
             <ol class="vlv__steps">
@@ -357,27 +312,6 @@
 
   .vlv__two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 
-  .vlv__calc-card { background: #fff; border: 1.5px solid #e6e8ef; border-radius: 14px; padding: 28px; }
-  .vlv__calc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
-  .vlv__calc-icon { width: 40px; height: 40px; background: #e8f6fe; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .vlv__calc-title { font-size: 16px; font-weight: 700; color: #224466; }
-  .vlv__calc-subtitle { font-size: 13px; color: #5b6474; margin-top: 2px; }
-  .vlv__calc-field { margin-bottom: 16px; }
-  .vlv__calc-field-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-  .vlv__calc-lbl { font-size: 13px; font-weight: 600; color: #2a2f3d; display: block; margin-bottom: 6px; }
-  .vlv__calc-size-val { font-size: 13px; font-weight: 700; color: #224466; }
-  .vlv__range { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 3px; background: linear-gradient(to right, #19aaf8 0%, #19aaf8 33.3%, #e2e8f0 33.3%, #e2e8f0 100%); outline: none; cursor: pointer; }
-  .vlv__range::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #19aaf8; cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
-  .vlv__range::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #19aaf8; cursor: pointer; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.2); border: none; }
-  .vlv__calc-result { background: #e8f6fe; border-radius: 12px; padding: 20px; margin: 20px 0; }
-  .vlv__calc-result-lbl { font-size: 11px; font-weight: 700; color: #19aaf8; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
-  .vlv__calc-saving { font-size: 32px; font-weight: 800; color: #19aaf8; margin-bottom: 16px; }
-  .vlv__calc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .vlv__calc-stat-name { font-size: 12px; color: #5b6474; margin-bottom: 2px; }
-  .vlv__calc-stat-num { font-size: 14px; font-weight: 700; color: #224466; }
-  .vlv__calc-cta-btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 13px 0; background: #222299; color: #fff; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: background 0.15s; }
-  .vlv__calc-cta-btn:hover { background: rgba(34,34,153,0.9); }
-
   .vlv__steps-h { font-size: 20px; font-weight: 700; color: #224466; margin-bottom: 24px; }
   .vlv__steps { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
   .vlv__step { display: flex; align-items: flex-start; gap: 16px; font-size: 15px; color: #2a2f3d; line-height: 1.5; border: 1px solid #e6e8ef; border-radius: 10px; padding: 14px 16px; }
@@ -431,52 +365,6 @@
   }
 {% endstylesheet %}
 
-{% javascript %}
-  (function() {
-    var COST = { el: 240, olja: 200, gas: 180, fjarrvarme: 150 };
-    var COP = 5;
-
-    function calculate() {
-      var sizeEl = document.getElementById('vlv-size');
-      if (!sizeEl) return;
-      var size = parseInt(sizeEl.value) || 150;
-      var heatingEl = document.getElementById('vlv-heating');
-      var heating = heatingEl ? heatingEl.value : 'el';
-      var annualEl = document.getElementById('vlv-annual');
-      var annualInput = annualEl ? parseFloat(annualEl.value) : NaN;
-      var priceEl = document.getElementById('vlv-price');
-      var installPrice = priceEl ? (parseFloat(priceEl.value) || 140000) : 140000;
-
-      var sizeVal = document.querySelector('.vlv__calc-size-val');
-      if (sizeVal) sizeVal.textContent = size + ' m²';
-
-      var pct = (size - 50) / (350 - 50) * 100;
-      sizeEl.style.background = 'linear-gradient(to right, #19aaf8 0%, #19aaf8 ' + pct + '%, #e2e8f0 ' + pct + '%, #e2e8f0 100%)';
-
-      var cur = (!isNaN(annualInput) && annualInput > 0) ? annualInput : size * (COST[heating] || 240);
-      var newCost = Math.round(cur / COP);
-      var saving = Math.round(cur - newCost);
-      var payback = saving > 0 ? (installPrice / saving).toFixed(1) : '—';
-      var co2 = Math.round((cur / 1.75) * (1 - 1 / COP) * 0.044);
-
-      var el;
-      el = document.getElementById('vlv-saving');  if (el) el.textContent = saving.toLocaleString('sv-SE') + ' kr';
-      el = document.getElementById('vlv-cur');      if (el) el.textContent = Math.round(cur).toLocaleString('sv-SE') + ' kr';
-      el = document.getElementById('vlv-new');      if (el) el.textContent = newCost.toLocaleString('sv-SE') + ' kr';
-      el = document.getElementById('vlv-payback');  if (el) el.textContent = payback + ' år';
-      el = document.getElementById('vlv-co2');      if (el) el.textContent = co2.toLocaleString('sv-SE') + ' kg/år';
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      ['vlv-size', 'vlv-heating', 'vlv-annual', 'vlv-price'].forEach(function(id) {
-        var el = document.getElementById(id);
-        if (el) el.addEventListener('input', calculate);
-      });
-      calculate();
-    });
-  })();
-{% endjavascript %}
-
 {% schema %}
 {
   "name": "Air-to-water service page",
@@ -528,26 +416,6 @@
     { "type": "text", "id": "price_label", "label": "Price label", "default": "Price:" },
     { "type": "text", "id": "price_from", "label": "Price text", "default": "From approx. 120,000 SEK incl. installation" },
     { "type": "text", "id": "price_note", "label": "Price note", "default": "Save 50–70% compared to oil or direct electric" },
-    { "type": "header", "content": "Savings calculator" },
-    { "type": "text", "id": "calc_title", "label": "Calculator title", "default": "Savings calculator" },
-    { "type": "text", "id": "calc_subtitle", "label": "Calculator subtitle", "default": "Estimate your savings with a heat pump" },
-    { "type": "text", "id": "calc_size_label", "label": "Size label", "default": "House size" },
-    { "type": "text", "id": "calc_heating_label", "label": "Heating label", "default": "Current heating" },
-    { "type": "text", "id": "calc_opt_el", "label": "Heating option: direct electric", "default": "Direct electric" },
-    { "type": "text", "id": "calc_opt_oil", "label": "Heating option: oil", "default": "Oil" },
-    { "type": "text", "id": "calc_opt_gas", "label": "Heating option: gas", "default": "Natural gas" },
-    { "type": "text", "id": "calc_opt_district", "label": "Heating option: district", "default": "District heating" },
-    { "type": "text", "id": "calc_annual_label", "label": "Annual cost label", "default": "Annual heating cost (optional)" },
-    { "type": "text", "id": "calc_annual_placeholder", "label": "Annual cost placeholder", "default": "Leave blank for estimate" },
-    { "type": "text", "id": "calc_price_label", "label": "Install price label", "default": "Installation price" },
-    { "type": "text", "id": "calc_price_default", "label": "Default install price", "default": "140000" },
-    { "type": "text", "id": "calc_result_label", "label": "Result label", "default": "ESTIMATED ANNUAL SAVINGS" },
-    { "type": "text", "id": "calc_cur_label", "label": "Current cost label", "default": "Current cost" },
-    { "type": "text", "id": "calc_new_label", "label": "New cost label", "default": "New cost" },
-    { "type": "text", "id": "calc_payback_label", "label": "Payback label", "default": "Payback period" },
-    { "type": "text", "id": "calc_co2_label", "label": "CO2 label", "default": "CO₂ reduction" },
-    { "type": "text", "id": "calc_cta_text", "label": "Calculator CTA text", "default": "Get exact quote" },
-    { "type": "url", "id": "calc_cta_url", "label": "Calculator CTA URL" },
     { "type": "header", "content": "Installation steps" },
     { "type": "text", "id": "steps_title", "label": "Steps heading", "default": "How installation works" },
     { "type": "header", "content": "Recommended products" },
