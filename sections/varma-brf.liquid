@@ -13,24 +13,36 @@
     </div>
   </div>
 
-  <div class="vbrf__trust">
+  <div class="vbrf__stats-bar">
     <div class="vbrf__container">
-      <div class="vbrf__trust-bar">
-        <div class="vbrf__trust-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#FFB400"/></svg>
-          <span>{{ section.settings.trust_1 }}</span>
+      <div class="vbrf__stats-card">
+        <div class="vbrf__stat">
+          <span class="vbrf__stat-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+          <div>
+            <div class="vbrf__stat-val">{{ section.settings.stat_1_value }}</div>
+            <div class="vbrf__stat-lbl">{{ section.settings.stat_1_label }}</div>
+          </div>
         </div>
-        <div class="vbrf__trust-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v7c0 5.25 3.75 10.15 9 11.35C17.25 24.15 21 19.25 21 14V7L12 2z" stroke="#19aaf8" stroke-width="2" fill="none"/></svg>
-          <span>{{ section.settings.trust_2 }}</span>
+        <div class="vbrf__stat">
+          <span class="vbrf__stat-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <div>
+            <div class="vbrf__stat-val">{{ section.settings.stat_2_value }}</div>
+            <div class="vbrf__stat-lbl">{{ section.settings.stat_2_label }}</div>
+          </div>
         </div>
-        <div class="vbrf__trust-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#19aaf8" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="#19aaf8" stroke-width="2" stroke-linecap="round"/></svg>
-          <span>{{ section.settings.trust_3 }}</span>
+        <div class="vbrf__stat">
+          <span class="vbrf__stat-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <div>
+            <div class="vbrf__stat-val">{{ section.settings.stat_3_value }}</div>
+            <div class="vbrf__stat-lbl">{{ section.settings.stat_3_label }}</div>
+          </div>
         </div>
-        <div class="vbrf__trust-item">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 12h10M7 17h6" stroke="#19aaf8" stroke-width="2" stroke-linecap="round"/><rect x="3" y="3" width="18" height="18" rx="2" stroke="#19aaf8" stroke-width="2"/></svg>
-          <span>{{ section.settings.trust_4 }}</span>
+        <div class="vbrf__stat">
+          <span class="vbrf__stat-icon"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+          <div>
+            <div class="vbrf__stat-val">{{ section.settings.stat_4_value }}</div>
+            <div class="vbrf__stat-lbl">{{ section.settings.stat_4_label }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -164,29 +176,31 @@
     line-height: 1.65;
     max-width: 580px;
   }
-  .vbrf__trust {
+  .vbrf__stats-bar {
+    padding: 40px 0 0;
     background: #fff;
-    border-bottom: 1px solid #eef1f7;
   }
-  .vbrf__trust-bar {
+  .vbrf__stats-card {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    border: 1.5px solid #e6e8ef;
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+  .vbrf__stat { display: flex; align-items: center; gap: 12px; }
+  .vbrf__stat-icon {
+    width: 40px;
+    height: 40px;
+    background: #e8f6fe;
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 0;
-    flex-wrap: wrap;
+    justify-content: center;
+    flex-shrink: 0;
   }
-  .vbrf__trust-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 18px 28px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-    border-right: 1px solid #eef1f7;
-    flex: 1;
-    white-space: nowrap;
-  }
-  .vbrf__trust-item:last-child { border-right: none; }
+  .vbrf__stat-val { font-size: 15px; font-weight: 700; color: #224466; }
+  .vbrf__stat-lbl { font-size: 13px; color: #5b6474; }
   .vbrf__body {
     padding: 72px 0 80px;
     background: #fff;
@@ -367,7 +381,7 @@
   @media (max-width: 960px) {
     .vbrf__layout { grid-template-columns: 1fr; gap: 48px; }
     .vbrf__card { position: static; }
-    .vbrf__trust-item { flex: auto; border-right: none; border-bottom: 1px solid #eef1f7; }
+    .vbrf__stats-card { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 640px) {
     .vbrf__hero { padding: 40px 0 48px; }
@@ -422,27 +436,51 @@
     },
     {
       "type": "text",
-      "id": "trust_1",
-      "label": "Trust bar – item 1",
-      "default": "4.9/5 rating from customers"
+      "id": "stat_1_value",
+      "label": "Stat 1 value",
+      "default": "4.9/5 rating"
     },
     {
       "type": "text",
-      "id": "trust_2",
-      "label": "Trust bar – item 2",
-      "default": "5-year installation warranty"
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "from customers"
     },
     {
       "type": "text",
-      "id": "trust_3",
-      "label": "Trust bar – item 3",
-      "default": "Authorised installer"
+      "id": "stat_2_value",
+      "label": "Stat 2 value",
+      "default": "5-year warranty"
     },
     {
       "type": "text",
-      "id": "trust_4",
-      "label": "Trust bar – item 4",
-      "default": "ROT deduction on the work"
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "installation guarantee"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_value",
+      "label": "Stat 3 value",
+      "default": "Authorised"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 label",
+      "default": "installer"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_value",
+      "label": "Stat 4 value",
+      "default": "ROT deduction"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_label",
+      "label": "Stat 4 label",
+      "default": "on the work"
     },
     {
       "type": "text",
