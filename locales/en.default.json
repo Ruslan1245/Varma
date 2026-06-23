@@ -63,6 +63,9 @@
       "dropdown_label": "Service areas",
       "dropdown_title": "Heat pump services in Greater Stockholm",
       "dropdown_cities": "cities"
+    },
+    "products": {
+      "view_all_products": "products"
     }
   }
 }
