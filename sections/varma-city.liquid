@@ -306,7 +306,11 @@
         {% if section.settings.why_label != blank %}
           <span class="vcp__label">{{ section.settings.why_label }}</span>
         {% endif %}
-        <h2 class="vcp__section-h">{{ section.settings.why_heading | default: 'Why choose Varma in ' | append: section.settings.city_name }}</h2>
+        {% if section.settings.why_heading != blank %}
+          <h2 class="vcp__section-h">{{ section.settings.why_heading }}</h2>
+        {% else %}
+          <h2 class="vcp__section-h">Why choose Varma in {{ section.settings.city_name }}</h2>
+        {% endif %}
         <div class="vcp__why-grid">
           {% for b in why_items %}
             <div class="vcp__why-card" {{ b.shopify_attributes }}>
@@ -416,7 +420,11 @@
           {% if section.settings.maint_label != blank %}
             <span class="vcp__label">{{ section.settings.maint_label }}</span>
           {% endif %}
-          <h2 class="vcp__section-h" style="font-size:22px;">{{ section.settings.maint_heading | default: 'Service & maintenance in ' | append: section.settings.city_name }}</h2>
+          {% if section.settings.maint_heading != blank %}
+            <h2 class="vcp__section-h" style="font-size:22px;">{{ section.settings.maint_heading }}</h2>
+          {% else %}
+            <h2 class="vcp__section-h" style="font-size:22px;">Service & maintenance in {{ section.settings.city_name }}</h2>
+          {% endif %}
           {% if section.settings.maint_description != blank %}
             <p class="vcp__maint-desc">{{ section.settings.maint_description }}</p>
           {% endif %}
