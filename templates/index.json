@@ -346,6 +346,7 @@
         "collection": "",
         "products_count": 4,
         "view_all_text": "View all products",
+        "view_all_url": "shopify://collections/all",
         "badge_text": "INCL. INSTALLATION",
         "price_label": "Price after ROT deduction",
         "add_to_cart_text": "Add to cart"
