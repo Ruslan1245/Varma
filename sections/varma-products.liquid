@@ -76,14 +76,22 @@
                 {{ 'product-1' | placeholder_svg_tag: 'v-products__placeholder' }}
               </div>
               <div class="v-products__card-body">
-                <p class="v-products__type">LUFT-LUFT VГ„RMEPUMP</p>
-                <h3 class="v-products__title">Toshiba VГ¤rmepump {{ i }}</h3>
-                <div class="v-products__pricing">
-                  {% if section.settings.price_label != blank %}
-                    <p class="v-products__price-label">{{ section.settings.price_label }}</p>
-                  {% endif %}
-                </div>
+                <p class="v-products__type">LUFT-LUFT VÄRMEPUMP</p>
+                <h3 class="v-products__title">Toshiba Värmepump {{ i }}</h3>
+                {% if section.settings.price_label != blank %}
+                  <p class="v-products__price-label">{{ section.settings.price_label }}</p>
+                {% endif %}
               </div>
+            </div>
+            <div class="v-products__card-footer">
+              <div class="v-products__prices">
+                <span class="v-products__compare-price">35 950 kr</span>
+                <span class="v-products__price">30 558 kr</span>
+              </div>
+              <button type="button" class="v-products__add-btn">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+                {{ section.settings.add_to_cart_text | default: 'Lägg till' }}
+              </button>
             </div>
           </div>
         {% endfor %}
