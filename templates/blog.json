@@ -1,20 +1,26 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
-  "sections": {
-    "main": {
-      "type": "blog",
-      "settings": {}
-    }
-  },
-  "order": [
-    "main"
-  ]
+	"sections": {
+		"main": {
+			"type": "varma-blog-listing",
+			"settings": {
+				"heading": "Blog",
+				"description": "Advice, guides and insights about heat pumps in Stockholm.",
+				"posts_per_page": 9,
+				"read_more": "Read more",
+				"no_posts": "No posts yet. Check back soon."
+			}
+		},
+		"cta": {
+			"type": "varma-cta",
+			"settings": {
+				"heading": "Start saving already this spring",
+				"description": "Installations are now being booked for May. Book a free home visit today and get a fixed price within 48 hours.",
+				"btn1_text": "Book home visit",
+				"btn1_url": "/pages/fa-offert",
+				"btn2_text": "Call 08-12 34 56 78",
+				"btn2_url": "tel:0812345678"
+			}
+		}
+	},
+	"order": ["main", "cta"]
 }
