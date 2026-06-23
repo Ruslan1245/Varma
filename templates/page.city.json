@@ -17,8 +17,8 @@
           "settings": {
             "icon": "air-air",
             "badge": "Buy online",
-            "title": "Air-to-Air Heat Pump",
-            "description": "Heats with outdoor air, quick installation. Also cools in summer.",
+            "title": "Air-to-air heat pump",
+            "description": "Fast installation, lower electricity bill. Also cools in summer.",
             "price": "From approx. 18,000 SEK incl. installation",
             "link_url": "",
             "btn_text": "Buy online",
@@ -30,9 +30,9 @@
           "settings": {
             "icon": "air-water",
             "badge": "",
-            "title": "Air-to-Water Heat Pump",
-            "description": "Connects to radiators and underfloor heating. Heats tap water too.",
-            "price": "From approx. 65,000 SEK incl. installation",
+            "title": "Air-to-water heat pump",
+            "description": "Heating and hot water in one system.",
+            "price": "From approx. 120,000 SEK incl. installation",
             "link_url": "",
             "btn_text": "Request a quote",
             "btn_url": ""
@@ -43,9 +43,9 @@
           "settings": {
             "icon": "ground",
             "badge": "",
-            "title": "Ground Source Heat Pump",
-            "description": "Highest efficiency. Heats, cools and provides hot water year round.",
-            "price": "From approx. 150,000 SEK incl. drilling",
+            "title": "Ground source heat pump",
+            "description": "Greatest savings over time. Heats, cools and provides hot water.",
+            "price": "From approx. 180,000 SEK incl. drilling and installation",
             "link_url": "",
             "btn_text": "Request a quote",
             "btn_url": ""
@@ -56,9 +56,9 @@
           "settings": {
             "icon": "exhaust",
             "badge": "",
-            "title": "Exhaust Air Heat Pump",
-            "description": "Recovers heat from ventilation air. Ideal for well-insulated new builds.",
-            "price": "From approx. 60,000 SEK incl. installation",
+            "title": "Exhaust air heat pump",
+            "description": "Recovers heat from ventilation. Ideal for well-insulated new builds.",
+            "price": "From approx. 90,000 SEK incl. installation",
             "link_url": "",
             "btn_text": "Request a quote",
             "btn_url": ""
@@ -69,7 +69,7 @@
           "settings": {
             "icon": "experience",
             "title": "Experience",
-            "description": "Over 1,200 completed installations in Stockholm since 2015. We know the city's building types, geology and permit requirements inside out."
+            "description": "We have installed heat pumps across Stockholm's entire city centre – from Östermalm to Bagarmossen."
           }
         },
         "why-2": {
@@ -77,7 +77,7 @@
           "settings": {
             "icon": "quality",
             "title": "Quality",
-            "description": "We only use leading brands and carry out thorough commissioning tests. Every installation is backed by a 5-year workmanship warranty."
+            "description": "Only heat pumps from market-leading manufacturers: Nibe, Bosch, Mitsubishi, Daikin, Toshiba, CTC and Qvantum."
           }
         },
         "why-3": {
@@ -85,7 +85,7 @@
           "settings": {
             "icon": "safety",
             "title": "Security",
-            "description": "Fixed price, no hidden costs. Authorized and insured. ROT deduction handled for you directly on the invoice."
+            "description": "Certified installers, fixed prices with no hidden costs, and up to 10-year warranty on the installation."
           }
         },
         "proc-1": {
@@ -93,7 +93,7 @@
           "settings": {
             "icon": "phone",
             "title": "Contact us",
-            "description": "Call or fill in the form. We answer within one business day."
+            "description": "Call or fill in the form. We reply within one business day."
           }
         },
         "proc-2": {
@@ -101,7 +101,7 @@
           "settings": {
             "icon": "home",
             "title": "Home visit",
-            "description": "A technician inspects the property and identifies the best solution."
+            "description": "A technician inspects the property and finds the best solution."
           }
         },
         "proc-3": {
@@ -109,7 +109,7 @@
           "settings": {
             "icon": "document",
             "title": "Fixed quote",
-            "description": "You receive a detailed, fixed-price quote within 24 hours. No surprises."
+            "description": "You receive a detailed fixed-price quote within 24 hours. No surprises."
           }
         },
         "proc-4": {
@@ -117,13 +117,13 @@
           "settings": {
             "icon": "tool",
             "title": "Installation",
-            "description": "Our authorized team installs and commissions the pump. Air-to-air usually takes one day."
+            "description": "Our authorised team installs and commissions the pump. Air-to-air usually takes one day."
           }
         },
         "exp-1": {
           "type": "expertise_item",
           "settings": {
-            "text": "Technicians experienced with Stockholm's century-old building stock."
+            "text": "Technicians experienced with Stockholm's older building stock."
           }
         },
         "exp-2": {
@@ -256,11 +256,11 @@
         "hero_label": "Stockholm's leading installer",
         "heading_before": "Heat Pump in",
         "city_name": "Stockholm",
-        "hero_description": "From century-old houses in Östermalm to newly built villas in Bromma — we size and install heat pumps that cut your electricity bill by up to 70%. Local technicians, fixed price and ROT deducted directly on the invoice.",
+        "hero_description": "From century-old houses in Östermalm to newly built villas in Bromma – we size and install heat pumps that cut your electricity bill by up to 70 %. Local technicians, fixed price and ROT deduction directly on the invoice.",
         "cta_text": "Get a quote",
         "cta_url": "",
         "phone": "08-12 34 56 78",
-        "trust_1": "Authorized installer",
+        "trust_1": "Authorised installer",
         "trust_2": "ROT deduction 50%",
         "trust_3": "10-year warranty",
         "trust_4": "Fixed price",
@@ -274,23 +274,23 @@
         "hstat_4_label": "Warranty",
         "stat_1_value": "4.9/5 rating",
         "stat_1_label": "from customers",
-        "stat_2_value": "5-year warranty",
-        "stat_2_label": "installation guarantee",
-        "stat_3_value": "Authorized",
-        "stat_3_label": "installer",
+        "stat_2_value": "5-year installation warranty",
+        "stat_2_label": "",
+        "stat_3_value": "Authorised installer",
+        "stat_3_label": "",
         "stat_4_value": "ROT deduction",
         "stat_4_label": "on the work",
         "areas_label": "Service areas",
-        "areas_heading": "We serve all of Stockholm city centre",
-        "areas_description": "Certified installers on-site in 8+ areas — fast response and local knowledge you can count on.",
+        "areas_heading": "We serve all of Stockholm's city centre",
+        "areas_description": "Certified installers on-site in 8+ areas – fast response and local knowledge you can count on.",
         "districts": "Östermalm, Södermalm, Bromma, Vasastan, Kungsholmen, Hammarby Sjöstad, Älvsjö, Bagarmossen",
         "available_text": "Available today",
         "services_label": "Heat pumps",
         "services_heading": "We install in Stockholm",
         "services_sub": "Most popular in Stockholm: Ground source heat pump.",
         "local_label": "Local knowledge",
-        "local_heading": "About the housing stock in Stockholm",
-        "local_description": "Stockholm has a mix of century-old houses, million-programme terraces and new-build villas. Ground source heat pump dominates in the inner-city villa areas while air-to-water is common in Bromma and Hägersten. We handle drilling permits with the environmental authority.",
+        "local_heading": "What Stockholm's housing stock looks like",
+        "local_description": "Stockholm has a mix of century-old houses, million-programme terraced houses and new-build villas. Ground source heat pump dominates in inner-city villa areas while air-to-water is common in Bromma and Hägersten. We handle drilling permits with the environmental authority.",
         "local_house_type": "Villas & terraced houses",
         "local_pump_type": "Ground source heat pump",
         "local_savings": "38,400 SEK/yr",
@@ -301,17 +301,17 @@
         "case_quote": "The whole process from quote to commissioned installation took three weeks. Incredibly smooth.",
         "case_attribution": "Verified customer, Bromma",
         "why_label": "Why us",
-        "why_heading": "Why Stockholm chooses Varma",
+        "why_heading": "Why Stockholm chooses VARMA Energy",
         "process_label": "Process",
         "process_heading": "How installation works",
-        "process_sub": "Four simple steps from first call to commissioned heat pump.",
-        "expertise_heading": "Local expertise in Stockholm city centre",
+        "process_sub": "Four simple steps from first contact to commissioned heat pump.",
+        "expertise_heading": "Local expertise in Stockholm's city centre",
         "contact_name": "VARMA Energy – Stockholm",
         "contact_address": "Esplanaden 14, 111 22 Stockholm",
         "contact_phone": "08-12 34 56 78",
         "maint_label": "Maintenance",
         "maint_heading": "Service & maintenance in Stockholm",
-        "maint_description": "Regular service keeps the pump efficient, extends its lifespan and preserves the manufacturer's warranty. Our technicians are located in Stockholm and can usually be on-site within 24 hours.",
+        "maint_description": "Regular service keeps the pump efficient, extends its lifespan and preserves the manufacturer's warranty. Our technicians are based in Stockholm and can usually be on-site within 24 hours.",
         "maint_btn_text": "Book service",
         "maint_btn_url": "",
         "faq_title": "Frequently asked questions – heat pump in Stockholm",
