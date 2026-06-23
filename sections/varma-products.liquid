@@ -12,10 +12,11 @@
           <p class="v-products__desc">{{ section.settings.description }}</p>
         {% endif %}
       </div>
-      {% if section.settings.view_all_text != blank and section.settings.collection != blank %}
-        <a href="{{ section.settings.collection.url }}" class="v-products__view-all">
-          {{ section.settings.view_all_text }} {{ section.settings.collection.products_count }}
-          {{ 'sections.products.view_all_products' | t }}
+      {% if section.settings.view_all_text != blank %}
+        {% assign view_all_href = section.settings.view_all_url | default: section.settings.collection.url | default: '/collections/all' %}
+        {% assign products_total = section.settings.collection.products_count %}
+        <a href="{{ view_all_href }}" class="v-products__view-all">
+          {{ section.settings.view_all_text }}{% if products_total > 0 %} {{ products_total }} {{ 'sections.products.view_all_products' | t }}{% endif %}
           <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       {% endif %}
@@ -42,20 +43,18 @@
                   <p class="v-products__type">{{ product.type | upcase }}</p>
                 {% endif %}
                 <h3 class="v-products__title">{{ product.title }}</h3>
-                <div class="v-products__pricing">
-                  {% if section.settings.price_label != blank %}
-                    <p class="v-products__price-label">{{ section.settings.price_label }}</p>
-                  {% endif %}
-                  <div class="v-products__prices">
-                    {% if product.compare_at_price > product.price %}
-                      <span class="v-products__compare-price">{{ product.compare_at_price | money }}</span>
-                    {% endif %}
-                    <span class="v-products__price">{{ product.price | money }}</span>
-                  </div>
-                </div>
+                {% if section.settings.price_label != blank %}
+                  <p class="v-products__price-label">{{ section.settings.price_label }}</p>
+                {% endif %}
               </div>
             </a>
             <div class="v-products__card-footer">
+              <div class="v-products__prices">
+                {% if product.compare_at_price > product.price %}
+                  <span class="v-products__compare-price">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+                <span class="v-products__price">{{ product.price | money }}</span>
+              </div>
               <form action="{{ routes.cart_add_url }}" method="post">
                 <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                 <button type="submit" class="v-products__add-btn" {% unless product.available %}disabled{% endunless %}>
@@ -222,25 +221,29 @@
     color: #19aaf8;
   }
   .v-products__card-footer {
-    padding: 0 16px 16px;
-  }
-  .v-products__add-btn {
-    width: 100%;
+    padding: 12px 16px 16px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 8px;
+  }
+  .v-products__add-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     background: #19aaf8;
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 10px;
-    font-size: 14px;
+    padding: 9px 14px;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
-  .v-products__add-btn:hover { background: #0e8fd6; }
+  .v-products__add-btn:hover { background: #224466; }
   .v-products__add-btn:disabled {
     background: #c7e8fc;
     cursor: not-allowed;
@@ -294,6 +297,11 @@
       "id": "view_all_text",
       "label": "View all link text",
       "default": "View all"
+    },
+    {
+      "type": "url",
+      "id": "view_all_url",
+      "label": "View all link URL"
     },
     {
       "type": "text",
