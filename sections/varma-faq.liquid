@@ -61,18 +61,24 @@
 
 <script>
   (function() {
-    var section = document.getElementById('shopify-section-{{ section.id }}');
-    if (!section) return;
-    var items = section.querySelectorAll('.v-faq__item');
-    items.forEach(function(item) {
-      item.querySelector('summary').addEventListener('click', function() {
-        if (!item.open) {
-          items.forEach(function(other) {
-            if (other !== item) other.removeAttribute('open');
-          });
-        }
+    function initFaq() {
+      var items = Array.from(document.querySelectorAll('#shopify-section-{{ section.id }} .v-faq__item'));
+      if (!items.length) return;
+      items.forEach(function(item) {
+        item.querySelector('summary').addEventListener('click', function() {
+          if (!item.open) {
+            items.forEach(function(other) {
+              if (other !== item) other.open = false;
+            });
+          }
+        });
       });
-    });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFaq);
+    } else {
+      initFaq();
+    }
   })();
 </script>
 
