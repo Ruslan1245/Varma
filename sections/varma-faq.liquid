@@ -154,7 +154,7 @@
     overflow: hidden;
   }
   .v-faq__item[open] {
-    border-color: #c7e8fc;
+    border-color: #19aaf8;
   }
   .v-faq__question {
     display: flex;
@@ -203,6 +203,20 @@
     }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  document.querySelectorAll('.v-faq__item').forEach(function(item) {
+    item.addEventListener('toggle', function() {
+      if (item.open) {
+        document.querySelectorAll('.v-faq__item').forEach(function(other) {
+          if (other !== item && other.open) {
+            other.removeAttribute('open');
+          }
+        });
+      }
+    });
+  });
+{% endjavascript %}
 
 {% schema %}
 {
