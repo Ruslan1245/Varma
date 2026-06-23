@@ -1,0 +1,179 @@
+<section class="v-areas">
+  <div class="v-areas__container">
+    {% if section.settings.label != blank %}
+      <p class="v-label">{{ section.settings.label }}</p>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h2 class="v-areas__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <p class="v-areas__desc">{{ section.settings.description }}</p>
+    {% endif %}
+    {% if section.settings.status_text != blank %}
+      <div class="v-areas__status">
+        <span class="v-areas__status-dot" aria-hidden="true"></span>
+        {{ section.settings.status_text }}
+      </div>
+    {% endif %}
+
+    <div class="v-areas__grid">
+      {% for block in section.blocks %}
+        <div class="v-areas__card" {{ block.shopify_attributes }}>
+          <div class="v-areas__card-header">
+            <span class="v-areas__card-name">{{ block.settings.name }}</span>
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          {% if block.settings.technicians != blank %}
+            <p class="v-areas__card-info">{{ block.settings.technicians }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .v-areas {
+    padding: 80px 0;
+    background: #fff;
+  }
+  .v-areas__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .v-areas__heading {
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .v-areas__desc {
+    font-size: 16px;
+    color: #475569;
+    margin-bottom: 20px;
+  }
+  .v-areas__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #374151;
+    margin-bottom: 36px;
+  }
+  .v-areas__status-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #22C55E;
+    flex-shrink: 0;
+  }
+  .v-areas__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .v-areas__card {
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 18px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .v-areas__card:hover {
+    border-color: #BFDBFE;
+    box-shadow: 0 2px 12px rgba(37,99,235,0.08);
+  }
+  .v-areas__card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .v-areas__card-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+  }
+  .v-areas__card-info {
+    font-size: 13px;
+    color: #64748B;
+  }
+  @media (max-width: 1000px) {
+    .v-areas__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .v-areas__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Service areas",
+  "blocks": [
+    {
+      "type": "area",
+      "name": "Area",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Area name",
+          "default": "Stockholm"
+        },
+        {
+          "type": "text",
+          "id": "technicians",
+          "label": "Technicians text",
+          "default": "3 tekniker i närheten"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label",
+      "default": "SERVICEOMRÅDE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Vi servar hela Storstockholm."
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Tekniker stationerade i alla större områden för snabb, lokal hjälp."
+    },
+    {
+      "type": "text",
+      "id": "status_text",
+      "label": "Status text",
+      "default": "Alla områden är aktiva · snitt utryckning 1 tim 48 min"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Varma Service Areas",
+      "blocks": [
+        { "type": "area", "settings": { "name": "Sundbyberg", "technicians": "3 tekniker i närheten" } },
+        { "type": "area", "settings": { "name": "Solna", "technicians": "4 tekniker i närheten" } },
+        { "type": "area", "settings": { "name": "Täby", "technicians": "2 tekniker i närheten" } },
+        { "type": "area", "settings": { "name": "Bromma", "technicians": "3 tekniker i närheten" } },
+        { "type": "area", "settings": { "name": "Södermalm", "technicians": "5 tekniker i närheten" } },
+        { "type": "area", "settings": { "name": "Östermalm", "technicians": "4 tekniker i närheten" } },
+        { "type": "area", "settings": { "name": "Vasastan", "technicians": "3 tekniker i närheten" } },
+        { "type": "area", "settings": { "name": "Kungsholmen", "technicians": "3 tekniker i närheten" } },
+        { "type": "area", "settings": { "name": "Lidingö", "technicians": "2 tekniker i närheten" } },
+        { "type": "area", "settings": { "name": "Nacka", "technicians": "3 tekniker i närheten" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

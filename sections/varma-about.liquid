@@ -1,0 +1,212 @@
+<section class="v-about">
+  <div class="v-about__container">
+    <div class="v-about__image-wrap">
+      {% if section.settings.image %}
+        {{ section.settings.image | image_url: width: 700 | image_tag: class: 'v-about__image', loading: 'lazy', alt: section.settings.image.alt }}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'v-about__image v-about__image--placeholder' }}
+      {% endif %}
+      {% if section.settings.badge_value != blank %}
+        <div class="v-about__badge">
+          <div class="v-about__badge-value">{{ section.settings.badge_value }}</div>
+          <div class="v-about__badge-label">{{ section.settings.badge_label }}</div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="v-about__content">
+      {% if section.settings.label != blank %}
+        <p class="v-label">{{ section.settings.label }}</p>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="v-about__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.description_1 != blank %}
+        <p class="v-about__desc">{{ section.settings.description_1 }}</p>
+      {% endif %}
+      {% if section.settings.description_2 != blank %}
+        <p class="v-about__desc">{{ section.settings.description_2 }}</p>
+      {% endif %}
+
+      <ul class="v-about__list">
+        {% for block in section.blocks %}
+          {% if block.settings.text != blank %}
+            <li class="v-about__list-item" {{ block.shopify_attributes }}>
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              {{ block.settings.text }}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .v-about {
+    padding: 80px 0;
+    background: #fff;
+  }
+  .v-about__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+  .v-about__image-wrap {
+    position: relative;
+  }
+  .v-about__image {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    aspect-ratio: 4/5;
+  }
+  .v-about__image--placeholder {
+    background: #E2E8F0;
+    border-radius: 20px;
+    width: 100%;
+    aspect-ratio: 4/5;
+  }
+  .v-about__badge {
+    position: absolute;
+    top: 24px;
+    left: -16px;
+    background: white;
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    text-align: center;
+  }
+  .v-about__badge-value {
+    font-size: 22px;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.1;
+  }
+  .v-about__badge-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 3px;
+  }
+  .v-about__heading {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .v-about__desc {
+    font-size: 16px;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .v-about__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+    list-style: none;
+    padding: 0;
+    margin-top: 28px;
+  }
+  .v-about__list-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1E293B;
+  }
+  @media (max-width: 900px) {
+    .v-about__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .v-about__list { grid-template-columns: 1fr; }
+    .v-about__badge { left: 8px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "About",
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature item"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "badge_value",
+      "label": "Badge value",
+      "default": "20+ år"
+    },
+    {
+      "type": "text",
+      "id": "badge_label",
+      "label": "Badge label",
+      "default": "I BRANSCHEN"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label",
+      "default": "OM OSS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Proffs på värmepumpar & förnybar energi"
+    },
+    {
+      "type": "textarea",
+      "id": "description_1",
+      "label": "Description paragraph 1",
+      "default": "Vi säljer, installerar, byter ut och servar lösningar från ledande tillverkare. Vårt team har tusentals lyckade installationer bakom sig och tar fullt ansvar för varje projekt."
+    },
+    {
+      "type": "textarea",
+      "id": "description_2",
+      "label": "Description paragraph 2",
+      "default": "Som kund ska du känna dig trygg och slippa blanda in flera bolag. Vårt fokus är effektivitet i kombination med hög kvalitet – i varje steg."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Varma About",
+      "blocks": [
+        { "type": "feature", "settings": { "text": "Certifierade tekniker" } },
+        { "type": "feature", "settings": { "text": "Ledande varumärken" } },
+        { "type": "feature", "settings": { "text": "10 års garanti" } },
+        { "type": "feature", "settings": { "text": "Helhetsansvar" } },
+        { "type": "feature", "settings": { "text": "Snabba leveranser" } },
+        { "type": "feature", "settings": { "text": "Personlig service" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

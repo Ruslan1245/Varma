@@ -1,0 +1,292 @@
+<section class="v-services">
+  <div class="v-services__container">
+    {% if section.settings.label != blank %}
+      <p class="v-label">{{ section.settings.label }}</p>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h2 class="v-services__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="v-services__grid">
+      {% for block in section.blocks %}
+        <div class="v-services__card {% if block.settings.highlight %}v-services__card--highlight{% endif %}" {{ block.shopify_attributes }}>
+          {% if block.settings.badge != blank %}
+            <div class="v-services__badge">{{ block.settings.badge }}</div>
+          {% endif %}
+          <div class="v-services__icon" aria-hidden="true">
+            {% case block.settings.icon %}
+              {% when 'wind' %}
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+              {% when 'mountain' %}
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><polygon points="3 17 9 3 15 13 18 9 21 17"/><line x1="1" y1="20" x2="23" y2="20"/></svg>
+              {% when 'fire' %}
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+              {% when 'snowflake' %}
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 7l-5-5-5 5"/><path d="M7 17l5 5 5-5"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M7 7l-5 5 5 5"/><path d="M17 7l5 5-5 5"/></svg>
+              {% when 'wrench' %}
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              {% when 'building' %}
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01"/></svg>
+              {% else %}
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            {% endcase %}
+          </div>
+          <h3 class="v-services__card-title">{{ block.settings.title }}</h3>
+          <p class="v-services__card-desc">{{ block.settings.description }}</p>
+          {% if block.settings.link_text != blank %}
+            <a href="{{ block.settings.link_url }}" class="v-services__link">
+              {{ block.settings.link_text }}
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .v-services {
+    padding: 80px 0;
+    background: #F8FAFC;
+  }
+  .v-services__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .v-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #2563EB;
+    margin-bottom: 12px;
+  }
+  .v-services__heading {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 700px;
+    margin-bottom: 48px;
+  }
+  .v-services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .v-services__card {
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .v-services__card:hover {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    border-color: #BFDBFE;
+  }
+  .v-services__card--highlight {
+    background: #EFF6FF;
+    border-color: #BFDBFE;
+  }
+  .v-services__badge {
+    display: inline-flex;
+    align-self: flex-start;
+    background: #2563EB;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .v-services__icon {
+    width: 44px;
+    height: 44px;
+    background: #EFF6FF;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #2563EB;
+    flex-shrink: 0;
+  }
+  .v-services__card--highlight .v-services__icon {
+    background: white;
+  }
+  .v-services__card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1E40AF;
+    line-height: 1.3;
+  }
+  .v-services__card-desc {
+    font-size: 14px;
+    color: #475569;
+    line-height: 1.6;
+    flex: 1;
+  }
+  .v-services__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2563EB;
+    text-decoration: none;
+    margin-top: 4px;
+  }
+  .v-services__link:hover { text-decoration: underline; }
+  @media (max-width: 900px) {
+    .v-services__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .v-services__grid { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Services",
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "wind", "label": "Wind / Heat pump" },
+            { "value": "mountain", "label": "Mountain / Geo" },
+            { "value": "fire", "label": "Fire / Emergency" },
+            { "value": "snowflake", "label": "Snowflake / AC" },
+            { "value": "wrench", "label": "Wrench / Service" },
+            { "value": "building", "label": "Building / Commercial" }
+          ],
+          "default": "wind"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Service name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Service description goes here."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "Läs mer"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge text (optional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Highlight card",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label",
+      "default": "SERVICES"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Helhetsleverantör inom värme & kyla – från installation till akut utryckning."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Varma Services",
+      "blocks": [
+        {
+          "type": "service",
+          "settings": {
+            "icon": "wind",
+            "title": "Installation av värmepump",
+            "description": "Luft- och bergvärmesystem dimensionerade för Stockholmsvintrar. Endast A+++-klassad utrustning.",
+            "link_text": "Läs mer"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "mountain",
+            "title": "Bergvärme",
+            "description": "Borrhålsvärme direkt från berggrunden. 70%+ besparing, 50 års livslängd och nästan ljudlös drift.",
+            "link_text": "Läs mer"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "fire",
+            "title": "Akut värmereparation",
+            "description": "Pannan tystnat mitt i vintern? Vi är på plats inom 2 timmar i hela Storstockholm – alla dagar om året.",
+            "link_text": "Ring nu",
+            "badge": "DYGNET RUNT · 2H UTRYCKNING",
+            "highlight": true
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "snowflake",
+            "title": "AC & kyla",
+            "description": "Reversibla värmepumpar fungerar som tyst och effektiv luftkonditionering varma sommardagar.",
+            "link_text": "Läs mer"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "wrench",
+            "title": "Årlig service",
+            "description": "Serviceavtal som håller anläggningen i toppskick. Prioriterad support och rabatt på reservdelar.",
+            "link_text": "Läs mer"
+          }
+        },
+        {
+          "type": "service",
+          "settings": {
+            "icon": "building",
+            "title": "Kommersiell HVAC",
+            "description": "Kontor, restauranger och skolor. Skalbara lösningar med fjärrövervakning och SLA-avtal.",
+            "link_text": "Läs mer"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

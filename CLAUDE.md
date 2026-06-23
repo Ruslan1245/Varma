@@ -1,0 +1,1 @@
+D:/Shopify/Varma/Varma/AGENTS.md

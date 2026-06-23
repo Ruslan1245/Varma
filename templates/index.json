@@ -1,0 +1,104 @@
+{
+  "sections": {
+    "varma-hero": {
+      "type": "varma-hero",
+      "settings": {}
+    },
+    "varma-services": {
+      "type": "varma-services",
+      "blocks": {
+        "service-1": { "type": "service", "settings": { "icon": "wind", "title": "Installation av värmepump", "description": "Luft- och bergvärmesystem dimensionerade för Stockholmsvintrar. Endast A+++-klassad utrustning.", "link_text": "Läs mer" } },
+        "service-2": { "type": "service", "settings": { "icon": "mountain", "title": "Bergvärme", "description": "Borrhålsvärme direkt från berggrunden. 70%+ besparing, 50 års livslängd och nästan ljudlös drift.", "link_text": "Läs mer" } },
+        "service-3": { "type": "service", "settings": { "icon": "fire", "title": "Akut värmereparation", "description": "Pannan tystnat mitt i vintern? Vi är på plats inom 2 timmar i hela Storstockholm – alla dagar om året.", "link_text": "Ring nu", "badge": "DYGNET RUNT · 2H UTRYCKNING", "highlight": true } },
+        "service-4": { "type": "service", "settings": { "icon": "snowflake", "title": "AC & kyla", "description": "Reversibla värmepumpar fungerar som tyst och effektiv luftkonditionering varma sommardagar.", "link_text": "Läs mer" } },
+        "service-5": { "type": "service", "settings": { "icon": "wrench", "title": "Årlig service", "description": "Serviceavtal som håller anläggningen i toppskick. Prioriterad support och rabatt på reservdelar.", "link_text": "Läs mer" } },
+        "service-6": { "type": "service", "settings": { "icon": "building", "title": "Kommersiell HVAC", "description": "Kontor, restauranger och skolor. Skalbara lösningar med fjärrövervakning och SLA-avtal.", "link_text": "Läs mer" } }
+      },
+      "block_order": ["service-1", "service-2", "service-3", "service-4", "service-5", "service-6"],
+      "settings": {}
+    },
+    "varma-about": {
+      "type": "varma-about",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "text": "Certifierade tekniker" } },
+        "f2": { "type": "feature", "settings": { "text": "Ledande varumärken" } },
+        "f3": { "type": "feature", "settings": { "text": "10 års garanti" } },
+        "f4": { "type": "feature", "settings": { "text": "Helhetsansvar" } },
+        "f5": { "type": "feature", "settings": { "text": "Snabba leveranser" } },
+        "f6": { "type": "feature", "settings": { "text": "Personlig service" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
+      "settings": {}
+    },
+    "varma-process": {
+      "type": "varma-process",
+      "blocks": {
+        "step-1": { "type": "step", "settings": { "title": "Kontakt", "description": "Vi går igenom dina behov och önskemål." } },
+        "step-2": { "type": "step", "settings": { "title": "Hembesök", "description": "Vi hittar den optimala lösningen på plats." } },
+        "step-3": { "type": "step", "settings": { "title": "Offert", "description": "Fast pris och tydliga villkor – inga överraskningar." } },
+        "step-4": { "type": "step", "settings": { "title": "Installation", "description": "Certifierade installatörer utför jobbet snabbt och rent." } },
+        "step-5": { "type": "step", "settings": { "title": "Trygghet", "description": "Genomgång och valfritt serviceavtal." } }
+      },
+      "block_order": ["step-1", "step-2", "step-3", "step-4", "step-5"],
+      "settings": {}
+    },
+    "varma-areas": {
+      "type": "varma-areas",
+      "blocks": {
+        "area-1": { "type": "area", "settings": { "name": "Sundbyberg", "technicians": "3 tekniker i närheten" } },
+        "area-2": { "type": "area", "settings": { "name": "Solna", "technicians": "4 tekniker i närheten" } },
+        "area-3": { "type": "area", "settings": { "name": "Täby", "technicians": "2 tekniker i närheten" } },
+        "area-4": { "type": "area", "settings": { "name": "Bromma", "technicians": "3 tekniker i närheten" } },
+        "area-5": { "type": "area", "settings": { "name": "Södermalm", "technicians": "5 tekniker i närheten" } },
+        "area-6": { "type": "area", "settings": { "name": "Östermalm", "technicians": "4 tekniker i närheten" } },
+        "area-7": { "type": "area", "settings": { "name": "Vasastan", "technicians": "3 tekniker i närheten" } },
+        "area-8": { "type": "area", "settings": { "name": "Kungsholmen", "technicians": "3 tekniker i närheten" } },
+        "area-9": { "type": "area", "settings": { "name": "Lidingö", "technicians": "2 tekniker i närheten" } },
+        "area-10": { "type": "area", "settings": { "name": "Nacka", "technicians": "3 tekniker i närheten" } }
+      },
+      "block_order": ["area-1","area-2","area-3","area-4","area-5","area-6","area-7","area-8","area-9","area-10"],
+      "settings": {}
+    },
+    "varma-products": {
+      "type": "varma-products",
+      "settings": {}
+    },
+    "varma-reviews": {
+      "type": "varma-reviews",
+      "blocks": {
+        "rev-1": { "type": "review", "settings": { "quote": "Pannan dog en söndagskväll vid -12 °C. Varma hade en tekniker på plats inom 90 minuter. Otrolig service.", "name": "Erik", "last_initial": "L", "location": "Bromma", "service": "Värmepumpsreparation" } },
+        "rev-2": { "type": "review", "settings": { "quote": "Bytte från olja till bergvärme i höstas. Värmekostnaden gick från 34 000 till under 9 000 kr. Rekommenderas varmt.", "name": "Anna", "last_initial": "N", "location": "Lidingö", "service": "Bergvärmeinstallation" } },
+        "rev-3": { "type": "review", "settings": { "quote": "Det tog 30 sekunder att boka i deras kalender. Bekräftelse direkt i Outlook. Så här borde alla hantverkare jobba.", "name": "Lars", "last_initial": "B", "location": "Södermalm", "service": "Årlig service" } }
+      },
+      "block_order": ["rev-1", "rev-2", "rev-3"],
+      "settings": {}
+    },
+    "varma-faq": {
+      "type": "varma-faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "Vad kostar en värmepumpsinstallation i Stockholm?", "answer": "En komplett luftvärmepumpsinstallation för en typisk villa på 120–150 m² landar oftast på 85 000–140 000 kr inkl. utrustning och arbete. Varma lämnar fast pris efter ett kostnadsfritt hembesök." } },
+        "q2": { "type": "question", "settings": { "question": "Hur lång tid tar installationen?", "answer": "En luftvärmepump installeras normalt på 1–2 dagar. Bergvärme tar 3–5 dagar inklusive borrning." } },
+        "q3": { "type": "question", "settings": { "question": "Vilken garanti lämnar ni?", "answer": "Vi lämnar 10 års garanti på installationsarbetet och följer tillverkarens produktgaranti, vanligtvis 5–7 år." } },
+        "q4": { "type": "question", "settings": { "question": "Hur snabbt rycker ni ut vid akuta ärenden?", "answer": "Vi garanterar utryckning inom 2 timmar dygnet runt, alla dagar om året – även helger och röda dagar." } },
+        "q5": { "type": "question", "settings": { "question": "Finns det bidrag eller avdrag för värmepumpar i Sverige?", "answer": "Ja! Du kan nyttja ROT-avdraget som ger 30% skattereduktion på arbetskostnaden. Vi hanterar ROT-ansökan åt dig direkt." } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "settings": {}
+    },
+    "varma-cta": {
+      "type": "varma-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "varma-hero",
+    "varma-services",
+    "varma-about",
+    "varma-process",
+    "varma-areas",
+    "varma-products",
+    "varma-reviews",
+    "varma-faq",
+    "varma-cta"
+  ]
+}

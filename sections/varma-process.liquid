@@ -1,0 +1,169 @@
+<section class="v-process">
+  <div class="v-process__container">
+    {% if section.settings.label != blank %}
+      <p class="v-label">{{ section.settings.label }}</p>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h2 class="v-process__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="v-process__grid">
+      {% for block in section.blocks %}
+        <div class="v-process__card" {{ block.shopify_attributes }}>
+          <div class="v-process__card-image">
+            {% if block.settings.image %}
+              {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: block.settings.title }}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'v-process__card-placeholder' }}
+            {% endif %}
+            <div class="v-process__number" aria-label="Step {{ forloop.index }}">{{ forloop.index }}</div>
+          </div>
+          <div class="v-process__card-body">
+            <h3 class="v-process__card-title">{{ block.settings.title }}</h3>
+            <p class="v-process__card-desc">{{ block.settings.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .v-process {
+    padding: 80px 0;
+    background: #F8FAFC;
+  }
+  .v-process__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .v-process__heading {
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+  }
+  .v-process__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  .v-process__card {
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .v-process__card-image {
+    position: relative;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+  }
+  .v-process__card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .v-process__card-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #E2E8F0;
+  }
+  .v-process__number {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 28px;
+    height: 28px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #2563EB;
+    border: 2px solid #BFDBFE;
+  }
+  .v-process__card-body {
+    padding: 16px;
+  }
+  .v-process__card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 6px;
+  }
+  .v-process__card-desc {
+    font-size: 13px;
+    color: #64748B;
+    line-height: 1.55;
+  }
+  @media (max-width: 1000px) {
+    .v-process__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .v-process__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Process steps",
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Step image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Step description."
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label",
+      "default": "SÅ GÅR DET TILL"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Så installerar vi din värmepump"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Varma Process",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Kontakt", "description": "Vi går igenom dina behov och önskemål." } },
+        { "type": "step", "settings": { "title": "Hembesök", "description": "Vi hittar den optimala lösningen på plats." } },
+        { "type": "step", "settings": { "title": "Offert", "description": "Fast pris och tydliga villkor – inga överraskningar." } },
+        { "type": "step", "settings": { "title": "Installation", "description": "Certifierade installatörer utför jobbet snabbt och rent." } },
+        { "type": "step", "settings": { "title": "Trygghet", "description": "Genomgång och valfritt serviceavtal." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
