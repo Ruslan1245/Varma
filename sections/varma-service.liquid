@@ -1,0 +1,801 @@
+<div class="vsp full-width">
+
+  <div class="vsp__hero">
+    <div class="vsp__inner">
+      <nav class="vsp__breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        <a href="{{ section.settings.parent_url | default: '/pages/services' }}">{{ section.settings.parent_label | default: 'Services' }}</a>
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        <span aria-current="page">{{ section.settings.heading }}</span>
+      </nav>
+
+      <div class="vsp__hero-grid">
+        <div class="vsp__hero-left">
+          {% if section.settings.badge != blank %}
+            <span class="vsp__badge">{{ section.settings.badge }}</span>
+          {% endif %}
+          <h1 class="vsp__h1">{{ section.settings.heading }}</h1>
+          {% if section.settings.intro != blank %}
+            <p class="vsp__intro">{{ section.settings.intro }}</p>
+          {% endif %}
+          {% if section.settings.suitable_for != blank %}
+            <p class="vsp__suitable"><strong>Suitable for:</strong> {{ section.settings.suitable_for }}</p>
+          {% endif %}
+          <div class="vsp__ctas">
+            <a href="{{ section.settings.cta_1_url | default: '/pages/contact' }}" class="vsp__btn-primary">
+              {{ section.settings.cta_1_text | default: 'Get a quote' }}
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            {% if section.settings.cta_2_text != blank %}
+              <a href="{{ section.settings.cta_2_url | default: '/collections/all' }}" class="vsp__btn-secondary">
+                {{ section.settings.cta_2_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="vsp__hero-right">
+          <div class="vsp__form-card">
+            <h3 class="vsp__form-title">Get a free quote</h3>
+            <p class="vsp__form-sub">We'll get back to you within 24 hours with a personal recommendation.</p>
+            {% form 'contact' %}
+              {% if form.posted_successfully? %}
+                <div class="vsp__form-success">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#10a971" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  Thank you! We'll be in touch shortly.
+                </div>
+              {% else %}
+                {% if form.errors %}
+                  <p class="vsp__form-error">{{ form.errors | default_errors }}</p>
+                {% endif %}
+                <div class="vsp__form-row">
+                  <div class="vsp__form-group">
+                    <label class="vsp__label" for="vsp-name">Name</label>
+                    <input class="vsp__input" id="vsp-name" type="text" name="contact[name]" autocomplete="name" required>
+                  </div>
+                  <div class="vsp__form-group">
+                    <label class="vsp__label" for="vsp-phone">Phone</label>
+                    <input class="vsp__input" id="vsp-phone" type="tel" name="contact[phone]" autocomplete="tel">
+                  </div>
+                </div>
+                <div class="vsp__form-group">
+                  <label class="vsp__label" for="vsp-email">Email</label>
+                  <input class="vsp__input" id="vsp-email" type="email" name="contact[email]" autocomplete="email" required>
+                </div>
+                <div class="vsp__form-row">
+                  <div class="vsp__form-group">
+                    <label class="vsp__label" for="vsp-address">Address</label>
+                    <input class="vsp__input" id="vsp-address" type="text" name="contact[address]" autocomplete="street-address">
+                  </div>
+                  <div class="vsp__form-group">
+                    <label class="vsp__label" for="vsp-city">City</label>
+                    <input class="vsp__input" id="vsp-city" type="text" name="contact[city]" autocomplete="address-level2">
+                  </div>
+                </div>
+                <div class="vsp__form-group">
+                  <label class="vsp__label" for="vsp-message">About your home (optional)</label>
+                  <textarea class="vsp__input vsp__textarea" id="vsp-message" name="contact[body]" rows="3" placeholder="Type of house, size, current heating..."></textarea>
+                </div>
+                <input type="hidden" name="contact[service_type]" value="{{ section.settings.heading }}">
+                <button type="submit" class="vsp__form-submit">Send request</button>
+                <p class="vsp__form-privacy">We store your information according to our <a href="/pages/privacy-policy">privacy policy</a>.</p>
+              {% endif %}
+            {% endform %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vsp__stats-bar">
+    <div class="vsp__inner">
+      {% if section.settings.stat_1_value != blank %}
+        <div class="vsp__stat">
+          <span class="vsp__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+          <div><div class="vsp__stat-val">{{ section.settings.stat_1_value }}</div><div class="vsp__stat-lbl">{{ section.settings.stat_1_label }}</div></div>
+        </div>
+      {% endif %}
+      {% if section.settings.stat_2_value != blank %}
+        <div class="vsp__stat">
+          <span class="vsp__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <div><div class="vsp__stat-val">{{ section.settings.stat_2_value }}</div><div class="vsp__stat-lbl">{{ section.settings.stat_2_label }}</div></div>
+        </div>
+      {% endif %}
+      {% if section.settings.stat_3_value != blank %}
+        <div class="vsp__stat">
+          <span class="vsp__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <div><div class="vsp__stat-val">{{ section.settings.stat_3_value }}</div><div class="vsp__stat-lbl">{{ section.settings.stat_3_label }}</div></div>
+        </div>
+      {% endif %}
+      {% if section.settings.stat_4_value != blank %}
+        <div class="vsp__stat">
+          <span class="vsp__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <div><div class="vsp__stat-val">{{ section.settings.stat_4_value }}</div><div class="vsp__stat-lbl">{{ section.settings.stat_4_label }}</div></div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {%- assign pros = section.blocks | where: 'type', 'pro' -%}
+  {%- assign cons = section.blocks | where: 'type', 'con' -%}
+  {%- assign steps = section.blocks | where: 'type', 'step' -%}
+
+  {% if pros.size > 0 or cons.size > 0 or steps.size > 0 %}
+    <div class="vsp__section">
+      <div class="vsp__inner">
+        <div class="vsp__middle-grid">
+
+          {% if pros.size > 0 or cons.size > 0 %}
+            <div class="vsp__pros-cons">
+              {% if pros.size > 0 %}
+                <div class="vsp__card">
+                  <h3 class="vsp__card-h">{{ section.settings.pros_title | default: 'Advantages' }}</h3>
+                  <ul class="vsp__list">
+                    {% for b in pros %}
+                      <li {{ b.shopify_attributes }}>
+                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#10a971" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                        {{ b.settings.text }}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endif %}
+              {% if cons.size > 0 %}
+                <div class="vsp__card">
+                  <h3 class="vsp__card-h">{{ section.settings.cons_title | default: 'Things to consider' }}</h3>
+                  <ul class="vsp__list vsp__list--cons">
+                    {% for b in cons %}
+                      <li {{ b.shopify_attributes }}>
+                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#94a3b8" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        {{ b.settings.text }}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  {% if section.settings.price_from != blank %}
+                    <div class="vsp__price-box">
+                      <p><strong>Price:</strong> {{ section.settings.price_from }}</p>
+                      {% if section.settings.price_note != blank %}<p>{{ section.settings.price_note }}</p>{% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if steps.size > 0 %}
+            <div class="vsp__steps-wrap">
+              <h3 class="vsp__steps-h">{{ section.settings.steps_title | default: 'How installation works' }}</h3>
+              <ol class="vsp__steps">
+                {% for b in steps %}
+                  <li class="vsp__step" {{ b.shopify_attributes }}>
+                    <span class="vsp__step-n" aria-hidden="true">{{ forloop.index }}</span>
+                    <span>{{ b.settings.text }}</span>
+                  </li>
+                {% endfor %}
+              </ol>
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if section.settings.cities_menu != blank %}
+    <div class="vsp__section vsp__section--tinted">
+      <div class="vsp__inner">
+        <h2 class="vsp__cities-h">{{ section.settings.cities_heading | default: 'We install across Greater Stockholm' }}</h2>
+        <div class="vsp__cities">
+          {% for link in section.settings.cities_menu.links %}
+            <a href="{{ link.url }}" class="vsp__city">
+              <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {{ link.title }}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {%- assign faqs = section.blocks | where: 'type', 'faq_item' -%}
+  {% if faqs.size > 0 %}
+    <div class="vsp__section">
+      <div class="vsp__inner">
+        <h2 class="vsp__faq-h">{{ section.settings.faq_title | default: 'Frequently asked questions' }}</h2>
+        <div class="vsp__faq">
+          {% for b in faqs %}
+            <details class="vsp__faq-item" {{ b.shopify_attributes }}>
+              <summary class="vsp__faq-q">
+                {{ b.settings.question }}
+                <svg class="vsp__faq-chev" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="vsp__faq-a">{{ b.settings.answer }}</div>
+            </details>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+</div>
+
+{% stylesheet %}
+  .vsp { background: #fff; }
+  .vsp__inner { max-width: 1072px; margin: 0 auto; padding: 0 32px; }
+
+  /* Hero */
+  .vsp__hero { background: #f0f7fe; padding: 48px 0 56px; }
+  .vsp__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #5b6474;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .vsp__breadcrumb a { color: #5b6474; text-decoration: none; }
+  .vsp__breadcrumb a:hover { color: #19aaf8; }
+  .vsp__breadcrumb span[aria-current] { color: #224466; font-weight: 500; }
+  .vsp__badge {
+    display: inline-flex;
+    align-items: center;
+    background: #e8f6fe;
+    color: #19aaf8;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    border: 1px solid #c7e8fc;
+  }
+  .vsp__h1 {
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 800;
+    color: #224466;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+  .vsp__intro {
+    font-size: 16px;
+    color: #5b6474;
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 14px;
+  }
+  .vsp__suitable {
+    font-size: 14px;
+    color: #2a2f3d;
+    margin-bottom: 28px;
+  }
+  .vsp__suitable strong { color: #224466; }
+  .vsp__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .vsp__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #224466;
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .vsp__btn-primary:hover { background: #19aaf8; }
+  .vsp__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    color: #224466;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1.5px solid #e6e8ef;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .vsp__btn-secondary:hover { border-color: #19aaf8; color: #19aaf8; }
+
+  /* Hero grid */
+  .vsp__hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* Quote form card */
+  .vsp__form-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 8px 40px rgba(34,68,102,0.10), 0 1px 4px rgba(34,68,102,0.06);
+    border: 1px solid #e6e8ef;
+  }
+  .vsp__form-title { font-size: 18px; font-weight: 700; color: #224466; margin-bottom: 4px; }
+  .vsp__form-sub { font-size: 13px; color: #5b6474; margin-bottom: 20px; line-height: 1.5; }
+  .vsp__form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .vsp__form-group { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+  .vsp__label { font-size: 13px; font-weight: 600; color: #2a2f3d; }
+  .vsp__input {
+    border: 1.5px solid #e6e8ef;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: #2a2f3d;
+    font-family: inherit;
+    transition: border-color 0.15s;
+    background: #fff;
+    width: 100%;
+  }
+  .vsp__input:focus { outline: none; border-color: #19aaf8; }
+  .vsp__textarea { resize: vertical; min-height: 72px; }
+  .vsp__form-submit {
+    width: 100%;
+    background: #224466;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 13px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s;
+    margin-top: 4px;
+  }
+  .vsp__form-submit:hover { background: #19aaf8; }
+  .vsp__form-privacy { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 10px; }
+  .vsp__form-privacy a { color: #19aaf8; }
+  .vsp__form-success {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #10a971;
+    font-weight: 600;
+    padding: 16px;
+    background: #f0fdf4;
+    border-radius: 10px;
+  }
+  .vsp__form-error { color: #e74c3c; font-size: 13px; margin-bottom: 12px; }
+
+  /* Stats bar */
+  .vsp__stats-bar {
+    border-top: 1px solid #e6e8ef;
+    border-bottom: 1px solid #e6e8ef;
+    padding: 20px 0;
+    background: #fff;
+  }
+  .vsp__stats-bar .vsp__inner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .vsp__stat { display: flex; align-items: center; gap: 12px; }
+  .vsp__stat-icon {
+    width: 40px;
+    height: 40px;
+    background: #e8f6fe;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .vsp__stat-val { font-size: 15px; font-weight: 700; color: #224466; }
+  .vsp__stat-lbl { font-size: 13px; color: #5b6474; }
+
+  /* Mid section */
+  .vsp__section { padding: 56px 0; }
+  .vsp__section--tinted { background: #f5f9fc; }
+  .vsp__middle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .vsp__pros-cons { display: flex; flex-direction: column; gap: 20px; }
+  .vsp__card {
+    background: #fff;
+    border: 1.5px solid #e6e8ef;
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .vsp__card-h { font-size: 16px; font-weight: 700; color: #224466; margin-bottom: 16px; }
+  .vsp__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .vsp__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #2a2f3d;
+    line-height: 1.5;
+  }
+  .vsp__list li svg { flex-shrink: 0; margin-top: 2px; }
+  .vsp__price-box {
+    background: #e8f6fe;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #224466;
+    line-height: 1.6;
+  }
+  .vsp__price-box p + p { margin-top: 4px; }
+
+  /* Steps */
+  .vsp__steps-h { font-size: 20px; font-weight: 700; color: #224466; margin-bottom: 24px; }
+  .vsp__steps { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+  .vsp__step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 15px;
+    color: #2a2f3d;
+    line-height: 1.5;
+  }
+  .vsp__step-n {
+    width: 32px;
+    height: 32px;
+    background: #19aaf8;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* Cities */
+  .vsp__cities-h { font-size: 22px; font-weight: 700; color: #224466; margin-bottom: 20px; }
+  .vsp__cities {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  .vsp__city {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1.5px solid #e6e8ef;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2a2f3d;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .vsp__city:hover { border-color: #19aaf8; color: #19aaf8; }
+  .vsp__city svg { flex-shrink: 0; color: #19aaf8; }
+
+  /* FAQ */
+  .vsp__faq-h { font-size: 22px; font-weight: 700; color: #224466; margin-bottom: 20px; }
+  .vsp__faq { display: flex; flex-direction: column; gap: 2px; }
+  .vsp__faq-item {
+    border: 1.5px solid #e6e8ef;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+  .vsp__faq-item[open] { border-color: #19aaf8; }
+  .vsp__faq-q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #224466;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  .vsp__faq-q::-webkit-details-marker { display: none; }
+  .vsp__faq-q:hover { background: #f5f9fc; }
+  .vsp__faq-chev { flex-shrink: 0; transition: transform 0.2s; color: #5b6474; }
+  .vsp__faq-item[open] .vsp__faq-chev { transform: rotate(180deg); }
+  .vsp__faq-a {
+    padding: 0 20px 16px;
+    font-size: 14px;
+    color: #5b6474;
+    line-height: 1.7;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .vsp__hero-grid { grid-template-columns: 1fr; }
+    .vsp__stats-bar .vsp__inner { grid-template-columns: repeat(2, 1fr); }
+    .vsp__middle-grid { grid-template-columns: 1fr; }
+    .vsp__cities { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .vsp__inner { padding: 0 20px; }
+    .vsp__hero { padding: 32px 0 40px; }
+    .vsp__form-row { grid-template-columns: 1fr; }
+    .vsp__stats-bar .vsp__inner { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .vsp__cities { grid-template-columns: repeat(2, 1fr); }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Service Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Breadcrumb"
+    },
+    {
+      "type": "text",
+      "id": "parent_label",
+      "label": "Parent link label",
+      "default": "Services"
+    },
+    {
+      "type": "url",
+      "id": "parent_url",
+      "label": "Parent link URL"
+    },
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge text",
+      "default": "Fast installation · Lower energy bills"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Page heading (H1)",
+      "default": "Air-to-Air Heat Pump in Stockholm"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro paragraph",
+      "default": "An air-to-air heat pump takes heat from outdoor air and distributes it as warm air inside. An efficient addition to direct electric heating that suits most small houses in the Stockholm area."
+    },
+    {
+      "type": "text",
+      "id": "suitable_for",
+      "label": "Suitable for",
+      "default": "Houses with direct electric heating, holiday homes and smaller villas."
+    },
+    {
+      "type": "text",
+      "id": "cta_1_text",
+      "label": "Primary CTA text",
+      "default": "Get a quote"
+    },
+    {
+      "type": "url",
+      "id": "cta_1_url",
+      "label": "Primary CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_2_text",
+      "label": "Secondary CTA text",
+      "default": "See products"
+    },
+    {
+      "type": "url",
+      "id": "cta_2_url",
+      "label": "Secondary CTA URL"
+    },
+    {
+      "type": "header",
+      "content": "Stats bar"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Stat 1 value",
+      "default": "4.9/5 rating"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "from customers"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Stat 2 value",
+      "default": "5-year warranty"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "installation guarantee"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_value",
+      "label": "Stat 3 value",
+      "default": "Authorized"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 label",
+      "default": "installer"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_value",
+      "label": "Stat 4 value",
+      "default": "ROT deduction"
+    },
+    {
+      "type": "text",
+      "id": "stat_4_label",
+      "label": "Stat 4 label",
+      "default": "on the work"
+    },
+    {
+      "type": "header",
+      "content": "Pros & Cons titles"
+    },
+    {
+      "type": "text",
+      "id": "pros_title",
+      "label": "Pros card title",
+      "default": "Advantages"
+    },
+    {
+      "type": "text",
+      "id": "cons_title",
+      "label": "Cons card title",
+      "default": "Things to consider"
+    },
+    {
+      "type": "text",
+      "id": "price_from",
+      "label": "Price (shown in cons card)",
+      "default": "From approx. 18,000 SEK incl. installation"
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "Price note",
+      "default": "Save up to 50% of your heating costs"
+    },
+    {
+      "type": "header",
+      "content": "Installation steps"
+    },
+    {
+      "type": "text",
+      "id": "steps_title",
+      "label": "Steps section title",
+      "default": "How installation works"
+    },
+    {
+      "type": "header",
+      "content": "Cities coverage"
+    },
+    {
+      "type": "text",
+      "id": "cities_heading",
+      "label": "Cities section heading",
+      "default": "We install air-to-air across Greater Stockholm"
+    },
+    {
+      "type": "link_list",
+      "id": "cities_menu",
+      "label": "Cities menu"
+    },
+    {
+      "type": "header",
+      "content": "FAQ"
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "FAQ section title",
+      "default": "Frequently asked questions about air-to-air"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pro",
+      "name": "Advantage",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Advantage text",
+          "default": "Fast installation, often same day"
+        }
+      ]
+    },
+    {
+      "type": "con",
+      "name": "Consideration",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Consideration text",
+          "default": "Does not heat tap water"
+        }
+      ]
+    },
+    {
+      "type": "step",
+      "name": "Installation step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Step description",
+          "default": "Free home visit or video call for needs analysis."
+        }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "How much does an air-to-air heat pump cost installed?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "The price depends on the model and size of the installation but typically ranges from 18,000 to 35,000 SEK including installation. After the ROT deduction the cost is reduced by 30%."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service Page",
+      "blocks": [
+        { "type": "pro", "settings": { "text": "Fast installation, often same day" } },
+        { "type": "pro", "settings": { "text": "Low investment cost" } },
+        { "type": "pro", "settings": { "text": "Can also cool in summer" } },
+        { "type": "con", "settings": { "text": "Does not heat tap water" } },
+        { "type": "con", "settings": { "text": "Reduced efficiency in extreme cold" } },
+        { "type": "step", "settings": { "text": "Free home visit or video call for needs analysis." } },
+        { "type": "step", "settings": { "text": "You receive a fixed quote within 24 hours." } },
+        { "type": "step", "settings": { "text": "We handle applications and permits where required." } },
+        { "type": "step", "settings": { "text": "Installation is carried out by our own authorized technicians." } },
+        { "type": "step", "settings": { "text": "Commissioning, instruction and 5-year warranty." } },
+        { "type": "faq_item", "settings": { "question": "How much does an air-to-air heat pump cost installed?", "answer": "The price depends on the model and size of the installation but typically ranges from 18,000 to 35,000 SEK including installation. After the ROT deduction the cost is reduced by 30%." } },
+        { "type": "faq_item", "settings": { "question": "Do I need a building permit for an air-to-air heat pump?", "answer": "In most cases no permit is required for an air-to-air heat pump. However, some municipalities or housing associations may have restrictions. We check this for you before the installation." } },
+        { "type": "faq_item", "settings": { "question": "Which heat pump suits my house?", "answer": "An air-to-air heat pump is best suited for houses with direct electric heating. If you have water-based heating (radiators or underfloor), an air-to-water pump is a better choice." } },
+        { "type": "faq_item", "settings": { "question": "How much can I save with a heat pump?", "answer": "Most customers reduce their heating costs by 40–70%. The exact saving depends on your house size, current heating and local energy prices." } },
+        { "type": "faq_item", "settings": { "question": "Do I get ROT deduction on heat pump installation?", "answer": "Yes, the labour part of the installation qualifies for a 30% ROT deduction. We handle the paperwork and deduct it directly from your invoice." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
