@@ -121,62 +121,65 @@
   {%- assign cons = section.blocks | where: 'type', 'con' -%}
   {%- assign steps = section.blocks | where: 'type', 'step' -%}
 
-  {% if pros.size > 0 or cons.size > 0 or steps.size > 0 %}
+  {% if pros.size > 0 or cons.size > 0 %}
     <div class="vsp__section">
       <div class="vsp__inner">
-        <div class="vsp__middle-grid">
-
-          {% if pros.size > 0 or cons.size > 0 %}
-            <div class="vsp__pros-cons">
-              {% if pros.size > 0 %}
-                <div class="vsp__card">
-                  <h3 class="vsp__card-h">{{ section.settings.pros_title | default: 'Advantages' }}</h3>
-                  <ul class="vsp__list">
-                    {% for b in pros %}
-                      <li {{ b.shopify_attributes }}>
-                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#10a971" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                        {{ b.settings.text }}
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              {% endif %}
-              {% if cons.size > 0 %}
-                <div class="vsp__card">
-                  <h3 class="vsp__card-h">{{ section.settings.cons_title | default: 'Things to consider' }}</h3>
-                  <ul class="vsp__list vsp__list--cons">
-                    {% for b in cons %}
-                      <li {{ b.shopify_attributes }}>
-                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#94a3b8" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                        {{ b.settings.text }}
-                      </li>
-                    {% endfor %}
-                  </ul>
-                  {% if section.settings.price_from != blank %}
-                    <div class="vsp__price-box">
-                      <p><strong>Price:</strong> {{ section.settings.price_from }}</p>
-                      {% if section.settings.price_note != blank %}<p>{{ section.settings.price_note }}</p>{% endif %}
-                    </div>
-                  {% endif %}
-                </div>
-              {% endif %}
-            </div>
-          {% endif %}
-
-          {% if steps.size > 0 %}
-            <div class="vsp__steps-wrap">
-              <h3 class="vsp__steps-h">{{ section.settings.steps_title | default: 'How installation works' }}</h3>
-              <ol class="vsp__steps">
-                {% for b in steps %}
-                  <li class="vsp__step" {{ b.shopify_attributes }}>
-                    <span class="vsp__step-n" aria-hidden="true">{{ forloop.index }}</span>
-                    <span>{{ b.settings.text }}</span>
+        <div class="vsp__pros-cons-row">
+          {% if pros.size > 0 %}
+            <div class="vsp__card">
+              <h3 class="vsp__card-h">{{ section.settings.pros_title | default: 'Advantages' }}</h3>
+              <ul class="vsp__list">
+                {% for b in pros %}
+                  <li {{ b.shopify_attributes }}>
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#10a971" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    {{ b.settings.text }}
                   </li>
                 {% endfor %}
-              </ol>
+              </ul>
             </div>
           {% endif %}
+          {% if cons.size > 0 %}
+            <div class="vsp__card">
+              <h3 class="vsp__card-h">{{ section.settings.cons_title | default: 'Things to consider' }}</h3>
+              <ul class="vsp__list vsp__list--cons">
+                {% for b in cons %}
+                  <li {{ b.shopify_attributes }}>
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#94a3b8" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    {{ b.settings.text }}
+                  </li>
+                {% endfor %}
+              </ul>
+              {% if section.settings.price_from != blank %}
+                <div class="vsp__price-box">
+                  <p><strong>Price:</strong> {{ section.settings.price_from }}</p>
+                  {% if section.settings.price_note != blank %}<p>{{ section.settings.price_note }}</p>{% endif %}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
 
+  {% if steps.size > 0 %}
+    <div class="vsp__section">
+      <div class="vsp__inner">
+        <div class="vsp__steps-row">
+          <div class="vsp__calc-slot">
+            <!-- calculator goes here later -->
+          </div>
+          <div class="vsp__steps-wrap">
+            <h3 class="vsp__steps-h">{{ section.settings.steps_title | default: 'How installation works' }}</h3>
+            <ol class="vsp__steps">
+              {% for b in steps %}
+                <li class="vsp__step" {{ b.shopify_attributes }}>
+                  <span class="vsp__step-n" aria-hidden="true">{{ forloop.index }}</span>
+                  <span>{{ b.settings.text }}</span>
+                </li>
+              {% endfor %}
+            </ol>
+          </div>
         </div>
       </div>
     </div>
@@ -393,13 +396,21 @@
   /* Mid section */
   .vsp__section { padding: 56px 0; }
   .vsp__section--tinted { background: #f5f9fc; }
-  .vsp__middle-grid {
+  .vsp__pros-cons-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 20px;
     align-items: start;
   }
-  .vsp__pros-cons { display: flex; flex-direction: column; gap: 20px; }
+  .vsp__steps-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .vsp__calc-slot {
+    min-height: 200px;
+  }
   .vsp__card {
     background: #fff;
     border: 1.5px solid #e6e8ef;
@@ -522,7 +533,9 @@
   @media (max-width: 900px) {
     .vsp__hero-grid { grid-template-columns: 1fr; }
     .vsp__stats-bar .vsp__inner { grid-template-columns: repeat(2, 1fr); }
-    .vsp__middle-grid { grid-template-columns: 1fr; }
+    .vsp__pros-cons-row { grid-template-columns: 1fr; }
+    .vsp__steps-row { grid-template-columns: 1fr; }
+    .vsp__calc-slot { display: none; }
     .vsp__cities { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 600px) {
