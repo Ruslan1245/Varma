@@ -609,15 +609,24 @@
 
   /* --- SERVICE AREAS CARD --- */
   .vcp__areas-card {
-    background: #0d1b2e;
-    background-image: radial-gradient(circle at 1px 1px, rgb(255, 255, 255) 1px, transparent 0px);
-    background-size: 22px 22px;
+    background: linear-gradient(135deg, #0b1220 0%, #1e47b8 100%);
     border-radius: 16px;
+    position: relative;
+    overflow: hidden;
     padding: 40px 48px;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 32px;
+  }
+  .vcp__areas-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgb(255,255,255) 1px, transparent 0px);
+    background-size: 22px 22px;
+    opacity: 0.06;
+    pointer-events: none;
   }
   .vcp__areas-label {
     font-size: 12px;
