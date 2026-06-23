@@ -1,0 +1,104 @@
+{
+	"sections": {
+		"main": {
+			"type": "varma-brf",
+			"blocks": {
+				"bul-1": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "Reduces the association's energy costs by 30–60%"
+					}
+				},
+				"bul-2": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "Improves the building's energy class and market value"
+					}
+				},
+				"bul-3": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "Stable fees over time – less exposure to electricity price fluctuations"
+					}
+				},
+				"bul-4": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "Sustainable profile – important for members and prospective buyers"
+					}
+				},
+				"proc-1": {
+					"type": "process_step",
+					"settings": {
+						"text": "Feasibility study and energy analysis of the property"
+					}
+				},
+				"proc-2": {
+					"type": "process_step",
+					"settings": {
+						"text": "Decision basis for the board and meeting, including ROI and payback period"
+					}
+				},
+				"proc-3": {
+					"type": "process_step",
+					"settings": {
+						"text": "Permits, planning and system sizing"
+					}
+				},
+				"proc-4": {
+					"type": "process_step",
+					"settings": {
+						"text": "Installation and commissioning with minimal disruption to residents"
+					}
+				},
+				"proc-5": {
+					"type": "process_step",
+					"settings": {
+						"text": "Aftermarket: service agreement and ongoing optimisation"
+					}
+				}
+			},
+			"block_order": ["bul-1", "bul-2", "bul-3", "bul-4", "proc-1", "proc-2", "proc-3", "proc-4", "proc-5"],
+			"settings": {
+				"heading": "Heat pump for housing associations",
+				"description": "We help Stockholm housing associations reduce operating costs and energy consumption through correctly sized heat pump solutions at property level.",
+				"trust_1": "4.9/5 rating from customers",
+				"trust_2": "5-year installation warranty",
+				"trust_3": "Authorised installer",
+				"trust_4": "ROT deduction on the work",
+				"why_heading": "Why a heat pump for your housing association?",
+				"process_heading": "Our BRF process",
+				"form_heading": "Contact our BRF team",
+				"form_subtext": "We'll get back to you with a free feasibility study and a decision basis for the board.",
+				"label_name": "Name",
+				"label_phone": "Phone",
+				"label_email": "Email",
+				"label_address": "Address",
+				"label_city": "City",
+				"label_pump": "Type of heat pump",
+				"pump_placeholder": "Select type",
+				"pump_opt_1": "Air-to-water",
+				"pump_opt_2": "Ground source",
+				"pump_opt_3": "Exhaust air",
+				"pump_opt_4": "Not sure – advise me",
+				"label_message": "Tell us about your property (optional)",
+				"message_placeholder": "Number of apartments, building type, current heating system...",
+				"submit_text": "Send request",
+				"privacy_text": "We store your information in accordance with our privacy policy.",
+				"success_message": "Thank you! We'll be in touch within 48 hours."
+			}
+		},
+		"cta": {
+			"type": "varma-cta",
+			"settings": {
+				"heading": "Start saving already this spring",
+				"description": "Installations are now being booked for May. Book a free home visit today and get a fixed price within 48 hours.",
+				"btn1_text": "Book home visit",
+				"btn1_url": "/pages/fa-offert",
+				"btn2_text": "Call 08-12 34 56 78",
+				"btn2_url": "tel:0812345678"
+			}
+		}
+	},
+	"order": ["main", "cta"]
+}

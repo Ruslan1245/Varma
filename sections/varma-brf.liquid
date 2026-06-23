@@ -1,0 +1,574 @@
+<div class="vbrf">
+
+  <div class="vbrf__hero">
+    <div class="vbrf__container">
+      <div class="vbrf__hero-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="rgba(255,255,255,0.15)"/>
+          <path d="M8 24V14l8-6 8 6v10H8zm4-2h2v-4h4v4h2v-7l-4-3-4 3v7z" fill="white"/>
+        </svg>
+      </div>
+      <h1 class="vbrf__heading">{{ section.settings.heading }}</h1>
+      <p class="vbrf__intro">{{ section.settings.description }}</p>
+    </div>
+  </div>
+
+  <div class="vbrf__trust">
+    <div class="vbrf__container">
+      <div class="vbrf__trust-bar">
+        <div class="vbrf__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#FFB400"/></svg>
+          <span>{{ section.settings.trust_1 }}</span>
+        </div>
+        <div class="vbrf__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v7c0 5.25 3.75 10.15 9 11.35C17.25 24.15 21 19.25 21 14V7L12 2z" stroke="#19aaf8" stroke-width="2" fill="none"/></svg>
+          <span>{{ section.settings.trust_2 }}</span>
+        </div>
+        <div class="vbrf__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#19aaf8" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="#19aaf8" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>{{ section.settings.trust_3 }}</span>
+        </div>
+        <div class="vbrf__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 12h10M7 17h6" stroke="#19aaf8" stroke-width="2" stroke-linecap="round"/><rect x="3" y="3" width="18" height="18" rx="2" stroke="#19aaf8" stroke-width="2"/></svg>
+          <span>{{ section.settings.trust_4 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vbrf__body">
+    <div class="vbrf__container">
+      <div class="vbrf__layout">
+
+        <div class="vbrf__left">
+          <h2 class="vbrf__h2">{{ section.settings.why_heading }}</h2>
+          <ul class="vbrf__bullets">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'bullet_item' -%}
+                <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+
+          <h2 class="vbrf__h2">{{ section.settings.process_heading }}</h2>
+          <ol class="vbrf__steps">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'process_step' -%}
+                <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ol>
+        </div>
+
+        <div class="vbrf__right">
+          <div class="vbrf__card">
+            <h3 class="vbrf__card-title">{{ section.settings.form_heading }}</h3>
+            <p class="vbrf__card-sub">{{ section.settings.form_subtext }}</p>
+
+            {%- form 'contact', id: 'brf-form' -%}
+
+              {%- if form.posted_successfully? -%}
+                <div class="vbrf__success">
+                  <p>{{ section.settings.success_message }}</p>
+                </div>
+              {%- else -%}
+
+                {%- if form.errors -%}
+                  <div class="vbrf__error">
+                    {{ form.errors | default_errors }}
+                  </div>
+                {%- endif -%}
+
+                <div class="vbrf__row">
+                  <div class="vbrf__field">
+                    <label for="brf-name">{{ section.settings.label_name }}</label>
+                    <input type="text" id="brf-name" name="contact[name]" required placeholder="{{ section.settings.label_name }}">
+                  </div>
+                  <div class="vbrf__field">
+                    <label for="brf-phone">{{ section.settings.label_phone }}</label>
+                    <input type="tel" id="brf-phone" name="contact[phone]" required placeholder="{{ section.settings.label_phone }}">
+                  </div>
+                </div>
+
+                <div class="vbrf__field">
+                  <label for="brf-email">{{ section.settings.label_email }}</label>
+                  <input type="email" id="brf-email" name="contact[email]" required placeholder="{{ section.settings.label_email }}">
+                </div>
+
+                <div class="vbrf__field">
+                  <label for="brf-address">{{ section.settings.label_address }}</label>
+                  <input type="text" id="brf-address" name="contact[address]" placeholder="{{ section.settings.label_address }}">
+                </div>
+
+                <div class="vbrf__row">
+                  <div class="vbrf__field">
+                    <label for="brf-city">{{ section.settings.label_city }}</label>
+                    <input type="text" id="brf-city" name="contact[city]" placeholder="{{ section.settings.label_city }}">
+                  </div>
+                  <div class="vbrf__field">
+                    <label for="brf-pump">{{ section.settings.label_pump }}</label>
+                    <select id="brf-pump" name="contact[pump_type]">
+                      <option value="">{{ section.settings.pump_placeholder }}</option>
+                      <option value="Air-to-water">{{ section.settings.pump_opt_1 }}</option>
+                      <option value="Ground source">{{ section.settings.pump_opt_2 }}</option>
+                      <option value="Exhaust air">{{ section.settings.pump_opt_3 }}</option>
+                      <option value="Not sure">{{ section.settings.pump_opt_4 }}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="vbrf__field">
+                  <label for="brf-body">{{ section.settings.label_message }}</label>
+                  <textarea id="brf-body" name="contact[body]" rows="4" placeholder="{{ section.settings.message_placeholder }}"></textarea>
+                </div>
+
+                <button type="submit" class="vbrf__submit">{{ section.settings.submit_text }}</button>
+                <p class="vbrf__privacy">{{ section.settings.privacy_text }}</p>
+
+              {%- endif -%}
+
+            {%- endform -%}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% stylesheet %}
+  .vbrf__hero {
+    background: linear-gradient(135deg, #1a3a8f 0%, #0f2470 100%);
+    padding: 56px 0 64px;
+  }
+  .vbrf__container {
+    max-width: 1072px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .vbrf__hero-icon {
+    margin-bottom: 20px;
+  }
+  .vbrf__heading {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+  .vbrf__intro {
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    max-width: 580px;
+  }
+  .vbrf__trust {
+    background: #fff;
+    border-bottom: 1px solid #eef1f7;
+  }
+  .vbrf__trust-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .vbrf__trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 28px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    border-right: 1px solid #eef1f7;
+    flex: 1;
+    white-space: nowrap;
+  }
+  .vbrf__trust-item:last-child { border-right: none; }
+  .vbrf__body {
+    padding: 72px 0 80px;
+    background: #fff;
+  }
+  .vbrf__layout {
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 64px;
+    align-items: start;
+  }
+  .vbrf__h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f1c3f;
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+  .vbrf__h2:first-child { margin-top: 0; }
+  .vbrf__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .vbrf__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5;
+  }
+  .vbrf__bullets li::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    background: #19aaf8;
+    border-radius: 50%;
+    margin-top: 6px;
+  }
+  .vbrf__steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    counter-reset: step-counter;
+  }
+  .vbrf__steps li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5;
+    background: #f8faff;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    counter-increment: step-counter;
+  }
+  .vbrf__steps li::before {
+    content: counter(step-counter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    height: 28px;
+    background: #19aaf8;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .vbrf__card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 24px;
+  }
+  .vbrf__card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f1c3f;
+    margin-bottom: 8px;
+  }
+  .vbrf__card-sub {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .vbrf__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .vbrf__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .vbrf__field label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+  }
+  .vbrf__field input,
+  .vbrf__field select,
+  .vbrf__field textarea {
+    padding: 10px 14px;
+    border: 1px solid #dde3ed;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #222;
+    background: #fff;
+    transition: border-color 0.15s;
+    font-family: inherit;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .vbrf__field input:focus,
+  .vbrf__field select:focus,
+  .vbrf__field textarea:focus {
+    outline: none;
+    border-color: #19aaf8;
+  }
+  .vbrf__field textarea { resize: vertical; }
+  .vbrf__submit {
+    width: 100%;
+    padding: 14px;
+    background: #19aaf8;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-family: inherit;
+    margin-top: 4px;
+  }
+  .vbrf__submit:hover { background: #0e96e0; }
+  .vbrf__privacy {
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 12px;
+  }
+  .vbrf__success {
+    background: #ecfdf5;
+    border: 1px solid #6ee7b7;
+    border-radius: 8px;
+    padding: 20px;
+    color: #065f46;
+    font-size: 15px;
+    text-align: center;
+  }
+  .vbrf__error {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    border-radius: 8px;
+    padding: 16px;
+    color: #b91c1c;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 960px) {
+    .vbrf__layout { grid-template-columns: 1fr; gap: 48px; }
+    .vbrf__card { position: static; }
+    .vbrf__trust-item { flex: auto; border-right: none; border-bottom: 1px solid #eef1f7; }
+  }
+  @media (max-width: 640px) {
+    .vbrf__hero { padding: 40px 0 48px; }
+    .vbrf__body { padding: 48px 0; }
+    .vbrf__container { padding: 0 20px; }
+    .vbrf__row { grid-template-columns: 1fr; }
+    .vbrf__card { padding: 24px 20px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "BRF page",
+  "blocks": [
+    {
+      "type": "bullet_item",
+      "name": "Benefit bullet",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Benefit"
+        }
+      ]
+    },
+    {
+      "type": "process_step",
+      "name": "Process step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Step text",
+          "default": "Step"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Hero heading",
+      "default": "Heat pump for housing associations"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Hero description",
+      "default": "We help Stockholm housing associations reduce operating costs and energy consumption through correctly sized heat pump solutions at property level."
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust bar – item 1",
+      "default": "4.9/5 rating from customers"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust bar – item 2",
+      "default": "5-year installation warranty"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust bar – item 3",
+      "default": "Authorised installer"
+    },
+    {
+      "type": "text",
+      "id": "trust_4",
+      "label": "Trust bar – item 4",
+      "default": "ROT deduction on the work"
+    },
+    {
+      "type": "text",
+      "id": "why_heading",
+      "label": "Benefits heading",
+      "default": "Why a heat pump for your housing association?"
+    },
+    {
+      "type": "text",
+      "id": "process_heading",
+      "label": "Process heading",
+      "default": "Our BRF process"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form heading",
+      "default": "Contact our BRF team"
+    },
+    {
+      "type": "textarea",
+      "id": "form_subtext",
+      "label": "Form subtext",
+      "default": "We'll get back to you with a free feasibility study and a decision basis for the board."
+    },
+    {
+      "type": "text",
+      "id": "label_name",
+      "label": "Name label",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "label_phone",
+      "label": "Phone label",
+      "default": "Phone"
+    },
+    {
+      "type": "text",
+      "id": "label_email",
+      "label": "Email label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "label_address",
+      "label": "Address label",
+      "default": "Address"
+    },
+    {
+      "type": "text",
+      "id": "label_city",
+      "label": "City label",
+      "default": "City"
+    },
+    {
+      "type": "text",
+      "id": "label_pump",
+      "label": "Pump type label",
+      "default": "Type of heat pump"
+    },
+    {
+      "type": "text",
+      "id": "pump_placeholder",
+      "label": "Pump type placeholder",
+      "default": "Select type"
+    },
+    {
+      "type": "text",
+      "id": "pump_opt_1",
+      "label": "Pump option 1",
+      "default": "Air-to-water"
+    },
+    {
+      "type": "text",
+      "id": "pump_opt_2",
+      "label": "Pump option 2",
+      "default": "Ground source"
+    },
+    {
+      "type": "text",
+      "id": "pump_opt_3",
+      "label": "Pump option 3",
+      "default": "Exhaust air"
+    },
+    {
+      "type": "text",
+      "id": "pump_opt_4",
+      "label": "Pump option 4",
+      "default": "Not sure – advise me"
+    },
+    {
+      "type": "text",
+      "id": "label_message",
+      "label": "Message label",
+      "default": "Tell us about your property (optional)"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message placeholder",
+      "default": "Number of apartments, building type, current heating system..."
+    },
+    {
+      "type": "text",
+      "id": "submit_text",
+      "label": "Submit button text",
+      "default": "Send request"
+    },
+    {
+      "type": "text",
+      "id": "privacy_text",
+      "label": "Privacy note",
+      "default": "We store your information in accordance with our privacy policy."
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thank you! We'll be in touch within 48 hours."
+    }
+  ],
+  "presets": [
+    {
+      "name": "BRF page"
+    }
+  ]
+}
+{% endschema %}
