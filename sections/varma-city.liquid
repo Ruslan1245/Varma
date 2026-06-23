@@ -198,7 +198,7 @@
                     {% when 'ground' %}
                       <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M8 3l4 8 5-5 1 8H6l1-8 5 5z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
                     {% when 'exhaust' %}
-                      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M17 8l4 4-4 4M3 12h18"/><path d="M7 4l-4 4 4 4"/></svg>
+                      <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 9c0-3.5-2.5-5.5-5-4.5s-2.5 4 .5 5"/><path d="M15 12c3.5 0 5.5-2.5 4.5-5s-4-2.5-5 .5"/><path d="M12 15c0 3.5 2.5 5.5 5 4.5s2.5-4-.5-5"/><path d="M9 12c-3.5 0-5.5 2.5-4.5 5s4 2.5 5-.5"/></svg>
                     {% else %}
                       <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
                   {% endcase %}
@@ -212,7 +212,7 @@
               {% if b.settings.price != blank %}
                 <p class="vcp__service-price">{{ b.settings.price }}</p>
               {% endif %}
-              <a href="{{ b.settings.btn_url | default: section.settings.cta_url | default: '/pages/contact' }}" class="vcp__service-btn">
+              <a href="{{ b.settings.btn_url | default: section.settings.cta_url | default: '/pages/contact' }}" class="vcp__service-btn{% if b.settings.badge != blank %} vcp__service-btn--primary{% endif %}">
                 <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 {{ b.settings.btn_text | default: 'Request a quote' }}
               </a>
@@ -744,6 +744,8 @@
     margin-top: 4px;
   }
   .vcp__service-btn:hover { background: #11aaf8; color: #fff; }
+  .vcp__service-btn--primary { background: #19aaf8; color: #fff; border-color: #19aaf8; }
+  .vcp__service-btn--primary:hover { background: #0e99e0; color: #fff; }
 
   /* --- LOCAL KNOWLEDGE --- */
   .vcp__local-card {

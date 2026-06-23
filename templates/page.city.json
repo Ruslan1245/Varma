@@ -16,12 +16,12 @@
           "type": "service_card",
           "settings": {
             "icon": "air-air",
-            "badge": "",
+            "badge": "Buy online",
             "title": "Air-to-Air Heat Pump",
             "description": "Heats with outdoor air, quick installation. Also cools in summer.",
             "price": "From approx. 18,000 SEK incl. installation",
             "link_url": "",
-            "btn_text": "Request a quote",
+            "btn_text": "Buy online",
             "btn_url": ""
           }
         },
@@ -29,12 +29,12 @@
           "type": "service_card",
           "settings": {
             "icon": "air-water",
-            "badge": "Buy online",
+            "badge": "",
             "title": "Air-to-Water Heat Pump",
             "description": "Connects to radiators and underfloor heating. Heats tap water too.",
             "price": "From approx. 65,000 SEK incl. installation",
             "link_url": "",
-            "btn_text": "Buy online",
+            "btn_text": "Request a quote",
             "btn_url": ""
           }
         },
