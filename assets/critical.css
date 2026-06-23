@@ -120,6 +120,12 @@ body {
   display: block;
 }
 
+/** Remove default spacing from Shopify section group wrappers */
+.shopify-section-group {
+  margin: 0;
+  padding: 0;
+}
+
 /** Section layout utilities */
 
 /**
