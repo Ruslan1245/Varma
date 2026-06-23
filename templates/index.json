@@ -184,6 +184,7 @@
         "step-1": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/support.jpg",
             "title": "Contact",
             "description": "We go through your needs and wishes."
           }
@@ -191,6 +192,7 @@
         "step-2": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/master.jpg",
             "title": "Home visit",
             "description": "We find the optimal solution on-site."
           }
@@ -198,6 +200,7 @@
         "step-3": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/calculate.jpg",
             "title": "Quote",
             "description": "Fixed price and clear terms – no surprises."
           }
@@ -205,6 +208,7 @@
         "step-4": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/masters.jpg",
             "title": "Installation",
             "description": "Certified installers complete the job quickly and cleanly."
           }
@@ -212,6 +216,7 @@
         "step-5": {
           "type": "step",
           "settings": {
+            "image": "shopify://shop_images/contract.jpg",
             "title": "Peace of mind",
             "description": "Walkthrough and optional service agreement."
           }
