@@ -18,6 +18,13 @@
             </button>
             <div class="varma-nav-dropdown {% if link.links.size > 5 %}varma-nav-dropdown--wide{% endif %}">
               {% if link.links.size > 5 %}
+                <div class="varma-nav-dropdown__header">
+                  <div class="varma-nav-dropdown__header-text">
+                    <span class="varma-nav-dropdown__header-label">{{ 'sections.header.dropdown_label' | t }}</span>
+                    <span class="varma-nav-dropdown__header-title">{{ 'sections.header.dropdown_title' | t }}</span>
+                  </div>
+                  <span class="varma-nav-dropdown__header-badge">{{ link.links.size }} {{ 'sections.header.dropdown_cities' | t }}</span>
+                </div>
                 <div class="varma-nav-dropdown__grid">
                   {% for child in link.links %}
                     <a href="{{ child.url }}" class="varma-nav-dropdown__item {% if child.active %}varma-nav-dropdown__item--active{% endif %}">
@@ -240,6 +247,40 @@
   }
   .varma-nav-dropdown__item:hover .varma-nav-dropdown__item-icon { background: #c7e8fc; }
   .varma-nav-dropdown__item-title { font-weight: 600; }
+  .varma-nav-dropdown__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 12px 10px;
+    border-bottom: 1px solid #e6e8ef;
+    margin-bottom: 6px;
+  }
+  .varma-nav-dropdown__header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .varma-nav-dropdown__header-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #19aaf8;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .varma-nav-dropdown__header-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #224466;
+  }
+  .varma-nav-dropdown__header-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: #224466;
+    background: #e8f6fe;
+    border-radius: 20px;
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
 
   /* Actions */
   .varma-header__actions {
