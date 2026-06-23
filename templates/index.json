@@ -469,7 +469,7 @@
         "heading": "Start saving this spring",
         "description": "Installations are now being booked for May. Book a free home visit today and receive a fixed price within 48 hours.",
         "btn1_text": "Book a home visit",
-        "btn1_url": "",
+        "btn1_url": "shopify://pages/fa-offert",
         "btn2_text": "Call 020 – 89 91 19",
         "btn2_url": ""
       }
