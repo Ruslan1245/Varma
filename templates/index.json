@@ -169,6 +169,7 @@
         "f6"
       ],
       "settings": {
+        "image": "shopify://shop_images/man_proffesional.jpg",
         "badge_value": "20+ yrs",
         "badge_label": "IN THE INDUSTRY",
         "label": "ABOUT US",
