@@ -1,0 +1,83 @@
+{
+	"sections": {
+		"main": {
+			"type": "varma-rot",
+			"blocks": {
+				"b-1": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "30% of the labour cost, max 50,000 kr/person/year"
+					}
+				},
+				"b-2": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "Labour only – not the materials"
+					}
+				},
+				"b-3": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "We handle the application to the Swedish Tax Agency"
+					}
+				},
+				"b-4": {
+					"type": "bullet_item",
+					"settings": {
+						"text": "The deduction is visible directly on your invoice"
+					}
+				},
+				"faq-1": {
+					"type": "faq_item",
+					"settings": {
+						"question": "How much ROT deduction do I get on a heat pump?",
+						"answer": "You get 30% of the labour cost, max 50,000 kr per person and year. Two owners can share the deduction up to 100,000 kr."
+					}
+				},
+				"faq-2": {
+					"type": "faq_item",
+					"settings": {
+						"question": "Do I get ROT deduction on the materials?",
+						"answer": "No, ROT only applies to the labour cost. The materials (the heat pump, pipes, drilling) are not included in the deduction."
+					}
+				},
+				"faq-3": {
+					"type": "faq_item",
+					"settings": {
+						"question": "Do I need to apply myself?",
+						"answer": "No, we deduct ROT directly on the invoice and handle the application to the Swedish Tax Agency on your behalf."
+					}
+				},
+				"faq-4": {
+					"type": "faq_item",
+					"settings": {
+						"question": "What are the conditions?",
+						"answer": "You must own the property and be an unlimited tax resident in Sweden. Housing associations cannot use ROT, but members can in their own apartment for certain types of work."
+					}
+				}
+			},
+			"block_order": ["b-1", "b-2", "b-3", "b-4", "faq-1", "faq-2", "faq-3", "faq-4"],
+			"settings": {
+				"heading": "ROT deduction on heat pump installation",
+				"description": "You get 30% off the labour cost when you install a heat pump – up to 50,000 kr per person and year. We deduct it directly on the invoice.",
+				"how_heading": "How ROT works",
+				"how_description": "The ROT deduction is a tax reduction for repair, conversion and extension work. Installation of a heat pump in your own home is covered by the rules.",
+				"cta_text": "Get a quote with ROT included",
+				"cta_url": "/pages/fa-offert",
+				"faq_heading": "Frequently asked questions about ROT deduction"
+			}
+		},
+		"cta": {
+			"type": "varma-cta",
+			"settings": {
+				"heading": "Start saving already this spring",
+				"description": "Installations are now being booked for May. Book a free home visit today and get a fixed price within 48 hours.",
+				"btn1_text": "Book home visit",
+				"btn1_url": "/pages/fa-offert",
+				"btn2_text": "Call 08-12 34 56 78",
+				"btn2_url": "tel:0812345678"
+			}
+		}
+	},
+	"order": ["main", "cta"]
+}

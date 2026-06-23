@@ -1,0 +1,280 @@
+<div class="vrot">
+
+  <div class="vrot__hero">
+    <div class="vrot__container">
+      <h1 class="vrot__heading">{{ section.settings.heading }}</h1>
+      <p class="vrot__intro">{{ section.settings.description }}</p>
+    </div>
+  </div>
+
+  <div class="vrot__how">
+    <div class="vrot__container">
+      <div class="vrot__how-inner">
+        <h2 class="vrot__h2">{{ section.settings.how_heading }}</h2>
+        <p class="vrot__text">{{ section.settings.how_description }}</p>
+        <ul class="vrot__bullets">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'bullet_item' -%}
+              <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        {%- if section.settings.cta_text != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="vrot__btn">{{ section.settings.cta_text }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="vrot__faq">
+    <div class="vrot__container">
+      <h2 class="vrot__h2">{{ section.settings.faq_heading }}</h2>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq_item' -%}
+          <details class="v-faq__item" {{ block.shopify_attributes }}>
+            <summary class="v-faq__q">
+              <span>{{ block.settings.question }}</span>
+              <span class="v-faq__icon"></span>
+            </summary>
+            <div class="v-faq__a"><p>{{ block.settings.answer }}</p></div>
+          </details>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+</div>
+
+<script src="{{ 'varma-faq.js' | asset_url }}" defer></script>
+
+{% stylesheet %}
+  .vrot__hero {
+    background: #EFF4FF;
+    padding: 48px 0 56px;
+  }
+  .vrot__container {
+    max-width: 1072px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .vrot__heading {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    color: #0f1c3f;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+  .vrot__intro {
+    font-size: 18px;
+    color: #444;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  .vrot__how {
+    padding: 72px 0;
+    background: #fff;
+  }
+  .vrot__how-inner {
+    max-width: 640px;
+  }
+  .vrot__h2 {
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 700;
+    color: #0f1c3f;
+    margin-bottom: 16px;
+  }
+  .vrot__text {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .vrot__bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .vrot__bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+  }
+  .vrot__bullets li::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    background: #19aaf8;
+    border-radius: 50%;
+    margin-top: 7px;
+  }
+  .vrot__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    background: #19aaf8;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.15s;
+  }
+  .vrot__btn:hover {
+    background: #0e96e0;
+  }
+  .vrot__faq {
+    padding: 72px 0 80px;
+    background: #fff;
+    border-top: 1px solid #eee;
+  }
+  .vrot__faq .vrot__h2 {
+    margin-bottom: 32px;
+  }
+  .v-faq__item {
+    border: 1px solid #e8edf5;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .v-faq__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #0f1c3f;
+    cursor: pointer;
+    list-style: none;
+    gap: 16px;
+  }
+  .v-faq__q::-webkit-details-marker { display: none; }
+  .v-faq__icon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border-radius: 50%;
+    border: 1.5px solid #c5d0e0;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .v-faq__icon::before,
+  .v-faq__icon::after {
+    content: '';
+    position: absolute;
+    background: #555;
+    border-radius: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .v-faq__icon::before { width: 10px; height: 1.5px; }
+  .v-faq__icon::after  { width: 1.5px; height: 10px; transition: transform 0.2s; }
+  .v-faq__item[open] .v-faq__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .v-faq__item[open] .v-faq__q { color: #19aaf8; }
+  .v-faq__a {
+    padding: 0 22px 20px;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+  }
+  .v-faq__a p { margin: 0; }
+  @media (max-width: 640px) {
+    .vrot__hero { padding: 36px 0 40px; }
+    .vrot__how, .vrot__faq { padding: 48px 0; }
+    .vrot__container { padding: 0 20px; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "ROT deduction page",
+  "blocks": [
+    {
+      "type": "bullet_item",
+      "name": "Bullet point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Bullet point"
+        }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Page heading",
+      "default": "ROT deduction on heat pump installation"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Hero description",
+      "default": "You get 30% off the labour cost when you install a heat pump – up to 50,000 kr per person and year. We deduct it directly on the invoice."
+    },
+    {
+      "type": "text",
+      "id": "how_heading",
+      "label": "How ROT works – heading",
+      "default": "How ROT works"
+    },
+    {
+      "type": "textarea",
+      "id": "how_description",
+      "label": "How ROT works – description",
+      "default": "The ROT deduction is a tax reduction for repair, conversion and extension work. Installation of a heat pump in your own home is covered by the rules."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Get a quote with ROT included"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "text",
+      "id": "faq_heading",
+      "label": "FAQ heading",
+      "default": "Frequently asked questions about ROT deduction"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ROT deduction page"
+    }
+  ]
+}
+{% endschema %}
