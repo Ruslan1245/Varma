@@ -59,6 +59,23 @@
   </div>
 </section>
 
+<script>
+  (function() {
+    var section = document.getElementById('shopify-section-{{ section.id }}');
+    if (!section) return;
+    var items = section.querySelectorAll('.v-faq__item');
+    items.forEach(function(item) {
+      item.querySelector('summary').addEventListener('click', function() {
+        if (!item.open) {
+          items.forEach(function(other) {
+            if (other !== item) other.removeAttribute('open');
+          });
+        }
+      });
+    });
+  })();
+</script>
+
 {% stylesheet %}
   .v-faq {
     padding: 80px 0;
@@ -204,20 +221,6 @@
   }
 {% endstylesheet %}
 
-{% javascript %}
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.v-faq__item summary').forEach(function(summary) {
-      summary.addEventListener('click', function(e) {
-        var clicked = this.closest('.v-faq__item');
-        if (!clicked.open) {
-          document.querySelectorAll('.v-faq__item').forEach(function(other) {
-            if (other !== clicked) other.removeAttribute('open');
-          });
-        }
-      });
-    });
-  });
-{% endjavascript %}
 
 {% schema %}
 {
