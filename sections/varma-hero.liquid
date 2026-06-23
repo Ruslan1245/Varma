@@ -89,7 +89,9 @@
 {% stylesheet %}
   .v-hero {
     position: relative;
-    min-height: 640px;
+    height: 88vh;
+    min-height: 560px;
+    max-height: 820px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -105,7 +107,7 @@
     width: 100%;
     height: 100% !important;
     object-fit: cover;
-    object-position: center center;
+    object-position: center 30%;
     max-width: none;
   }
   .v-hero__bg-placeholder {
@@ -117,11 +119,11 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-      90deg,
-      rgba(10, 20, 38, 0.78) 0%,
-      rgba(10, 20, 38, 0.55) 45%,
-      rgba(10, 20, 38, 0.22) 72%,
-      rgba(10, 20, 38, 0.06) 100%
+      100deg,
+      rgba(8, 16, 30, 0.72) 0%,
+      rgba(8, 16, 30, 0.42) 42%,
+      rgba(8, 16, 30, 0.10) 68%,
+      rgba(8, 16, 30, 0.00) 100%
     );
   }
   .v-hero__container {
