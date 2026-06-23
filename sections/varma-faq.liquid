@@ -62,7 +62,7 @@
 <script>
   (function() {
     function initFaq() {
-      var items = Array.from(document.querySelectorAll('#shopify-section-{{ section.id }} .v-faq__item'));
+      var items = Array.from(document.querySelectorAll('.v-faq__item'));
       if (!items.length) return;
       items.forEach(function(item) {
         item.querySelector('summary').addEventListener('click', function() {
