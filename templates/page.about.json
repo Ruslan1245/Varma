@@ -108,10 +108,14 @@
         "email": "info@varmaenergy.se",
         "org_label": "Org.nr",
         "org_nr": "559000-0000",
-        "trust_1": "4.9/5 rating from customers",
-        "trust_2": "5-year installation warranty",
-        "trust_3": "Authorised installer",
-        "trust_4": "ROT deduction on the work",
+        "stat_1_value": "4.9/5 rating",
+        "stat_1_label": "from customers",
+        "stat_2_value": "5-year warranty",
+        "stat_2_label": "installation guarantee",
+        "stat_3_value": "Authorised",
+        "stat_3_label": "installer",
+        "stat_4_value": "ROT deduction",
+        "stat_4_label": "on the work",
         "areas_heading": "We serve these areas"
       }
     },
