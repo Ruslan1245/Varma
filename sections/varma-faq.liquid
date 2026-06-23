@@ -205,15 +205,16 @@
 {% endstylesheet %}
 
 {% javascript %}
-  document.querySelectorAll('.v-faq__item').forEach(function(item) {
-    item.addEventListener('toggle', function() {
-      if (item.open) {
-        document.querySelectorAll('.v-faq__item').forEach(function(other) {
-          if (other !== item && other.open) {
-            other.removeAttribute('open');
-          }
-        });
-      }
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.v-faq__item summary').forEach(function(summary) {
+      summary.addEventListener('click', function(e) {
+        var clicked = this.closest('.v-faq__item');
+        if (!clicked.open) {
+          document.querySelectorAll('.v-faq__item').forEach(function(other) {
+            if (other !== clicked) other.removeAttribute('open');
+          });
+        }
+      });
     });
   });
 {% endjavascript %}
