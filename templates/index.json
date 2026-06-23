@@ -1,15 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "varma-hero": {
       "type": "varma-hero",
       "settings": {
+        "bg_image": "shopify://shop_images/1-scaled-1.jpg",
         "badge_text": "Authorized · Certified · Swedish-owned",
         "heading_before": "Stockholm's",
         "heading_accent": "smartest",
         "heading_after": "experts in heating and cooling.",
         "description": "Fast emergency response throughout Greater Stockholm with energy-efficient heat pumps and geothermal heating that reduce electricity bills by up to 70%.",
         "cta_primary_text": "Book a free consultation",
+        "cta_primary_url": "",
         "cta_secondary_text": "Calculate my savings",
+        "cta_secondary_url": "",
         "trust_1": "500+ homes served in Stockholm",
         "trust_2": "Booking synced with Outlook",
         "trust_3": "AI chat around the clock",
@@ -22,14 +34,87 @@
     "varma-services": {
       "type": "varma-services",
       "blocks": {
-        "service-1": { "type": "service", "settings": { "icon": "wind", "title": "Heat pump installation", "description": "Air and geothermal systems designed for Stockholm winters. A+++-rated equipment only.", "link_text": "Learn more" } },
-        "service-2": { "type": "service", "settings": { "icon": "mountain", "title": "Geothermal heating", "description": "Borehole heat directly from bedrock. 70%+ savings, 50-year lifespan and near-silent operation.", "link_text": "Learn more" } },
-        "service-3": { "type": "service", "settings": { "icon": "fire", "title": "Emergency heating repair", "description": "Boiler gone silent in winter? We're on-site within 2 hours across Greater Stockholm – every day of the year.", "link_text": "Call now", "badge": "24/7 · 2H RESPONSE", "highlight": true } },
-        "service-4": { "type": "service", "settings": { "icon": "snowflake", "title": "AC & cooling", "description": "Reversible heat pumps double as quiet and efficient air conditioning on warm summer days.", "link_text": "Learn more" } },
-        "service-5": { "type": "service", "settings": { "icon": "wrench", "title": "Annual service", "description": "Service agreements to keep your system in top condition. Priority support and discounts on spare parts.", "link_text": "Learn more" } },
-        "service-6": { "type": "service", "settings": { "icon": "building", "title": "Commercial HVAC", "description": "Offices, restaurants and schools. Scalable solutions with remote monitoring and SLA contracts.", "link_text": "Learn more" } }
+        "service-1": {
+          "type": "service",
+          "settings": {
+            "icon": "wind",
+            "title": "Heat pump installation",
+            "description": "Air and geothermal systems designed for Stockholm winters. A+++-rated equipment only.",
+            "link_text": "Learn more",
+            "link_url": "",
+            "badge": "",
+            "highlight": false
+          }
+        },
+        "service-2": {
+          "type": "service",
+          "settings": {
+            "icon": "mountain",
+            "title": "Geothermal heating",
+            "description": "Borehole heat directly from bedrock. 70%+ savings, 50-year lifespan and near-silent operation.",
+            "link_text": "Learn more",
+            "link_url": "",
+            "badge": "",
+            "highlight": false
+          }
+        },
+        "service-3": {
+          "type": "service",
+          "settings": {
+            "icon": "fire",
+            "title": "Emergency heating repair",
+            "description": "Boiler gone silent in winter? We're on-site within 2 hours across Greater Stockholm – every day of the year.",
+            "link_text": "Call now",
+            "link_url": "",
+            "badge": "24/7 · 2H RESPONSE",
+            "highlight": true
+          }
+        },
+        "service-4": {
+          "type": "service",
+          "settings": {
+            "icon": "snowflake",
+            "title": "AC & cooling",
+            "description": "Reversible heat pumps double as quiet and efficient air conditioning on warm summer days.",
+            "link_text": "Learn more",
+            "link_url": "",
+            "badge": "",
+            "highlight": false
+          }
+        },
+        "service-5": {
+          "type": "service",
+          "settings": {
+            "icon": "wrench",
+            "title": "Annual service",
+            "description": "Service agreements to keep your system in top condition. Priority support and discounts on spare parts.",
+            "link_text": "Learn more",
+            "link_url": "",
+            "badge": "",
+            "highlight": false
+          }
+        },
+        "service-6": {
+          "type": "service",
+          "settings": {
+            "icon": "building",
+            "title": "Commercial HVAC",
+            "description": "Offices, restaurants and schools. Scalable solutions with remote monitoring and SLA contracts.",
+            "link_text": "Learn more",
+            "link_url": "",
+            "badge": "",
+            "highlight": false
+          }
+        }
       },
-      "block_order": ["service-1", "service-2", "service-3", "service-4", "service-5", "service-6"],
+      "block_order": [
+        "service-1",
+        "service-2",
+        "service-3",
+        "service-4",
+        "service-5",
+        "service-6"
+      ],
       "settings": {
         "label": "SERVICES",
         "heading": "Full-service provider for heating & cooling – from installation to emergency repair."
@@ -38,14 +123,51 @@
     "varma-about": {
       "type": "varma-about",
       "blocks": {
-        "f1": { "type": "feature", "settings": { "text": "Certified technicians" } },
-        "f2": { "type": "feature", "settings": { "text": "Leading brands" } },
-        "f3": { "type": "feature", "settings": { "text": "10-year warranty" } },
-        "f4": { "type": "feature", "settings": { "text": "Full responsibility" } },
-        "f5": { "type": "feature", "settings": { "text": "Fast delivery" } },
-        "f6": { "type": "feature", "settings": { "text": "Personal service" } }
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "text": "Certified technicians"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "text": "Leading brands"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "text": "10-year warranty"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "text": "Full responsibility"
+          }
+        },
+        "f5": {
+          "type": "feature",
+          "settings": {
+            "text": "Fast delivery"
+          }
+        },
+        "f6": {
+          "type": "feature",
+          "settings": {
+            "text": "Personal service"
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
       "settings": {
         "badge_value": "20+ yrs",
         "badge_label": "IN THE INDUSTRY",
@@ -58,13 +180,49 @@
     "varma-process": {
       "type": "varma-process",
       "blocks": {
-        "step-1": { "type": "step", "settings": { "title": "Contact", "description": "We go through your needs and wishes." } },
-        "step-2": { "type": "step", "settings": { "title": "Home visit", "description": "We find the optimal solution on-site." } },
-        "step-3": { "type": "step", "settings": { "title": "Quote", "description": "Fixed price and clear terms – no surprises." } },
-        "step-4": { "type": "step", "settings": { "title": "Installation", "description": "Certified installers complete the job quickly and cleanly." } },
-        "step-5": { "type": "step", "settings": { "title": "Peace of mind", "description": "Walkthrough and optional service agreement." } }
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Contact",
+            "description": "We go through your needs and wishes."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "Home visit",
+            "description": "We find the optimal solution on-site."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "Quote",
+            "description": "Fixed price and clear terms – no surprises."
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "title": "Installation",
+            "description": "Certified installers complete the job quickly and cleanly."
+          }
+        },
+        "step-5": {
+          "type": "step",
+          "settings": {
+            "title": "Peace of mind",
+            "description": "Walkthrough and optional service agreement."
+          }
+        }
       },
-      "block_order": ["step-1", "step-2", "step-3", "step-4", "step-5"],
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4",
+        "step-5"
+      ],
       "settings": {
         "label": "HOW IT WORKS",
         "heading": "How we install your heat pump"
@@ -73,18 +231,89 @@
     "varma-areas": {
       "type": "varma-areas",
       "blocks": {
-        "area-1": { "type": "area", "settings": { "name": "Sundbyberg", "technicians": "3 technicians nearby" } },
-        "area-2": { "type": "area", "settings": { "name": "Solna", "technicians": "4 technicians nearby" } },
-        "area-3": { "type": "area", "settings": { "name": "Täby", "technicians": "2 technicians nearby" } },
-        "area-4": { "type": "area", "settings": { "name": "Bromma", "technicians": "3 technicians nearby" } },
-        "area-5": { "type": "area", "settings": { "name": "Södermalm", "technicians": "5 technicians nearby" } },
-        "area-6": { "type": "area", "settings": { "name": "Östermalm", "technicians": "4 technicians nearby" } },
-        "area-7": { "type": "area", "settings": { "name": "Vasastan", "technicians": "3 technicians nearby" } },
-        "area-8": { "type": "area", "settings": { "name": "Kungsholmen", "technicians": "3 technicians nearby" } },
-        "area-9": { "type": "area", "settings": { "name": "Lidingö", "technicians": "2 technicians nearby" } },
-        "area-10": { "type": "area", "settings": { "name": "Nacka", "technicians": "3 technicians nearby" } }
+        "area-1": {
+          "type": "area",
+          "settings": {
+            "name": "Sundbyberg",
+            "technicians": "3 technicians nearby"
+          }
+        },
+        "area-2": {
+          "type": "area",
+          "settings": {
+            "name": "Solna",
+            "technicians": "4 technicians nearby"
+          }
+        },
+        "area-3": {
+          "type": "area",
+          "settings": {
+            "name": "Täby",
+            "technicians": "2 technicians nearby"
+          }
+        },
+        "area-4": {
+          "type": "area",
+          "settings": {
+            "name": "Bromma",
+            "technicians": "3 technicians nearby"
+          }
+        },
+        "area-5": {
+          "type": "area",
+          "settings": {
+            "name": "Södermalm",
+            "technicians": "5 technicians nearby"
+          }
+        },
+        "area-6": {
+          "type": "area",
+          "settings": {
+            "name": "Östermalm",
+            "technicians": "4 technicians nearby"
+          }
+        },
+        "area-7": {
+          "type": "area",
+          "settings": {
+            "name": "Vasastan",
+            "technicians": "3 technicians nearby"
+          }
+        },
+        "area-8": {
+          "type": "area",
+          "settings": {
+            "name": "Kungsholmen",
+            "technicians": "3 technicians nearby"
+          }
+        },
+        "area-9": {
+          "type": "area",
+          "settings": {
+            "name": "Lidingö",
+            "technicians": "2 technicians nearby"
+          }
+        },
+        "area-10": {
+          "type": "area",
+          "settings": {
+            "name": "Nacka",
+            "technicians": "3 technicians nearby"
+          }
+        }
       },
-      "block_order": ["area-1","area-2","area-3","area-4","area-5","area-6","area-7","area-8","area-9","area-10"],
+      "block_order": [
+        "area-1",
+        "area-2",
+        "area-3",
+        "area-4",
+        "area-5",
+        "area-6",
+        "area-7",
+        "area-8",
+        "area-9",
+        "area-10"
+      ],
       "settings": {
         "label": "SERVICE AREA",
         "heading": "We serve all of Greater Stockholm.",
@@ -98,21 +327,53 @@
         "label": "VARMA SHOP",
         "heading": "Heat pumps with installation included.",
         "description": "Authorized installers, fixed price and 5-year warranty – free delivery throughout Stockholm.",
+        "collection": "",
+        "products_count": 4,
         "view_all_text": "View all products",
         "badge_text": "INCL. INSTALLATION",
         "price_label": "Price after ROT deduction",
-        "add_to_cart_text": "Add to cart",
-        "products_count": 4
+        "add_to_cart_text": "Add to cart"
       }
     },
     "varma-reviews": {
       "type": "varma-reviews",
       "blocks": {
-        "rev-1": { "type": "review", "settings": { "quote": "The boiler broke down on a Sunday evening at -12°C. Varma had a technician on-site within 90 minutes. Incredible service.", "name": "Erik", "last_initial": "L", "location": "Bromma", "service": "Heat pump repair" } },
-        "rev-2": { "type": "review", "settings": { "quote": "Switched from oil to geothermal heating last autumn. Heating costs dropped from 34,000 to under 9,000 SEK. Highly recommended.", "name": "Anna", "last_initial": "N", "location": "Lidingö", "service": "Geothermal installation" } },
-        "rev-3": { "type": "review", "settings": { "quote": "It took 30 seconds to book in their calendar. Confirmation in Outlook, reminder the day before, technician arrived on time. This is how all tradespeople should work.", "name": "Lars", "last_initial": "B", "location": "Södermalm", "service": "Annual service" } }
+        "rev-1": {
+          "type": "review",
+          "settings": {
+            "quote": "The boiler broke down on a Sunday evening at -12°C. Varma had a technician on-site within 90 minutes. Incredible service.",
+            "name": "Erik",
+            "last_initial": "L",
+            "location": "Bromma",
+            "service": "Heat pump repair"
+          }
+        },
+        "rev-2": {
+          "type": "review",
+          "settings": {
+            "quote": "Switched from oil to geothermal heating last autumn. Heating costs dropped from 34,000 to under 9,000 SEK. Highly recommended.",
+            "name": "Anna",
+            "last_initial": "N",
+            "location": "Lidingö",
+            "service": "Geothermal installation"
+          }
+        },
+        "rev-3": {
+          "type": "review",
+          "settings": {
+            "quote": "It took 30 seconds to book in their calendar. Confirmation in Outlook, reminder the day before, technician arrived on time. This is how all tradespeople should work.",
+            "name": "Lars",
+            "last_initial": "B",
+            "location": "Södermalm",
+            "service": "Annual service"
+          }
+        }
       },
-      "block_order": ["rev-1", "rev-2", "rev-3"],
+      "block_order": [
+        "rev-1",
+        "rev-2",
+        "rev-3"
+      ],
       "settings": {
         "label": "09 · REVIEWS",
         "heading": "Stockholm homeowners trust us.",
@@ -131,13 +392,49 @@
     "varma-faq": {
       "type": "varma-faq",
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "What does a heat pump installation cost in Stockholm?", "answer": "A complete air heat pump installation for a typical house of 120–150 m² typically costs 85,000–140,000 SEK including equipment and labor. Geothermal is higher at 180,000–280,000 SEK, but delivers significantly greater savings over time. Varma provides a fixed quote after a free home visit." } },
-        "q2": { "type": "question", "settings": { "question": "How long does the installation take?", "answer": "An air heat pump is normally installed in 1–2 days. Geothermal takes 3–5 days including drilling. We plan the work to minimise disruption to your home." } },
-        "q3": { "type": "question", "settings": { "question": "What warranty do you offer?", "answer": "We provide a 10-year warranty on installation work and honor the manufacturer's product warranty, typically 5–7 years. All our installers are certified and F-gas licensed." } },
-        "q4": { "type": "question", "settings": { "question": "How quickly can you respond to emergencies?", "answer": "We have technicians stationed throughout Greater Stockholm and guarantee response within 2 hours around the clock, every day of the year – including weekends and public holidays." } },
-        "q5": { "type": "question", "settings": { "question": "Are there grants or deductions available for heat pumps in Sweden?", "answer": "Yes! You can use the ROT deduction which gives a 30% tax reduction on labor costs. We handle the ROT application for you directly, so you only pay the reduced amount." } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "What does a heat pump installation cost in Stockholm?",
+            "answer": "A complete air heat pump installation for a typical house of 120–150 m² typically costs 85,000–140,000 SEK including equipment and labor. Geothermal is higher at 180,000–280,000 SEK, but delivers significantly greater savings over time. Varma provides a fixed quote after a free home visit."
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "How long does the installation take?",
+            "answer": "An air heat pump is normally installed in 1–2 days. Geothermal takes 3–5 days including drilling. We plan the work to minimise disruption to your home."
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty do you offer?",
+            "answer": "We provide a 10-year warranty on installation work and honor the manufacturer's product warranty, typically 5–7 years. All our installers are certified and F-gas licensed."
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "How quickly can you respond to emergencies?",
+            "answer": "We have technicians stationed throughout Greater Stockholm and guarantee response within 2 hours around the clock, every day of the year – including weekends and public holidays."
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Are there grants or deductions available for heat pumps in Sweden?",
+            "answer": "Yes! You can use the ROT deduction which gives a 30% tax reduction on labor costs. We handle the ROT application for you directly, so you only pay the reduced amount."
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
       "settings": {
         "label": "FAQ",
         "heading": "Answers for Stockholm homeowners.",
@@ -145,6 +442,7 @@
         "contact_heading": "Have more questions?",
         "contact_subtext": "Talk to a Varma specialist — free of charge and without obligation.",
         "contact_cta_text": "Book a free visit",
+        "contact_cta_url": "",
         "contact_phone": "+46 8 123 456 789"
       }
     },
@@ -154,7 +452,9 @@
         "heading": "Start saving this spring",
         "description": "Installations are now being booked for May. Book a free home visit today and receive a fixed price within 48 hours.",
         "btn1_text": "Book a home visit",
-        "btn2_text": "Call 020 – 89 91 19"
+        "btn1_url": "",
+        "btn2_text": "Call 020 – 89 91 19",
+        "btn2_url": ""
       }
     }
   },
