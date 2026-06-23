@@ -92,31 +92,33 @@
   </div>
 
   <div class="vlv__stats-bar">
-    <div class="vlv__inner vlv__stats-grid">
-      {%- if section.settings.stat_1_value != blank -%}
-        <div class="vlv__stat">
-          <span class="vlv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-          <div><div class="vlv__stat-val">{{ section.settings.stat_1_value }}</div><div class="vlv__stat-lbl">{{ section.settings.stat_1_label }}</div></div>
-        </div>
-      {%- endif -%}
-      {%- if section.settings.stat_2_value != blank -%}
-        <div class="vlv__stat">
-          <span class="vlv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-          <div><div class="vlv__stat-val">{{ section.settings.stat_2_value }}</div><div class="vlv__stat-lbl">{{ section.settings.stat_2_label }}</div></div>
-        </div>
-      {%- endif -%}
-      {%- if section.settings.stat_3_value != blank -%}
-        <div class="vlv__stat">
-          <span class="vlv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
-          <div><div class="vlv__stat-val">{{ section.settings.stat_3_value }}</div><div class="vlv__stat-lbl">{{ section.settings.stat_3_label }}</div></div>
-        </div>
-      {%- endif -%}
-      {%- if section.settings.stat_4_value != blank -%}
-        <div class="vlv__stat">
-          <span class="vlv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
-          <div><div class="vlv__stat-val">{{ section.settings.stat_4_value }}</div><div class="vlv__stat-lbl">{{ section.settings.stat_4_label }}</div></div>
-        </div>
-      {%- endif -%}
+    <div class="vlv__inner">
+      <div class="vlv__stats-card">
+        {%- if section.settings.stat_1_value != blank -%}
+          <div class="vlv__stat">
+            <span class="vlv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+            <div><div class="vlv__stat-val">{{ section.settings.stat_1_value }}</div><div class="vlv__stat-lbl">{{ section.settings.stat_1_label }}</div></div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.stat_2_value != blank -%}
+          <div class="vlv__stat">
+            <span class="vlv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            <div><div class="vlv__stat-val">{{ section.settings.stat_2_value }}</div><div class="vlv__stat-lbl">{{ section.settings.stat_2_label }}</div></div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.stat_3_value != blank -%}
+          <div class="vlv__stat">
+            <span class="vlv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+            <div><div class="vlv__stat-val">{{ section.settings.stat_3_value }}</div><div class="vlv__stat-lbl">{{ section.settings.stat_3_label }}</div></div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.stat_4_value != blank -%}
+          <div class="vlv__stat">
+            <span class="vlv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+            <div><div class="vlv__stat-val">{{ section.settings.stat_4_value }}</div><div class="vlv__stat-lbl">{{ section.settings.stat_4_label }}</div></div>
+          </div>
+        {%- endif -%}
+      </div>
     </div>
   </div>
 
@@ -335,8 +337,8 @@
   .vlv__form-success { display: flex; align-items: center; gap: 10px; color: #10a971; font-weight: 600; padding: 16px; background: #f0fdf4; border-radius: 10px; }
   .vlv__form-error { color: #e74c3c; font-size: 13px; margin-bottom: 12px; }
 
-  .vlv__stats-bar { border-top: 1px solid #e6e8ef; border-bottom: 1px solid #e6e8ef; padding: 20px 0; background: #fff; }
-  .vlv__stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .vlv__stats-bar { padding: 32px 0 0; background: #fff; }
+  .vlv__stats-card { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border: 1.5px solid #e6e8ef; border-radius: 14px; padding: 20px 24px; }
   .vlv__stat { display: flex; align-items: center; gap: 12px; }
   .vlv__stat-icon { width: 40px; height: 40px; background: #e8f6fe; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .vlv__stat-val { font-size: 15px; font-weight: 700; color: #224466; }
@@ -413,7 +415,7 @@
 
   @media (max-width: 900px) {
     .vlv__hero-grid { grid-template-columns: 1fr; }
-    .vlv__stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .vlv__stats-card { grid-template-columns: repeat(2, 1fr); }
     .vlv__pros-cons-row { grid-template-columns: 1fr; }
     .vlv__two-col { grid-template-columns: 1fr; }
     .vlv__products-grid { grid-template-columns: repeat(2, 1fr); }
@@ -423,7 +425,7 @@
     .vlv__inner { padding: 0 20px; }
     .vlv__hero { padding: 32px 0 40px; }
     .vlv__form-row { grid-template-columns: 1fr; }
-    .vlv__stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .vlv__stats-card { grid-template-columns: 1fr 1fr; gap: 12px; }
     .vlv__cities { grid-template-columns: repeat(2, 1fr); }
     .vlv__products-grid { grid-template-columns: 1fr; }
   }
