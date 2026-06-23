@@ -1,7 +1,7 @@
 <section class="v-hero full-width">
   <div class="v-hero__bg" aria-hidden="true">
     {% if section.settings.bg_image %}
-      {{ section.settings.bg_image | image_url: width: 2000 | image_tag: class: 'v-hero__bg-img', loading: 'eager', fetchpriority: 'high', alt: '' }}
+      {{ section.settings.bg_image | image_url: width: 2560 | image_tag: class: 'v-hero__bg-img', loading: 'eager', fetchpriority: 'high', alt: '' }}
     {% else %}
       <div class="v-hero__bg-placeholder"></div>
     {% endif %}
@@ -100,15 +100,17 @@
     z-index: 0;
   }
   .v-hero__bg-img {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: 100%;
+    height: 100% !important;
     object-fit: cover;
-    object-position: center 55%;
-    display: block;
+    object-position: center center;
+    max-width: none;
   }
   .v-hero__bg-placeholder {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    inset: 0;
     background: linear-gradient(135deg, #0f1e35 0%, #224466 100%);
   }
   .v-hero__bg-overlay {
@@ -116,10 +118,10 @@
     inset: 0;
     background: linear-gradient(
       90deg,
-      rgba(10, 20, 38, 0.90) 0%,
-      rgba(10, 20, 38, 0.72) 45%,
-      rgba(10, 20, 38, 0.28) 75%,
-      rgba(10, 20, 38, 0.08) 100%
+      rgba(10, 20, 38, 0.78) 0%,
+      rgba(10, 20, 38, 0.55) 45%,
+      rgba(10, 20, 38, 0.22) 72%,
+      rgba(10, 20, 38, 0.06) 100%
     );
   }
   .v-hero__container {
