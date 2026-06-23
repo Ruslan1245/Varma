@@ -21,7 +21,7 @@
         <div class="v-areas__card" {{ block.shopify_attributes }}>
           <div class="v-areas__card-header">
             <span class="v-areas__card-name">{{ block.settings.name }}</span>
-            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#2563EB" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           {% if block.settings.technicians != blank %}
             <p class="v-areas__card-info">{{ block.settings.technicians }}</p>
@@ -45,14 +45,14 @@
   .v-areas__heading {
     font-size: clamp(26px, 3vw, 40px);
     font-weight: 800;
-    color: #0F172A;
+    color: #224466;
     line-height: 1.2;
     letter-spacing: -0.02em;
     margin-bottom: 10px;
   }
   .v-areas__desc {
     font-size: 16px;
-    color: #475569;
+    color: #5b6474;
     margin-bottom: 20px;
   }
   .v-areas__status {
@@ -60,7 +60,7 @@
     align-items: center;
     gap: 8px;
     font-size: 14px;
-    color: #374151;
+    color: #2a2f3d;
     margin-bottom: 36px;
   }
   .v-areas__status-dot {
@@ -77,13 +77,13 @@
   }
   .v-areas__card {
     background: white;
-    border: 1px solid #E2E8F0;
+    border: 1px solid #e6e8ef;
     border-radius: 12px;
     padding: 18px;
     transition: border-color 0.15s, box-shadow 0.15s;
   }
   .v-areas__card:hover {
-    border-color: #BFDBFE;
+    border-color: #c7e8fc;
     box-shadow: 0 2px 12px rgba(37,99,235,0.08);
   }
   .v-areas__card-header {
@@ -95,11 +95,11 @@
   .v-areas__card-name {
     font-size: 15px;
     font-weight: 700;
-    color: #0F172A;
+    color: #224466;
   }
   .v-areas__card-info {
     font-size: 13px;
-    color: #64748B;
+    color: #5b6474;
   }
   @media (max-width: 1000px) {
     .v-areas__grid { grid-template-columns: repeat(3, 1fr); }
