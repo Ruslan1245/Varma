@@ -10,7 +10,7 @@
 {
   "sections": {
     "main": {
-      "type": "varma-about",
+      "type": "varma-about-page",
       "blocks": {
         "city-1": {
           "type": "city_link",
