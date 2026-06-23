@@ -69,7 +69,7 @@
           "settings": {
             "icon": "experience",
             "title": "Experience",
-            "description": "We have installed heat pumps across Stockholm's entire city centre – from Östermalm to Bagarmossen."
+            "description": "We have installed heat pumps across all of Solna – from Råsunda to Ulriksdal."
           }
         },
         "why-2": {
@@ -94,7 +94,7 @@
             "image": "shopify://shop_images/support.jpg",
             "icon": "phone",
             "title": "Contact us",
-            "description": "Call or fill in the form. We reply within one business day."
+            "description": "We discuss your needs by phone or form"
           }
         },
         "proc-2": {
@@ -103,7 +103,7 @@
             "image": "shopify://shop_images/master.jpg",
             "icon": "home",
             "title": "Home visit",
-            "description": "A technician inspects the property and finds the best solution."
+            "description": "Free analysis of your home in Solna."
           }
         },
         "proc-3": {
@@ -112,7 +112,7 @@
             "image": "shopify://shop_images/calculate.jpg",
             "icon": "document",
             "title": "Fixed quote",
-            "description": "You receive a detailed fixed-price quote within 24 hours. No surprises."
+            "description": "Fixed price with ROT deduction already calculated."
           }
         },
         "proc-4": {
@@ -121,7 +121,7 @@
             "image": "shopify://shop_images/masters.jpg",
             "icon": "tool",
             "title": "Installation",
-            "description": "Our authorised team installs and commissions the pump. Air-to-air usually takes one day."
+            "description": "Certified installation, commissioning and 10-year warranty."
           }
         },
         "exp-1": {
@@ -305,7 +305,7 @@
         "case_quote": "Impressive how little disruption there was during the installation. Everything finished and cleaned up in five days.",
         "case_attribution": "Verified customer, Råsunda",
         "why_label": "Why us",
-        "why_heading": "Why Stockholm chooses VARMA Energy",
+        "why_heading": "Why Solna chooses VARMA Energy",
         "process_label": "Process",
         "process_heading": "How installation works",
         "process_sub": "Four simple steps from first contact to commissioned heat pump.",
