@@ -431,9 +431,9 @@
   .vcp { background: #fff; }
   .vcp__inner {
     width: 100%;
-    max-width: 1072px;
+    max-width: 1008px;
     margin: 0 auto;
-    padding: 0 32px;
+    padding: 0;
     box-sizing: border-box;
   }
   .vcp__hero-text { max-width: 100%; }
@@ -943,8 +943,11 @@
     .vcp__maint-grid { grid-template-columns: 1fr 1fr; }
     .vcp__areas-card { flex-direction: column; }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 1048px) {
     .vcp__inner { padding: 0 20px; }
+  }
+  @media (max-width: 600px) {
+    .vcp__inner { padding: 0 16px; }
     .vcp__hero-body { padding: 48px 0 36px; }
     .vcp__services-grid { grid-template-columns: 1fr; }
     .vcp__why-grid { grid-template-columns: 1fr; }
