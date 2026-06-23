@@ -183,7 +183,7 @@
         {% if section.settings.services_label != blank %}
           <span class="vcp__label">{{ section.settings.services_label }}</span>
         {% endif %}
-        <h2 class="vcp__section-h">{{ section.settings.services_heading | default: 'We install in ' | append: section.settings.city_name }}</h2>
+        <h2 class="vcp__section-h">{% if section.settings.services_heading != blank %}{{ section.settings.services_heading }}{% else %}We install in {{ section.settings.city_name }}{% endif %}</h2>
         {% if section.settings.services_sub != blank %}
           <p class="vcp__section-sub">{{ section.settings.services_sub }}</p>
         {% endif %}
@@ -212,12 +212,6 @@
               {% if b.settings.price != blank %}
                 <p class="vcp__service-price">{{ b.settings.price }}</p>
               {% endif %}
-              {% if b.settings.link_url != blank %}
-                <a href="{{ b.settings.link_url }}" class="vcp__service-link">
-                  Read more
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-              {% endif %}
               <a href="{{ b.settings.btn_url | default: section.settings.cta_url | default: '/pages/contact' }}" class="vcp__service-btn">
                 <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 {{ b.settings.btn_text | default: 'Request a quote' }}
@@ -244,24 +238,26 @@
             {% endif %}
           </div>
           <div class="vcp__local-right">
-            {% if section.settings.local_house_type != blank %}
-              <div class="vcp__local-row">
-                <span class="vcp__local-key">Most common house type</span>
-                <span class="vcp__local-val">{{ section.settings.local_house_type }}</span>
-              </div>
-            {% endif %}
-            {% if section.settings.local_pump_type != blank %}
-              <div class="vcp__local-row">
-                <span class="vcp__local-key">Best pump type</span>
-                <span class="vcp__local-val">{{ section.settings.local_pump_type }}</span>
-              </div>
-            {% endif %}
-            {% if section.settings.local_savings != blank %}
-              <div class="vcp__local-row">
-                <span class="vcp__local-key">Average savings</span>
-                <span class="vcp__local-val">{{ section.settings.local_savings }}</span>
-              </div>
-            {% endif %}
+            <div class="vcp__local-rows">
+              {% if section.settings.local_house_type != blank %}
+                <div class="vcp__local-row">
+                  <span class="vcp__local-key">Most common house type</span>
+                  <span class="vcp__local-val">{{ section.settings.local_house_type }}</span>
+                </div>
+              {% endif %}
+              {% if section.settings.local_pump_type != blank %}
+                <div class="vcp__local-row">
+                  <span class="vcp__local-key">Best pump type</span>
+                  <span class="vcp__local-val">{{ section.settings.local_pump_type }}</span>
+                </div>
+              {% endif %}
+              {% if section.settings.local_savings != blank %}
+                <div class="vcp__local-row">
+                  <span class="vcp__local-key">Average savings</span>
+                  <span class="vcp__local-val">{{ section.settings.local_savings }}</span>
+                </div>
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
@@ -558,7 +554,6 @@
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    backdrop-filter: blur(6px);
     transition: background 0.15s;
   }
   .vcp__btn-phone:hover { background: rgba(255,255,255,0.20); }
@@ -615,6 +610,8 @@
   /* --- SERVICE AREAS CARD --- */
   .vcp__areas-card {
     background: #0d1b2e;
+    background-image: radial-gradient(circle at 1px 1px, rgb(255, 255, 255) 1px, transparent 0px);
+    background-size: 22px 22px;
     border-radius: 16px;
     padding: 40px 48px;
     display: flex;
@@ -727,7 +724,7 @@
     gap: 8px;
     background: rgba(34,34,153,0.06);
     color: #222299;
-    border: 1.5px solid rgba(34,34,153,0.18);
+    border: 1.5px solid #19aaf8;
     border-radius: 8px;
     padding: 10px;
     font-size: 13px;
@@ -736,7 +733,7 @@
     transition: background 0.15s, color 0.15s;
     margin-top: 4px;
   }
-  .vcp__service-btn:hover { background: #222299; color: #fff; }
+  .vcp__service-btn:hover { background: #11aaf8; color: #fff; }
 
   /* --- LOCAL KNOWLEDGE --- */
   .vcp__local-card {
@@ -749,17 +746,17 @@
     align-items: start;
   }
   .vcp__local-desc { font-size: 14px; color: #5b6474; line-height: 1.7; margin-top: 12px; }
+  .vcp__local-rows { display: flex; flex-direction: column; gap: 10px; }
   .vcp__local-row {
+    border: 1.5px solid #e6e8ef;
+    border-radius: 12px;
+    padding: 14px 18px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 0;
-    border-bottom: 1px solid #e6e8ef;
-    gap: 16px;
+    flex-direction: column;
+    gap: 4px;
   }
-  .vcp__local-row:last-child { border-bottom: none; }
-  .vcp__local-key { font-size: 14px; color: #5b6474; }
-  .vcp__local-val { font-size: 14px; font-weight: 700; color: #19aaf8; }
+  .vcp__local-key { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #5b6474; }
+  .vcp__local-val { font-size: 15px; font-weight: 700; color: #222299; }
 
   /* --- WHY US --- */
   .vcp__why-grid {
