@@ -127,31 +127,31 @@
         "exp-1": {
           "type": "expertise_item",
           "settings": {
-            "text": "Technicians experienced with Stockholm's older building stock."
+            "text": "Technicians experienced with Solna's buildings and housing types."
           }
         },
         "exp-2": {
           "type": "expertise_item",
           "settings": {
-            "text": "We handle drilling permits with Stockholm's environmental authority."
+            "text": "We handle local building permits, drilling permits and housing association approvals."
           }
         },
         "exp-3": {
           "type": "expertise_item",
           "settings": {
-            "text": "On-site within 24 hours for service calls across the city."
+            "text": "Fast service and spare parts throughout the Stockholm area."
           }
         },
         "exp-4": {
           "type": "expertise_item",
           "settings": {
-            "text": "Local knowledge of geology, soil type and district heating networks."
+            "text": "Clear quote with no hidden costs – ROT deducted directly on the invoice."
           }
         },
         "exp-5": {
           "type": "expertise_item",
           "settings": {
-            "text": "Partnered with Stockholm's leading energy advisors."
+            "text": "Flexible financing via Klarna, instalments up to 36 months."
           }
         },
         "maint-1": {
@@ -163,31 +163,31 @@
         "maint-2": {
           "type": "maintenance_item",
           "settings": {
-            "text": "Refrigerant pressure check"
+            "text": "Pressure and hot gas check"
           }
         },
         "maint-3": {
           "type": "maintenance_item",
           "settings": {
-            "text": "Performance measurement"
+            "text": "Refrigerant top-up"
           }
         },
         "maint-4": {
           "type": "maintenance_item",
           "settings": {
-            "text": "Remote monitoring setup"
+            "text": "Expansion valve test"
           }
         },
         "maint-5": {
           "type": "maintenance_item",
           "settings": {
-            "text": "Safety and electrical inspection"
+            "text": "Performance optimisation"
           }
         },
         "maint-6": {
           "type": "maintenance_item",
           "settings": {
-            "text": "Annual service report"
+            "text": "Service protocol and report"
           }
         },
         "faq-1": {
@@ -314,8 +314,8 @@
         "contact_address": "Esplanaden 14, 111 22 Stockholm",
         "contact_phone": "08-12 34 56 78",
         "maint_label": "Maintenance",
-        "maint_heading": "Service & maintenance in Stockholm",
-        "maint_description": "Regular service keeps the pump efficient, extends its lifespan and preserves the manufacturer's warranty. Our technicians are based in Stockholm and can usually be on-site within 24 hours.",
+        "maint_heading": "Service & maintenance in Solna",
+        "maint_description": "Regular service keeps the pump efficient, extends its lifespan and preserves the manufacturer's warranty.\nMaintenance CTA text\tBook service",
         "maint_btn_text": "Book service",
         "maint_btn_url": "",
         "faq_title": "Frequently asked questions – heat pump in Stockholm",
