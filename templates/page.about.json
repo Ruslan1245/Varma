@@ -1,0 +1,111 @@
+{
+	"sections": {
+		"main": {
+			"type": "varma-about",
+			"blocks": {
+				"city-1": {
+					"type": "city_link",
+					"settings": {
+						"name": "Stockholm",
+						"url": "/pages/varmepump-stockholm"
+					}
+				},
+				"city-2": {
+					"type": "city_link",
+					"settings": {
+						"name": "Sundbyberg",
+						"url": "/pages/varmepump-sundbyberg"
+					}
+				},
+				"city-3": {
+					"type": "city_link",
+					"settings": {
+						"name": "Solna",
+						"url": "/pages/varmepump-solna"
+					}
+				},
+				"city-4": {
+					"type": "city_link",
+					"settings": {
+						"name": "Danderyd",
+						"url": "/pages/varmepump-danderyd"
+					}
+				},
+				"city-5": {
+					"type": "city_link",
+					"settings": {
+						"name": "Täby",
+						"url": "/pages/varmepump-taby"
+					}
+				},
+				"city-6": {
+					"type": "city_link",
+					"settings": {
+						"name": "Nacka",
+						"url": "/pages/varmepump-nacka"
+					}
+				},
+				"city-7": {
+					"type": "city_link",
+					"settings": {
+						"name": "Lidingö",
+						"url": "/pages/varmepump-lidingo"
+					}
+				},
+				"city-8": {
+					"type": "city_link",
+					"settings": {
+						"name": "Huddinge",
+						"url": "/pages/varmepump-huddinge"
+					}
+				},
+				"city-9": {
+					"type": "city_link",
+					"settings": {
+						"name": "Sollentuna",
+						"url": "/pages/varmepump-sollentuna"
+					}
+				},
+				"city-10": {
+					"type": "city_link",
+					"settings": {
+						"name": "Järfälla",
+						"url": "/pages/varmepump-jarfalla"
+					}
+				}
+			},
+			"block_order": ["city-1", "city-2", "city-3", "city-4", "city-5", "city-6", "city-7", "city-8", "city-9", "city-10"],
+			"settings": {
+				"heading": "Stockholm's local heat pump experts",
+				"description": "We are the technicians who install the pump – not a broker who outsources the job. That means one price, one responsibility and one contact person from quote to service.",
+				"story_heading": "Our story",
+				"story_text_1": "VARMA Energy was founded in Sundbyberg by technicians who grew tired of poor installations. Today we install heat pumps across Greater Stockholm – from single-family homes to housing associations.",
+				"story_text_2": "We believe in getting it right from the start: the right pump, the right sizing, the right installation. That is why our customers recommend us.",
+				"contact_heading": "Contact us",
+				"company_name": "VARMA Energy AB",
+				"address": "Esplanaden 14, 172 67 Sundbyberg",
+				"phone": "08-12 34 56 78",
+				"email": "info@varmaenergy.se",
+				"org_label": "Org.nr",
+				"org_nr": "559000-0000",
+				"trust_1": "4.9/5 rating from customers",
+				"trust_2": "5-year installation warranty",
+				"trust_3": "Authorised installer",
+				"trust_4": "ROT deduction on the work",
+				"areas_heading": "We serve these areas"
+			}
+		},
+		"cta": {
+			"type": "varma-cta",
+			"settings": {
+				"heading": "Start saving already this spring",
+				"description": "Installations are now being booked for May. Book a free home visit today and get a fixed price within 48 hours.",
+				"btn1_text": "Book home visit",
+				"btn1_url": "/pages/fa-offert",
+				"btn2_text": "Call 08-12 34 56 78",
+				"btn2_url": "tel:0812345678"
+			}
+		}
+	},
+	"order": ["main", "cta"]
+}

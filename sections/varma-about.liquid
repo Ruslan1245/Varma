@@ -1,211 +1,404 @@
-<section class="v-about full-width">
-  <div class="v-about__container">
-    <div class="v-about__image-wrap">
-      {% if section.settings.image %}
-        {{ section.settings.image | image_url: width: 700 | image_tag: class: 'v-about__image', loading: 'lazy', alt: section.settings.image.alt }}
-      {% else %}
-        {{ 'image' | placeholder_svg_tag: 'v-about__image v-about__image--placeholder' }}
-      {% endif %}
-      {% if section.settings.badge_value != blank %}
-        <div class="v-about__badge">
-          <div class="v-about__badge-value">{{ section.settings.badge_value }}</div>
-          <div class="v-about__badge-label">{{ section.settings.badge_label }}</div>
-        </div>
-      {% endif %}
-    </div>
+<div class="vab">
 
-    <div class="v-about__content">
-      {% if section.settings.label != blank %}
-        <p class="v-label">{{ section.settings.label }}</p>
-      {% endif %}
-      {% if section.settings.heading != blank %}
-        <h2 class="v-about__heading">{{ section.settings.heading }}</h2>
-      {% endif %}
-      {% if section.settings.description_1 != blank %}
-        <p class="v-about__desc">{{ section.settings.description_1 }}</p>
-      {% endif %}
-      {% if section.settings.description_2 != blank %}
-        <p class="v-about__desc">{{ section.settings.description_2 }}</p>
-      {% endif %}
-
-      <ul class="v-about__list">
-        {% for block in section.blocks %}
-          {% if block.settings.text != blank %}
-            <li class="v-about__list-item" {{ block.shopify_attributes }}>
-              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              {{ block.settings.text }}
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+  <div class="vab__hero">
+    <div class="vab__container">
+      <h1 class="vab__heading">{{ section.settings.heading }}</h1>
+      <p class="vab__intro">{{ section.settings.description }}</p>
     </div>
   </div>
-</section>
+
+  <div class="vab__story">
+    <div class="vab__container">
+      <div class="vab__story-layout">
+
+        <div class="vab__story-left">
+          <h2 class="vab__h2">{{ section.settings.story_heading }}</h2>
+          {%- if section.settings.story_text_1 != blank -%}
+            <p class="vab__story-text">{{ section.settings.story_text_1 }}</p>
+          {%- endif -%}
+          {%- if section.settings.story_text_2 != blank -%}
+            <p class="vab__story-text">{{ section.settings.story_text_2 }}</p>
+          {%- endif -%}
+        </div>
+
+        <div class="vab__story-right">
+          <div class="vab__contact-card">
+            <h3 class="vab__contact-title">{{ section.settings.contact_heading }}</h3>
+            <ul class="vab__contact-list">
+              {%- if section.settings.company_name != blank -%}
+                <li class="vab__contact-item vab__contact-item--name">{{ section.settings.company_name }}</li>
+              {%- endif -%}
+              {%- if section.settings.address != blank -%}
+                <li class="vab__contact-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#19aaf8"/></svg>
+                  {{ section.settings.address }}
+                </li>
+              {%- endif -%}
+              {%- if section.settings.phone != blank -%}
+                <li class="vab__contact-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z" fill="#19aaf8"/></svg>
+                  <a href="tel:{{ section.settings.phone | remove: ' ' | remove: '-' }}">{{ section.settings.phone }}</a>
+                </li>
+              {%- endif -%}
+              {%- if section.settings.email != blank -%}
+                <li class="vab__contact-item">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#19aaf8"/></svg>
+                  <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+                </li>
+              {%- endif -%}
+              {%- if section.settings.org_nr != blank -%}
+                <li class="vab__contact-item vab__contact-item--org">{{ section.settings.org_label }}: {{ section.settings.org_nr }}</li>
+              {%- endif -%}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="vab__trust">
+    <div class="vab__container">
+      <div class="vab__trust-bar">
+        <div class="vab__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#FFB400"/></svg>
+          <span>{{ section.settings.trust_1 }}</span>
+        </div>
+        <div class="vab__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v7c0 5.25 3.75 10.15 9 11.35C17.25 24.15 21 19.25 21 14V7L12 2z" stroke="#19aaf8" stroke-width="2" fill="none"/></svg>
+          <span>{{ section.settings.trust_2 }}</span>
+        </div>
+        <div class="vab__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#19aaf8" stroke-width="2"/><path d="M9 12l2 2 4-4" stroke="#19aaf8" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>{{ section.settings.trust_3 }}</span>
+        </div>
+        <div class="vab__trust-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 7h10M7 12h10M7 17h6" stroke="#19aaf8" stroke-width="2" stroke-linecap="round"/><rect x="3" y="3" width="18" height="18" rx="2" stroke="#19aaf8" stroke-width="2"/></svg>
+          <span>{{ section.settings.trust_4 }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- assign has_cities = false -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'city_link' -%}
+      {%- assign has_cities = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if has_cities -%}
+    <div class="vab__areas">
+      <div class="vab__container">
+        <h2 class="vab__h2">{{ section.settings.areas_heading }}</h2>
+        <div class="vab__cities">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'city_link' -%}
+              <a href="{{ block.settings.url }}" class="vab__city" {{ block.shopify_attributes }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#19aaf8"/></svg>
+                {{ block.settings.name }}
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+</div>
 
 {% stylesheet %}
-  .v-about {
-    padding: 80px 0;
-    background: #fff;
+  .vab__hero {
+    background: #EFF4FF;
+    padding: 48px 0 56px;
   }
-  .v-about__container {
+  .vab__container {
     max-width: 1072px;
     margin: 0 auto;
     padding: 0 32px;
+  }
+  .vab__heading {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 800;
+    color: #0f1c3f;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 720px;
+  }
+  .vab__intro {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.65;
+    max-width: 640px;
+  }
+  .vab__story {
+    padding: 72px 0 64px;
+    background: #fff;
+  }
+  .vab__story-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 72px;
-    align-items: center;
+    grid-template-columns: 1fr 360px;
+    gap: 64px;
+    align-items: start;
   }
-  .v-about__image-wrap {
-    position: relative;
+  .vab__h2 {
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 700;
+    color: #0f1c3f;
+    margin-bottom: 24px;
   }
-  .v-about__image {
-    width: 100%;
-    border-radius: 20px;
-    object-fit: cover;
-    aspect-ratio: 4/5;
-  }
-  .v-about__image--placeholder {
-    background: #e6e8ef;
-    border-radius: 20px;
-    width: 100%;
-    aspect-ratio: 4/5;
-  }
-  .v-about__badge {
-    position: absolute;
-    top: 24px;
-    left: -16px;
-    background: white;
-    border-radius: 12px;
-    padding: 14px 18px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    text-align: center;
-  }
-  .v-about__badge-value {
-    font-size: 22px;
-    font-weight: 800;
-    color: #224466;
-    line-height: 1.1;
-  }
-  .v-about__badge-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: #5b6474;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 3px;
-  }
-  .v-about__heading {
-    font-size: clamp(26px, 3vw, 38px);
-    font-weight: 800;
-    color: #224466;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+  .vab__story-text {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.75;
+    font-style: italic;
+    border-left: 3px solid #19aaf8;
+    padding-left: 18px;
     margin-bottom: 20px;
   }
-  .v-about__desc {
-    font-size: 16px;
-    color: #5b6474;
-    line-height: 1.7;
-    margin-bottom: 14px;
+  .vab__story-text:last-child { margin-bottom: 0; }
+  .vab__contact-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 28px 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   }
-  .v-about__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px 24px;
+  .vab__contact-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f1c3f;
+    margin-bottom: 20px;
+  }
+  .vab__contact-list {
     list-style: none;
     padding: 0;
-    margin-top: 28px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
-  .v-about__list-item {
+  .vab__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+  }
+  .vab__contact-item svg { margin-top: 2px; flex-shrink: 0; }
+  .vab__contact-item a { color: #19aaf8; text-decoration: none; }
+  .vab__contact-item a:hover { text-decoration: underline; }
+  .vab__contact-item--name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #0f1c3f;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eef1f7;
+    margin-bottom: 4px;
+  }
+  .vab__contact-item--org {
+    font-size: 13px;
+    color: #999;
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px solid #eef1f7;
+  }
+  .vab__trust {
+    background: #f8faff;
+    border-top: 1px solid #eef1f7;
+    border-bottom: 1px solid #eef1f7;
+  }
+  .vab__trust-bar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .vab__trust-item {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 15px;
+    padding: 18px 28px;
+    font-size: 14px;
     font-weight: 500;
-    color: #2a2f3d;
+    color: #333;
+    border-right: 1px solid #eef1f7;
+    flex: 1;
+    white-space: nowrap;
   }
-  @media (max-width: 900px) {
-    .v-about__container {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
-    .v-about__list { grid-template-columns: 1fr; }
-    .v-about__badge { left: 8px; }
+  .vab__trust-item:last-child { border-right: none; }
+  .vab__areas {
+    padding: 64px 0 72px;
+    background: #fff;
+  }
+  .vab__cities {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .vab__city {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0f1c3f;
+    text-decoration: none;
+    background: #fff;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .vab__city:hover {
+    border-color: #19aaf8;
+    box-shadow: 0 2px 10px rgba(25,170,248,0.12);
+    color: #19aaf8;
+  }
+  @media (max-width: 960px) {
+    .vab__story-layout { grid-template-columns: 1fr; gap: 40px; }
+    .vab__cities { grid-template-columns: repeat(3, 1fr); }
+    .vab__trust-item { flex: auto; border-right: none; border-bottom: 1px solid #eef1f7; }
+  }
+  @media (max-width: 640px) {
+    .vab__hero { padding: 36px 0 40px; }
+    .vab__story { padding: 48px 0; }
+    .vab__areas { padding: 48px 0; }
+    .vab__container { padding: 0 20px; }
+    .vab__cities { grid-template-columns: repeat(2, 1fr); }
   }
 {% endstylesheet %}
 
 {% schema %}
 {
-  "name": "About",
+  "name": "About Us page",
   "blocks": [
     {
-      "type": "feature",
-      "name": "Feature item",
+      "type": "city_link",
+      "name": "City",
       "settings": [
         {
           "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Feature item"
+          "id": "name",
+          "label": "City name",
+          "default": "Stockholm"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "City page URL"
         }
       ]
     }
   ],
   "settings": [
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "badge_value",
-      "label": "Badge value",
-      "default": "20+ ГҐr"
-    },
-    {
-      "type": "text",
-      "id": "badge_label",
-      "label": "Badge label",
-      "default": "I BRANSCHEN"
-    },
-    {
-      "type": "text",
-      "id": "label",
-      "label": "Section label",
-      "default": "OM OSS"
-    },
-    {
       "type": "text",
       "id": "heading",
-      "label": "Heading",
-      "default": "Proffs pГҐ vГ¤rmepumpar & fГ¶rnybar energi"
+      "label": "Hero heading",
+      "default": "Stockholm's local heat pump experts"
     },
     {
       "type": "textarea",
-      "id": "description_1",
-      "label": "Description paragraph 1",
-      "default": "Vi sГ¤ljer, installerar, byter ut och servar lГ¶sningar frГҐn ledande tillverkare. VГҐrt team har tusentals lyckade installationer bakom sig och tar fullt ansvar fГ¶r varje projekt."
+      "id": "description",
+      "label": "Hero description",
+      "default": "We are the technicians who install the pump – not a broker who outsources the job. That means one price, one responsibility and one contact person from quote to service."
+    },
+    {
+      "type": "text",
+      "id": "story_heading",
+      "label": "Story heading",
+      "default": "Our story"
     },
     {
       "type": "textarea",
-      "id": "description_2",
-      "label": "Description paragraph 2",
-      "default": "Som kund ska du kГ¤nna dig trygg och slippa blanda in flera bolag. VГҐrt fokus Г¤r effektivitet i kombination med hГ¶g kvalitet вЂ“ i varje steg."
+      "id": "story_text_1",
+      "label": "Story paragraph 1",
+      "default": "VARMA Energy was founded in Sundbyberg by technicians who grew tired of poor installations. Today we install heat pumps across Greater Stockholm – from single-family homes to housing associations."
+    },
+    {
+      "type": "textarea",
+      "id": "story_text_2",
+      "label": "Story paragraph 2",
+      "default": "We believe in getting it right from the start: the right pump, the right sizing, the right installation. That is why our customers recommend us."
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Contact card heading",
+      "default": "Contact us"
+    },
+    {
+      "type": "text",
+      "id": "company_name",
+      "label": "Company name",
+      "default": "VARMA Energy AB"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "default": "Esplanaden 14, 172 67 Sundbyberg"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "08-12 34 56 78"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "info@varmaenergy.se"
+    },
+    {
+      "type": "text",
+      "id": "org_label",
+      "label": "Org number label",
+      "default": "Org.nr"
+    },
+    {
+      "type": "text",
+      "id": "org_nr",
+      "label": "Organisation number",
+      "default": "559000-0000"
+    },
+    {
+      "type": "text",
+      "id": "trust_1",
+      "label": "Trust bar – item 1",
+      "default": "4.9/5 rating from customers"
+    },
+    {
+      "type": "text",
+      "id": "trust_2",
+      "label": "Trust bar – item 2",
+      "default": "5-year installation warranty"
+    },
+    {
+      "type": "text",
+      "id": "trust_3",
+      "label": "Trust bar – item 3",
+      "default": "Authorised installer"
+    },
+    {
+      "type": "text",
+      "id": "trust_4",
+      "label": "Trust bar – item 4",
+      "default": "ROT deduction on the work"
+    },
+    {
+      "type": "text",
+      "id": "areas_heading",
+      "label": "Service areas heading",
+      "default": "We serve these areas"
     }
   ],
   "presets": [
     {
-      "name": "Varma About",
-      "blocks": [
-        { "type": "feature", "settings": { "text": "Certifierade tekniker" } },
-        { "type": "feature", "settings": { "text": "Ledande varumГ¤rken" } },
-        { "type": "feature", "settings": { "text": "10 ГҐrs garanti" } },
-        { "type": "feature", "settings": { "text": "Helhetsansvar" } },
-        { "type": "feature", "settings": { "text": "Snabba leveranser" } },
-        { "type": "feature", "settings": { "text": "Personlig service" } }
-      ]
+      "name": "About Us page"
     }
   ]
 }
