@@ -314,7 +314,7 @@
 			}
 		},
 		"cta": {
-			"type": "varma-cta-banner",
+			"type": "varma-cta",
 			"settings": {
 				"heading": "Start saving already this spring",
 				"description": "Installations are now being booked for May. Book a free home visit today and get a fixed price within 48 hours.",
