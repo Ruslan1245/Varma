@@ -204,17 +204,7 @@
   }
 {% endstylesheet %}
 
-{% javascript %}
-  document.querySelectorAll('.v-faq__item').forEach(function(item) {
-    item.addEventListener('toggle', function() {
-      if (item.open) {
-        document.querySelectorAll('.v-faq__item').forEach(function(other) {
-          if (other !== item) other.open = false;
-        });
-      }
-    });
-  });
-{% endjavascript %}
+<script src="{{ 'varma-faq.js' | asset_url }}" defer></script>
 
 
 {% schema %}
