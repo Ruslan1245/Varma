@@ -8,298 +8,334 @@
  * ------------------------------------------------------------
  */
 {
-	"sections": {
-		"main": {
-			"type": "varma-city",
-			"blocks": {
-				"svc-1": {
-					"type": "service_card",
-					"settings": {
-						"icon": "air-air",
-						"badge": "Buy online",
-						"title": "Air-to-air heat pump",
-						"description": "Fast installation, lower electricity bill. Also cools in summer.",
-						"price": "From approx. 18,000 SEK incl. installation",
-						"link_url": "",
-						"btn_text": "Buy online",
-						"btn_url": ""
-					}
-				},
-				"svc-2": {
-					"type": "service_card",
-					"settings": {
-						"icon": "air-water",
-						"badge": "",
-						"title": "Air-to-water heat pump",
-						"description": "Heating and hot water in one system. Most common choice in Järfälla.",
-						"price": "From approx. 120,000 SEK incl. installation",
-						"link_url": "",
-						"btn_text": "Request a quote",
-						"btn_url": ""
-					}
-				},
-				"svc-3": {
-					"type": "service_card",
-					"settings": {
-						"icon": "ground",
-						"badge": "",
-						"title": "Ground source heat pump",
-						"description": "Greatest savings over time. Heats, cools and provides hot water.",
-						"price": "From approx. 180,000 SEK incl. drilling and installation",
-						"link_url": "",
-						"btn_text": "Request a quote",
-						"btn_url": ""
-					}
-				},
-				"svc-4": {
-					"type": "service_card",
-					"settings": {
-						"icon": "exhaust",
-						"badge": "",
-						"title": "Exhaust air heat pump",
-						"description": "Recovers heat from ventilation. Ideal for well-insulated homes.",
-						"price": "From approx. 90,000 SEK incl. installation",
-						"link_url": "",
-						"btn_text": "Request a quote",
-						"btn_url": ""
-					}
-				},
-				"why-1": {
-					"type": "why_item",
-					"settings": {
-						"icon": "experience",
-						"title": "Experience",
-						"description": "We have installed heat pumps across all of Järfälla – from Jakobsberg to Viksjö."
-					}
-				},
-				"why-2": {
-					"type": "why_item",
-					"settings": {
-						"icon": "quality",
-						"title": "Quality",
-						"description": "Only heat pumps from market-leading manufacturers: Nibe, Bosch, Mitsubishi, Daikin, Toshiba, CTC and Qvantum."
-					}
-				},
-				"why-3": {
-					"type": "why_item",
-					"settings": {
-						"icon": "safety",
-						"title": "Security",
-						"description": "Certified installers, fixed prices with no hidden costs, and up to 10-year warranty on the installation."
-					}
-				},
-				"proc-1": {
-					"type": "process_step",
-					"settings": {
-						"image": "shopify://shop_images/support.jpg",
-						"icon": "phone",
-						"title": "Contact us",
-						"description": "We discuss your needs by phone or form"
-					}
-				},
-				"proc-2": {
-					"type": "process_step",
-					"settings": {
-						"image": "shopify://shop_images/master.jpg",
-						"icon": "home",
-						"title": "Home visit",
-						"description": "Free analysis of your home in Järfälla."
-					}
-				},
-				"proc-3": {
-					"type": "process_step",
-					"settings": {
-						"image": "shopify://shop_images/calculate.jpg",
-						"icon": "document",
-						"title": "Fixed quote",
-						"description": "Fixed price with ROT deduction already calculated."
-					}
-				},
-				"proc-4": {
-					"type": "process_step",
-					"settings": {
-						"image": "shopify://shop_images/masters.jpg",
-						"icon": "tool",
-						"title": "Installation",
-						"description": "Certified installation, commissioning and 10-year warranty."
-					}
-				},
-				"exp-1": {
-					"type": "expertise_item",
-					"settings": {
-						"text": "Technicians experienced with Järfälla's mix of housing types and building regulations."
-					}
-				},
-				"exp-2": {
-					"type": "expertise_item",
-					"settings": {
-						"text": "We handle local building permits, drilling permits and housing association approvals."
-					}
-				},
-				"exp-3": {
-					"type": "expertise_item",
-					"settings": {
-						"text": "Fast service and spare parts throughout the western Stockholm area."
-					}
-				},
-				"exp-4": {
-					"type": "expertise_item",
-					"settings": {
-						"text": "Clear quote with no hidden costs – ROT deducted directly on the invoice."
-					}
-				},
-				"exp-5": {
-					"type": "expertise_item",
-					"settings": {
-						"text": "Flexible financing via Klarna, instalments up to 36 months."
-					}
-				},
-				"maint-1": {
-					"type": "maintenance_item",
-					"settings": { "text": "Filter and fan cleaning" }
-				},
-				"maint-2": {
-					"type": "maintenance_item",
-					"settings": { "text": "Expansion valve test" }
-				},
-				"maint-3": {
-					"type": "maintenance_item",
-					"settings": { "text": "Pressure and hot gas check" }
-				},
-				"maint-4": {
-					"type": "maintenance_item",
-					"settings": { "text": "Performance optimisation" }
-				},
-				"maint-5": {
-					"type": "maintenance_item",
-					"settings": { "text": "Refrigerant top-up" }
-				},
-				"maint-6": {
-					"type": "maintenance_item",
-					"settings": { "text": "Service protocol and report" }
-				},
-				"faq-1": {
-					"type": "faq_item",
-					"settings": {
-						"question": "How much does a heat pump cost in Järfälla?",
-						"answer": "A complete air-to-air installation starts from approx. 18,000 SEK. Air-to-water typically costs 65,000–120,000 SEK. Ground source starts around 180,000 SEK including drilling. After the green deduction (gröna avdraget), which covers 50% of labour costs, the net cost is significantly lower."
-					}
-				},
-				"faq-2": {
-					"type": "faq_item",
-					"settings": {
-						"question": "Does VARMA Energy install heat pumps in all parts of Järfälla?",
-						"answer": "Yes. We cover all areas of Järfälla municipality including Jakobsberg, Kallhäll, Barkarby, Barkarbystaden and Viksjö. Our technicians are based locally for fast response."
-					}
-				},
-				"faq-3": {
-					"type": "faq_item",
-					"settings": {
-						"question": "Which heat pump suits my home in Järfälla?",
-						"answer": "For homes with water-based heating (radiators or underfloor), air-to-water delivers the best savings. For direct electric heating, air-to-air is the most cost-effective choice. Our technician recommends the right type during the free home visit."
-					}
-				},
-				"faq-4": {
-					"type": "faq_item",
-					"settings": {
-						"question": "How much can I save with a heat pump in Järfälla?",
-						"answer": "Most customers in Järfälla reduce annual heating costs by 40–60%. A typical home saves around 30,500 SEK per year after switching from direct electric heating to an air-to-water heat pump."
-					}
-				},
-				"faq-5": {
-					"type": "faq_item",
-					"settings": {
-						"question": "Do I get ROT deduction for heat pump installation?",
-						"answer": "Yes. The green deduction (gröna avdraget) covers 50% of the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice so you never pay upfront and apply later."
-					}
-				}
-			},
-			"block_order": [
-				"svc-1", "svc-2", "svc-3", "svc-4",
-				"why-1", "why-2", "why-3",
-				"proc-1", "proc-2", "proc-3", "proc-4",
-				"exp-1", "exp-2", "exp-3", "exp-4", "exp-5",
-				"maint-1", "maint-2", "maint-3", "maint-4", "maint-5", "maint-6",
-				"faq-1", "faq-2", "faq-3", "faq-4", "faq-5"
-			],
-			"settings": {
-				"bg_image": "shopify://shop_images/jarfalla.jpg",
-				"hero_label": "Järfälla's leading installer",
-				"heading_before": "Heat Pump in",
-				"city_name": "Järfälla",
-				"hero_description": "From million-programme homes in Jakobsberg to modern housing in Barkarbystaden and villas in Viksjö – we have installed heat pumps in all types of homes in Järfälla. Clear quote and fixed price with no hidden costs.",
-				"cta_text": "Get a quote",
-				"cta_url": "",
-				"phone": "08-12 34 56 78",
-				"trust_1": "Authorised installer",
-				"trust_2": "ROT deduction 50%",
-				"trust_3": "10-year warranty",
-				"trust_4": "Fixed price",
-				"hstat_1_value": "340+",
-				"hstat_1_label": "Installations in Järfälla",
-				"hstat_2_value": "30,500 SEK/yr",
-				"hstat_2_label": "Average home savings",
-				"hstat_3_value": "53%",
-				"hstat_3_label": "Air-to-water most common",
-				"hstat_4_value": "On the invoice",
-				"hstat_4_label": "ROT deducted directly",
-				"stat_1_value": "4.9/5 rating",
-				"stat_1_label": "from customers",
-				"stat_2_value": "5-year installation warranty",
-				"stat_2_label": "",
-				"stat_3_value": "Authorised installer",
-				"stat_3_label": "",
-				"stat_4_value": "ROT deduction",
-				"stat_4_label": "on the work",
-				"areas_label": "Service areas",
-				"areas_heading": "We serve all of Järfälla municipality",
-				"areas_description": "Certified installers on-site in 7+ areas — fast response and local knowledge.",
-				"districts": "Jakobsberg, Kallhäll, Barkarby, Barkarbystaden, Viksjö, Görväln, Veddesta",
-				"available_text": "Available today",
-				"services_label": "Heat pumps",
-				"services_heading": "We install in Järfälla",
-				"services_sub": "Most popular in Järfälla: Air-to-water heat pump.",
-				"local_label": "Local knowledge",
-				"local_heading": "What Järfälla's housing stock looks like",
-				"local_description": "Järfälla has a large proportion of 1960s–1970s terraced houses and detached homes in Jakobsberg and Kallhäll, alongside the fast-growing new-build area Barkarbystaden. Air-to-water heat pumps are the most common choice for homes with existing water-based heating systems.",
-				"local_house_type": "Terraced houses & villas",
-				"local_pump_type": "Air-to-water heat pump",
-				"local_savings": "30,500 SEK/yr",
-				"case_label": "Customer case",
-				"case_location": "Viksjö, Järfälla",
-				"case_project": "Air-to-water heat pump Bosch CS7000iAW",
-				"case_result": "Reduced heating cost from 41,000 SEK to 10,800 SEK/yr",
-				"case_quote": "We got three quotes and Varma was both the most professional and competitive. The installation went smoothly and on time.",
-				"case_attribution": "Verified customer, Viksjö",
-				"why_label": "Why us",
-				"why_heading": "Why Järfälla chooses VARMA Energy",
-				"process_label": "Process",
-				"process_heading": "How installation works",
-				"process_sub": "Four simple steps from first contact to commissioned heat pump.",
-				"expertise_heading": "Local expertise in Järfälla municipality",
-				"contact_name": "VARMA Energy – Järfälla",
-				"contact_address": "Esplanaden 14, 177 31 Järfälla",
-				"contact_phone": "08-12 34 56 78",
-				"maint_label": "Maintenance",
-				"maint_heading": "Service & maintenance in Järfälla",
-				"maint_description": "Regular service keeps the pump efficient, extends its lifespan and preserves the manufacturer's warranty.",
-				"maint_btn_text": "Book service",
-				"maint_btn_url": "",
-				"faq_title": "Frequently asked questions – heat pump in Järfälla",
-				"parent_url": ""
-			}
-		},
-		"cta": {
-			"type": "varma-cta",
-			"settings": {
-				"heading": "Start saving already this spring",
-				"description": "Installations are now being booked for May. Book a free home visit today and get a fixed price within 48 hours.",
-				"btn1_text": "Book home visit",
-				"btn1_url": "/pages/fa-offert",
-				"btn2_text": "Call 08-12 34 56 78",
-				"btn2_url": "tel:0812345678"
-			}
-		}
-	},
-	"order": ["main", "cta"]
+  "sections": {
+    "main": {
+      "type": "varma-city",
+      "blocks": {
+        "svc-1": {
+          "type": "service_card",
+          "settings": {
+            "icon": "air-air",
+            "badge": "Buy online",
+            "title": "Air-to-air heat pump",
+            "description": "Fast installation, lower electricity bill. Also cools in summer.",
+            "price": "From approx. 18,000 SEK incl. installation",
+            "link_url": "",
+            "btn_text": "Buy online",
+            "btn_url": ""
+          }
+        },
+        "svc-2": {
+          "type": "service_card",
+          "settings": {
+            "icon": "air-water",
+            "badge": "",
+            "title": "Air-to-water heat pump",
+            "description": "Heating and hot water in one system. Most common choice in Järfälla.",
+            "price": "From approx. 120,000 SEK incl. installation",
+            "link_url": "",
+            "btn_text": "Request a quote",
+            "btn_url": ""
+          }
+        },
+        "svc-3": {
+          "type": "service_card",
+          "settings": {
+            "icon": "ground",
+            "badge": "",
+            "title": "Ground source heat pump",
+            "description": "Greatest savings over time. Heats, cools and provides hot water.",
+            "price": "From approx. 180,000 SEK incl. drilling and installation",
+            "link_url": "",
+            "btn_text": "Request a quote",
+            "btn_url": ""
+          }
+        },
+        "svc-4": {
+          "type": "service_card",
+          "settings": {
+            "icon": "exhaust",
+            "badge": "",
+            "title": "Exhaust air heat pump",
+            "description": "Recovers heat from ventilation. Ideal for well-insulated homes.",
+            "price": "From approx. 90,000 SEK incl. installation",
+            "link_url": "",
+            "btn_text": "Request a quote",
+            "btn_url": ""
+          }
+        },
+        "why-1": {
+          "type": "why_item",
+          "settings": {
+            "icon": "experience",
+            "title": "Experience",
+            "description": "We have installed heat pumps across all of Järfälla – from Jakobsberg to Viksjö."
+          }
+        },
+        "why-2": {
+          "type": "why_item",
+          "settings": {
+            "icon": "quality",
+            "title": "Quality",
+            "description": "Only heat pumps from market-leading manufacturers: Nibe, Bosch, Mitsubishi, Daikin, Toshiba, CTC and Qvantum."
+          }
+        },
+        "why-3": {
+          "type": "why_item",
+          "settings": {
+            "icon": "safety",
+            "title": "Security",
+            "description": "Certified installers, fixed prices with no hidden costs, and up to 10-year warranty on the installation."
+          }
+        },
+        "proc-1": {
+          "type": "process_step",
+          "settings": {
+            "image": "shopify://shop_images/support.jpg",
+            "icon": "phone",
+            "title": "Contact us",
+            "description": "We discuss your needs by phone or form"
+          }
+        },
+        "proc-2": {
+          "type": "process_step",
+          "settings": {
+            "image": "shopify://shop_images/master.jpg",
+            "icon": "home",
+            "title": "Home visit",
+            "description": "Free analysis of your home in Järfälla."
+          }
+        },
+        "proc-3": {
+          "type": "process_step",
+          "settings": {
+            "image": "shopify://shop_images/calculate.jpg",
+            "icon": "document",
+            "title": "Fixed quote",
+            "description": "Fixed price with ROT deduction already calculated."
+          }
+        },
+        "proc-4": {
+          "type": "process_step",
+          "settings": {
+            "image": "shopify://shop_images/masters.jpg",
+            "icon": "tool",
+            "title": "Installation",
+            "description": "Certified installation, commissioning and 10-year warranty."
+          }
+        },
+        "exp-1": {
+          "type": "expertise_item",
+          "settings": {
+            "text": "Technicians experienced with Järfälla's mix of housing types and building regulations."
+          }
+        },
+        "exp-2": {
+          "type": "expertise_item",
+          "settings": {
+            "text": "We handle local building permits, drilling permits and housing association approvals."
+          }
+        },
+        "exp-3": {
+          "type": "expertise_item",
+          "settings": {
+            "text": "Fast service and spare parts throughout the western Stockholm area."
+          }
+        },
+        "exp-4": {
+          "type": "expertise_item",
+          "settings": {
+            "text": "Clear quote with no hidden costs – ROT deducted directly on the invoice."
+          }
+        },
+        "exp-5": {
+          "type": "expertise_item",
+          "settings": {
+            "text": "Flexible financing via Klarna, instalments up to 36 months."
+          }
+        },
+        "maint-1": {
+          "type": "maintenance_item",
+          "settings": {
+            "text": "Filter and fan cleaning"
+          }
+        },
+        "maint-2": {
+          "type": "maintenance_item",
+          "settings": {
+            "text": "Expansion valve test"
+          }
+        },
+        "maint-3": {
+          "type": "maintenance_item",
+          "settings": {
+            "text": "Pressure and hot gas check"
+          }
+        },
+        "maint-4": {
+          "type": "maintenance_item",
+          "settings": {
+            "text": "Performance optimisation"
+          }
+        },
+        "maint-5": {
+          "type": "maintenance_item",
+          "settings": {
+            "text": "Refrigerant top-up"
+          }
+        },
+        "maint-6": {
+          "type": "maintenance_item",
+          "settings": {
+            "text": "Service protocol and report"
+          }
+        },
+        "faq-1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How much does a heat pump cost in Järfälla?",
+            "answer": "A complete air-to-air installation starts from approx. 18,000 SEK. Air-to-water typically costs 65,000–120,000 SEK. Ground source starts around 180,000 SEK including drilling. After the green deduction (gröna avdraget), which covers 50% of labour costs, the net cost is significantly lower."
+          }
+        },
+        "faq-2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does VARMA Energy install heat pumps in all parts of Järfälla?",
+            "answer": "Yes. We cover all areas of Järfälla municipality including Jakobsberg, Kallhäll, Barkarby, Barkarbystaden and Viksjö. Our technicians are based locally for fast response."
+          }
+        },
+        "faq-3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Which heat pump suits my home in Järfälla?",
+            "answer": "For homes with water-based heating (radiators or underfloor), air-to-water delivers the best savings. For direct electric heating, air-to-air is the most cost-effective choice. Our technician recommends the right type during the free home visit."
+          }
+        },
+        "faq-4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How much can I save with a heat pump in Järfälla?",
+            "answer": "Most customers in Järfälla reduce annual heating costs by 40–60%. A typical home saves around 30,500 SEK per year after switching from direct electric heating to an air-to-water heat pump."
+          }
+        },
+        "faq-5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I get ROT deduction for heat pump installation?",
+            "answer": "Yes. The green deduction (gröna avdraget) covers 50% of the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice so you never pay upfront and apply later."
+          }
+        }
+      },
+      "block_order": [
+        "svc-1",
+        "svc-2",
+        "svc-3",
+        "svc-4",
+        "why-1",
+        "why-2",
+        "why-3",
+        "proc-1",
+        "proc-2",
+        "proc-3",
+        "proc-4",
+        "exp-1",
+        "exp-2",
+        "exp-3",
+        "exp-4",
+        "exp-5",
+        "maint-1",
+        "maint-2",
+        "maint-3",
+        "maint-4",
+        "maint-5",
+        "maint-6",
+        "faq-1",
+        "faq-2",
+        "faq-3",
+        "faq-4",
+        "faq-5"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/jarfalla.jpg",
+        "hero_label": "Järfälla's leading installer",
+        "heading_before": "Heat Pump in",
+        "city_name": "Järfälla",
+        "hero_description": "From million-programme homes in Jakobsberg to modern housing in Barkarbystaden and villas in Viksjö – we have installed heat pumps in all types of homes in Järfälla. Clear quote and fixed price with no hidden costs.",
+        "cta_text": "Get a quote",
+        "cta_url": "",
+        "phone": "08-12 34 56 78",
+        "trust_1": "Authorised installer",
+        "trust_2": "ROT deduction 50%",
+        "trust_3": "10-year warranty",
+        "trust_4": "Fixed price",
+        "hstat_1_value": "340+",
+        "hstat_1_label": "Installations in Järfälla",
+        "hstat_2_value": "30,500 SEK/yr",
+        "hstat_2_label": "Average home savings",
+        "hstat_3_value": "53%",
+        "hstat_3_label": "Air-to-water most common",
+        "hstat_4_value": "On the invoice",
+        "hstat_4_label": "ROT deducted directly",
+        "stat_1_value": "4.9/5 rating",
+        "stat_1_label": "from customers",
+        "stat_2_value": "5-year installation warranty",
+        "stat_2_label": "",
+        "stat_3_value": "Authorised installer",
+        "stat_3_label": "",
+        "stat_4_value": "ROT deduction",
+        "stat_4_label": "on the work",
+        "areas_label": "Service areas",
+        "areas_heading": "We serve all of Järfälla municipality",
+        "areas_description": "Certified installers on-site in 7+ areas — fast response and local knowledge.",
+        "districts": "Jakobsberg, Kallhäll, Barkarby, Barkarbystaden, Viksjö, Görväln, Veddesta",
+        "available_text": "Available today",
+        "services_label": "Heat pumps",
+        "services_heading": "We install in Järfälla",
+        "services_sub": "Most popular in Järfälla: Air-to-water heat pump.",
+        "local_label": "Local knowledge",
+        "local_heading": "What Järfälla's housing stock looks like",
+        "local_description": "Järfälla has a large proportion of 1960s–1970s terraced houses and detached homes in Jakobsberg and Kallhäll, alongside the fast-growing new-build area Barkarbystaden. Air-to-water heat pumps are the most common choice for homes with existing water-based heating systems.",
+        "local_house_type": "Terraced houses & villas",
+        "local_pump_type": "Air-to-water heat pump",
+        "local_savings": "30,500 SEK/yr",
+        "case_label": "Customer case",
+        "case_location": "Viksjö, Järfälla",
+        "case_project": "Air-to-water heat pump Bosch CS7000iAW",
+        "case_result": "Reduced heating cost from 41,000 SEK to 10,800 SEK/yr",
+        "case_quote": "We got three quotes and Varma was both the most professional and competitive. The installation went smoothly and on time.",
+        "case_attribution": "Verified customer, Viksjö",
+        "why_label": "Why us",
+        "why_heading": "Why Järfälla chooses VARMA Energy",
+        "process_label": "Process",
+        "process_heading": "How installation works",
+        "process_sub": "Four simple steps from first contact to commissioned heat pump.",
+        "expertise_heading": "Local expertise in Järfälla municipality",
+        "contact_name": "VARMA Energy – Järfälla",
+        "contact_address": "Esplanaden 14, 177 31 Järfälla",
+        "contact_phone": "08-12 34 56 78",
+        "maint_label": "Maintenance",
+        "maint_heading": "Service & maintenance in Järfälla",
+        "maint_description": "Regular service keeps the pump efficient, extends its lifespan and preserves the manufacturer's warranty.",
+        "maint_btn_text": "Book service",
+        "maint_btn_url": "",
+        "faq_title": "Frequently asked questions – heat pump in Järfälla",
+        "parent_url": ""
+      }
+    },
+    "cta": {
+      "type": "varma-cta",
+      "settings": {
+        "heading": "Start saving already this spring",
+        "description": "Installations are now being booked for May. Book a free home visit today and get a fixed price within 48 hours.",
+        "btn1_text": "Book home visit",
+        "btn1_url": "/pages/fa-offert",
+        "btn2_text": "Call 08-12 34 56 78",
+        "btn2_url": "tel:0812345678"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "cta"
+  ]
 }
