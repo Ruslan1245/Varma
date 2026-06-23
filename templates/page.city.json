@@ -91,6 +91,7 @@
         "proc-1": {
           "type": "process_step",
           "settings": {
+            "image": "shopify://shop_images/support.jpg",
             "icon": "phone",
             "title": "Contact us",
             "description": "Call or fill in the form. We reply within one business day."
@@ -99,6 +100,7 @@
         "proc-2": {
           "type": "process_step",
           "settings": {
+            "image": "shopify://shop_images/master.jpg",
             "icon": "home",
             "title": "Home visit",
             "description": "A technician inspects the property and finds the best solution."
@@ -107,6 +109,7 @@
         "proc-3": {
           "type": "process_step",
           "settings": {
+            "image": "shopify://shop_images/calculate.jpg",
             "icon": "document",
             "title": "Fixed quote",
             "description": "You receive a detailed fixed-price quote within 24 hours. No surprises."
@@ -115,6 +118,7 @@
         "proc-4": {
           "type": "process_step",
           "settings": {
+            "image": "shopify://shop_images/masters.jpg",
             "icon": "tool",
             "title": "Installation",
             "description": "Our authorised team installs and commissions the pump. Air-to-air usually takes one day."
