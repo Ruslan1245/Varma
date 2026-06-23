@@ -66,11 +66,9 @@
       if (!items.length) return;
       items.forEach(function(item) {
         item.querySelector('summary').addEventListener('click', function() {
-          if (!item.open) {
-            items.forEach(function(other) {
-              if (other !== item) other.open = false;
-            });
-          }
+          items.forEach(function(other) {
+            if (other !== item) other.open = false;
+          });
         });
       });
     }
