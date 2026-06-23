@@ -241,6 +241,7 @@
           "type": "area",
           "settings": {
             "name": "Sundbyberg",
+            "url": "shopify://pages/sundbyberg",
             "technicians": "3 technicians nearby"
           }
         },
@@ -248,6 +249,7 @@
           "type": "area",
           "settings": {
             "name": "Solna",
+            "url": "shopify://pages/solna",
             "technicians": "4 technicians nearby"
           }
         },
@@ -255,6 +257,7 @@
           "type": "area",
           "settings": {
             "name": "Täby",
+            "url": "shopify://pages/taby",
             "technicians": "2 technicians nearby"
           }
         },
@@ -262,6 +265,7 @@
           "type": "area",
           "settings": {
             "name": "Bromma",
+            "url": "shopify://pages/stockholm",
             "technicians": "3 technicians nearby"
           }
         },
@@ -269,6 +273,7 @@
           "type": "area",
           "settings": {
             "name": "Södermalm",
+            "url": "shopify://pages/stockholm",
             "technicians": "5 technicians nearby"
           }
         },
@@ -276,6 +281,7 @@
           "type": "area",
           "settings": {
             "name": "Östermalm",
+            "url": "shopify://pages/stockholm",
             "technicians": "4 technicians nearby"
           }
         },
@@ -283,6 +289,7 @@
           "type": "area",
           "settings": {
             "name": "Vasastan",
+            "url": "shopify://pages/stockholm",
             "technicians": "3 technicians nearby"
           }
         },
@@ -290,6 +297,7 @@
           "type": "area",
           "settings": {
             "name": "Kungsholmen",
+            "url": "shopify://pages/stockholm",
             "technicians": "3 technicians nearby"
           }
         },
@@ -297,6 +305,7 @@
           "type": "area",
           "settings": {
             "name": "Lidingö",
+            "url": "shopify://pages/lidingo",
             "technicians": "2 technicians nearby"
           }
         },
@@ -304,6 +313,7 @@
           "type": "area",
           "settings": {
             "name": "Nacka",
+            "url": "shopify://pages/nacka",
             "technicians": "3 technicians nearby"
           }
         }
