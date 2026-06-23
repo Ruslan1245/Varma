@@ -112,6 +112,7 @@
   <!-- STATS BAR -->
   <div class="vcp__stats-bar">
     <div class="vcp__inner">
+      <div class="vcp__stats-card">
       {% if section.settings.stat_1_value != blank %}
         <div class="vcp__stat">
           <span class="vcp__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
@@ -136,6 +137,7 @@
           <div><div class="vcp__stat-val">{{ section.settings.stat_4_value }}</div><div class="vcp__stat-lbl">{{ section.settings.stat_4_label }}</div></div>
         </div>
       {% endif %}
+      </div><!-- /vcp__stats-card -->
     </div>
   </div>
 
@@ -618,7 +620,8 @@
     padding: 40px 0 0;
     background: #fff;
   }
-  .vcp__stats-bar .vcp__inner {
+  .vcp__stats-bar .vcp__inner { padding: 0 32px; }
+  .vcp__stats-card {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
@@ -988,7 +991,7 @@
 
   /* --- RESPONSIVE --- */
   @media (max-width: 960px) {
-    .vcp__stats-bar .vcp__inner { grid-template-columns: repeat(2, 1fr); }
+    .vcp__stats-card { grid-template-columns: repeat(2, 1fr); }
     .vcp__services-grid { grid-template-columns: repeat(2, 1fr); }
     .vcp__why-grid { grid-template-columns: 1fr 1fr; }
     .vcp__process-grid { grid-template-columns: repeat(2, 1fr); }
