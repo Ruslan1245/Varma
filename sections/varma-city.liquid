@@ -11,6 +11,7 @@
 
     <div class="vcp__hero-body">
       <div class="vcp__inner">
+        <div class="vcp__hero-text">
         <nav class="vcp__breadcrumb" aria-label="Breadcrumb">
           <a href="{{ routes.root_url }}">Home</a>
           <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
@@ -103,6 +104,7 @@
             </div>
           {% endif %}
         </div>
+        </div><!-- /vcp__hero-text -->
       </div>
     </div>
   </div>
@@ -431,7 +433,14 @@
 
 {% stylesheet %}
   .vcp { background: #fff; }
-  .vcp__inner { max-width: 1072px; margin: 0 auto; padding: 0 32px; }
+  .vcp__inner {
+    width: 100%;
+    max-width: var(--content-width, 1072px);
+    margin: 0 auto;
+    padding: 0 var(--page-margin, 32px);
+    box-sizing: border-box;
+  }
+  .vcp__hero-text { max-width: 640px; }
   .vcp__section { padding: 56px 0; }
   .vcp__section--tinted { background: #f5f9fc; }
   .vcp__label {
