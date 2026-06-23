@@ -59,27 +59,6 @@
   </div>
 </section>
 
-<script>
-  (function() {
-    function initFaq() {
-      var items = Array.from(document.querySelectorAll('.v-faq__item'));
-      if (!items.length) return;
-      items.forEach(function(item) {
-        item.querySelector('summary').addEventListener('click', function() {
-          items.forEach(function(other) {
-            if (other !== item) other.open = false;
-          });
-        });
-      });
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initFaq);
-    } else {
-      initFaq();
-    }
-  })();
-</script>
-
 {% stylesheet %}
   .v-faq {
     padding: 80px 0;
@@ -224,6 +203,18 @@
     }
   }
 {% endstylesheet %}
+
+{% javascript %}
+  document.querySelectorAll('.v-faq__item').forEach(function(item) {
+    item.addEventListener('toggle', function() {
+      if (item.open) {
+        document.querySelectorAll('.v-faq__item').forEach(function(other) {
+          if (other !== item) other.open = false;
+        });
+      }
+    });
+  });
+{% endjavascript %}
 
 
 {% schema %}
