@@ -1,4 +1,4 @@
-<section class="v-products">
+﻿<section class="v-products full-width">
   <div class="v-products__container">
     <div class="v-products__header">
       <div>
@@ -59,7 +59,7 @@
                 <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                 <button type="submit" class="v-products__add-btn" {% unless product.available %}disabled{% endunless %}>
                   <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-                  {{ section.settings.add_to_cart_text | default: 'Lägg till' }}
+                  {{ section.settings.add_to_cart_text | default: 'LГ¤gg till' }}
                 </button>
               </form>
             </div>
@@ -76,8 +76,8 @@
                 {{ 'product-1' | placeholder_svg_tag: 'v-products__placeholder' }}
               </div>
               <div class="v-products__card-body">
-                <p class="v-products__type">LUFT-LUFT VÄRMEPUMP</p>
-                <h3 class="v-products__title">Toshiba Värmepump {{ i }}</h3>
+                <p class="v-products__type">LUFT-LUFT VГ„RMEPUMP</p>
+                <h3 class="v-products__title">Toshiba VГ¤rmepump {{ i }}</h3>
                 <div class="v-products__pricing">
                   {% if section.settings.price_label != blank %}
                     <p class="v-products__price-label">{{ section.settings.price_label }}</p>
@@ -266,13 +266,13 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Värmepumpar med installation ingår."
+      "default": "VГ¤rmepumpar med installation ingГҐr."
     },
     {
       "type": "text",
       "id": "description",
       "label": "Description",
-      "default": "Auktoriserade installatörer, fast pris och 5 års garanti – fri leverans i hela Stockholm."
+      "default": "Auktoriserade installatГ¶rer, fast pris och 5 ГҐrs garanti вЂ“ fri leverans i hela Stockholm."
     },
     {
       "type": "collection",
@@ -310,7 +310,7 @@
       "type": "text",
       "id": "add_to_cart_text",
       "label": "Add to cart button text",
-      "default": "Lägg till"
+      "default": "LГ¤gg till"
     }
   ],
   "presets": [{ "name": "Varma Featured Products" }]
