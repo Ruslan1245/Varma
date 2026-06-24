@@ -422,10 +422,6 @@
     if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
   });
 
-  // Wire header cart button — runs after DOM is ready since this script is at bottom of body
-  var cartBtn = document.getElementById('varma-cart-btn');
-  if (cartBtn) cartBtn.addEventListener('click', openDrawer);
-
   // Toast notification
   function showToast(title) {
     var existing = document.getElementById('vcd-toast');
@@ -462,6 +458,11 @@
         btn.disabled = false;
       })
       .catch(function() { btn.disabled = false; });
+  });
+
+  // Cart button — delegation catches it regardless of load order
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('#varma-cart-btn')) openDrawer();
   });
 
   // Global API for other scripts
