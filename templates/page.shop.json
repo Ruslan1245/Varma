@@ -1,13 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "varma-luft-luft",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "product_card_djyqRP": {
+          "type": "product_card",
+          "settings": {
+            "product": "toshiba-daiseikai-10"
+          }
+        },
+        "product_card_3neyAE": {
+          "type": "product_card",
+          "settings": {
+            "product": "toshiba-haori"
+          }
+        },
+        "product_card_3rFFBq": {
+          "type": "product_card",
+          "settings": {
+            "product": "toshiba-shorai-edge"
+          }
+        }
+      },
+      "block_order": [
+        "product_card_djyqRP",
+        "product_card_3neyAE",
+        "product_card_3rFFBq"
+      ],
       "settings": {
         "hero_description": "A+++ rated models from Toshiba, Mitsubishi, Daikin and Panasonic. Installation by authorised technicians throughout Greater Stockholm – fixed price, ROT deduction directly on the invoice."
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
