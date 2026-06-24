@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   display: flex;
   flex-direction: column;
