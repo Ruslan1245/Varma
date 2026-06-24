@@ -4,8 +4,8 @@
     <div class="vlls__hero-inner">
       <p class="vlls__eyebrow">VARMA SHOP · AIR-TO-AIR</p>
       <h1 class="vlls__hero-title">
-        Premium <span class="vlls__accent">air&#8209;to&#8209;air</span>
-        <span class="vlls__accent">heat&nbsp;pumps</span>
+        Premium <span class="vlls__accent">air&#8209;to&#8209;air</span><br>
+        <span class="vlls__accent">heat&nbsp;pumps</span><br>
         with full installation.
       </h1>
       <p class="vlls__hero-desc">{{ section.settings.hero_description }}</p>
@@ -65,6 +65,10 @@
             <button class="vlls__filter-btn" data-group="function" data-val="function-hot-water">Hot water</button>
           </div>
         </div>
+        <button class="vlls__filter-reset" id="vlls-filter-reset" style="display:none;">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Reset filters
+        </button>
       </div>
 
       <div class="vlls__sidebar-cta">
@@ -143,7 +147,7 @@
 
   /* HERO */
   .vlls__hero {
-    background: #f0f7ff;
+    background: #fff;
     padding: 60px 40px 48px;
   }
   .vlls__hero-inner { max-width: 1200px; margin: 0 auto; }
@@ -173,7 +177,7 @@
 
   /* MAIN LAYOUT */
   .vlls__main {
-    display: grid; grid-template-columns: 268px 1fr; gap: 0;
+    display: grid; grid-template-columns: 280px 1fr; gap: 0;
     max-width: 1200px; margin: 0 auto; padding: 40px 40px;
     align-items: start;
   }
@@ -201,6 +205,14 @@
   }
   .vlls__filter-btn:hover { border-color: #19aaf8; color: #19aaf8; }
   .vlls__filter-btn--active { background: #19aaf8; border-color: #19aaf8; color: #fff; }
+  .vlls__filter-reset {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    width: 100%; padding: 10px 14px; margin-bottom: 10px;
+    background: #fff; border: 1.5px solid #d8dae3; border-radius: 8px;
+    font-size: 13px; font-weight: 500; color: #5b6474;
+    cursor: pointer; transition: border-color 0.15s, color 0.15s;
+  }
+  .vlls__filter-reset:hover { border-color: #1a1a1a; color: #0d1b2e; }
 
   /* SIDEBAR CTA */
   .vlls__sidebar-cta {
@@ -310,7 +322,12 @@
     var countEl = document.getElementById('vlls-count');
     var noResultsEl = document.getElementById('vlls-no-results');
     var resetBtn = document.getElementById('vlls-reset');
+    var filterResetBtn = document.getElementById('vlls-filter-reset');
     var active = {};
+
+    function hasActiveFilters() {
+      return Object.keys(active).some(function(k) { return !!active[k]; });
+    }
 
     function applyFilters() {
       var visible = 0;
@@ -325,6 +342,13 @@
       });
       if (countEl) countEl.textContent = visible + ' TOTAL';
       if (noResultsEl) noResultsEl.style.display = visible === 0 ? 'block' : 'none';
+      if (filterResetBtn) filterResetBtn.style.display = hasActiveFilters() ? 'flex' : 'none';
+    }
+
+    function resetAll() {
+      Object.keys(active).forEach(function(k) { active[k] = null; });
+      filterBtns.forEach(function(b) { b.classList.remove('vlls__filter-btn--active'); });
+      applyFilters();
     }
 
     filterBtns.forEach(function(btn) {
@@ -345,13 +369,8 @@
       });
     });
 
-    if (resetBtn) {
-      resetBtn.addEventListener('click', function() {
-        Object.keys(active).forEach(function(k) { active[k] = null; });
-        filterBtns.forEach(function(b) { b.classList.remove('vlls__filter-btn--active'); });
-        applyFilters();
-      });
-    }
+    if (resetBtn) resetBtn.addEventListener('click', resetAll);
+    if (filterResetBtn) filterResetBtn.addEventListener('click', resetAll);
   })();
 {% endjavascript %}
 
