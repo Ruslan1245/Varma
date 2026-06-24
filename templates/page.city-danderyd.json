@@ -33,7 +33,7 @@
             "title": "Air-to-water heat pump",
             "description": "Heating and hot water in one system.",
             "price": "From approx. 120,000 SEK incl. installation",
-            "link_url": "/pages/luft-vatten",
+            "link_url": "shopify://pages/air-to-water-heat-pump",
             "btn_text": "Request a quote",
             "btn_url": ""
           }
@@ -46,7 +46,7 @@
             "title": "Ground source heat pump",
             "description": "Greatest savings over time. Most common choice in Danderyd.",
             "price": "From approx. 180,000 SEK incl. drilling and installation",
-            "link_url": "/pages/bergvarme",
+            "link_url": "shopify://pages/ground-source-heat-pump",
             "btn_text": "Request a quote",
             "btn_url": ""
           }
@@ -59,7 +59,7 @@
             "title": "Exhaust air heat pump",
             "description": "Recovers heat from ventilation. Ideal for well-insulated homes.",
             "price": "From approx. 90,000 SEK incl. installation",
-            "link_url": "/pages/franluft",
+            "link_url": "shopify://pages/exhaust-air-heat-pump",
             "btn_text": "Request a quote",
             "btn_url": ""
           }
