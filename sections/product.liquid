@@ -303,6 +303,11 @@
   .vp__btn-cart:hover { background: #0e8fd6; }
   .vp__btn-checkout { display: inline-flex; align-items: center; justify-content: center; background: #fff; color: #0d1b2e; border: 1.5px solid #e6e8ef; border-radius: 10px; padding: 14px 20px; font-size: 15px; font-weight: 600; text-decoration: none; transition: border-color 0.15s; white-space: nowrap; }
   .vp__btn-checkout:hover { border-color: #19aaf8; color: #19aaf8; }
+  /* Hide SA app injected button — we have our own quote button */
+  .vp__actions > button:not(.vp__btn-cart),
+  .vp__actions > div:not(:empty),
+  [class*="sa-add-to-quote"], [class*="sa-btn-atq"], [class*="saatq"],
+  [id*="sa-add-to-quote"], [id*="saatq"] { display: none !important; }
 
   /* QUOTE */
   .vp__quote-wrap { margin-bottom: 24px; }
