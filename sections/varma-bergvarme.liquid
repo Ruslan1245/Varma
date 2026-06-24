@@ -1,0 +1,462 @@
+<div class="vbv full-width">
+
+  <div class="vbv__hero">
+    <div class="vbv__inner">
+      <nav class="vbv__breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ routes.root_url }}">{{ section.settings.bc_home | default: 'Home' }}</a>
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        <a href="{{ section.settings.parent_url | default: '/pages/services' }}">{{ section.settings.parent_label | default: 'Services' }}</a>
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        <span aria-current="page">{{ section.settings.heading }}</span>
+      </nav>
+      <div class="vbv__hero-grid">
+        <div class="vbv__hero-left">
+          {%- if section.settings.badge != blank -%}
+            <span class="vbv__badge">{{ section.settings.badge }}</span>
+          {%- endif -%}
+          <h1 class="vbv__h1">{{ section.settings.heading }}</h1>
+          {%- if section.settings.intro != blank -%}
+            <p class="vbv__intro">{{ section.settings.intro }}</p>
+          {%- endif -%}
+          {%- if section.settings.suitable_for != blank -%}
+            <p class="vbv__suitable"><strong>{{ section.settings.suitable_label | default: 'Suitable for:' }}</strong> {{ section.settings.suitable_for }}</p>
+          {%- endif -%}
+          <div class="vbv__ctas">
+            <a href="{{ section.settings.cta_1_url | default: '/pages/contact' }}" class="vbv__btn-primary">
+              {{ section.settings.cta_1_text | default: 'Get a quote' }}
+              <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            {%- if section.settings.cta_2_text != blank -%}
+              <a href="{{ section.settings.cta_2_url | default: '/collections/ground-source' }}" class="vbv__btn-secondary">{{ section.settings.cta_2_text }}</a>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="vbv__hero-right">
+          <div class="vbv__form-card">
+            <h3 class="vbv__form-title">{{ section.settings.form_title | default: 'Get a free quote' }}</h3>
+            <p class="vbv__form-sub">{{ section.settings.form_sub | default: 'We will get back to you within 24 hours with a personal recommendation.' }}</p>
+            {%- form 'contact' -%}
+              {%- if form.posted_successfully? -%}
+                <div class="vbv__form-success">
+                  <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#10a971" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  {{ section.settings.success_message | default: 'Thank you! We will be in touch within 24 hours.' }}
+                </div>
+              {%- else -%}
+                {%- if form.errors -%}<p class="vbv__form-error">{{ form.errors | default_errors }}</p>{%- endif -%}
+                <div class="vbv__form-row">
+                  <div class="vbv__form-group">
+                    <label class="vbv__label" for="vbv-name">{{ section.settings.label_name | default: 'Name' }}</label>
+                    <input class="vbv__input" id="vbv-name" type="text" name="contact[name]" autocomplete="name" required>
+                  </div>
+                  <div class="vbv__form-group">
+                    <label class="vbv__label" for="vbv-phone">{{ section.settings.label_phone | default: 'Phone' }}</label>
+                    <input class="vbv__input" id="vbv-phone" type="tel" name="contact[phone]" autocomplete="tel">
+                  </div>
+                </div>
+                <div class="vbv__form-group">
+                  <label class="vbv__label" for="vbv-email">{{ section.settings.label_email | default: 'Email' }}</label>
+                  <input class="vbv__input" id="vbv-email" type="email" name="contact[email]" autocomplete="email" required>
+                </div>
+                <div class="vbv__form-group">
+                  <label class="vbv__label" for="vbv-address">{{ section.settings.label_address | default: 'Address' }}</label>
+                  <input class="vbv__input" id="vbv-address" type="text" name="contact[address]" autocomplete="street-address">
+                </div>
+                <div class="vbv__form-row">
+                  <div class="vbv__form-group">
+                    <label class="vbv__label" for="vbv-city">{{ section.settings.label_city | default: 'City' }}</label>
+                    <input class="vbv__input" id="vbv-city" type="text" name="contact[city]" autocomplete="address-level2">
+                  </div>
+                  <div class="vbv__form-group">
+                    <label class="vbv__label" for="vbv-pump">{{ section.settings.label_pump | default: 'Heat pump type' }}</label>
+                    <select class="vbv__input vbv__select" id="vbv-pump" name="contact[pump_type]">
+                      {%- unless section.settings.pump_opt_1 == blank -%}<option value="{{ section.settings.pump_opt_1 }}" selected>{{ section.settings.pump_opt_1 }}</option>{%- endunless -%}
+                      {%- unless section.settings.pump_opt_2 == blank -%}<option value="{{ section.settings.pump_opt_2 }}">{{ section.settings.pump_opt_2 }}</option>{%- endunless -%}
+                      {%- unless section.settings.pump_opt_3 == blank -%}<option value="{{ section.settings.pump_opt_3 }}">{{ section.settings.pump_opt_3 }}</option>{%- endunless -%}
+                      {%- unless section.settings.pump_opt_4 == blank -%}<option value="{{ section.settings.pump_opt_4 }}">{{ section.settings.pump_opt_4 }}</option>{%- endunless -%}
+                      {%- unless section.settings.pump_opt_5 == blank -%}<option value="{{ section.settings.pump_opt_5 }}">{{ section.settings.pump_opt_5 }}</option>{%- endunless -%}
+                    </select>
+                  </div>
+                </div>
+                <div class="vbv__form-group">
+                  <label class="vbv__label" for="vbv-msg">{{ section.settings.label_message | default: 'About your home (optional)' }}</label>
+                  <textarea class="vbv__input vbv__textarea" id="vbv-msg" name="contact[body]" rows="3" placeholder="{{ section.settings.message_placeholder | default: 'Type of house, size, current heating system...' }}"></textarea>
+                </div>
+                <input type="hidden" name="contact[service_type]" value="{{ section.settings.heading }}">
+                <button type="submit" class="vbv__form-submit">{{ section.settings.submit_text | default: 'Send request' }}</button>
+                <p class="vbv__form-privacy">{{ section.settings.privacy_text | default: 'We store your information according to our' }} <a href="/pages/privacy-policy">privacy policy</a>.</p>
+              {%- endif -%}
+            {%- endform -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vbv__stats-bar">
+    <div class="vbv__inner">
+      <div class="vbv__stats-card">
+        {%- if section.settings.stat_1_value != blank -%}
+          <div class="vbv__stat">
+            <span class="vbv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+            <div><div class="vbv__stat-val">{{ section.settings.stat_1_value }}</div><div class="vbv__stat-lbl">{{ section.settings.stat_1_label }}</div></div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.stat_2_value != blank -%}
+          <div class="vbv__stat">
+            <span class="vbv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            <div><div class="vbv__stat-val">{{ section.settings.stat_2_value }}</div><div class="vbv__stat-lbl">{{ section.settings.stat_2_label }}</div></div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.stat_3_value != blank -%}
+          <div class="vbv__stat">
+            <span class="vbv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+            <div><div class="vbv__stat-val">{{ section.settings.stat_3_value }}</div><div class="vbv__stat-lbl">{{ section.settings.stat_3_label }}</div></div>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.stat_4_value != blank -%}
+          <div class="vbv__stat">
+            <span class="vbv__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+            <div><div class="vbv__stat-val">{{ section.settings.stat_4_value }}</div><div class="vbv__stat-lbl">{{ section.settings.stat_4_label }}</div></div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  {%- assign pros  = section.blocks | where: 'type', 'pro' -%}
+  {%- assign cons  = section.blocks | where: 'type', 'con' -%}
+  {%- assign steps = section.blocks | where: 'type', 'step' -%}
+  {%- assign faqs  = section.blocks | where: 'type', 'faq_item' -%}
+
+  {%- if pros.size > 0 or cons.size > 0 -%}
+    <div class="vbv__section">
+      <div class="vbv__inner">
+        <div class="vbv__pros-cons-row">
+          {%- if pros.size > 0 -%}
+            <div class="vbv__card">
+              <h3 class="vbv__card-h">{{ section.settings.pros_title | default: 'Advantages' }}</h3>
+              <ul class="vbv__list">
+                {%- for b in pros -%}
+                  <li {{ b.shopify_attributes }}>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" stroke="#19aaf8" stroke-width="1.5" fill="#fff"/><polyline points="6,10.5 9,13.5 14,7" stroke="#19aaf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    {{ b.settings.text }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+          {%- if cons.size > 0 -%}
+            <div class="vbv__card">
+              <h3 class="vbv__card-h">{{ section.settings.cons_title | default: 'Things to consider' }}</h3>
+              <ul class="vbv__list vbv__list--cons">
+                {%- for b in cons -%}
+                  <li {{ b.shopify_attributes }}>
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#94a3b8" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    {{ b.settings.text }}
+                  </li>
+                {%- endfor -%}
+              </ul>
+              {%- if section.settings.price_from != blank -%}
+                <div class="vbv__price-box">
+                  <p><strong>{{ section.settings.price_label | default: 'Price:' }}</strong> {{ section.settings.price_from }}</p>
+                  {%- if section.settings.price_note != blank -%}<p>{{ section.settings.price_note }}</p>{%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if steps.size > 0 -%}
+    <div class="vbv__section">
+      <div class="vbv__inner">
+        <div class="vbv__two-col">
+          <div class="vbv__calc-slot"></div>
+          <div class="vbv__steps-wrap">
+            <h3 class="vbv__steps-h">{{ section.settings.steps_title | default: 'How installation works' }}</h3>
+            <ol class="vbv__steps">
+              {%- for b in steps -%}
+                <li class="vbv__step" {{ b.shopify_attributes }}>
+                  <span class="vbv__step-n" aria-hidden="true">{{ forloop.index }}</span>
+                  <span>{{ b.settings.text }}</span>
+                </li>
+              {%- endfor -%}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="vbv__section">
+    <div class="vbv__inner">
+      <h2 class="vbv__products-h">{{ section.settings.products_heading | default: 'Recommended products' }}</h2>
+      {%- assign prod_coll = section.settings.products_collection -%}
+      {%- if prod_coll != blank and prod_coll.products_count > 0 -%}
+        <div class="vbv__products-grid">
+          {%- for product in prod_coll.products limit: 4 -%}
+            <a href="{{ product.url }}" class="vbv__product-card">
+              {%- if product.featured_image -%}
+                <div class="vbv__product-img-wrap">
+                  {{ product.featured_image | image_url: width: 400 | image_tag: class: 'vbv__product-img', alt: product.featured_image.alt, loading: 'lazy' }}
+                </div>
+              {%- endif -%}
+              <div class="vbv__product-info">
+                <div class="vbv__product-name">{{ product.title }}</div>
+                <div class="vbv__product-price">{{ product.price | money }}</div>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="vbv__products-empty">{{ section.settings.products_empty | default: 'No products found yet for this type. Add products in Shopify and they will appear here.' }}</div>
+      {%- endif -%}
+      {%- if section.settings.products_cta_text != blank -%}
+        <a href="{{ section.settings.products_cta_url | default: '/collections/ground-source' }}" class="vbv__products-cta-btn">{{ section.settings.products_cta_text }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- if section.settings.cities_menu != blank -%}
+    <div class="vbv__section vbv__section--tinted">
+      <div class="vbv__inner">
+        <h2 class="vbv__cities-h">{{ section.settings.cities_heading | default: 'We install ground source across Greater Stockholm' }}</h2>
+        <div class="vbv__cities">
+          {%- for link in section.settings.cities_menu.links -%}
+            <a href="{{ link.url }}" class="vbv__city">
+              <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              {{ link.title }}
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if faqs.size > 0 -%}
+    <div class="vbv__section">
+      <div class="vbv__inner">
+        <h2 class="vbv__faq-h">{{ section.settings.faq_title | default: 'Frequently asked questions about ground source' }}</h2>
+        <div class="vbv__faq">
+          {%- for b in faqs -%}
+            <details class="vbv__faq-item" {{ b.shopify_attributes }}>
+              <summary class="vbv__faq-q">
+                {{ b.settings.question }}
+                <svg class="vbv__faq-chev" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <div class="vbv__faq-a">{{ b.settings.answer }}</div>
+            </details>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% stylesheet %}
+  .vbv { background: #fff; }
+  .vbv__inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  .vbv__hero { background: #EFF4FF; padding: 48px 0 56px; }
+  .vbv__breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #5b6474; margin-bottom: 28px; flex-wrap: wrap; }
+  .vbv__breadcrumb a { color: #5b6474; text-decoration: none; }
+  .vbv__breadcrumb a:hover { color: #19aaf8; }
+  .vbv__breadcrumb span[aria-current] { color: #224466; font-weight: 500; }
+  .vbv__hero-grid { display: grid; grid-template-columns: 1fr 400px; gap: 48px; align-items: start; }
+  .vbv__badge { display: inline-flex; align-items: center; background: #224466; color: #fff; font-size: 13px; font-weight: 600; padding: 5px 14px; border-radius: 100px; margin-bottom: 16px; }
+  .vbv__h1 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; color: #0f1c3f; line-height: 1.1; margin-bottom: 16px; }
+  .vbv__intro { font-size: 16px; color: #2a2f3d; line-height: 1.65; margin-bottom: 12px; }
+  .vbv__suitable { font-size: 14px; color: #2a2f3d; margin-bottom: 28px; line-height: 1.5; }
+  .vbv__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .vbv__btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #222299; color: #fff; font-size: 15px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none; transition: background 0.15s; }
+  .vbv__btn-primary:hover { background: rgba(34,34,153,0.9); }
+  .vbv__btn-secondary { display: inline-flex; align-items: center; background: #fff; color: #224466; font-size: 15px; font-weight: 500; padding: 12px 24px; border-radius: 8px; border: 1.5px solid #e6e8ef; text-decoration: none; transition: border-color 0.15s; }
+  .vbv__btn-secondary:hover { border-color: #19aaf8; color: #19aaf8; }
+
+  .vbv__form-card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 8px 40px rgba(34,68,102,0.10), 0 1px 4px rgba(34,68,102,0.06); border: 1px solid #e6e8ef; }
+  .vbv__form-title { font-size: 18px; font-weight: 700; color: #224466; margin-bottom: 4px; }
+  .vbv__form-sub { font-size: 13px; color: #5b6474; margin-bottom: 20px; line-height: 1.5; }
+  .vbv__form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .vbv__form-group { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+  .vbv__label { font-size: 13px; font-weight: 600; color: #2a2f3d; }
+  .vbv__input { border: 1.5px solid #e6e8ef; border-radius: 8px; padding: 9px 12px; font-size: 14px; color: #2a2f3d; font-family: inherit; transition: border-color 0.15s; background: #fff; width: 100%; box-sizing: border-box; }
+  .vbv__input:focus { outline: none; border-color: #19aaf8; }
+  .vbv__select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' viewBox='0 0 24 24' stroke='%235b6474' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; cursor: pointer; }
+  .vbv__textarea { resize: vertical; min-height: 72px; }
+  .vbv__form-submit { display: flex; align-items: center; justify-content: center; width: 100%; height: 40px; background: #222299; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; margin-top: 4px; transition: background 0.15s; }
+  .vbv__form-submit:hover { background: rgba(34,34,153,0.9); }
+  .vbv__form-privacy { font-size: 12px; color: #94a3b8; text-align: center; margin-top: 10px; }
+  .vbv__form-privacy a { color: #19aaf8; }
+  .vbv__form-success { display: flex; align-items: center; gap: 10px; color: #10a971; font-weight: 600; padding: 16px; background: #f0fdf4; border-radius: 10px; }
+  .vbv__form-error { color: #e74c3c; font-size: 13px; margin-bottom: 12px; }
+
+  .vbv__stats-bar { padding: 32px 0 0; background: #fff; }
+  .vbv__stats-card { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border: 1.5px solid #e6e8ef; border-radius: 14px; padding: 20px 24px; }
+  .vbv__stat { display: flex; align-items: center; gap: 12px; }
+  .vbv__stat-icon { width: 40px; height: 40px; background: #e8f6fe; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .vbv__stat-val { font-size: 15px; font-weight: 700; color: #224466; }
+  .vbv__stat-lbl { font-size: 13px; color: #5b6474; }
+
+  .vbv__section { padding: 56px 0; }
+  .vbv__section--tinted { background: #f5f9fc; }
+  .vbv__pros-cons-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .vbv__card { background: #fff; border: 1.5px solid #e6e8ef; border-radius: 14px; padding: 24px; }
+  .vbv__card-h { font-size: 16px; font-weight: 700; color: #224466; margin-bottom: 16px; }
+  .vbv__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .vbv__list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #2a2f3d; line-height: 1.5; }
+  .vbv__list li svg { flex-shrink: 0; margin-top: 2px; }
+  .vbv__price-box { background: #e8f6fe; border-radius: 10px; padding: 14px 16px; margin-top: 16px; font-size: 14px; color: #224466; line-height: 1.6; }
+  .vbv__price-box p + p { margin-top: 4px; }
+
+  .vbv__two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+
+  .vbv__steps-h { font-size: 20px; font-weight: 700; color: #224466; margin-bottom: 24px; }
+  .vbv__steps { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .vbv__step { display: flex; align-items: flex-start; gap: 16px; font-size: 15px; color: #2a2f3d; line-height: 1.5; border: 1px solid #e6e8ef; border-radius: 10px; padding: 14px 16px; }
+  .vbv__step-n { width: 32px; height: 32px; background: #19aaf8; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+
+  .vbv__products-h { font-size: 22px; font-weight: 700; color: #224466; margin-bottom: 20px; }
+  .vbv__products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+  .vbv__product-card { display: flex; flex-direction: column; border: 1.5px solid #e6e8ef; border-radius: 12px; overflow: hidden; text-decoration: none; transition: box-shadow 0.15s; }
+  .vbv__product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .vbv__product-img-wrap { aspect-ratio: 4/3; overflow: hidden; }
+  .vbv__product-img { width: 100%; height: 100%; object-fit: cover; }
+  .vbv__product-info { padding: 14px 16px; }
+  .vbv__product-name { font-size: 14px; font-weight: 600; color: #224466; margin-bottom: 4px; }
+  .vbv__product-price { font-size: 14px; color: #19aaf8; font-weight: 700; }
+  .vbv__products-empty { border: 1.5px dashed #e6e8ef; border-radius: 12px; padding: 48px 24px; text-align: center; color: #94a3b8; font-size: 14px; margin-bottom: 20px; }
+  .vbv__products-cta-btn { display: inline-flex; align-items: center; padding: 10px 20px; border: 1.5px solid #e6e8ef; border-radius: 8px; font-size: 14px; font-weight: 500; color: #2a2f3d; text-decoration: none; transition: border-color 0.15s, color 0.15s; }
+  .vbv__products-cta-btn:hover { border-color: #19aaf8; color: #19aaf8; }
+
+  .vbv__cities-h { font-size: 22px; font-weight: 700; color: #224466; margin-bottom: 20px; }
+  .vbv__cities { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .vbv__city { display: flex; align-items: center; gap: 8px; padding: 12px 14px; background: #fff; border: 1.5px solid #e6e8ef; border-radius: 10px; font-size: 14px; font-weight: 500; color: #2a2f3d; text-decoration: none; transition: border-color 0.15s, color 0.15s; }
+  .vbv__city:hover { border-color: #19aaf8; color: #19aaf8; }
+  .vbv__city svg { flex-shrink: 0; color: #19aaf8; }
+
+  .vbv__faq-h { font-size: 22px; font-weight: 700; color: #224466; margin-bottom: 20px; }
+  .vbv__faq { display: flex; flex-direction: column; gap: 2px; }
+  .vbv__faq-item { border: 1.5px solid #e6e8ef; border-radius: 10px; overflow: hidden; transition: border-color 0.15s; }
+  .vbv__faq-item[open] { border-color: #19aaf8; }
+  .vbv__faq-q { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; font-size: 15px; font-weight: 600; color: #224466; cursor: pointer; list-style: none; user-select: none; }
+  .vbv__faq-q::-webkit-details-marker { display: none; }
+  .vbv__faq-q:hover { background: #f5f9fc; }
+  .vbv__faq-chev { flex-shrink: 0; transition: transform 0.2s; color: #5b6474; }
+  .vbv__faq-item[open] .vbv__faq-chev { transform: rotate(180deg); }
+  .vbv__faq-a { padding: 0 20px 16px; font-size: 14px; color: #5b6474; line-height: 1.7; }
+
+  @media (max-width: 900px) {
+    .vbv__hero-grid { grid-template-columns: 1fr; }
+    .vbv__stats-card { grid-template-columns: repeat(2, 1fr); }
+    .vbv__pros-cons-row { grid-template-columns: 1fr; }
+    .vbv__two-col { grid-template-columns: 1fr; }
+    .vbv__products-grid { grid-template-columns: repeat(2, 1fr); }
+    .vbv__cities { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .vbv__inner { padding: 0 20px; }
+    .vbv__hero { padding: 32px 0 40px; }
+    .vbv__form-row { grid-template-columns: 1fr; }
+    .vbv__stats-card { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .vbv__cities { grid-template-columns: repeat(2, 1fr); }
+    .vbv__products-grid { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Ground source page",
+  "settings": [
+    { "type": "header", "content": "Breadcrumb" },
+    { "type": "text", "id": "bc_home", "label": "Home label", "default": "Home" },
+    { "type": "text", "id": "parent_label", "label": "Parent label", "default": "Services" },
+    { "type": "url", "id": "parent_url", "label": "Parent URL" },
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "badge", "label": "Badge text", "default": "Best savings over time" },
+    { "type": "text", "id": "heading", "label": "H1 heading", "default": "Ground Source Heat Pump in Stockholm" },
+    { "type": "textarea", "id": "intro", "label": "Intro paragraph", "default": "Ground source draws stored solar energy from the bedrock via a borehole. Delivers consistent, high efficiency year-round and is the most energy-efficient solution for houses in Stockholm." },
+    { "type": "text", "id": "suitable_label", "label": "Suitable for label", "default": "Suitable for:" },
+    { "type": "text", "id": "suitable_for", "label": "Suitable for text", "default": "Houses with water-based systems where drilling on the plot is possible." },
+    { "type": "text", "id": "cta_1_text", "label": "Primary CTA text", "default": "Get a quote" },
+    { "type": "url", "id": "cta_1_url", "label": "Primary CTA URL" },
+    { "type": "text", "id": "cta_2_text", "label": "Secondary CTA text", "default": "See products" },
+    { "type": "url", "id": "cta_2_url", "label": "Secondary CTA URL" },
+    { "type": "header", "content": "Contact form" },
+    { "type": "text", "id": "form_title", "label": "Form title", "default": "Get a free quote" },
+    { "type": "text", "id": "form_sub", "label": "Form subtitle", "default": "We will get back to you within 24 hours with a personal recommendation." },
+    { "type": "text", "id": "label_name", "label": "Name label", "default": "Name" },
+    { "type": "text", "id": "label_phone", "label": "Phone label", "default": "Phone" },
+    { "type": "text", "id": "label_email", "label": "Email label", "default": "Email" },
+    { "type": "text", "id": "label_address", "label": "Address label", "default": "Address" },
+    { "type": "text", "id": "label_city", "label": "City label", "default": "City" },
+    { "type": "text", "id": "label_pump", "label": "Pump type label", "default": "Heat pump type" },
+    { "type": "text", "id": "pump_opt_1", "label": "Pump option 1 (pre-selected)", "default": "Ground source" },
+    { "type": "text", "id": "pump_opt_2", "label": "Pump option 2", "default": "Air-to-water heat pump" },
+    { "type": "text", "id": "pump_opt_3", "label": "Pump option 3", "default": "Air-to-air heat pump" },
+    { "type": "text", "id": "pump_opt_4", "label": "Pump option 4", "default": "Exhaust air heat pump" },
+    { "type": "text", "id": "pump_opt_5", "label": "Pump option 5", "default": "Not sure – advise me" },
+    { "type": "text", "id": "label_message", "label": "Message label", "default": "About your home (optional)" },
+    { "type": "text", "id": "message_placeholder", "label": "Message placeholder", "default": "Type of house, size, current heating system..." },
+    { "type": "text", "id": "submit_text", "label": "Submit button text", "default": "Send request" },
+    { "type": "text", "id": "privacy_text", "label": "Privacy text", "default": "We store your information according to our" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thank you! We will be in touch within 24 hours." },
+    { "type": "header", "content": "Stats bar" },
+    { "type": "text", "id": "stat_1_value", "label": "Stat 1 value", "default": "4.9/5 rating" },
+    { "type": "text", "id": "stat_1_label", "label": "Stat 1 label", "default": "from customers" },
+    { "type": "text", "id": "stat_2_value", "label": "Stat 2 value", "default": "5-year warranty" },
+    { "type": "text", "id": "stat_2_label", "label": "Stat 2 label", "default": "installation guarantee" },
+    { "type": "text", "id": "stat_3_value", "label": "Stat 3 value", "default": "Authorized" },
+    { "type": "text", "id": "stat_3_label", "label": "Stat 3 label", "default": "installer" },
+    { "type": "text", "id": "stat_4_value", "label": "Stat 4 value", "default": "ROT deduction" },
+    { "type": "text", "id": "stat_4_label", "label": "Stat 4 label", "default": "on the work" },
+    { "type": "header", "content": "Pros and cons" },
+    { "type": "text", "id": "pros_title", "label": "Pros card title", "default": "Advantages" },
+    { "type": "text", "id": "cons_title", "label": "Cons card title", "default": "Things to consider" },
+    { "type": "text", "id": "price_label", "label": "Price label", "default": "Price:" },
+    { "type": "text", "id": "price_from", "label": "Price text", "default": "From approx. 180,000 SEK incl. drilling and installation" },
+    { "type": "text", "id": "price_note", "label": "Price note", "default": "Save 60–80% on heating costs" },
+    { "type": "header", "content": "Installation steps" },
+    { "type": "text", "id": "steps_title", "label": "Steps heading", "default": "How installation works" },
+    { "type": "header", "content": "Recommended products" },
+    { "type": "text", "id": "products_heading", "label": "Products heading", "default": "Recommended products" },
+    { "type": "collection", "id": "products_collection", "label": "Products collection" },
+    { "type": "text", "id": "products_empty", "label": "Empty state text", "default": "No products found yet for this type. Add products in Shopify and they will appear here." },
+    { "type": "text", "id": "products_cta_text", "label": "Products CTA text", "default": "See all ground source models" },
+    { "type": "url", "id": "products_cta_url", "label": "Products CTA URL" },
+    { "type": "header", "content": "Cities coverage" },
+    { "type": "text", "id": "cities_heading", "label": "Cities heading", "default": "We install ground source across Greater Stockholm" },
+    { "type": "link_list", "id": "cities_menu", "label": "Cities menu" },
+    { "type": "header", "content": "FAQ" },
+    { "type": "text", "id": "faq_title", "label": "FAQ heading", "default": "Frequently asked questions about ground source" }
+  ],
+  "blocks": [
+    {
+      "type": "pro",
+      "name": "Advantage",
+      "settings": [{ "type": "text", "id": "text", "label": "Advantage text", "default": "Highest savings year-round" }]
+    },
+    {
+      "type": "con",
+      "name": "Consideration",
+      "settings": [{ "type": "text", "id": "text", "label": "Consideration text", "default": "High investment" }]
+    },
+    {
+      "type": "step",
+      "name": "Installation step",
+      "settings": [{ "type": "text", "id": "text", "label": "Step text", "default": "Free home visit or video call for needs analysis." }]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How deep is a ground source borehole drilled?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Typically 150–250 metres for a house in Stockholm. We size the system based on the home's energy needs." }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Ground source page" }]
+}
+{% endschema %}
