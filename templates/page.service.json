@@ -19,6 +19,7 @@
         "intro": "An air-to-air heat pump takes heat from outdoor air and distributes it as warm air inside. An efficient addition to direct electric heating that suits most small houses in the Stockholm area.",
         "suitable_for": "Houses with direct electric heating, holiday homes and smaller villas.",
         "cta_1_text": "Get a quote",
+        "cta_1_url": "/pages/fa-offert",
         "cta_2_text": "See products",
         "label_pump": "Heat pump type",
         "pump_opt_1": "Air-to-air heat pump",
