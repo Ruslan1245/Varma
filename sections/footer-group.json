@@ -14,8 +14,27 @@
     "footer": {
       "type": "footer",
       "settings": {
-        "menu": "",
-        "show_payment_icons": true
+        "logo_text": "Varma",
+        "tagline": "Certifierad installation, service och reparation av värmepumpar i hela Stockholms län. Auktoriserad partner för Toshiba, Daikin och Mitsubishi.",
+        "badge1": "F-gas cert.",
+        "badge2": "Reco topp-10",
+        "badge3": "ISO 9001",
+        "products_title": "Products",
+        "products_menu": "footer-products",
+        "services_title": "Services",
+        "services_menu": "footer-services",
+        "contact_title": "Contact",
+        "phone": "020 – 89 91 19",
+        "email": "info@varmaenergy.se",
+        "address1": "Esplanaden 13, Sundbyberg",
+        "address2": "Sjöflygvägen 35, Täby",
+        "facebook_url": "",
+        "instagram_url": "",
+        "linkedin_url": "",
+        "areas_label": "SERVICE AREAS IN GREATER STOCKHOLM",
+        "service_areas": "Stockholm, Sundbyberg, Solna, Danderyd, Täby, Nacka, Lidingö, Huddinge, Sollentuna, Järfälla",
+        "company_legal": "VARMA Energy AB · Org.nr 559000-0000",
+        "bottom_menu": ""
       }
     }
   },
