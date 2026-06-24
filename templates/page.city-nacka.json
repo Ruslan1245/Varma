@@ -69,7 +69,7 @@
           "settings": {
             "icon": "experience",
             "title": "Experience",
-            "description": "We have installed heat pumps across all of Nacka – from Saltsjöbaden to Orminge."
+            "description": "We have installed heat pumps across all of Nacka municipality – from Saltsjö-Boo to Björknäs."
           }
         },
         "why-2": {
@@ -194,35 +194,35 @@
           "type": "faq_item",
           "settings": {
             "question": "How much does a heat pump cost in Nacka?",
-            "answer": "A complete air-to-air installation starts from approx. 18,000 SEK. Ground source starts around 180,000 SEK including drilling. After the green deduction (gröna avdraget), which covers 50% of labour costs, the net cost is significantly lower. We provide a fixed quote after a free home visit."
+            "answer": "The price in Nacka ranges from approx. 18,000 SEK for an air-to-air heat pump to 260,000 SEK for a complete ground source installation. You get ROT deduction on the labour cost."
           }
         },
         "faq-2": {
           "type": "faq_item",
           "settings": {
-            "question": "Is ground source heat pump suitable for Nacka?",
-            "answer": "Yes. Nacka's good bedrock conditions and large plot sizes make it well suited for ground source installations. It is the most popular choice among our Nacka customers for its long-term savings and quiet operation."
+            "question": "Does VARMA Energy install ground source heat pumps in Nacka?",
+            "answer": "Yes, we install ground source across all of Nacka municipality. We handle drilling permits and all contact with the municipality."
           }
         },
         "faq-3": {
           "type": "faq_item",
           "settings": {
             "question": "Which heat pump suits my home in Nacka?",
-            "answer": "For Nacka's villas with water-based heating, ground source or air-to-water typically delivers the highest savings. For homes without a water system, air-to-air is the quickest and most affordable option. Our technician recommends the right type during the free home visit."
+            "answer": "It depends on the home's size, existing heating system and budget. Ground source and air-to-water suit homes with water-based systems, air-to-air suits direct electric heating. We offer a free needs analysis."
           }
         },
         "faq-4": {
           "type": "faq_item",
           "settings": {
             "question": "How much can I save with a heat pump in Nacka?",
-            "answer": "Most customers in Nacka reduce annual heating costs by 50–65%. A typical villa saves around 38,500 SEK per year after switching from direct electric heating to a ground source heat pump."
+            "answer": "A villa in the Stockholm area typically saves 40–70% of heating costs. Use our savings calculator for a quick estimate."
           }
         },
         "faq-5": {
           "type": "faq_item",
           "settings": {
             "question": "Do I get ROT deduction for heat pump installation?",
-            "answer": "Yes. The green deduction (gröna avdraget) covers 50% of the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice so you never pay upfront and apply later."
+            "answer": "Yes, you get a 30% ROT deduction on the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice."
           }
         }
       },
@@ -260,7 +260,7 @@
         "hero_label": "Nacka's leading installer",
         "heading_before": "Heat Pump in",
         "city_name": "Nacka",
-        "hero_description": "From waterfront villas in Saltsjöbaden to family homes in Boo and modern housing in Sickla – we have installed heat pumps in all types of homes in Nacka. Clear quote and fixed price with no hidden costs.",
+        "hero_description": "From waterfront plots in Saltsjöbaden to newly built terraced houses in Nacka strand – we size the heat pump to the home's conditions and coastal climate. Experienced drilling contractors for ground source in challenging terrain.",
         "cta_text": "Get a quote",
         "cta_url": "",
         "phone": "08-12 34 56 78",
@@ -268,14 +268,14 @@
         "trust_2": "ROT deduction 50%",
         "trust_3": "10-year warranty",
         "trust_4": "Fixed price",
-        "hstat_1_value": "320+",
+        "hstat_1_value": "440+",
         "hstat_1_label": "Installations in Nacka",
-        "hstat_2_value": "38,500 SEK/yr",
+        "hstat_2_value": "42,800 SEK/yr",
         "hstat_2_label": "Average villa savings",
-        "hstat_3_value": "58%",
+        "hstat_3_value": "58% of assignments",
         "hstat_3_label": "Ground source most common",
-        "hstat_4_value": "On the invoice",
-        "hstat_4_label": "ROT deducted directly",
+        "hstat_4_value": "5 years",
+        "hstat_4_label": "Warranty",
         "stat_1_value": "4.9/5 rating",
         "stat_1_label": "from customers",
         "stat_2_value": "5-year installation warranty",
@@ -286,23 +286,23 @@
         "stat_4_label": "on the work",
         "areas_label": "Service areas",
         "areas_heading": "We serve all of Nacka municipality",
-        "areas_description": "Certified installers on-site in 7+ areas — fast response and local knowledge.",
-        "districts": "Nacka centrum, Saltsjöbaden, Boo, Sickla, Älta, Fisksätra, Orminge",
+        "areas_description": "Certified installers on-site in 8+ areas — fast response and local knowledge.",
+        "districts": "Saltsjö-Boo, Saltsjöbaden, Älta, Nacka strand, Sickla, Fisksätra, Orminge, Björknäs",
         "available_text": "Available today",
         "services_label": "Heat pumps",
         "services_heading": "We install in Nacka",
         "services_sub": "Most popular in Nacka: Ground source heat pump.",
         "local_label": "Local knowledge",
         "local_heading": "What Nacka's housing stock looks like",
-        "local_description": "Nacka has a diverse housing stock ranging from historic waterfront villas in Saltsjöbaden to 1970s family homes in Boo and new-build terraced houses in Sickla. Ground source heat pump is the most popular choice due to Nacka's excellent bedrock conditions and large plots.",
+        "local_description": "Nacka has great variation – from older villas in Saltsjö-Boo to modern developments in Nacka strand and Sickla. Ground source dominates thanks to good drilling conditions, but coastal locations require experienced installers who can handle salt and moisture exposure on outdoor units.",
         "local_house_type": "Villas & terraced houses",
         "local_pump_type": "Ground source heat pump",
-        "local_savings": "38,500 SEK/yr",
+        "local_savings": "42,800 SEK/yr",
         "case_label": "Customer case",
         "case_location": "Saltsjöbaden, Nacka",
-        "case_project": "Ground source heat pump IVT Greenline HE",
-        "case_result": "Reduced heating cost from 54,000 SEK to 13,800 SEK/yr",
-        "case_quote": "From booking to a fully commissioned system took exactly 10 days. The team was professional and left everything spotless.",
+        "case_project": "Ground source NIBE S1255 + solar collectors",
+        "case_result": "Waterfront plot 280 m² – electricity cost from 68,000 SEK to 19,200 SEK/yr",
+        "case_quote": "The drilling was tricky due to the bedrock, but the team solved it without extra costs.",
         "case_attribution": "Verified customer, Saltsjöbaden",
         "why_label": "Why us",
         "why_heading": "Why Nacka chooses VARMA Energy",
@@ -311,7 +311,7 @@
         "process_sub": "Four simple steps from first contact to commissioned heat pump.",
         "expertise_heading": "Local expertise in Nacka municipality",
         "contact_name": "VARMA Energy – Nacka",
-        "contact_address": "Esplanaden 14, 131 40 Nacka",
+        "contact_address": "Esplanaden 14, 131 34 Nacka",
         "contact_phone": "08-12 34 56 78",
         "maint_label": "Maintenance",
         "maint_heading": "Service & maintenance in Nacka",
