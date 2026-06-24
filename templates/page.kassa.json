@@ -3,6 +3,10 @@
     "main": {
       "type": "varma-kassa",
       "settings": {}
+    },
+    "cta": {
+      "type": "varma-cta",
+      "settings": {}
     }
   },
   "order": ["main"]
