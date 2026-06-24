@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "varma-kassa",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
