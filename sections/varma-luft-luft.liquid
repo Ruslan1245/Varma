@@ -38,29 +38,6 @@
     </div>
   </div>
 
-  <div class="vlls__stats-bar">
-    <div class="vlls__stats-inner">
-      <div class="vfl__stats-card">
-        <div class="vfl__stat">
-          <span class="vfl__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-          <div><div class="vfl__stat-val">4.9/5 rating</div><div class="vfl__stat-lbl">from customers</div></div>
-        </div>
-        <div class="vfl__stat">
-          <span class="vfl__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-          <div><div class="vfl__stat-val">5-year warranty</div><div class="vfl__stat-lbl">installation guarantee</div></div>
-        </div>
-        <div class="vfl__stat">
-          <span class="vfl__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
-          <div><div class="vfl__stat-val">Authorized</div><div class="vfl__stat-lbl">installer</div></div>
-        </div>
-        <div class="vfl__stat">
-          <span class="vfl__stat-icon" aria-hidden="true"><svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
-          <div><div class="vfl__stat-val">ROT deduction</div><div class="vfl__stat-lbl">on the work</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="vlls__main">
 
     <aside class="vlls__sidebar">
@@ -195,30 +172,23 @@
     font-size: 16px; color: #5b6474;
     max-width: 560px; line-height: 1.65; margin-bottom: 36px;
   }
-  .vlls__trust-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: stretch; }
+  .vlls__trust-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+    border: 1.5px solid #e6e8ef; border-radius: 14px;
+    padding: 20px 24px; background: #fff;
+    max-width: 960px;
+  }
   .vlls__trust-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    background: #fff; border: 1.5px solid #e6e8ef;
-    border-radius: 10px; padding: 14px 16px;
-    width: 227px; flex: 0 0 227px;
+    display: flex; align-items: center; gap: 12px;
   }
   .vlls__trust-icon {
     flex-shrink: 0;
-    width: 40px; height: 40px; border-radius: 50%;
+    width: 40px; height: 40px; border-radius: 10px;
     background: #e8f6fe;
     display: flex; align-items: center; justify-content: center;
   }
-  .vlls__trust-item strong { display: block; font-size: 13px; font-weight: 700; color: #0d1b2e; }
-  .vlls__trust-item span { font-size: 12px; color: #5b6474; }
-
-  /* STATS BAR */
-  .vlls__stats-bar { padding: 0 40px 32px; background: #fff; }
-  .vlls__stats-inner { max-width: 1260px; margin: 0 auto; }
-  .vfl__stats-card { border: 1.5px solid #e6e8ef; border-radius: 14px; padding: 20px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .vfl__stat { display: flex; align-items: center; gap: 12px; }
-  .vfl__stat-icon { width: 40px; height: 40px; background: #e8f6fe; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .vfl__stat-val { font-size: 15px; font-weight: 700; color: #224466; }
-  .vfl__stat-lbl { font-size: 13px; color: #5b6474; }
+  .vlls__trust-item strong { display: block; font-size: 14px; font-weight: 700; color: #224466; }
+  .vlls__trust-item span { display: block; font-size: 12px; color: #5b6474; margin-top: 1px; }
 
   /* MAIN LAYOUT */
   .vlls__main {
@@ -353,7 +323,7 @@
   @media (max-width: 1024px) {
     .vlls__main { grid-template-columns: 220px 1fr; padding: 32px 24px; }
     .vlls__grid { grid-template-columns: repeat(2, 1fr); }
-    .vfl__stats-card { grid-template-columns: repeat(2, 1fr); }
+    .vlls__trust-row { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 768px) {
     .vlls__hero { padding: 40px 20px 32px; }
