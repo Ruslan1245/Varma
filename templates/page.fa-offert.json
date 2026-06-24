@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -34,7 +43,13 @@
           }
         }
       },
-      "block_order": ["b-1", "b-2", "b-3", "b-4", "b-5"],
+      "block_order": [
+        "b-1",
+        "b-2",
+        "b-3",
+        "b-4",
+        "b-5"
+      ],
       "settings": {
         "heading": "Get a free quote",
         "description": "Tell us about your home and we'll get back to you with a fixed price within 48 hours. No obligation, no cost.",
@@ -45,8 +60,6 @@
         "trust_2_label": "Product & installation",
         "trust_3_value": "Authorized",
         "trust_3_label": "Certified installer",
-        "trust_4_value": "ROT 30%",
-        "trust_4_label": "Deducted on invoice",
         "form_heading": "Request a quote",
         "form_subtext": "We'll get back to you with a free site analysis and a fixed price.",
         "label_name": "Name",
@@ -56,7 +69,6 @@
         "label_city": "City",
         "label_pump_type": "Type of heat pump",
         "pump_placeholder": "Select type (or let us advise)",
-        "pump_opt_not_sure": "Not sure – advise me",
         "pump_opt_1": "Air-to-air heat pump",
         "pump_opt_2": "Air-to-water heat pump",
         "pump_opt_3": "Ground source heat pump",
@@ -80,5 +92,8 @@
       }
     }
   },
-  "order": ["main", "cta"]
+  "order": [
+    "main",
+    "cta"
+  ]
 }
