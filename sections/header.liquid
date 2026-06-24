@@ -1,6 +1,10 @@
 <header class="varma-header full-width">
   <div class="varma-header__inner">
 
+    <button class="varma-header__burger" aria-label="Open menu" aria-expanded="false" aria-controls="varma-mobile-nav">
+      <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
     <a href="{{ routes.root_url }}" class="varma-header__logo" aria-label="{{ shop.name }}">
       <span class="varma-logo-icon" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12 2l1.5 3.5L17 4l-1.5 3.5L19 9l-3.5 1.5L17 14l-3.5-1.5L12 16l-1.5-3.5L7 14l1.5-3.5L5 9l3.5-1.5L7 4l3.5 1.5L12 2z"/></svg>
@@ -66,9 +70,6 @@
         {{ section.settings.cta_text | default: 'Get a quote' }}
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <button class="varma-header__burger" aria-label="Open menu" aria-expanded="false" aria-controls="varma-mobile-nav">
-        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
     </div>
   </div>
 </header>
@@ -343,6 +344,8 @@
     border-radius: 8px;
     color: #2a2f3d;
     transition: background 0.15s;
+    flex-shrink: 0;
+    order: -1;
   }
   .varma-header__burger:hover { background: #f1f5f9; }
 
@@ -447,10 +450,13 @@
   @media (max-width: 960px) {
     .varma-header__nav { display: none; }
     .varma-header__burger { display: flex; }
+    /* Logo stretches to fill space between burger and actions */
+    .varma-header__logo { flex: 1; }
   }
   @media (max-width: 600px) {
-    .varma-header__inner { padding: 0 20px; gap: 12px; }
+    .varma-header__inner { padding: 0 16px; gap: 8px; height: 60px; }
     .varma-header__cta { display: none; }
+    .varma-logo-text { font-size: 18px; }
   }
 {% endstylesheet %}
 
