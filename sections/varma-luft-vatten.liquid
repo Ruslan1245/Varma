@@ -221,7 +221,7 @@
 
   {%- assign areas = section.blocks | where: 'type', 'area' -%}
   {%- if areas.size > 0 -%}
-    <div class="vlv__section vlv__section--tinted">
+    <div class="vlv__section">
       <div class="vlv__inner">
         <h2 class="vlv__cities-h">{{ section.settings.cities_heading | default: 'We serve these areas' }}</h2>
         <div class="vlv__cities">

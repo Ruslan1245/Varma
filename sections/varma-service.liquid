@@ -197,7 +197,7 @@
 
   {%- assign areas = section.blocks | where: 'type', 'area' -%}
   {%- if areas.size > 0 -%}
-    <div class="vsp__section vsp__section--tinted">
+    <div class="vsp__section">
       <div class="vsp__inner">
         <h2 class="vsp__cities-h">{{ section.settings.cities_heading | default: 'We serve these areas' }}</h2>
         <div class="vsp__cities">
