@@ -375,6 +375,14 @@
     .vfl__cities { grid-template-columns: repeat(2, 1fr); }
     .vfl__products-grid { grid-template-columns: 1fr; }
   }
+  @media (max-width: 480px) {
+    .vfl__stats-card { padding: 14px 12px; gap: 10px; }
+    .vfl__stat { gap: 8px; }
+    .vfl__stat-icon { width: 32px; height: 32px; border-radius: 8px; }
+    .vfl__stat-icon svg { width: 16px; height: 16px; }
+    .vfl__stat-val { font-size: 13px; }
+    .vfl__stat-lbl { font-size: 12px; }
+  }
 {% endstylesheet %}
 
 {% schema %}
