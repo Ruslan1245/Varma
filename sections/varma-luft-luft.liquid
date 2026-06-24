@@ -76,47 +76,54 @@
     <div class="vlls__products-area">
       <div class="vlls__grid-header">
         <h2 class="vlls__grid-title">All air-to-air models</h2>
-        <span class="vlls__grid-count" id="vlls-count">{{ collection.products_count }} TOTAL</span>
+        {%- assign product_count = 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.settings.product != blank -%}{%- assign product_count = product_count | plus: 1 -%}{%- endif -%}
+        {%- endfor -%}
+        <span class="vlls__grid-count" id="vlls-count">{{ product_count }} TOTAL</span>
       </div>
 
       <div class="vlls__grid" id="vlls-grid">
-        {%- for product in collection.products -%}
-          <article class="vlls__card" data-tags="{{ product.tags | join: ',' | downcase }}">
-            <div class="vlls__card-top">
-              <span class="vlls__card-badge">INCL. INSTALLATION</span>
-              <div class="vlls__card-img-wrap">
-                {%- if product.featured_image -%}
-                  {{ product.featured_image | image_url: width: 500 | image_tag: class: 'vlls__card-img', loading: 'lazy', alt: product.title }}
-                {%- else -%}
-                  <div class="vlls__card-img-placeholder"></div>
-                {%- endif -%}
-              </div>
-            </div>
-            <div class="vlls__card-body">
-              <p class="vlls__card-vendor">{{ product.vendor | upcase }}</p>
-              <h3 class="vlls__card-title">
-                <a href="{{ product.url }}" class="vlls__card-title-link">{{ product.title }}</a>
-              </h3>
-              <p class="vlls__card-desc">{{ product.description | strip_html | truncate: 85 }}</p>
-              <div class="vlls__card-pricing">
-                <p class="vlls__card-price-label">Price after ROT deduction</p>
-                <div class="vlls__card-price-row">
-                  <div class="vlls__card-prices">
-                    {%- if product.compare_at_price_max > product.price_min -%}
-                      <span class="vlls__card-compare">{{ product.compare_at_price_max | money_without_trailing_zeros }}</span>
-                    {%- endif -%}
-                    <span class="vlls__card-price">{{ product.price_min | money_without_trailing_zeros }}</span>
-                  </div>
-                  <a href="/pages/fa-offert" class="vlls__card-btn">
-                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-                    Request a quote
-                  </a>
+        {%- for block in section.blocks -%}
+          {%- assign product = block.settings.product -%}
+          {%- if product != blank -%}
+            <article class="vlls__card" data-tags="{{ product.tags | join: ',' | downcase }}" {{ block.shopify_attributes }}>
+              <div class="vlls__card-top">
+                <span class="vlls__card-badge">INCL. INSTALLATION</span>
+                <div class="vlls__card-img-wrap">
+                  {%- if product.featured_image -%}
+                    {{ product.featured_image | image_url: width: 500 | image_tag: class: 'vlls__card-img', loading: 'lazy', alt: product.title }}
+                  {%- else -%}
+                    <div class="vlls__card-img-placeholder"></div>
+                  {%- endif -%}
                 </div>
               </div>
-            </div>
-          </article>
+              <div class="vlls__card-body">
+                <p class="vlls__card-vendor">{{ product.vendor | upcase }}</p>
+                <h3 class="vlls__card-title">
+                  <a href="{{ product.url }}" class="vlls__card-title-link">{{ product.title }}</a>
+                </h3>
+                <p class="vlls__card-desc">{{ product.description | strip_html | truncate: 85 }}</p>
+                <div class="vlls__card-pricing">
+                  <p class="vlls__card-price-label">Price after ROT deduction</p>
+                  <div class="vlls__card-price-row">
+                    <div class="vlls__card-prices">
+                      {%- if product.compare_at_price_max > product.price_min -%}
+                        <span class="vlls__card-compare">{{ product.compare_at_price_max | money_without_trailing_zeros }}</span>
+                      {%- endif -%}
+                      <span class="vlls__card-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+                    </div>
+                    <a href="/pages/fa-offert" class="vlls__card-btn">
+                      <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                      Request a quote
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          {%- endif -%}
         {%- else -%}
-          <p class="vlls__empty">No products in this collection yet.</p>
+          <p class="vlls__empty">Add products via the theme editor.</p>
         {%- endfor -%}
       </div>
 
@@ -344,6 +351,20 @@
 {% schema %}
 {
   "name": "Air-to-air shop",
+  "blocks": [
+    {
+      "type": "product_card",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
   "settings": [
     {
       "type": "textarea",
