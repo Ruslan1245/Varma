@@ -463,16 +463,36 @@
 {% javascript %}
   /* Open SA Request a Quote floating cart tab, fallback to quote page */
   window.openSAQuote = function() {
-    var rfq = document.querySelector(
-      '[class*="samita-rfq"], [id*="samita-rfq"], [data-samita-rfq], ' +
-      '[class*="sa-rfq-cart"], [id*="sa-rfq-cart"], [class*="samita"][class*="cart"], ' +
-      '[class*="rfq-tab"], [class*="rfq-cart-tab"]'
+    // 1. Try Samita JS API (exposed by some versions)
+    if (window.SACart && typeof window.SACart.open === 'function') { window.SACart.open(); return; }
+    if (window.SamitaRFQ && typeof window.SamitaRFQ.open === 'function') { window.SamitaRFQ.open(); return; }
+    if (window.samitaRFQ && typeof window.samitaRFQ.open === 'function') { window.samitaRFQ.open(); return; }
+
+    // 2. Try known DOM selectors for SA app elements
+    var el = document.querySelector(
+      '[data-samita],[data-sa-rfq],[data-rfq-cart],[data-testid*="rfq"],[data-testid*="quote"],' +
+      '[class*="samita"],[class*="sa-rfq"],[class*="rfqCart"],[class*="RfqCart"],' +
+      '#sa-rfq-root,[id*="samita"],[id*="rfq-cart"],[id*="sa-rfq"]'
     );
-    if (rfq) {
-      rfq.click();
-    } else {
-      window.location.href = '/pages/request-for-quote';
+    if (el) {
+      var btn = el.tagName === 'BUTTON' || el.tagName === 'A' ? el : el.querySelector('button,a');
+      if (btn) { btn.click(); return; }
+      el.click(); return;
     }
+
+    // 3. Find fixed right-side element with "Quote" text (works regardless of class names)
+    var all = document.querySelectorAll('body *');
+    for (var i = all.length - 1; i >= 0; i--) {
+      var node = all[i];
+      if (!node.offsetWidth) continue;
+      var cs = window.getComputedStyle(node);
+      if (cs.position === 'fixed' && node.offsetWidth < 120 && /Quote/i.test(node.textContent.trim())) {
+        node.click(); return;
+      }
+    }
+
+    // 4. Fallback: navigate to SA quote page
+    window.location.href = '/pages/request-for-quote';
   };
 
   (function() {
