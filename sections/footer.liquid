@@ -8,7 +8,18 @@
           </span>
           <span class="v-footer__logo-text">{{ section.settings.logo_text | default: shop.name }}</span>
         </a>
+        
+        <!-- Бейджі "Authorized · Certified · Swedish-owned" -->
+        <div class="v-footer__trust-badges">
+          <span>{{ section.settings.trust_badge_1 | default: 'Authorized' }}</span>
+          <span>·</span>
+          <span>{{ section.settings.trust_badge_2 | default: 'Certified' }}</span>
+          <span>·</span>
+          <span>{{ section.settings.trust_badge_3 | default: 'Swedish-owned' }}</span>
+        </div>
+        
         <p class="v-footer__tagline">{{ section.settings.tagline }}</p>
+        
         <div class="v-footer__badges">
           {% if section.settings.badge1 != blank %}
             <span class="v-footer__badge">{{ section.settings.badge1 }}</span>
@@ -38,7 +49,7 @@
             <h4 class="v-footer__col-title">{{ block.settings.title }}</h4>
             <ul class="v-footer__links">
               {% if block.settings.phone != blank %}
-                <li><a href="tel:{{ block.settings.phone | remove: ' ' | remove: '-' }}" class="v-footer__link">{{ block.settings.phone }}</a></li>
+                <li><a href="tel:{{ block.settings.phone | remove: ' ' | remove: '-' | remove: '–' }}" class="v-footer__link">{{ block.settings.phone }}</a></li>
               {% endif %}
               {% if block.settings.email != blank %}
                 <li><a href="mailto:{{ block.settings.email }}" class="v-footer__link">{{ block.settings.email }}</a></li>
@@ -73,15 +84,37 @@
     </div>
   </div>
 
+  <!-- Секція з містами та контентом справа -->
   {% if section.settings.service_areas != blank %}
     <div class="v-footer__areas">
-      <div class="v-footer__container">
-        <span class="v-footer__areas-label">SERVICEOMRÅDEN I STORSTOCKHOLM</span>
-        <div class="v-footer__areas-list">
-          {% assign areas = section.settings.service_areas | split: ',' %}
-          {% for area in areas %}
-            <span class="v-footer__area">{{ area | strip }}</span>
-          {% endfor %}
+      <div class="v-footer__container v-footer__areas-container">
+        <div class="v-footer__areas-left">
+          <span class="v-footer__areas-label">{{ section.settings.areas_label | default: 'SERVICE AREAS' }}</span>
+          <p class="v-footer__areas-subtitle">{{ section.settings.areas_subtitle | default: 'Heat pump services in Greater Stockholm' }}</p>
+          <div class="v-footer__areas-list">
+            {% assign areas = section.settings.service_areas | split: ',' %}
+            {% for area in areas %}
+              {% assign area_slug = area | strip | handleize %}
+              <a href="/pages/{{ area_slug }}" class="v-footer__area">{{ area | strip }}</a>
+            {% endfor %}
+          </div>
+          <span class="v-footer__areas-count">{{ section.settings.areas_count | default: '10 cities' }}</span>
+        </div>
+        <div class="v-footer__areas-right">
+          <!-- Бейджі "Authorized · Certified · Swedish-owned" -->
+          <div class="v-footer__trust-badges-large">
+            <span>{{ section.settings.trust_badge_1 | default: 'Authorized' }}</span>
+            <span>·</span>
+            <span>{{ section.settings.trust_badge_2 | default: 'Certified' }}</span>
+            <span>·</span>
+            <span>{{ section.settings.trust_badge_3 | default: 'Swedish-owned' }}</span>
+          </div>
+          <p class="v-footer__areas-tagline">{{ section.settings.areas_tagline | default: "Stockholm's smartest experts in heating and cooling." }}</p>
+          <div class="v-footer__areas-badges">
+            <span class="v-footer__area-badge">F-gas cert.</span>
+            <span class="v-footer__area-badge">Reco topp-10</span>
+            <span class="v-footer__area-badge">ISO 9001</span>
+          </div>
         </div>
       </div>
     </div>
@@ -103,7 +136,7 @@
 
 {% stylesheet %}
   .v-footer {
-    background: #0B1220;
+    background: #1a3b3f;
     color: rgba(255,255,255,0.72);
   }
   .v-footer__main {
@@ -122,7 +155,7 @@
     align-items: center;
     gap: 10px;
     text-decoration: none;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   .v-footer__logo-icon {
     width: 34px;
@@ -135,15 +168,26 @@
     flex-shrink: 0;
   }
   .v-footer__logo-text {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 700;
     color: white;
+    letter-spacing: 1px;
+  }
+  .v-footer__trust-badges {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+  }
+  .v-footer__trust-badges span {
+    display: inline-block;
   }
   .v-footer__tagline {
     font-size: 14px;
     line-height: 1.65;
     color: rgba(255,255,255,0.72);
     margin-bottom: 20px;
+    max-width: 320px;
   }
   .v-footer__badges {
     display: flex;
@@ -151,18 +195,20 @@
     gap: 8px;
   }
   .v-footer__badge {
-    background: #2a2f3d;
-    border: 1px solid #334155;
-    color: rgba(255,255,255,0.72);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 6px;
+    background: #2c555a;
+    border: none;
+    color: rgba(255,255,255,0.9);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 14px;
+    border-radius: 20px;
   }
   .v-footer__col-title {
     font-size: 14px;
-    font-weight: 700;
-    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #8bb3b8;
     margin-bottom: 16px;
   }
   .v-footer__links {
@@ -174,12 +220,16 @@
     gap: 10px;
   }
   .v-footer__link {
-    font-size: 14px;
+    font-size: 15px;
     color: rgba(255,255,255,0.72);
     text-decoration: none;
     transition: color 0.15s;
+    line-height: 1.5;
   }
-  .v-footer__link:hover { color: #c7e8fc; }
+  .v-footer__link:hover { 
+    color: #ffffff;
+    text-decoration: underline;
+  }
   .v-footer__social {
     display: flex;
     gap: 10px;
@@ -188,8 +238,8 @@
   .v-footer__social-link {
     width: 36px;
     height: 36px;
-    background: #2a2f3d;
-    border-radius: 8px;
+    background: #2c555a;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -201,32 +251,93 @@
     background: #19aaf8;
     color: white;
   }
+
+  /* Секція з містами + контентом справа */
   .v-footer__areas {
-    border-top: 1px solid #2a2f3d;
-    padding: 24px 0;
+    border-top: 1px solid #3e676c;
+    padding: 28px 0;
   }
-  .v-footer__areas .v-footer__container {
-    display: block;
+  .v-footer__areas-container {
+    display: grid !important;
+    grid-template-columns: 1.4fr 1fr !important;
+    gap: 40px !important;
+  }
+  .v-footer__areas-left {
+    display: flex;
+    flex-direction: column;
   }
   .v-footer__areas-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.72);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #8bb3b8;
+    text-transform: uppercase;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
+  }
+  .v-footer__areas-subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 12px 0;
   }
   .v-footer__areas-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 24px;
+    gap: 4px 24px;
   }
   .v-footer__area {
-    font-size: 14px;
+    font-size: 15px;
     color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    transition: color 0.15s;
+    border-bottom: 1px dotted transparent;
   }
+  .v-footer__area:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+  }
+  .v-footer__areas-count {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 8px;
+  }
+  .v-footer__areas-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .v-footer__trust-badges-large {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+  }
+  .v-footer__trust-badges-large span {
+    display: inline-block;
+  }
+  .v-footer__areas-tagline {
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.4;
+    margin: 0 0 16px 0;
+  }
+  .v-footer__areas-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .v-footer__area-badge {
+    background: #2c555a;
+    color: rgba(255,255,255,0.9);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
   .v-footer__bottom {
-    border-top: 1px solid #2a2f3d;
+    border-top: 1px solid #3e676c;
     padding: 20px 0;
   }
   .v-footer__bottom .v-footer__container {
@@ -237,25 +348,66 @@
     gap: 12px;
   }
   .v-footer__copyright {
-    font-size: 13px;
-    color: rgba(255,255,255,0.72);
+    font-size: 14px;
+    color: #a0c2c7;
   }
   .v-footer__bottom-links {
     display: flex;
-    gap: 20px;
+    gap: 25px;
   }
   .v-footer__bottom-link {
-    font-size: 13px;
-    color: rgba(255,255,255,0.72);
+    font-size: 14px;
+    color: #a0c2c7;
     text-decoration: none;
     transition: color 0.15s;
   }
-  .v-footer__bottom-link:hover { color: rgba(255,255,255,0.72); }
-  @media (max-width: 900px) {
-    .v-footer__container { grid-template-columns: 1fr 1fr; }
+  .v-footer__bottom-link:hover { 
+    color: #ffffff;
+    text-decoration: underline;
   }
-  @media (max-width: 600px) {
-    .v-footer__container { grid-template-columns: 1fr; }
+
+  @media (max-width: 1024px) {
+    .v-footer__container { 
+      grid-template-columns: 1fr 1fr 1fr; 
+    }
+    .v-footer__areas-container {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+  }
+  @media (max-width: 768px) {
+    .v-footer__container { 
+      grid-template-columns: 1fr 1fr; 
+    }
+    .v-footer__areas-list {
+      gap: 4px 16px;
+    }
+    .v-footer__bottom .v-footer__container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .v-footer__trust-badges-large {
+      font-size: 13px;
+    }
+    .v-footer__areas-tagline {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 500px) {
+    .v-footer__container { 
+      grid-template-columns: 1fr; 
+      padding: 0 20px;
+    }
+    .v-footer__main {
+      padding: 40px 0 32px;
+    }
+    .v-footer__areas {
+      padding: 20px 0;
+    }
+    .v-footer__bottom-links {
+      flex-wrap: wrap;
+      gap: 12px 20px;
+    }
   }
 {% endstylesheet %}
 
@@ -312,7 +464,7 @@
           "type": "text",
           "id": "address2",
           "label": "Address 2",
-          "default": "Sjöflygvägen 35, Täby"
+          "default": "Sjöfryggvägen 35, Täby"
         },
         {
           "type": "url",
@@ -340,6 +492,24 @@
       "default": "Varma"
     },
     {
+      "type": "text",
+      "id": "trust_badge_1",
+      "label": "Trust badge 1",
+      "default": "Authorized"
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_2",
+      "label": "Trust badge 2",
+      "default": "Certified"
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_3",
+      "label": "Trust badge 3",
+      "default": "Swedish-owned"
+    },
+    {
       "type": "textarea",
       "id": "tagline",
       "label": "Tagline",
@@ -365,15 +535,39 @@
     },
     {
       "type": "text",
+      "id": "areas_label",
+      "label": "Service areas label",
+      "default": "SERVICE AREAS"
+    },
+    {
+      "type": "text",
+      "id": "areas_subtitle",
+      "label": "Service areas subtitle",
+      "default": "Heat pump services in Greater Stockholm"
+    },
+    {
+      "type": "text",
       "id": "service_areas",
       "label": "Service areas (comma-separated)",
       "default": "Stockholm, Sundbyberg, Solna, Danderyd, Täby, Nacka, Lidingö, Huddinge, Sollentuna, Järfälla"
     },
     {
       "type": "text",
+      "id": "areas_count",
+      "label": "Areas count text",
+      "default": "10 cities"
+    },
+    {
+      "type": "text",
+      "id": "areas_tagline",
+      "label": "Areas right tagline",
+      "default": "Stockholm's smartest experts in heating and cooling."
+    },
+    {
+      "type": "text",
       "id": "company_legal",
       "label": "Legal company name",
-      "default": "VARMA Energy AB · Org.nr 559000–0000"
+      "default": "VARMA Energy AB · Org.nr 559000-0000"
     },
     {
       "type": "link_list",
