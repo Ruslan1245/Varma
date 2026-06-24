@@ -11,6 +11,200 @@
   "sections": {
     "main": {
       "type": "varma-service",
+      "blocks": {
+        "pro-1": {
+          "type": "pro",
+          "settings": {
+            "text": "Fast installation, often same day"
+          }
+        },
+        "pro-2": {
+          "type": "pro",
+          "settings": {
+            "text": "Low investment cost"
+          }
+        },
+        "pro-3": {
+          "type": "pro",
+          "settings": {
+            "text": "Can also cool in summer"
+          }
+        },
+        "con-1": {
+          "type": "con",
+          "settings": {
+            "text": "Does not heat tap water"
+          }
+        },
+        "con-2": {
+          "type": "con",
+          "settings": {
+            "text": "Reduced efficiency in extreme cold"
+          }
+        },
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "text": "Free home visit or video call for needs analysis."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "text": "You receive a fixed quote within 24 hours."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "text": "We handle applications and permits where required."
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "text": "Installation is carried out by our own authorized technicians."
+          }
+        },
+        "step-5": {
+          "type": "step",
+          "settings": {
+            "text": "Commissioning, instruction and 5-year warranty."
+          }
+        },
+        "faq-1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How much does an air-to-air heat pump cost installed?",
+            "answer": "The price depends on the model and size of the installation but typically ranges from 18,000 to 35,000 SEK including installation. After the ROT deduction the cost is reduced by 30%."
+          }
+        },
+        "faq-2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I need a building permit for an air-to-air heat pump?",
+            "answer": "In most cases no permit is required for an air-to-air heat pump. However, some municipalities or housing associations may have restrictions. We check this for you before the installation."
+          }
+        },
+        "faq-3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Which heat pump suits my house?",
+            "answer": "An air-to-air heat pump is best suited for houses with direct electric heating. If you have water-based heating (radiators or underfloor), an air-to-water pump is a better choice."
+          }
+        },
+        "faq-4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How much can I save with a heat pump?",
+            "answer": "Most customers reduce their heating costs by 40–70%. The exact saving depends on your house size, current heating and local energy prices."
+          }
+        },
+        "faq-5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I get ROT deduction on heat pump installation?",
+            "answer": "Yes, the labour part of the installation qualifies for a 30% ROT deduction. We handle the paperwork and deduct it directly from your invoice."
+          }
+        },
+        "area-1": {
+          "type": "area",
+          "settings": {
+            "name": "Stockholm",
+            "url": "shopify://pages/stockholm"
+          }
+        },
+        "area-2": {
+          "type": "area",
+          "settings": {
+            "name": "Sundbyberg",
+            "url": "shopify://pages/sundbyberg"
+          }
+        },
+        "area-3": {
+          "type": "area",
+          "settings": {
+            "name": "Solna",
+            "url": "shopify://pages/solna"
+          }
+        },
+        "area-4": {
+          "type": "area",
+          "settings": {
+            "name": "Danderyd",
+            "url": "shopify://pages/danderyd"
+          }
+        },
+        "area-5": {
+          "type": "area",
+          "settings": {
+            "name": "Täby",
+            "url": "shopify://pages/taby"
+          }
+        },
+        "area-6": {
+          "type": "area",
+          "settings": {
+            "name": "Nacka",
+            "url": "shopify://pages/nacka"
+          }
+        },
+        "area-7": {
+          "type": "area",
+          "settings": {
+            "name": "Lidingö",
+            "url": "shopify://pages/lidingo"
+          }
+        },
+        "area-8": {
+          "type": "area",
+          "settings": {
+            "name": "Huddinge",
+            "url": "shopify://pages/huddinge"
+          }
+        },
+        "area-9": {
+          "type": "area",
+          "settings": {
+            "name": "Sollentuna",
+            "url": "shopify://pages/sollentuna"
+          }
+        },
+        "area-10": {
+          "type": "area",
+          "settings": {
+            "name": "Järfälla",
+            "url": "shopify://pages/jarfalla"
+          }
+        }
+      },
+      "block_order": [
+        "pro-1",
+        "pro-2",
+        "pro-3",
+        "con-1",
+        "con-2",
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4",
+        "step-5",
+        "faq-1",
+        "faq-2",
+        "faq-3",
+        "faq-4",
+        "faq-5",
+        "area-1",
+        "area-2",
+        "area-3",
+        "area-4",
+        "area-5",
+        "area-6",
+        "area-7",
+        "area-8",
+        "area-9",
+        "area-10"
+      ],
       "settings": {
         "parent_label": "Services",
         "parent_url": "/pages/services",
@@ -41,41 +235,11 @@
         "price_note": "Save up to 50% of your heating costs",
         "steps_title": "How installation works",
         "cities_heading": "We install air-to-air across Greater Stockholm",
-        "products_heading": "Recommended products",
-        "products_empty": "No products found for this type yet. Add products in Shopify and they will appear here.",
-        "products_cta_text": "See all air-to-air models",
-        "products_cta_url": "/pages/shop",
         "faq_title": "Frequently asked questions about air-to-air"
-      },
-      "blocks": {
-        "pro-1": { "type": "pro", "settings": { "text": "Fast installation, often same day" } },
-        "pro-2": { "type": "pro", "settings": { "text": "Low investment cost" } },
-        "pro-3": { "type": "pro", "settings": { "text": "Can also cool in summer" } },
-        "con-1": { "type": "con", "settings": { "text": "Does not heat tap water" } },
-        "con-2": { "type": "con", "settings": { "text": "Reduced efficiency in extreme cold" } },
-        "step-1": { "type": "step", "settings": { "text": "Free home visit or video call for needs analysis." } },
-        "step-2": { "type": "step", "settings": { "text": "You receive a fixed quote within 24 hours." } },
-        "step-3": { "type": "step", "settings": { "text": "We handle applications and permits where required." } },
-        "step-4": { "type": "step", "settings": { "text": "Installation is carried out by our own authorized technicians." } },
-        "step-5": { "type": "step", "settings": { "text": "Commissioning, instruction and 5-year warranty." } },
-        "faq-1": { "type": "faq_item", "settings": { "question": "How much does an air-to-air heat pump cost installed?", "answer": "The price depends on the model and size of the installation but typically ranges from 18,000 to 35,000 SEK including installation. After the ROT deduction the cost is reduced by 30%." } },
-        "faq-2": { "type": "faq_item", "settings": { "question": "Do I need a building permit for an air-to-air heat pump?", "answer": "In most cases no permit is required for an air-to-air heat pump. However, some municipalities or housing associations may have restrictions. We check this for you before the installation." } },
-        "faq-3": { "type": "faq_item", "settings": { "question": "Which heat pump suits my house?", "answer": "An air-to-air heat pump is best suited for houses with direct electric heating. If you have water-based heating (radiators or underfloor), an air-to-water pump is a better choice." } },
-        "faq-4": { "type": "faq_item", "settings": { "question": "How much can I save with a heat pump?", "answer": "Most customers reduce their heating costs by 40–70%. The exact saving depends on your house size, current heating and local energy prices." } },
-        "faq-5": { "type": "faq_item", "settings": { "question": "Do I get ROT deduction on heat pump installation?", "answer": "Yes, the labour part of the installation qualifies for a 30% ROT deduction. We handle the paperwork and deduct it directly from your invoice." } },
-        "area-1": { "type": "area", "settings": { "name": "Stockholm", "url": "shopify://pages/stockholm" } },
-        "area-2": { "type": "area", "settings": { "name": "Sundbyberg", "url": "shopify://pages/sundbyberg" } },
-        "area-3": { "type": "area", "settings": { "name": "Solna", "url": "shopify://pages/solna" } },
-        "area-4": { "type": "area", "settings": { "name": "Danderyd", "url": "shopify://pages/danderyd" } },
-        "area-5": { "type": "area", "settings": { "name": "Täby", "url": "shopify://pages/taby" } },
-        "area-6": { "type": "area", "settings": { "name": "Nacka", "url": "shopify://pages/nacka" } },
-        "area-7": { "type": "area", "settings": { "name": "Lidingö", "url": "shopify://pages/lidingo" } },
-        "area-8": { "type": "area", "settings": { "name": "Huddinge", "url": "shopify://pages/huddinge" } },
-        "area-9": { "type": "area", "settings": { "name": "Sollentuna", "url": "shopify://pages/sollentuna" } },
-        "area-10": { "type": "area", "settings": { "name": "Järfälla", "url": "shopify://pages/jarfalla" } }
-      },
-      "block_order": ["pro-1", "pro-2", "pro-3", "con-1", "con-2", "step-1", "step-2", "step-3", "step-4", "step-5", "faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "area-1", "area-2", "area-3", "area-4", "area-5", "area-6", "area-7", "area-8", "area-9", "area-10"]
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
