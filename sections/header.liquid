@@ -463,10 +463,10 @@
 {% javascript %}
   /* Open SA Request a Quote widget (class prefix: grfq-) */
   window.openSAQuote = function() {
-    // Try progressively more specific SA widget elements (grfq- prefix)
-    var el = document.querySelector('[class*="grfq-quote-widget-tab"]') ||
+    // grfq-quote-widget is the inner clickable div (not the -container wrapper)
+    var el = document.querySelector('.grfq-quote-widget') ||
+             document.querySelector('[class*="grfq-quote-widget-tab"]') ||
              document.querySelector('[class*="grfq-quote-widget"] button') ||
-             document.querySelector('[class*="grfq-quote-widget"] a') ||
              document.querySelector('[class*="grfq-quote-widget"]');
     if (el) { el.click(); return; }
     window.location.href = '/pages/request-for-quote';
