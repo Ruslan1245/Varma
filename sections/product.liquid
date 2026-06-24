@@ -34,9 +34,9 @@
       {% endfor %}
     </select>
 
-    <input type="text" name="quantity" min="1" value="1">
+    <input type="number" name="quantity" min="1" value="1">
 
-    <input type="submit" value="Add to cart">
+    <button type="submit" name="add">Add to cart</button>
     {{ form | payment_button }}
   {% endform %}
 </div>
