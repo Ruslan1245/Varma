@@ -44,7 +44,7 @@
             "icon": "ground",
             "badge": "",
             "title": "Ground source heat pump",
-            "description": "Greatest savings over time. Most common choice in Täby.",
+            "description": "Greatest savings over time. Heats, cools and provides hot water.",
             "price": "From approx. 180,000 SEK incl. drilling and installation",
             "link_url": "",
             "btn_text": "Request a quote",
@@ -69,7 +69,7 @@
           "settings": {
             "icon": "experience",
             "title": "Experience",
-            "description": "We have installed heat pumps across all of Täby – from Gribbylund to Näsby Park."
+            "description": "We have installed heat pumps across all of Täby municipality – from Näsbypark to Skarpäng."
           }
         },
         "why-2": {
@@ -208,14 +208,14 @@
           "type": "faq_item",
           "settings": {
             "question": "Which heat pump suits my home?",
-            "answer": "For Täby's 1940s–1970s villas with water-based heating, ground source or air-to-water typically delivers the highest savings. For homes without a water system, air-to-air is the quickest and most affordable option. Our technician recommends the right type during the free home visit."
+            "answer": "For Täby's 1970s–1980s villas that still use direct electric heating, air-to-water typically delivers the best savings-to-investment ratio. For larger properties, ground source is the most efficient long-term option. Our technician recommends the right type during the free home visit."
           }
         },
         "faq-4": {
           "type": "faq_item",
           "settings": {
             "question": "How much can I save with a heat pump?",
-            "answer": "Most customers in Täby reduce annual heating costs by 50–65%. A typical villa saves around 33,800 SEK per year after switching from direct electric heating to a ground source heat pump."
+            "answer": "Most customers in Täby reduce annual heating costs by 50–70%. A typical 180 m² villa saves around 38,400 SEK per year after switching from direct electric to an air-to-water heat pump."
           }
         },
         "faq-5": {
@@ -260,7 +260,7 @@
         "hero_label": "Täby's leading installer",
         "heading_before": "Heat Pump in",
         "city_name": "Täby",
-        "hero_description": "From 1940s villas in Gribbylund to modern terraced houses in Tibble and newly built homes in Näsby Park – we have installed heat pumps in all types of homes in Täby. Clear quote and fixed price with no hidden costs.",
+        "hero_description": "Many 1970s and 1980s villas in Täby are still heated with direct electric. We switch to air-to-water or ground source, reduce running costs by 50–70% and usually install without you needing to leave home for a single day.",
         "cta_text": "Get a quote",
         "cta_url": "",
         "phone": "08-12 34 56 78",
@@ -268,14 +268,14 @@
         "trust_2": "ROT deduction 50%",
         "trust_3": "10-year warranty",
         "trust_4": "Fixed price",
-        "hstat_1_value": "320+",
+        "hstat_1_value": "380+",
         "hstat_1_label": "Installations in Täby",
-        "hstat_2_value": "33,800 SEK/yr",
-        "hstat_2_label": "Average villa savings",
-        "hstat_3_value": "55%",
-        "hstat_3_label": "Ground source most common",
-        "hstat_4_value": "On the invoice",
-        "hstat_4_label": "ROT deducted directly",
+        "hstat_2_value": "70%",
+        "hstat_2_label": "Conversions from direct electric",
+        "hstat_3_value": "34,800 SEK/yr",
+        "hstat_3_label": "Average villa savings",
+        "hstat_4_value": "2–3 days",
+        "hstat_4_label": "Air-to-water installation time",
         "stat_1_value": "4.9/5 rating",
         "stat_1_label": "from customers",
         "stat_2_value": "5-year installation warranty",
@@ -285,25 +285,25 @@
         "stat_4_value": "ROT deduction",
         "stat_4_label": "on the work",
         "areas_label": "Service areas",
-        "areas_heading": "We serve all of Täby city",
-        "areas_description": "Certified installers on-site in 10+ areas — fast response and local knowledge.",
-        "districts": "Gribbylund, Tibble, Näsby Park, Viggbyholm, Hägernäs, Åkerby, Elleholm, Skålhamra, Täby kyrkby, Erikslund",
+        "areas_heading": "We serve all of Täby municipality",
+        "areas_description": "Certified installers on-site in 6+ areas — fast response and local knowledge.",
+        "districts": "Näsbypark, Roslags-Näsby, Gribbylund, Viggbyholm, Ella Park, Skarpäng",
         "available_text": "Available today",
         "services_label": "Heat pumps",
         "services_heading": "We install in Täby",
-        "services_sub": "Most popular in Täby: Ground source heat pump.",
+        "services_sub": "Most popular in Täby: Air-to-water heat pump.",
         "local_label": "Local knowledge",
         "local_heading": "What Täby's housing stock looks like",
-        "local_description": "Täby has a mix of villas from the 1940s–1970s in Gribbylund and Tibble, along with modern terraced houses in Näsby Park. Many homes have direct electric heating or older water-based systems. Ground source delivers the greatest savings over time, but air-to-water is a cost-effective alternative when the plot is small.",
+        "local_description": "Täby's residential areas were largely built during the 1970s and 1980s with direct electric heating. This makes air-to-water a cost-effective solution – often without needing to rebuild the radiator system. For larger homes we recommend ground source.",
         "local_house_type": "Villas & terraced houses",
-        "local_pump_type": "Ground source heat pump",
-        "local_savings": "33,800 SEK/yr",
+        "local_pump_type": "Air-to-water heat pump",
+        "local_savings": "70%",
         "case_label": "Customer case",
-        "case_location": "Gribbylund, Täby",
-        "case_project": "Ground source heat pump Nibe F1155",
-        "case_result": "Villa from 1946 – reduced heating cost from 47,000 SEK to 13,500 SEK/yr",
-        "case_quote": "The team was incredibly professional. They explained every step and completed the installation in just four days. Our home is warmer and our electricity bill is half of what it used to be.",
-        "case_attribution": "Verified customer, Gribbylund",
+        "case_location": "Näsbypark, Täby",
+        "case_project": "Air-to-water NIBE F2120 + VVM 320",
+        "case_result": "180 m² villa with direct electric – saves 38,400 SEK/yr, payback period 4.2 years",
+        "case_quote": "We had three quotes. VARMA wasn't the cheapest but felt most professional, and that turned out to be true.",
+        "case_attribution": "Verified customer, Näsbypark",
         "why_label": "Why us",
         "why_heading": "Why Täby chooses VARMA Energy",
         "process_label": "Process",
@@ -311,7 +311,7 @@
         "process_sub": "Four simple steps from first contact to commissioned heat pump.",
         "expertise_heading": "Local expertise in Täby city",
         "contact_name": "VARMA Energy – Täby",
-        "contact_address": "Esplanaden 14, 171 45 Solna",
+        "contact_address": "Esplanaden 14, 183 30 Täby",
         "contact_phone": "08-12 34 56 78",
         "maint_label": "Maintenance",
         "maint_heading": "Service & maintenance in Täby",
