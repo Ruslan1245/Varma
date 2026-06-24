@@ -194,35 +194,35 @@
           "type": "faq_item",
           "settings": {
             "question": "How much does a heat pump cost in Sollentuna?",
-            "answer": "A complete air-to-air installation starts from approx. 18,000 SEK. Air-to-water typically costs 65,000–120,000 SEK. Ground source starts around 180,000 SEK including drilling. After the green deduction (gröna avdraget), which covers 50% of labour costs, the net cost is significantly lower."
+            "answer": "The price in Sollentuna ranges from approx. 18,000 SEK for an air-to-air heat pump to 260,000 SEK for a complete ground source installation. You get ROT deduction on the labour cost."
           }
         },
         "faq-2": {
           "type": "faq_item",
           "settings": {
             "question": "Does VARMA Energy install heat pumps in all parts of Sollentuna?",
-            "answer": "Yes. We cover all areas of Sollentuna municipality including Edsberg, Sjöberg, Tureberg, Häggvik and Helenelund. Our technicians are based locally for fast response, including emergency call-outs within 24 hours."
+            "answer": "Yes, we install ground source across all of Sollentuna municipality. We handle drilling permits and all contact with the municipality."
           }
         },
         "faq-3": {
           "type": "faq_item",
           "settings": {
             "question": "Which heat pump suits my home in Sollentuna?",
-            "answer": "For homes with water-based heating (radiators or underfloor), air-to-water delivers the best savings. For direct electric heating, air-to-air is the most cost-effective choice. Our technician recommends the right type during the free home visit."
+            "answer": "It depends on the home's size, existing heating system and budget. Ground source and air-to-water suit homes with water-based systems, air-to-air suits direct electric heating. We offer a free needs analysis."
           }
         },
         "faq-4": {
           "type": "faq_item",
           "settings": {
             "question": "How much can I save with a heat pump in Sollentuna?",
-            "answer": "Most customers in Sollentuna reduce annual heating costs by 40–60%. A typical villa saves around 32,600 SEK per year. Homes converting from oil can save significantly more – our customer case in Edsberg saves 47,000 SEK/yr."
+            "answer": "A villa in the Stockholm area typically saves 40–70% of heating costs. Use our savings calculator for a quick estimate."
           }
         },
         "faq-5": {
           "type": "faq_item",
           "settings": {
             "question": "Do I get ROT deduction for heat pump installation?",
-            "answer": "Yes. The green deduction (gröna avdraget) covers 50% of the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice so you never pay upfront and apply later."
+            "answer": "Yes, you get a 30% ROT deduction on the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice."
           }
         }
       },
