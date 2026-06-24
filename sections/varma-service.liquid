@@ -195,6 +195,35 @@
     </div>
   {% endif %}
 
+  <div class="vsp__section">
+    <div class="vsp__inner">
+      <h2 class="vsp__products-h">{{ section.settings.products_heading | default: 'Recommended products' }}</h2>
+      {%- assign prod_coll = section.settings.products_collection -%}
+      {%- if prod_coll != blank and prod_coll.products_count > 0 -%}
+        <div class="vsp__products-grid">
+          {%- for product in prod_coll.products limit: 4 -%}
+            <a href="{{ product.url }}" class="vsp__product-card">
+              {%- if product.featured_image -%}
+                <div class="vsp__product-img-wrap">
+                  {{ product.featured_image | image_url: width: 400 | image_tag: class: 'vsp__product-img', alt: product.featured_image.alt, loading: 'lazy' }}
+                </div>
+              {%- endif -%}
+              <div class="vsp__product-info">
+                <div class="vsp__product-name">{{ product.title }}</div>
+                <div class="vsp__product-price">{{ product.price | money }}</div>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="vsp__products-empty">{{ section.settings.products_empty | default: 'No products found for this type yet. Add products in Shopify and they will appear here.' }}</div>
+      {%- endif -%}
+      {%- if section.settings.products_cta_text != blank -%}
+        <a href="{{ section.settings.products_cta_url | default: '/pages/shop' }}" class="vsp__products-cta-btn">{{ section.settings.products_cta_text }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+
   {%- assign areas = section.blocks | where: 'type', 'area' -%}
   {%- if areas.size > 0 -%}
     <div class="vsp__section">
@@ -504,6 +533,20 @@
     flex-shrink: 0;
   }
 
+  /* Products */
+  .vsp__products-h { font-size: 22px; font-weight: 700; color: #224466; margin-bottom: 20px; }
+  .vsp__products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; }
+  .vsp__product-card { display: flex; flex-direction: column; border: 1.5px solid #e6e8ef; border-radius: 12px; overflow: hidden; text-decoration: none; transition: box-shadow 0.15s; }
+  .vsp__product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .vsp__product-img-wrap { aspect-ratio: 4/3; overflow: hidden; background: #f8fafc; }
+  .vsp__product-img { width: 100%; height: 100%; object-fit: contain; }
+  .vsp__product-info { padding: 14px 16px; }
+  .vsp__product-name { font-size: 14px; font-weight: 600; color: #224466; margin-bottom: 4px; }
+  .vsp__product-price { font-size: 14px; color: #19aaf8; font-weight: 700; }
+  .vsp__products-empty { border: 1.5px dashed #e6e8ef; border-radius: 12px; padding: 48px 24px; text-align: center; color: #94a3b8; font-size: 14px; margin-bottom: 20px; }
+  .vsp__products-cta-btn { display: inline-flex; align-items: center; padding: 10px 20px; border: 1.5px solid #e6e8ef; border-radius: 8px; font-size: 14px; font-weight: 500; color: #2a2f3d; text-decoration: none; transition: border-color 0.15s, color 0.15s; }
+  .vsp__products-cta-btn:hover { border-color: #19aaf8; color: #19aaf8; }
+
   /* Cities */
   .vsp__cities-h { font-size: 22px; font-weight: 700; color: #224466; margin-bottom: 20px; }
   .vsp__cities {
@@ -756,6 +799,12 @@
       "label": "Cities section heading",
       "default": "We install air-to-air across Greater Stockholm"
     },
+    { "type": "header", "content": "Recommended products" },
+    { "type": "text", "id": "products_heading", "label": "Products heading", "default": "Recommended products" },
+    { "type": "collection", "id": "products_collection", "label": "Products collection" },
+    { "type": "text", "id": "products_empty", "label": "Empty state text", "default": "No products found for this type yet. Add products in Shopify and they will appear here." },
+    { "type": "text", "id": "products_cta_text", "label": "Products CTA text", "default": "See all air-to-air models" },
+    { "type": "url", "id": "products_cta_url", "label": "Products CTA URL" },
     {
       "type": "header",
       "content": "FAQ"

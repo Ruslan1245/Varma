@@ -41,6 +41,10 @@
         "price_note": "Save up to 50% of your heating costs",
         "steps_title": "How installation works",
         "cities_heading": "We install air-to-air across Greater Stockholm",
+        "products_heading": "Recommended products",
+        "products_empty": "No products found for this type yet. Add products in Shopify and they will appear here.",
+        "products_cta_text": "See all air-to-air models",
+        "products_cta_url": "/pages/shop",
         "faq_title": "Frequently asked questions about air-to-air"
       },
       "blocks": {
