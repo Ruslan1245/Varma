@@ -1,0 +1,357 @@
+<div class="vlls">
+
+  <div class="vlls__hero">
+    <div class="vlls__hero-inner">
+      <p class="vlls__eyebrow">VARMA SHOP · AIR-TO-AIR</p>
+      <h1 class="vlls__hero-title">
+        Premium <span class="vlls__accent">air&#8209;to&#8209;air</span>
+        <span class="vlls__accent">heat&nbsp;pumps</span>
+        with full installation.
+      </h1>
+      <p class="vlls__hero-desc">{{ section.settings.hero_description }}</p>
+      <div class="vlls__trust-row">
+        <div class="vlls__trust-item">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div><strong>10-year warranty</strong><span>On equipment and installation</span></div>
+        </div>
+        <div class="vlls__trust-item">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <div><strong>Full installation</strong><span>Authorized Varma technicians</span></div>
+        </div>
+        <div class="vlls__trust-item">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div><strong>Free home visit</strong><span>We measure before purchase</span></div>
+        </div>
+        <div class="vlls__trust-item">
+          <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5" aria-hidden="true"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          <div><strong>ROT direct</strong><span>We deduct 30% on the invoice</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vlls__main">
+
+    <aside class="vlls__sidebar">
+      <p class="vlls__filter-label">REFINE SELECTION</p>
+
+      <div class="vlls__filter-group">
+        <h3 class="vlls__filter-group-title">HOUSE SIZE</h3>
+        <div class="vlls__filter-btns">
+          <button class="vlls__filter-btn" data-group="size" data-val="size-0-100">0–100 m²</button>
+          <button class="vlls__filter-btn" data-group="size" data-val="size-100-200">100–200 m²</button>
+          <button class="vlls__filter-btn" data-group="size" data-val="size-200-350">200–350 m²</button>
+          <button class="vlls__filter-btn" data-group="size" data-val="size-350-plus">350+ m²</button>
+        </div>
+      </div>
+
+      <div class="vlls__filter-group">
+        <h3 class="vlls__filter-group-title">PRICE CLASS</h3>
+        <div class="vlls__filter-btns">
+          <button class="vlls__filter-btn" data-group="price" data-val="price-under-15000">Under 15,000 kr</button>
+          <button class="vlls__filter-btn" data-group="price" data-val="price-15-35000">15–35,000 kr</button>
+          <button class="vlls__filter-btn" data-group="price" data-val="price-35-75000">35–75,000 kr</button>
+          <button class="vlls__filter-btn" data-group="price" data-val="price-75000-plus">75,000+ kr</button>
+        </div>
+      </div>
+
+      <div class="vlls__filter-group">
+        <h3 class="vlls__filter-group-title">FUNCTION</h3>
+        <div class="vlls__filter-btns">
+          <button class="vlls__filter-btn" data-group="function" data-val="function-heat-only">Heat only</button>
+          <button class="vlls__filter-btn" data-group="function" data-val="function-cooling-only">Cooling only</button>
+          <button class="vlls__filter-btn" data-group="function" data-val="function-heat-cooling">Heat & cooling</button>
+          <button class="vlls__filter-btn" data-group="function" data-val="function-hot-water">Hot water</button>
+        </div>
+      </div>
+
+      <div class="vlls__sidebar-cta">
+        <p class="vlls__sidebar-cta-eyebrow">GROUND SOURCE · AIR-TO-WATER</p>
+        <h3 class="vlls__sidebar-cta-title">Larger system? Get a quote within 24 hours.</h3>
+        <p class="vlls__sidebar-cta-desc">For larger installations we do a free home visit and size it correctly.</p>
+        <a href="/pages/fa-offert" class="vlls__sidebar-cta-link">Get a quote →</a>
+      </div>
+    </aside>
+
+    <div class="vlls__products-area">
+      <div class="vlls__grid-header">
+        <h2 class="vlls__grid-title">All air-to-air models</h2>
+        <span class="vlls__grid-count" id="vlls-count">{{ collection.products_count }} TOTAL</span>
+      </div>
+
+      <div class="vlls__grid" id="vlls-grid">
+        {%- for product in collection.products -%}
+          <article class="vlls__card" data-tags="{{ product.tags | join: ',' | downcase }}">
+            <div class="vlls__card-top">
+              <span class="vlls__card-badge">INCL. INSTALLATION</span>
+              <div class="vlls__card-img-wrap">
+                {%- if product.featured_image -%}
+                  {{ product.featured_image | image_url: width: 500 | image_tag: class: 'vlls__card-img', loading: 'lazy', alt: product.title }}
+                {%- else -%}
+                  <div class="vlls__card-img-placeholder"></div>
+                {%- endif -%}
+              </div>
+            </div>
+            <div class="vlls__card-body">
+              <p class="vlls__card-vendor">{{ product.vendor | upcase }}</p>
+              <h3 class="vlls__card-title">
+                <a href="{{ product.url }}" class="vlls__card-title-link">{{ product.title }}</a>
+              </h3>
+              <p class="vlls__card-desc">{{ product.description | strip_html | truncate: 85 }}</p>
+              <div class="vlls__card-pricing">
+                <p class="vlls__card-price-label">Price after ROT deduction</p>
+                <div class="vlls__card-price-row">
+                  <div class="vlls__card-prices">
+                    {%- if product.compare_at_price_max > product.price_min -%}
+                      <span class="vlls__card-compare">{{ product.compare_at_price_max | money_without_trailing_zeros }}</span>
+                    {%- endif -%}
+                    <span class="vlls__card-price">{{ product.price_min | money_without_trailing_zeros }}</span>
+                  </div>
+                  <a href="/pages/fa-offert" class="vlls__card-btn">
+                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                    Request a quote
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        {%- else -%}
+          <p class="vlls__empty">No products in this collection yet.</p>
+        {%- endfor -%}
+      </div>
+
+      <div class="vlls__no-results" id="vlls-no-results" style="display:none;">
+        No products match the selected filters.
+        <button class="vlls__reset-btn" id="vlls-reset">Reset filters</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% stylesheet %}
+  .vlls { background: #fff; }
+
+  /* HERO */
+  .vlls__hero {
+    background: linear-gradient(135deg, #0b1528 0%, #0d2144 60%, #1a3a6e 100%);
+    padding: 60px 40px 48px;
+  }
+  .vlls__hero-inner { max-width: 1200px; margin: 0 auto; }
+  .vlls__eyebrow {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    color: #19aaf8; margin-bottom: 16px;
+  }
+  .vlls__hero-title {
+    font-size: clamp(30px, 4.5vw, 52px); font-weight: 800;
+    color: #fff; line-height: 1.1; margin-bottom: 20px;
+  }
+  .vlls__accent { color: #19aaf8; }
+  .vlls__hero-desc {
+    font-size: 16px; color: rgba(255,255,255,0.75);
+    max-width: 560px; line-height: 1.65; margin-bottom: 36px;
+  }
+  .vlls__trust-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .vlls__trust-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px; padding: 14px 16px;
+    flex: 1; min-width: 170px;
+  }
+  .vlls__trust-item svg { flex-shrink: 0; margin-top: 2px; }
+  .vlls__trust-item strong { display: block; font-size: 13px; font-weight: 700; color: #fff; }
+  .vlls__trust-item span { font-size: 12px; color: rgba(255,255,255,0.6); }
+
+  /* MAIN LAYOUT */
+  .vlls__main {
+    display: grid; grid-template-columns: 268px 1fr; gap: 0;
+    max-width: 1200px; margin: 0 auto; padding: 40px 40px;
+    align-items: start;
+  }
+
+  /* SIDEBAR */
+  .vlls__sidebar { position: sticky; top: 80px; padding-right: 32px; }
+  .vlls__filter-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    color: #19aaf8; margin-bottom: 20px;
+  }
+  .vlls__filter-group { margin-bottom: 26px; }
+  .vlls__filter-group-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    color: #5b6474; margin-bottom: 10px;
+  }
+  .vlls__filter-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .vlls__filter-btn {
+    background: #fff; border: 1.5px solid #e6e8ef; border-radius: 20px;
+    padding: 6px 14px; font-size: 13px; color: #0d1b2e;
+    cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s;
+  }
+  .vlls__filter-btn:hover { border-color: #19aaf8; color: #19aaf8; }
+  .vlls__filter-btn--active { background: #19aaf8; border-color: #19aaf8; color: #fff; }
+
+  /* SIDEBAR CTA */
+  .vlls__sidebar-cta {
+    background: linear-gradient(135deg, #1a4fd6 0%, #19aaf8 100%);
+    border-radius: 14px; padding: 20px; color: #fff; margin-top: 8px;
+  }
+  .vlls__sidebar-cta-eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7); margin-bottom: 8px;
+  }
+  .vlls__sidebar-cta-title { font-size: 16px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+  .vlls__sidebar-cta-desc { font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 14px; line-height: 1.5; }
+  .vlls__sidebar-cta-link {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 13px; font-weight: 700; color: #fff; text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 1px;
+    transition: border-color 0.15s;
+  }
+  .vlls__sidebar-cta-link:hover { border-color: #fff; }
+
+  /* PRODUCT GRID */
+  .vlls__products-area { min-width: 0; }
+  .vlls__grid-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px;
+  }
+  .vlls__grid-title { font-size: 22px; font-weight: 700; color: #0d1b2e; }
+  .vlls__grid-count { font-size: 12px; font-weight: 600; color: #5b6474; letter-spacing: 0.05em; }
+  .vlls__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  /* PRODUCT CARD */
+  .vlls__card {
+    border: 1.5px solid #e6e8ef; border-radius: 14px; overflow: hidden;
+    display: flex; flex-direction: column; background: #fff;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .vlls__card:hover { box-shadow: 0 8px 24px rgba(34,68,102,0.10); transform: translateY(-3px); }
+  .vlls__card-top { padding: 12px 12px 0; }
+  .vlls__card-badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; background: #e8f6fe; color: #19aaf8;
+    border-radius: 4px; padding: 3px 8px;
+  }
+  .vlls__card-img-wrap {
+    padding: 16px 20px; display: flex; align-items: center;
+    justify-content: center; min-height: 160px; background: #f8fafc;
+  }
+  .vlls__card-img { max-height: 160px; width: auto; max-width: 100%; object-fit: contain; }
+  .vlls__card-img-placeholder { width: 100%; height: 160px; background: #e8f6fe; border-radius: 8px; }
+  .vlls__card-body { padding: 0 16px 16px; display: flex; flex-direction: column; flex: 1; }
+  .vlls__card-vendor {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    color: #5b6474; margin-bottom: 4px;
+  }
+  .vlls__card-title { font-size: 15px; font-weight: 700; color: #0d1b2e; margin-bottom: 6px; }
+  .vlls__card-title-link { color: inherit; text-decoration: none; }
+  .vlls__card-title-link:hover { color: #19aaf8; }
+  .vlls__card-desc { font-size: 13px; color: #5b6474; line-height: 1.5; margin-bottom: 14px; flex: 1; }
+  .vlls__card-price-label { font-size: 11px; color: #5b6474; margin-bottom: 6px; }
+  .vlls__card-price-row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 8px; flex-wrap: wrap;
+  }
+  .vlls__card-prices { display: flex; flex-direction: column; }
+  .vlls__card-compare { font-size: 13px; color: #9aa3b0; text-decoration: line-through; }
+  .vlls__card-price { font-size: 22px; font-weight: 800; color: #19aaf8; line-height: 1.1; }
+  .vlls__card-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fff; border: 1.5px solid #19aaf8; border-radius: 8px;
+    padding: 8px 12px; font-size: 12px; font-weight: 600;
+    color: #19aaf8; text-decoration: none; white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .vlls__card-btn:hover { background: #e8f6fe; }
+
+  /* STATES */
+  .vlls__no-results {
+    padding: 48px; text-align: center; color: #5b6474; font-size: 15px;
+  }
+  .vlls__reset-btn {
+    background: none; border: none; color: #19aaf8; font-weight: 600;
+    cursor: pointer; text-decoration: underline; padding: 0; margin-left: 6px;
+  }
+  .vlls__empty { padding: 48px; text-align: center; color: #5b6474; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .vlls__main { grid-template-columns: 220px 1fr; padding: 32px 24px; }
+    .vlls__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .vlls__hero { padding: 40px 20px 32px; }
+    .vlls__main { grid-template-columns: 1fr; padding: 24px 16px; }
+    .vlls__sidebar { position: static; padding-right: 0; margin-bottom: 28px; }
+    .vlls__trust-item { min-width: 140px; }
+  }
+  @media (max-width: 480px) {
+    .vlls__grid { grid-template-columns: 1fr; }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function() {
+    var filterBtns = document.querySelectorAll('.vlls__filter-btn');
+    var cards = document.querySelectorAll('.vlls__card');
+    var countEl = document.getElementById('vlls-count');
+    var noResultsEl = document.getElementById('vlls-no-results');
+    var resetBtn = document.getElementById('vlls-reset');
+    var active = {};
+
+    function applyFilters() {
+      var visible = 0;
+      cards.forEach(function(card) {
+        var tags = card.dataset.tags ? card.dataset.tags.split(',').map(function(t) { return t.trim(); }) : [];
+        var show = true;
+        Object.keys(active).forEach(function(group) {
+          if (active[group] && tags.indexOf(active[group]) === -1) show = false;
+        });
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      if (countEl) countEl.textContent = visible + ' TOTAL';
+      if (noResultsEl) noResultsEl.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var group = btn.dataset.group;
+        var val = btn.dataset.val;
+        if (active[group] === val) {
+          active[group] = null;
+          btn.classList.remove('vlls__filter-btn--active');
+        } else {
+          document.querySelectorAll('.vlls__filter-btn[data-group="' + group + '"]').forEach(function(b) {
+            b.classList.remove('vlls__filter-btn--active');
+          });
+          active[group] = val;
+          btn.classList.add('vlls__filter-btn--active');
+        }
+        applyFilters();
+      });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        Object.keys(active).forEach(function(k) { active[k] = null; });
+        filterBtns.forEach(function(b) { b.classList.remove('vlls__filter-btn--active'); });
+        applyFilters();
+      });
+    }
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Air-to-air shop",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Hero description",
+      "default": "A+++ rated models from Toshiba, Mitsubishi, Daikin and Panasonic. Installation by authorised technicians throughout Greater Stockholm – fixed price, ROT deduction directly on the invoice."
+    }
+  ],
+  "presets": [{ "name": "Air-to-air shop" }]
+}
+{% endschema %}

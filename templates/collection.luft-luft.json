@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "varma-luft-luft",
+      "settings": {
+        "hero_description": "A+++ rated models from Toshiba, Mitsubishi, Daikin and Panasonic. Installation by authorised technicians throughout Greater Stockholm – fixed price, ROT deduction directly on the invoice."
+      }
+    }
+  },
+  "order": ["main"]
+}
