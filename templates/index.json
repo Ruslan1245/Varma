@@ -339,6 +339,27 @@
     },
     "varma-products": {
       "type": "varma-products",
+      "blocks": {
+        "prod-1": {
+          "type": "product",
+          "settings": {
+            "product": "toshiba-daiseikai-10"
+          }
+        },
+        "prod-2": {
+          "type": "product",
+          "settings": {
+            "product": "toshiba-haori"
+          }
+        },
+        "prod-3": {
+          "type": "product",
+          "settings": {
+            "product": "toshiba-shorai-edge"
+          }
+        }
+      },
+      "block_order": ["prod-1", "prod-2", "prod-3"],
       "settings": {
         "label": "VARMA SHOP",
         "heading": "Heat pumps with installation included.",
