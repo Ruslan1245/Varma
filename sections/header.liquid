@@ -62,7 +62,7 @@
     </nav>
 
     <div class="varma-header__actions">
-      <button type="button" class="varma-header__cart" id="varma-cart-btn" onclick="if(window.varmaCartDrawer)window.varmaCartDrawer.open()" aria-label="Cart ({{ cart.item_count }} items)">
+      <button type="button" class="varma-header__cart" id="varma-cart-btn" onclick="openSAQuote()" aria-label="Open quote cart">
         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         <span class="varma-header__cart-count{% unless cart.item_count > 0 %} is-hidden{% endunless %}" id="varma-cart-count">{{ cart.item_count }}</span>
       </button>
@@ -461,6 +461,20 @@
 {% endstylesheet %}
 
 {% javascript %}
+  /* Open SA Request a Quote floating cart tab, fallback to quote page */
+  window.openSAQuote = function() {
+    var rfq = document.querySelector(
+      '[class*="samita-rfq"], [id*="samita-rfq"], [data-samita-rfq], ' +
+      '[class*="sa-rfq-cart"], [id*="sa-rfq-cart"], [class*="samita"][class*="cart"], ' +
+      '[class*="rfq-tab"], [class*="rfq-cart-tab"]'
+    );
+    if (rfq) {
+      rfq.click();
+    } else {
+      window.location.href = '/pages/request-for-quote';
+    }
+  };
+
   (function() {
     var burger = document.querySelector('.varma-header__burger');
     var mobileNav = document.getElementById('varma-mobile-nav');

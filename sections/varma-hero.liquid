@@ -30,7 +30,7 @@
 
         <div class="v-hero__ctas">
           {% if section.settings.cta_primary_text != blank %}
-            <a href="{{ section.settings.cta_primary_url }}" class="v-hero__btn v-hero__btn--primary">
+            <a href="/pages/request-for-quote" class="v-hero__btn v-hero__btn--primary" onclick="openSAQuote(); return false;">
               {{ section.settings.cta_primary_text }}
               <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
