@@ -24,6 +24,37 @@
               {%- endif -%}
             {%- endfor -%}
           </ul>
+
+          <div class="vq__trust">
+            <div class="vq__trust-item">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <div>
+                <span class="vq__trust-val">{{ section.settings.trust_1_value }}</span>
+                <span class="vq__trust-label">{{ section.settings.trust_1_label }}</span>
+              </div>
+            </div>
+            <div class="vq__trust-item">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <div>
+                <span class="vq__trust-val">{{ section.settings.trust_2_value }}</span>
+                <span class="vq__trust-label">{{ section.settings.trust_2_label }}</span>
+              </div>
+            </div>
+            <div class="vq__trust-item">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              <div>
+                <span class="vq__trust-val">{{ section.settings.trust_3_value }}</span>
+                <span class="vq__trust-label">{{ section.settings.trust_3_label }}</span>
+              </div>
+            </div>
+            <div class="vq__trust-item">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              <div>
+                <span class="vq__trust-val">{{ section.settings.trust_4_value }}</span>
+                <span class="vq__trust-label">{{ section.settings.trust_4_label }}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="vq__right">
@@ -98,37 +129,6 @@
 
             {%- endform -%}
           </div>
-
-          <div class="vq__trust">
-            <div class="vq__trust-item">
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <div>
-                <span class="vq__trust-val">{{ section.settings.trust_1_value }}</span>
-                <span class="vq__trust-label">{{ section.settings.trust_1_label }}</span>
-              </div>
-            </div>
-            <div class="vq__trust-item">
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <div>
-                <span class="vq__trust-val">{{ section.settings.trust_2_value }}</span>
-                <span class="vq__trust-label">{{ section.settings.trust_2_label }}</span>
-              </div>
-            </div>
-            <div class="vq__trust-item">
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-              <div>
-                <span class="vq__trust-val">{{ section.settings.trust_3_value }}</span>
-                <span class="vq__trust-label">{{ section.settings.trust_3_label }}</span>
-              </div>
-            </div>
-            <div class="vq__trust-item">
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-              <div>
-                <span class="vq__trust-val">{{ section.settings.trust_4_value }}</span>
-                <span class="vq__trust-label">{{ section.settings.trust_4_label }}</span>
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -138,10 +138,10 @@
 </div>
 
 {% stylesheet %}
-  /* ─── Hero — full width blue ─── */
+  /* ─── Hero — full width light blue ─── */
   .vq.full-width { width: 100%; }
   .vq__hero {
-    background: #19aaf8;
+    background: #EFF4FF;
     padding: 52px 0 60px;
     width: 100%;
   }
@@ -152,21 +152,21 @@
   }
   .vq__eyebrow {
     display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(255,255,255,0.2); color: #fff;
+    background: rgba(25,170,248,0.12); color: #19aaf8;
     font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
     padding: 5px 12px; border-radius: 20px; margin-bottom: 16px;
   }
   .vq__heading {
     font-size: clamp(28px, 4vw, 48px);
     font-weight: 800;
-    color: #fff;
+    color: #224466;
     line-height: 1.15;
     margin-bottom: 14px;
     max-width: 680px;
   }
   .vq__intro {
     font-size: 17px;
-    color: rgba(255,255,255,0.85);
+    color: #4a5568;
     line-height: 1.65;
     max-width: 560px;
   }
@@ -331,11 +331,12 @@
     margin-bottom: 16px;
   }
 
-  /* ─── Trust row — below form card ─── */
+  /* ─── Trust grid — left column, below bullets ─── */
   .vq__trust {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 32px;
   }
   .vq__trust-item {
     display: flex;
