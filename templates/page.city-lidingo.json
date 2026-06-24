@@ -69,7 +69,7 @@
           "settings": {
             "icon": "experience",
             "title": "Experience",
-            "description": "We have installed heat pumps across all of Lidingö – from Hersby to Skärsätra."
+            "description": "We have installed heat pumps across all of Lidingö city – from Brevik to Larsberg."
           }
         },
         "why-2": {
@@ -201,7 +201,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Is ground source heat pump suitable for Lidingö?",
-            "answer": "Yes. Lidingö's bedrock and large villa plots make it excellent for ground source installations. Ground source is the most popular choice on the island for its reliability and long-term savings."
+            "answer": "Yes. Lidingö's granite bedrock and large villa plots make it ideal for ground source. We handle the entire process including drilling permits with Lidingö city, excavation and commissioning."
           }
         },
         "faq-3": {
@@ -215,7 +215,7 @@
           "type": "faq_item",
           "settings": {
             "question": "How much can I save with a heat pump in Lidingö?",
-            "answer": "Lidingö villas often have large heated areas, which means higher savings potential. A typical villa saves around 41,500 SEK per year after switching from direct electric heating to a ground source heat pump."
+            "answer": "Lidingö villas often have large heated areas, which means higher savings potential. A typical villa saves around 44,500 SEK per year after switching to a ground source heat pump."
           }
         },
         "faq-5": {
@@ -260,7 +260,7 @@
         "hero_label": "Lidingö's leading installer",
         "heading_before": "Heat Pump in",
         "city_name": "Lidingö",
-        "hero_description": "From large villas in Hersby to waterfront homes in Skärsätra – we have installed heat pumps in all types of homes in Lidingö. Clear quote and fixed price with no hidden costs.",
+        "hero_description": "Large villa plots and granite bedrock make Lidingö ideal for ground source. We manage the entire process – from drilling permits with Lidingö city to a commissioned installation with a 5-year warranty.",
         "cta_text": "Get a quote",
         "cta_url": "",
         "phone": "08-12 34 56 78",
@@ -268,14 +268,14 @@
         "trust_2": "ROT deduction 50%",
         "trust_3": "10-year warranty",
         "trust_4": "Fixed price",
-        "hstat_1_value": "290+",
+        "hstat_1_value": "295+",
         "hstat_1_label": "Installations in Lidingö",
-        "hstat_2_value": "41,500 SEK/yr",
-        "hstat_2_label": "Average villa savings",
-        "hstat_3_value": "65%",
-        "hstat_3_label": "Ground source most common",
-        "hstat_4_value": "On the invoice",
-        "hstat_4_label": "ROT deducted directly",
+        "hstat_2_value": "195 m",
+        "hstat_2_label": "Average drilling depth",
+        "hstat_3_value": "44,500 SEK/yr",
+        "hstat_3_label": "Average villa savings",
+        "hstat_4_value": "We handle it all",
+        "hstat_4_label": "Drilling permit processing",
         "stat_1_value": "4.9/5 rating",
         "stat_1_label": "from customers",
         "stat_2_value": "5-year installation warranty",
@@ -285,25 +285,25 @@
         "stat_4_value": "ROT deduction",
         "stat_4_label": "on the work",
         "areas_label": "Service areas",
-        "areas_heading": "We serve all of Lidingö municipality",
-        "areas_description": "Certified installers on-site in 7+ areas — fast response and local knowledge.",
-        "districts": "Lidingö centrum, Hersby, Larsberg, Dalénum, Kottla, Gångsätra, Skärsätra",
+        "areas_heading": "We serve all of Lidingö city",
+        "areas_description": "Certified installers on-site in 8+ areas — fast response and local knowledge.",
+        "districts": "Brevik, Bodal, Skärsätra, Käppala, Gångsätra, Sticklinge, Lidingö centrum, Larsberg",
         "available_text": "Available today",
         "services_label": "Heat pumps",
         "services_heading": "We install in Lidingö",
         "services_sub": "Most popular in Lidingö: Ground source heat pump.",
         "local_label": "Local knowledge",
         "local_heading": "What Lidingö's housing stock looks like",
-        "local_description": "Lidingö is characterised by large, well-maintained villas predominantly from the 1930s–1960s with generous plots and older heating systems. Ground source heat pump is the clear choice for most properties on the island, delivering the highest long-term savings.",
-        "local_house_type": "Large villas",
+        "local_description": "Lidingö's bedrock provides excellent conditions for ground source with short drilling depths. Many villas from the 1930s–1960s already have water-based heating systems, making conversion straightforward. The municipality requires a permit for drilling – we handle the application as standard.",
+        "local_house_type": "Villas & terraced houses",
         "local_pump_type": "Ground source heat pump",
-        "local_savings": "41,500 SEK/yr",
+        "local_savings": "195 m",
         "case_label": "Customer case",
-        "case_location": "Hersby, Lidingö",
-        "case_project": "Ground source heat pump NIBE S1255-12",
-        "case_result": "Reduced heating cost from 56,000 SEK to 12,500 SEK/yr",
-        "case_quote": "Excellent workmanship and the project was completed exactly on schedule. Very happy with the result.",
-        "case_attribution": "Verified customer, Hersby",
+        "case_location": "Brevik, Lidingö",
+        "case_project": "Ground source IVT Geo 412 + accumulator",
+        "case_result": "Functionalist villa 240 m² – saves 54,000 SEK/yr, ROT 50,000 SEK",
+        "case_quote": "Everything handled itself after the quote. Permits, excavation, drilling – I never had to call the municipality.",
+        "case_attribution": "Verified customer, Brevik",
         "why_label": "Why us",
         "why_heading": "Why Lidingö chooses VARMA Energy",
         "process_label": "Process",
@@ -311,7 +311,7 @@
         "process_sub": "Four simple steps from first contact to commissioned heat pump.",
         "expertise_heading": "Local expertise in Lidingö municipality",
         "contact_name": "VARMA Energy – Lidingö",
-        "contact_address": "Esplanaden 14, 181 30 Lidingö",
+        "contact_address": "Esplanaden 14, 181 31 Lidingö",
         "contact_phone": "08-12 34 56 78",
         "maint_label": "Maintenance",
         "maint_heading": "Service & maintenance in Lidingö",
