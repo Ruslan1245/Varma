@@ -83,12 +83,12 @@
     "cta": {
       "type": "varma-cta",
       "settings": {
-        "heading": "Prefer to talk?",
-        "description": "Call us directly and we'll answer your questions right away.",
-        "btn1_text": "Call 08-12 34 56 78",
-        "btn1_url": "tel:0812345678",
-        "btn2_text": "",
-        "btn2_url": ""
+        "heading": "Börja spara redan i vår",
+        "description": "Installationer bokas nu in för maj. Boka ett kostnadsfritt hembesök idag och få ett fast pris inom 48 timmar.",
+        "btn1_text": "Book home visit",
+        "btn1_url": "/pages/fa-offert",
+        "btn2_text": "Call 08-12 34 56 78",
+        "btn2_url": "tel:0812345678"
       }
     }
   },
