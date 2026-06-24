@@ -31,7 +31,7 @@
             "icon": "air-water",
             "badge": "",
             "title": "Air-to-water heat pump",
-            "description": "Heating and hot water in one system. Most common choice in Huddinge.",
+            "description": "Heating and hot water in one system.",
             "price": "From approx. 120,000 SEK incl. installation",
             "link_url": "",
             "btn_text": "Request a quote",
@@ -69,7 +69,7 @@
           "settings": {
             "icon": "experience",
             "title": "Experience",
-            "description": "We have installed heat pumps across all of Huddinge – from Flemingsberg to Skogås."
+            "description": "We have installed heat pumps across all of Huddinge municipality – from Stuvsta to Huddinge centrum."
           }
         },
         "why-2": {
@@ -194,35 +194,35 @@
           "type": "faq_item",
           "settings": {
             "question": "How much does a heat pump cost in Huddinge?",
-            "answer": "A complete air-to-air installation starts from approx. 18,000 SEK. Air-to-water typically costs 65,000–120,000 SEK. Ground source starts around 180,000 SEK including drilling. After the green deduction (gröna avdraget), which covers 50% of labour costs, the net cost is significantly lower."
+            "answer": "The price in Huddinge ranges from approx. 18,000 SEK for an air-to-air heat pump to 260,000 SEK for a complete ground source installation. You get ROT deduction on the labour cost."
           }
         },
         "faq-2": {
           "type": "faq_item",
           "settings": {
-            "question": "Does VARMA Energy install heat pumps in all parts of Huddinge?",
-            "answer": "Yes. We cover all areas of Huddinge municipality including Flemingsberg, Vårby, Skogås, Stuvsta and Segeltorp. Our technicians are based locally for fast response."
+            "question": "Does VARMA Energy install ground source heat pumps in Huddinge?",
+            "answer": "Yes, we install ground source across all of Huddinge municipality. We handle drilling permits and all contact with the municipality."
           }
         },
         "faq-3": {
           "type": "faq_item",
           "settings": {
             "question": "Which heat pump suits my home in Huddinge?",
-            "answer": "For homes with water-based heating (radiators or underfloor), air-to-water delivers the best savings. For direct electric heating, air-to-air is the most cost-effective choice. Our technician recommends the right type during the free home visit."
+            "answer": "It depends on the home's size, existing heating system and budget. Ground source and air-to-water suit homes with water-based systems, air-to-air suits direct electric heating. We offer a free needs analysis."
           }
         },
         "faq-4": {
           "type": "faq_item",
           "settings": {
             "question": "How much can I save with a heat pump in Huddinge?",
-            "answer": "Most customers in Huddinge reduce annual heating costs by 40–60%. A typical home saves around 31,000 SEK per year after switching from direct electric heating to an air-to-water heat pump."
+            "answer": "A villa in the Stockholm area typically saves 40–70% of heating costs. Use our savings calculator for a quick estimate."
           }
         },
         "faq-5": {
           "type": "faq_item",
           "settings": {
             "question": "Do I get ROT deduction for heat pump installation?",
-            "answer": "Yes. The green deduction (gröna avdraget) covers 50% of the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice so you never pay upfront and apply later."
+            "answer": "Yes, you get a 30% ROT deduction on the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice."
           }
         }
       },
@@ -260,7 +260,7 @@
         "hero_label": "Huddinge's leading installer",
         "heading_before": "Heat Pump in",
         "city_name": "Huddinge",
-        "hero_description": "From family homes in Stuvsta to terraced houses in Flemingsberg and modern housing in Skogås – we have installed heat pumps in all types of homes in Huddinge. Clear quote and fixed price with no hidden costs.",
+        "hero_description": "A large part of Huddinge's villa stock is still heated with direct electric. With an air-to-air or air-to-water heat pump you reduce your electricity bill by 40–70% – often with a payback period under 5 years. Free on-site needs analysis.",
         "cta_text": "Get a quote",
         "cta_url": "",
         "phone": "08-12 34 56 78",
@@ -268,14 +268,14 @@
         "trust_2": "ROT deduction 50%",
         "trust_3": "10-year warranty",
         "trust_4": "Fixed price",
-        "hstat_1_value": "360+",
+        "hstat_1_value": "510+",
         "hstat_1_label": "Installations in Huddinge",
-        "hstat_2_value": "31,000 SEK/yr",
-        "hstat_2_label": "Average home savings",
-        "hstat_3_value": "54%",
-        "hstat_3_label": "Air-to-water most common",
-        "hstat_4_value": "On the invoice",
-        "hstat_4_label": "ROT deducted directly",
+        "hstat_2_value": "78%",
+        "hstat_2_label": "Conversions from direct electric",
+        "hstat_3_value": "29,800 SEK/yr",
+        "hstat_3_label": "Average villa savings",
+        "hstat_4_value": "1 day",
+        "hstat_4_label": "Air-to-air installation time",
         "stat_1_value": "4.9/5 rating",
         "stat_1_label": "from customers",
         "stat_2_value": "5-year installation warranty",
@@ -286,24 +286,24 @@
         "stat_4_label": "on the work",
         "areas_label": "Service areas",
         "areas_heading": "We serve all of Huddinge municipality",
-        "areas_description": "Certified installers on-site in 7+ areas — fast response and local knowledge.",
-        "districts": "Flemingsberg, Vårby, Skogås, Stuvsta, Segeltorp, Masmo, Sjödalen",
+        "areas_description": "Certified installers on-site in 8+ areas — fast response and local knowledge.",
+        "districts": "Stuvsta, Snättringe, Segeltorp, Trångsund, Skogås, Vårby, Flemingsberg, Huddinge centrum",
         "available_text": "Available today",
         "services_label": "Heat pumps",
         "services_heading": "We install in Huddinge",
-        "services_sub": "Most popular in Huddinge: Air-to-water heat pump.",
+        "services_sub": "Most popular in Huddinge: Air-to-air heat pump.",
         "local_label": "Local knowledge",
         "local_heading": "What Huddinge's housing stock looks like",
-        "local_description": "Huddinge has a varied housing stock with 1960s–1970s family homes in Stuvsta and Segeltorp, million-programme housing in Flemingsberg and newer builds near Skogås. Air-to-water heat pumps are the most popular choice for homes with existing water-based heating systems.",
+        "local_description": "Huddinge has many 1970s and 1980s villas with direct electric heating where an air-to-air heat pump gives quick payback. For larger homes with water-based systems we recommend air-to-water or ground source.",
         "local_house_type": "Villas & terraced houses",
-        "local_pump_type": "Air-to-water heat pump",
-        "local_savings": "31,000 SEK/yr",
+        "local_pump_type": "Air-to-air heat pump",
+        "local_savings": "78%",
         "case_label": "Customer case",
-        "case_location": "Stuvsta, Huddinge",
-        "case_project": "Air-to-water heat pump NIBE F2040-12",
-        "case_result": "Reduced heating cost from 42,000 SEK to 11,200 SEK/yr",
-        "case_quote": "The installation was completed in two days. Very tidy and professional team. Electricity bill dropped significantly from the first month.",
-        "case_attribution": "Verified customer, Stuvsta",
+        "case_location": "Snättringe, Huddinge",
+        "case_project": "Air-to-air Toshiba Daiseikai 10",
+        "case_result": "140 m² villa – electricity cost from 38,000 SEK to 17,200 SEK/yr",
+        "case_quote": "Done in a day, worked immediately. Noticed a big difference already the first winter.",
+        "case_attribution": "Verified customer, Snättringe",
         "why_label": "Why us",
         "why_heading": "Why Huddinge chooses VARMA Energy",
         "process_label": "Process",
@@ -311,7 +311,7 @@
         "process_sub": "Four simple steps from first contact to commissioned heat pump.",
         "expertise_heading": "Local expertise in Huddinge municipality",
         "contact_name": "VARMA Energy – Huddinge",
-        "contact_address": "Esplanaden 14, 141 52 Huddinge",
+        "contact_address": "Esplanaden 14, 141 30 Huddinge",
         "contact_phone": "08-12 34 56 78",
         "maint_label": "Maintenance",
         "maint_heading": "Service & maintenance in Huddinge",
