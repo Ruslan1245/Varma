@@ -58,12 +58,10 @@
     </nav>
 
     <div class="varma-header__actions">
-      <a href="{{ routes.cart_url }}" class="varma-header__cart" aria-label="Cart ({{ cart.item_count }} items)">
+      <button type="button" class="varma-header__cart" id="varma-cart-btn" aria-label="Cart ({{ cart.item_count }} items)">
         <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-        {% if cart.item_count > 0 %}
-          <span class="varma-header__cart-count">{{ cart.item_count }}</span>
-        {% endif %}
-      </a>
+        <span class="varma-header__cart-count{% unless cart.item_count > 0 %} is-hidden{% endunless %}" id="varma-cart-count">{{ cart.item_count }}</span>
+      </button>
       <a href="{{ section.settings.cta_url | default: '/pages/contact' }}" class="varma-header__cta">
         {{ section.settings.cta_text | default: 'Get a quote' }}
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -298,6 +296,9 @@
     padding: 8px;
     border-radius: 8px;
     transition: background 0.15s;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
   .varma-header__cart:hover { background: #f1f5f9; }
   .varma-header__cart-count {
@@ -315,6 +316,7 @@
     align-items: center;
     justify-content: center;
   }
+  .varma-header__cart-count.is-hidden { display: none; }
   .varma-header__cta {
     display: flex;
     align-items: center;
@@ -475,6 +477,11 @@
     if (burger) burger.addEventListener('click', openNav);
     if (closeBtn) closeBtn.addEventListener('click', closeNav);
     if (backdrop) backdrop.addEventListener('click', closeNav);
+
+    var cartBtn = document.getElementById('varma-cart-btn');
+    if (cartBtn) cartBtn.addEventListener('click', function() {
+      if (window.varmaCartDrawer) window.varmaCartDrawer.open();
+    });
 
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeNav();
