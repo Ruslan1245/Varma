@@ -1,23 +1,46 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign price_float = product.price_min | times: 1.0 -%}
+{%- assign monthly_12 = price_float | divided_by: 100 | divided_by: 12 | round -%}
+{%- assign monthly_24 = price_float | divided_by: 100 | divided_by: 24 | round -%}
+{%- assign monthly_36 = price_float | divided_by: 100 | divided_by: 36 | round -%}
+
+{%- comment -%}
+  Hidden form off-screen — keeps SA app compatible but invisible.
+  All visible add-to-cart is AJAX via #vp-cart-btn.
+{%- endcomment -%}
+<div class="vp-hidden-form" aria-hidden="true">
+  {% form 'product', product, id: 'vp-product-form' %}
+    <input type="hidden" name="id" id="vp-variant-id" value="{{ current_variant.id }}">
+    <button type="submit" name="add" id="vp-form-atc">Add to cart</button>
+  {% endform %}
+</div>
 
 <div class="vp">
+  <nav class="vp__breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a>
+    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    <a href="/pages/shop">Shop</a>
+    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+    <span>{{ product.title }}</span>
+  </nav>
+
   <div class="vp__container">
 
-    {%- comment -%} LEFT: Images {%- endcomment -%}
+    {%- comment -%} ── LEFT: Image ── {%- endcomment -%}
     <div class="vp__media">
       <div class="vp__badges">
         <span class="vp__badge vp__badge--install">
-          <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           INCL. INSTALLATION
         </span>
         {%- if product.compare_at_price_max > product.price_min -%}
-          {%- assign savings = product.compare_at_price_max | minus: product.price_min -%}
-          <span class="vp__badge vp__badge--save">SAVE {{ savings | money_without_trailing_zeros }}</span>
+          {%- assign savings_amt = product.compare_at_price_max | minus: product.price_min -%}
+          <span class="vp__badge vp__badge--save">SAVE {{ savings_amt | money_without_trailing_zeros }}</span>
         {%- endif -%}
       </div>
       <div class="vp__img-wrap">
         {%- if product.featured_image -%}
-          {{ product.featured_image | image_url: width: 700 | image_tag: class: 'vp__img', loading: 'eager', alt: product.title }}
+          {{ product.featured_image | image_url: width: 800 | image_tag: class: 'vp__img', loading: 'eager', alt: product.title }}
         {%- else -%}
           {{ 'product-1' | placeholder_svg_tag: 'vp__img-placeholder' }}
         {%- endif -%}
@@ -25,7 +48,7 @@
       {%- if product.images.size > 1 -%}
         <div class="vp__thumbs">
           {%- for image in product.images limit: 5 -%}
-            <button class="vp__thumb {% if forloop.first %}vp__thumb--active{% endif %}" data-img-src="{{ image | image_url: width: 700 }}" type="button">
+            <button class="vp__thumb{% if forloop.first %} vp__thumb--active{% endif %}" data-src="{{ image | image_url: width: 800 }}" type="button">
               {{ image | image_url: width: 100 | image_tag: class: 'vp__thumb-img', alt: product.title }}
             </button>
           {%- endfor -%}
@@ -33,10 +56,14 @@
       {%- endif -%}
     </div>
 
-    {%- comment -%} RIGHT: Info {%- endcomment -%}
+    {%- comment -%} ── RIGHT: Info ── {%- endcomment -%}
     <div class="vp__info">
       <p class="vp__vendor">{{ product.vendor | upcase }} · {{ product.type | upcase }}</p>
       <h1 class="vp__title">{{ product.title }}</h1>
+
+      {%- if product.metafields.custom.short_description != blank -%}
+        <p class="vp__short-desc">{{ product.metafields.custom.short_description }}</p>
+      {%- endif -%}
 
       {%- if product.tags.size > 0 -%}
         <div class="vp__chips">
@@ -57,350 +84,605 @@
         {%- if product.compare_at_price_max > product.price_min -%}
           {%- assign pct = product.compare_at_price_max | minus: product.price_min | times: 100 | divided_by: product.compare_at_price_max -%}
           <span class="vp__savings-badge">
-            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             You save {{ pct }}% with ROT deduction
           </span>
         {%- endif -%}
       </div>
 
-      {%- comment -%} Installment options {%- endcomment -%}
       <div class="vp__installments">
         <p class="vp__install-label">PAY IN INSTALMENTS VIA KLARNA OR LÄNSFÖRSÄKRINGAR</p>
         <div class="vp__install-grid">
-          {%- assign monthly_12 = product.price_min | divided_by: 1200 -%}
-          {%- assign monthly_24 = product.price_min | divided_by: 2400 -%}
-          {%- assign monthly_36 = product.price_min | divided_by: 3600 -%}
           <div class="vp__install-item">
             <span class="vp__install-months">12 MO</span>
-            <span class="vp__install-amount">{{ monthly_12 | money_without_trailing_zeros }}/mo</span>
+            <span class="vp__install-amount">{{ monthly_12 }} kr/mo</span>
           </div>
           <div class="vp__install-item">
             <span class="vp__install-months">24 MO</span>
-            <span class="vp__install-amount">{{ monthly_24 | money_without_trailing_zeros }}/mo</span>
+            <span class="vp__install-amount">{{ monthly_24 }} kr/mo</span>
           </div>
           <div class="vp__install-item">
             <span class="vp__install-months">36 MO</span>
-            <span class="vp__install-amount">{{ monthly_36 | money_without_trailing_zeros }}/mo</span>
+            <span class="vp__install-amount">{{ monthly_36 }} kr/mo</span>
           </div>
         </div>
       </div>
 
-      {%- comment -%} Add to cart form {%- endcomment -%}
-      {% form 'product', product, id: 'vp-product-form' %}
-        <input type="hidden" name="id" value="{{ current_variant.id }}">
-        <div class="vp__actions">
-          <button type="submit" name="add" class="vp__btn-cart">
-            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-            Add to cart
-          </button>
-          <a href="{{ routes.cart_url }}" class="vp__btn-checkout">Go to checkout</a>
-        </div>
-      {% endform %}
+      <div class="vp__actions">
+        <button type="button" class="vp__btn-cart" id="vp-cart-btn" data-variant="{{ current_variant.id }}">
+          <svg width="17" height="17" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          Add to cart
+        </button>
+        <a href="{{ routes.cart_url }}" class="vp__btn-checkout">Go to checkout</a>
+      </div>
 
-      {%- comment -%} Request a quote button {%- endcomment -%}
+      <ul class="vp__bullets">
+        {%- if product.metafields.custom.max_area != blank -%}
+          <li>
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Heats up to {{ product.metafields.custom.max_area }}
+          </li>
+        {%- endif -%}
+        {%- assign energy_label = '' -%}
+        {%- assign scop_label = '' -%}
+        {%- for tag in product.tags -%}
+          {%- if tag contains 'A+' -%}{%- assign energy_label = tag -%}{%- endif -%}
+          {%- if tag contains 'SCOP' -%}{%- assign scop_label = tag -%}{%- endif -%}
+        {%- endfor -%}
+        {%- if energy_label != '' -%}
+          <li>
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Energy class {{ energy_label }}{% if scop_label != '' %} · {{ scop_label }}{% endif %}
+          </li>
+        {%- endif -%}
+        <li>
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Incl. complete installation by VARMA technicians
+        </li>
+        <li>
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          ROT deduction applied directly on the invoice
+        </li>
+      </ul>
+
       <div class="vp__quote-wrap">
-        <button type="button" class="vp__btn-quote" id="vp-quote-btn" data-variant-id="{{ current_variant.id }}" data-product-title="{{ product.title | escape }}">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <button type="button" class="vp__btn-quote" id="vp-quote-btn" data-product="{{ product.title | escape }}">
+          <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Request a quote
         </button>
         <p class="vp__quote-note">No obligation — we'll contact you within 24 hours</p>
       </div>
 
-      {%- comment -%} Trust badges {%- endcomment -%}
       <div class="vp__trust">
         <div class="vp__trust-item">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <div><strong>5-year warranty</strong><span>Product &amp; installation</span></div>
         </div>
         <div class="vp__trust-item">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
           <div><strong>Authorized installer</strong><span>Varma technicians</span></div>
         </div>
         <div class="vp__trust-item">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
           <div><strong>We handle delivery</strong><span>Logistics managed by us</span></div>
         </div>
         <div class="vp__trust-item">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           <div><strong>ROT 30%</strong><span>Deducted directly on invoice</span></div>
         </div>
       </div>
     </div>
   </div>
 
-  {%- comment -%} ABOUT PRODUCT {%- endcomment -%}
-  {%- if product.description != blank -%}
-    <div class="vp__about">
-      <div class="vp__about-inner">
-        <div class="vp__about-text">
-          <p class="vp__section-label">ABOUT THE PRODUCT</p>
-          <h2 class="vp__about-heading">{{ product.metafields.custom.tagline | default: product.title }}</h2>
-          <div class="vp__about-desc">{{ product.description }}</div>
-        </div>
-        <div class="vp__install-steps">
-          <p class="vp__section-label">HOW INSTALLATION WORKS</p>
-          <div class="vp__steps-grid">
-            <div class="vp__step">
+  {%- comment -%} ── ABOUT + SPECS ── {%- endcomment -%}
+  <div class="vp__about">
+    <div class="vp__about-grid">
+
+      <div class="vp__about-left">
+        <p class="vp__section-label">ABOUT THE PRODUCT</p>
+        <h2 class="vp__about-heading">{{ product.metafields.custom.tagline | default: product.title }}</h2>
+        <div class="vp__about-desc">{{ product.description }}</div>
+
+        <p class="vp__section-label vp__section-label--mt">HOW INSTALLATION WORKS</p>
+        <div class="vp__steps">
+          <div class="vp__step">
+            <div class="vp__step-top">
               <span class="vp__step-num">01</span>
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              <div><strong>Home visit &amp; survey</strong><p>Our technician measures up and plans the installation.</p></div>
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
-            <div class="vp__step">
+            <strong>Home visit &amp; survey</strong>
+            <p>Our technician measures up and plans the installation.</p>
+          </div>
+          <div class="vp__step">
+            <div class="vp__step-top">
               <span class="vp__step-num">02</span>
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-              <div><strong>We order &amp; deliver</strong><p>You pay nothing for delivery — we handle logistics.</p></div>
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
             </div>
-            <div class="vp__step">
+            <strong>We order &amp; deliver</strong>
+            <p>You pay nothing for delivery — we handle logistics.</p>
+          </div>
+          <div class="vp__step">
+            <div class="vp__step-top">
               <span class="vp__step-num">03</span>
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-              <div><strong>Installation in 1 day</strong><p>Two technicians, done quickly and cleanly the same day.</p></div>
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
             </div>
-            <div class="vp__step">
+            <strong>Installation in 1 day</strong>
+            <p>Two technicians, done quickly and cleanly the same day.</p>
+          </div>
+          <div class="vp__step">
+            <div class="vp__step-top">
               <span class="vp__step-num">04</span>
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <div><strong>Walkthrough &amp; warranty</strong><p>We show you how it works, register the warranty and clean up.</p></div>
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
+            <strong>Walkthrough &amp; warranty</strong>
+            <p>We show you how it works, register the warranty and clean up.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="vp__about-right">
+        <div class="vp__specs-card">
+          <div class="vp__specs-header">
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Technical specifications
+          </div>
+          <div class="vp__specs-body">
+            <div class="vp__specs-section">PERFORMANCE</div>
+            {%- if product.metafields.custom.energy_class != blank -%}
+              <div class="vp__spec-row"><span>Energy class (heating)</span><span>{{ product.metafields.custom.energy_class }}</span></div>
+            {%- endif -%}
+            {%- if product.metafields.custom.scop != blank -%}
+              <div class="vp__spec-row"><span>SCOP (heating)</span><span>{{ product.metafields.custom.scop }}</span></div>
+            {%- endif -%}
+            {%- if product.metafields.custom.seer != blank -%}
+              <div class="vp__spec-row"><span>SEER (cooling)</span><span>{{ product.metafields.custom.seer }}</span></div>
+            {%- endif -%}
+            {%- if product.metafields.custom.heating_power != blank -%}
+              <div class="vp__spec-row"><span>Heating output</span><span>{{ product.metafields.custom.heating_power }}</span></div>
+            {%- endif -%}
+            {%- if product.metafields.custom.cooling_power != blank -%}
+              <div class="vp__spec-row"><span>Cooling output</span><span>{{ product.metafields.custom.cooling_power }}</span></div>
+            {%- endif -%}
+            {%- if product.metafields.custom.max_area != blank -%}
+              <div class="vp__spec-row"><span>Designed for</span><span>{{ product.metafields.custom.max_area }}</span></div>
+            {%- endif -%}
+            {%- if product.metafields.custom.noise_indoor != blank or product.metafields.custom.noise_outdoor != blank or product.metafields.custom.refrigerant != blank -%}
+              <div class="vp__specs-section">SOUND &amp; COMFORT</div>
+              {%- if product.metafields.custom.noise_indoor != blank -%}
+                <div class="vp__spec-row"><span>Indoor noise level</span><span>{{ product.metafields.custom.noise_indoor }}</span></div>
+              {%- endif -%}
+              {%- if product.metafields.custom.noise_outdoor != blank -%}
+                <div class="vp__spec-row"><span>Outdoor noise level</span><span>{{ product.metafields.custom.noise_outdoor }}</span></div>
+              {%- endif -%}
+              {%- if product.metafields.custom.refrigerant != blank -%}
+                <div class="vp__spec-row"><span>Refrigerant</span><span>{{ product.metafields.custom.refrigerant }}</span></div>
+              {%- endif -%}
+            {%- endif -%}
+            <div class="vp__specs-section">FEATURES</div>
+            {%- if product.tags.size > 0 -%}
+              <div class="vp__spec-row"><span>Properties</span><span>{{ product.tags | join: ', ' }}</span></div>
+            {%- endif -%}
+            {%- if product.vendor != blank -%}
+              <div class="vp__spec-row"><span>Manufacturer</span><span>{{ product.vendor }}</span></div>
+            {%- endif -%}
+            {%- if product.type != blank -%}
+              <div class="vp__spec-row"><span>Type</span><span>{{ product.type }}</span></div>
+            {%- endif -%}
+            <div class="vp__specs-section">WARRANTY &amp; SERVICE</div>
+            <div class="vp__spec-row"><span>Warranty</span><span>5-year product + installation</span></div>
+            <div class="vp__spec-row"><span>Installation</span><span>Included — authorized VARMA technicians</span></div>
+            <div class="vp__spec-row"><span>Delivery</span><span>We manage delivery to installation day</span></div>
+          </div>
+        </div>
+
+        <div class="vp__help-card">
+          <p class="vp__help-eyebrow">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            NEED HELP CHOOSING?
+          </p>
+          <p class="vp__help-text">Call us or book a free home visit — we'll recommend the right model for your home.</p>
+          <div class="vp__help-btns">
+            <a href="tel:0812345678" class="vp__help-btn vp__help-btn--phone">
+              <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.18 6.18l.95-.95a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/></svg>
+              08-12 34 56 78
+            </a>
+            <a href="/pages/fa-offert" class="vp__help-btn vp__help-btn--visit">Book home visit</a>
           </div>
         </div>
       </div>
     </div>
-  {%- endif -%}
-
-  {%- comment -%} HELP CTA {%- endcomment -%}
-  <div class="vp__help-cta">
-    <div class="vp__help-inner">
-      <div>
-        <p class="vp__help-label">
-          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          NEED HELP CHOOSING?
-        </p>
-        <p class="vp__help-text">Call us or book a free home visit — we'll recommend the right model for your home.</p>
-      </div>
-      <div class="vp__help-btns">
-        <a href="tel:0812345678" class="vp__help-btn vp__help-btn--phone">
-          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.18 6.18l.95-.95a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/></svg>
-          08-12 34 56 78
-        </a>
-        <a href="/pages/fa-offert" class="vp__help-btn vp__help-btn--visit">Book home visit</a>
-      </div>
-    </div>
   </div>
+
+  {%- comment -%} ── SIMILAR PRODUCTS ── {%- endcomment -%}
+  {%- assign similar_collection = nil -%}
+  {%- for c in product.collections -%}
+    {%- if c.handle != 'all' -%}
+      {%- assign similar_collection = c -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if similar_collection != nil -%}
+    {%- assign similar_count = 0 -%}
+    {%- assign similar_products = '' -%}
+    {%- for p in similar_collection.products limit: 8 -%}
+      {%- if p.id != product.id -%}
+        {%- if similar_count < 4 -%}
+          {%- assign similar_count = similar_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if similar_count > 0 -%}
+      <div class="vp__similar">
+        <div class="vp__similar-header">
+          <div>
+            <p class="vp__section-label">SIMILAR MODELS</p>
+            <h2 class="vp__similar-heading">Other popular heat pumps</h2>
+          </div>
+          <a href="{{ similar_collection.url }}" class="vp__similar-all">
+            See all
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="vp__similar-grid">
+          {%- assign shown = 0 -%}
+          {%- for p in similar_collection.products limit: 8 -%}
+            {%- if p.id != product.id -%}
+              {%- if shown < 4 -%}
+                {%- assign shown = shown | plus: 1 -%}
+                <a href="{{ p.url }}" class="vp__sim-card">
+                  <div class="vp__sim-img-wrap">
+                    {%- if p.featured_image -%}
+                      {{ p.featured_image | image_url: width: 400 | image_tag: class: 'vp__sim-img', loading: 'lazy', alt: p.title }}
+                    {%- else -%}
+                      {{ 'product-1' | placeholder_svg_tag: 'vp__sim-placeholder' }}
+                    {%- endif -%}
+                  </div>
+                  <div class="vp__sim-body">
+                    {%- if p.vendor != blank -%}<p class="vp__sim-vendor">{{ p.vendor | upcase }}</p>{%- endif -%}
+                    <p class="vp__sim-title">{{ p.title }}</p>
+                    <p class="vp__sim-price">{{ p.price_min | money_without_trailing_zeros }}</p>
+                  </div>
+                </a>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endif -%}
 </div>
 
-{%- comment -%} Quote popup modal {%- endcomment -%}
+{%- comment -%} ── QUOTE MODAL ── {%- endcomment -%}
 <div class="vp-modal" id="vp-modal" aria-hidden="true">
   <div class="vp-modal__overlay" id="vp-modal-overlay"></div>
   <div class="vp-modal__dialog" role="dialog" aria-modal="true">
     <button class="vp-modal__close" id="vp-modal-close" aria-label="Close">
       <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <div class="vp-modal__steps">
+    <div class="vp-modal__steps-bar">
       <div class="vp-modal__step-indicator">
-        <span class="vp-modal__step-dot vp-modal__step-dot--active" data-step="1">1</span>
+        <span class="vp-modal__step-dot vp-modal__step-dot--active" id="vp-dot-1">1</span>
         <span class="vp-modal__step-line"></span>
-        <span class="vp-modal__step-dot" data-step="2">2</span>
+        <span class="vp-modal__step-dot" id="vp-dot-2">2</span>
       </div>
-      <p class="vp-modal__step-label" id="vp-modal-step-label">Step 1: Product inquiry</p>
+      <p class="vp-modal__step-label" id="vp-step-label">Step 1 of 2 — Product inquiry</p>
     </div>
 
-    <div id="vp-modal-step1">
+    <div id="vp-step1">
       <div class="vp-modal__product-row">
-        <div class="vp-modal__product-img">
-          {%- if product.featured_image -%}
-            {{ product.featured_image | image_url: width: 80 | image_tag: alt: product.title }}
-          {%- endif -%}
-        </div>
+        {%- if product.featured_image -%}
+          <div class="vp-modal__pimg">{{ product.featured_image | image_url: width: 80 | image_tag: alt: product.title }}</div>
+        {%- endif -%}
         <div>
-          <p class="vp-modal__product-title">{{ product.title }}</p>
-          <p class="vp-modal__product-price">{{ product.price_min | money_without_trailing_zeros }}</p>
+          <p class="vp-modal__ptitle">{{ product.title }}</p>
+          <p class="vp-modal__pprice">{{ product.price_min | money_without_trailing_zeros }}</p>
         </div>
       </div>
-      <label class="vp-modal__label">Detail inquiry</label>
+      <label class="vp-modal__label" for="vp-inquiry">Detail inquiry</label>
       <textarea class="vp-modal__textarea" id="vp-inquiry" placeholder="Describe your home, current heating system, or any specific questions..."></textarea>
       <div class="vp-modal__footer">
-        <button type="button" class="vp-modal__btn-secondary" id="vp-modal-continue-shopping">Continue shopping</button>
-        <button type="button" class="vp-modal__btn-primary" id="vp-modal-next">Continue to quote →</button>
+        <button type="button" class="vp-modal__btn-secondary" id="vp-cancel">Continue shopping</button>
+        <button type="button" class="vp-modal__btn-primary" id="vp-next">Continue →</button>
       </div>
     </div>
 
-    <div id="vp-modal-step2" style="display:none">
-      <p class="vp-modal__sub">Contact information</p>
+    <div id="vp-step2" style="display:none">
+      <p class="vp-modal__subtitle">Contact information</p>
       <div class="vp-modal__grid2">
         <div>
-          <label class="vp-modal__label">First name *</label>
+          <label class="vp-modal__label" for="vp-fname">First name *</label>
           <input class="vp-modal__input" type="text" id="vp-fname" placeholder="First name">
         </div>
         <div>
-          <label class="vp-modal__label">Last name *</label>
+          <label class="vp-modal__label" for="vp-lname">Last name *</label>
           <input class="vp-modal__input" type="text" id="vp-lname" placeholder="Last name">
         </div>
       </div>
-      <label class="vp-modal__label">Email address *</label>
+      <label class="vp-modal__label" for="vp-email">Email address *</label>
       <input class="vp-modal__input" type="email" id="vp-email" placeholder="your@email.com">
-      <label class="vp-modal__label">Phone number *</label>
+      <label class="vp-modal__label" for="vp-phone">Phone number *</label>
       <input class="vp-modal__input" type="tel" id="vp-phone" placeholder="+46 70 123 45 67">
-      <p id="vp-modal-error" class="vp-modal__error" style="display:none">Please fill in all required fields.</p>
+      <p id="vp-error" class="vp-modal__error" style="display:none">Please fill in all required fields.</p>
       <div class="vp-modal__footer">
-        <button type="button" class="vp-modal__btn-secondary" id="vp-modal-back">← Back</button>
-        <button type="button" class="vp-modal__btn-primary" id="vp-modal-submit">Send quote request</button>
+        <button type="button" class="vp-modal__btn-secondary" id="vp-back">← Back</button>
+        <button type="button" class="vp-modal__btn-primary" id="vp-submit">Send quote request</button>
       </div>
     </div>
 
-    <div id="vp-modal-success" style="display:none">
+    <div id="vp-success" style="display:none">
       <div class="vp-modal__success">
-        <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <svg width="52" height="52" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         <h3>Quote request sent!</h3>
         <p>We'll contact you within 24 hours to discuss your options.</p>
-        <button type="button" class="vp-modal__btn-primary" id="vp-modal-done">Done</button>
+        <button type="button" class="vp-modal__btn-primary" id="vp-done">Done</button>
       </div>
     </div>
   </div>
 </div>
 
 {% stylesheet %}
-  .vp { max-width: 1260px; margin: 0 auto; padding: 32px 32px 0; }
-  .vp__container { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  /* ─── Off-screen hidden form ─── */
+  .vp-hidden-form {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    pointer-events: none;
+  }
 
-  /* MEDIA */
+  /* ─── Page wrapper ─── */
+  .vp { max-width: 1260px; margin: 0 auto; padding: 0 32px; }
+
+  /* ─── Breadcrumb ─── */
+  .vp__breadcrumb {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 13px; color: #5b6474; padding: 20px 0;
+  }
+  .vp__breadcrumb a { color: #5b6474; text-decoration: none; }
+  .vp__breadcrumb a:hover { color: #19aaf8; }
+  .vp__breadcrumb svg { color: #c0c6d0; }
+  .vp__breadcrumb span:last-child { color: #0d1b2e; font-weight: 500; }
+
+  /* ─── Two-column layout ─── */
+  .vp__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    padding-bottom: 64px;
+  }
+
+  /* ─── Media ─── */
   .vp__media { position: sticky; top: 24px; }
   .vp__badges { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-  .vp__badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 6px; }
+  .vp__badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 5px 11px; border-radius: 6px;
+  }
   .vp__badge--install { background: #e8f6fe; color: #19aaf8; }
-  .vp__badge--save { background: #224466; color: #fff; }
-  .vp__img-wrap { background: #f8fafc; border-radius: 16px; padding: 32px; display: flex; align-items: center; justify-content: center; min-height: 380px; }
-  .vp__img { max-height: 340px; width: auto; max-width: 100%; object-fit: contain; }
-  .vp__img-placeholder { width: 100%; height: 340px; }
-  .vp__thumbs { display: flex; gap: 8px; margin-top: 12px; }
-  .vp__thumb { border: 2px solid #e6e8ef; border-radius: 8px; padding: 4px; cursor: pointer; background: #fff; transition: border-color 0.15s; }
+  .vp__badge--save { background: #0d1b2e; color: #fff; }
+  .vp__img-wrap {
+    background: #f8fafc; border-radius: 20px;
+    padding: 40px 32px; min-height: 400px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .vp__img { max-height: 360px; max-width: 100%; width: auto; object-fit: contain; }
+  .vp__img-placeholder { width: 100%; height: 360px; }
+  .vp__thumbs { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .vp__thumb {
+    border: 2px solid #e6e8ef; border-radius: 10px;
+    padding: 5px; cursor: pointer; background: #fff;
+    transition: border-color 0.15s;
+  }
   .vp__thumb--active { border-color: #19aaf8; }
-  .vp__thumb-img { width: 56px; height: 56px; object-fit: contain; display: block; }
+  .vp__thumb-img { width: 60px; height: 60px; object-fit: contain; display: block; }
 
-  /* INFO */
+  /* ─── Info ─── */
   .vp__vendor { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #5b6474; margin-bottom: 8px; }
-  .vp__title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: #0d1b2e; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
-  .vp__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-  .vp__chip { background: #f0f7ff; color: #19aaf8; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; border: 1px solid #c8e8fb; }
+  .vp__title { font-size: clamp(26px, 3vw, 40px); font-weight: 800; color: #0d1b2e; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .vp__short-desc { font-size: 15px; color: #5b6474; line-height: 1.6; margin-bottom: 16px; }
+  .vp__chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+  .vp__chip {
+    background: #f0f7ff; color: #19aaf8; font-size: 12px; font-weight: 600;
+    padding: 4px 12px; border-radius: 20px; border: 1px solid #c8e8fb;
+  }
 
-  /* PRICING */
-  .vp__pricing-box { background: #f8fafc; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
-  .vp__price-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #5b6474; margin-bottom: 8px; }
+  /* ─── Pricing box — dark navy ─── */
+  .vp__pricing-box {
+    background: #18283d; border-radius: 14px; padding: 20px 22px; margin-bottom: 16px;
+  }
+  .vp__price-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
   .vp__price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
-  .vp__compare { font-size: 16px; color: #9aa3b0; text-decoration: line-through; }
-  .vp__price { font-size: 36px; font-weight: 800; color: #19aaf8; line-height: 1; }
-  .vp__savings-badge { display: inline-flex; align-items: center; gap: 5px; background: #e8f6fe; color: #0e8fd6; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
+  .vp__compare { font-size: 17px; color: rgba(255,255,255,0.4); text-decoration: line-through; }
+  .vp__price { font-size: clamp(30px, 4vw, 44px); font-weight: 800; color: #fff; line-height: 1; }
+  .vp__savings-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: rgba(25,170,248,0.2); color: #6dcffd;
+    font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+    border: 1px solid rgba(25,170,248,0.35);
+  }
 
-  /* INSTALLMENTS */
-  .vp__installments { margin-bottom: 24px; }
+  /* ─── Installments ─── */
+  .vp__installments { margin-bottom: 20px; }
   .vp__install-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #5b6474; margin-bottom: 10px; }
-  .vp__install-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .vp__install-item { background: #fff; border: 1px solid #e6e8ef; border-radius: 8px; padding: 10px; text-align: center; }
+  .vp__install-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .vp__install-item {
+    background: #fff; border: 1px solid #e6e8ef; border-radius: 10px;
+    padding: 12px 8px; text-align: center;
+  }
   .vp__install-months { display: block; font-size: 11px; font-weight: 700; color: #5b6474; margin-bottom: 4px; }
-  .vp__install-amount { display: block; font-size: 14px; font-weight: 700; color: #0d1b2e; }
+  .vp__install-amount { display: block; font-size: 15px; font-weight: 700; color: #0d1b2e; }
 
-  /* ACTIONS */
-  .vp__actions { display: flex; gap: 12px; margin-bottom: 16px; }
-  .vp__btn-cart { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #19aaf8; color: #fff; border: none; border-radius: 10px; padding: 14px 20px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+  /* ─── Action buttons ─── */
+  .vp__actions { display: flex; gap: 10px; margin-bottom: 16px; }
+  .vp__btn-cart {
+    flex: 1;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: #19aaf8; color: #fff; border: none; border-radius: 10px;
+    padding: 14px 20px; font-size: 15px; font-weight: 700; cursor: pointer;
+    transition: background 0.15s;
+  }
   .vp__btn-cart:hover { background: #0e8fd6; }
-  .vp__btn-checkout { display: inline-flex; align-items: center; justify-content: center; background: #fff; color: #0d1b2e; border: 1.5px solid #e6e8ef; border-radius: 10px; padding: 14px 20px; font-size: 15px; font-weight: 600; text-decoration: none; transition: border-color 0.15s; white-space: nowrap; }
+  .vp__btn-cart:disabled { opacity: 0.7; cursor: not-allowed; }
+  .vp__btn-checkout {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #fff; color: #0d1b2e; border: 1.5px solid #e6e8ef; border-radius: 10px;
+    padding: 14px 20px; font-size: 15px; font-weight: 600; text-decoration: none;
+    transition: border-color 0.15s; white-space: nowrap;
+  }
   .vp__btn-checkout:hover { border-color: #19aaf8; color: #19aaf8; }
-  /* Hide SA app injected button — we have our own quote button */
-  .vp__actions > button:not(.vp__btn-cart),
-  .vp__actions > div:not(:empty),
-  [class*="sa-add-to-quote"], [class*="sa-btn-atq"], [class*="saatq"],
-  [id*="sa-add-to-quote"], [id*="saatq"] { display: none !important; }
 
-  /* QUOTE */
+  /* ─── Checkmark bullets ─── */
+  .vp__bullets { list-style: none; padding: 0; margin: 0 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+  .vp__bullets li { display: flex; align-items: flex-start; gap: 7px; font-size: 13px; color: #0d1b2e; font-weight: 500; }
+  .vp__bullets svg { flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── Request a quote ─── */
   .vp__quote-wrap { margin-bottom: 24px; }
-  .vp__btn-quote { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #fff; color: #19aaf8; border: 1.5px solid #19aaf8; border-radius: 10px; padding: 13px 20px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+  .vp__btn-quote {
+    width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: #fff; color: #19aaf8; border: 1.5px solid #19aaf8; border-radius: 10px;
+    padding: 12px 20px; font-size: 15px; font-weight: 700; cursor: pointer;
+    transition: background 0.15s;
+  }
   .vp__btn-quote:hover { background: #e8f6fe; }
   .vp__quote-note { font-size: 12px; color: #5b6474; text-align: center; margin-top: 6px; }
 
-  /* TRUST */
-  .vp__trust { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .vp__trust-item { display: flex; align-items: flex-start; gap: 10px; background: #f8fafc; border-radius: 10px; padding: 12px; }
+  /* ─── Trust badges ─── */
+  .vp__trust { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .vp__trust-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #f8fafc; border-radius: 10px; }
   .vp__trust-item svg { flex-shrink: 0; margin-top: 2px; }
   .vp__trust-item strong { display: block; font-size: 13px; font-weight: 700; color: #0d1b2e; }
   .vp__trust-item span { font-size: 12px; color: #5b6474; }
 
-  /* ABOUT */
-  .vp__about { padding: 64px 0; border-top: 1px solid #e6e8ef; margin-top: 56px; }
-  .vp__about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
-  .vp__section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #19aaf8; margin-bottom: 12px; }
-  .vp__about-heading { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: #0d1b2e; line-height: 1.25; margin-bottom: 16px; }
+  /* ─── About + Specs section ─── */
+  .vp__about { border-top: 1px solid #e6e8ef; padding: 56px 0; }
+  .vp__about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .vp__section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #19aaf8; margin-bottom: 14px; }
+  .vp__section-label--mt { margin-top: 36px; }
+  .vp__about-heading { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; color: #0d1b2e; line-height: 1.25; margin-bottom: 14px; }
   .vp__about-desc { font-size: 15px; color: #5b6474; line-height: 1.7; }
-  .vp__about-desc p { margin-bottom: 12px; }
+  .vp__about-desc p { margin-bottom: 10px; }
   .vp__about-desc ul { padding-left: 20px; }
   .vp__about-desc li { margin-bottom: 6px; }
 
-  /* STEPS */
-  .vp__steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .vp__step { display: flex; gap: 12px; background: #f8fafc; border-radius: 10px; padding: 16px; }
-  .vp__step-num { font-size: 11px; font-weight: 800; color: #19aaf8; letter-spacing: 0.05em; flex-shrink: 0; }
-  .vp__step svg { flex-shrink: 0; color: #19aaf8; margin-top: 1px; }
-  .vp__step strong { display: block; font-size: 13px; font-weight: 700; color: #0d1b2e; margin-bottom: 4px; }
+  /* ─── Installation steps ─── */
+  .vp__steps { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .vp__step { background: #fff; border: 1px solid #e6e8ef; border-radius: 12px; padding: 16px; }
+  .vp__step-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .vp__step-num { font-size: 11px; font-weight: 800; color: #19aaf8; letter-spacing: 0.05em; }
+  .vp__step strong { display: block; font-size: 13px; font-weight: 700; color: #0d1b2e; margin-bottom: 5px; }
   .vp__step p { font-size: 12px; color: #5b6474; line-height: 1.5; margin: 0; }
 
-  /* HELP CTA */
-  .vp__help-cta { background: #19aaf8; border-radius: 16px; padding: 28px 36px; margin: 0 0 64px; }
-  .vp__help-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .vp__help-label { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); margin-bottom: 6px; }
-  .vp__help-text { font-size: 16px; font-weight: 600; color: #fff; max-width: 480px; }
-  .vp__help-btns { display: flex; gap: 12px; flex-shrink: 0; }
-  .vp__help-btn { display: inline-flex; align-items: center; gap: 7px; padding: 11px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  /* ─── Specs card ─── */
+  .vp__specs-card { background: #0d1b2e; border-radius: 14px; overflow: hidden; margin-bottom: 16px; }
+  .vp__specs-header {
+    display: flex; align-items: center; gap: 8px;
+    padding: 16px 20px; font-size: 14px; font-weight: 700; color: #fff;
+    background: #18283d; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .vp__specs-body { padding: 0; }
+  .vp__specs-section {
+    padding: 8px 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    color: #19aaf8; background: rgba(25,170,248,0.08);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .vp__specs-section:first-child { border-top: none; }
+  .vp__spec-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 10px 20px; border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 13px;
+  }
+  .vp__spec-row span:first-child { color: rgba(255,255,255,0.55); }
+  .vp__spec-row span:last-child { color: #fff; font-weight: 500; text-align: right; max-width: 55%; }
+
+  /* ─── Help card ─── */
+  .vp__help-card { background: #19aaf8; border-radius: 14px; padding: 24px; }
+  .vp__help-eyebrow { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.75); margin-bottom: 10px; }
+  .vp__help-text { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.5; margin-bottom: 16px; }
+  .vp__help-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .vp__help-btn { display: inline-flex; align-items: center; gap: 7px; padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
   .vp__help-btn--phone { background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
   .vp__help-btn--phone:hover { background: rgba(255,255,255,0.25); }
   .vp__help-btn--visit { background: #fff; color: #19aaf8; }
   .vp__help-btn--visit:hover { background: #e8f6fe; }
 
-  /* MODAL */
+  /* ─── Similar products ─── */
+  .vp__similar { border-top: 1px solid #e6e8ef; padding: 56px 0 64px; }
+  .vp__similar-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; }
+  .vp__similar-heading { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; color: #0d1b2e; }
+  .vp__similar-all { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: #19aaf8; text-decoration: none; white-space: nowrap; }
+  .vp__similar-all:hover { text-decoration: underline; }
+  .vp__similar-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+  .vp__sim-card { display: block; text-decoration: none; background: #fff; border: 1px solid #e6e8ef; border-radius: 16px; overflow: hidden; transition: box-shadow 0.2s; }
+  .vp__sim-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .vp__sim-img-wrap { aspect-ratio: 1; background: #f8fafc; display: flex; align-items: center; justify-content: center; padding: 28px; }
+  .vp__sim-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .vp__sim-placeholder { width: 100%; height: 100%; }
+  .vp__sim-body { padding: 14px 16px 16px; }
+  .vp__sim-vendor { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #5b6474; margin-bottom: 4px; }
+  .vp__sim-title { font-size: 15px; font-weight: 700; color: #0d1b2e; margin-bottom: 6px; line-height: 1.3; }
+  .vp__sim-price { font-size: 16px; font-weight: 800; color: #19aaf8; }
+
+  /* ─── Modal ─── */
   .vp-modal { display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; }
   .vp-modal--open { display: flex; }
   .vp-modal__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
   .vp-modal__dialog { position: relative; background: #fff; border-radius: 16px; padding: 32px; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; z-index: 1; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
   .vp-modal__close { position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; color: #5b6474; padding: 4px; }
   .vp-modal__close:hover { color: #0d1b2e; }
-  .vp-modal__steps { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .vp-modal__steps-bar { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
   .vp-modal__step-indicator { display: flex; align-items: center; gap: 8px; }
   .vp-modal__step-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #e6e8ef; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #9aa3b0; }
   .vp-modal__step-dot--active { background: #19aaf8; border-color: #19aaf8; color: #fff; }
   .vp-modal__step-line { width: 40px; height: 2px; background: #e6e8ef; }
   .vp-modal__step-label { font-size: 14px; font-weight: 600; color: #0d1b2e; }
-  .vp-modal__product-row { display: flex; align-items: center; gap: 16px; background: #f8fafc; border-radius: 10px; padding: 16px; margin-bottom: 20px; }
-  .vp-modal__product-img img { width: 64px; height: 64px; object-fit: contain; }
-  .vp-modal__product-title { font-size: 14px; font-weight: 700; color: #0d1b2e; margin-bottom: 4px; }
-  .vp-modal__product-price { font-size: 13px; color: #19aaf8; font-weight: 600; }
+  .vp-modal__product-row { display: flex; align-items: center; gap: 14px; background: #f8fafc; border-radius: 10px; padding: 14px; margin-bottom: 20px; }
+  .vp-modal__pimg img { width: 64px; height: 64px; object-fit: contain; }
+  .vp-modal__ptitle { font-size: 14px; font-weight: 700; color: #0d1b2e; margin-bottom: 4px; }
+  .vp-modal__pprice { font-size: 13px; color: #19aaf8; font-weight: 600; }
   .vp-modal__label { display: block; font-size: 13px; font-weight: 600; color: #0d1b2e; margin-bottom: 6px; }
   .vp-modal__textarea { width: 100%; border: 1.5px solid #e6e8ef; border-radius: 8px; padding: 12px; font-size: 14px; min-height: 90px; resize: vertical; font-family: inherit; margin-bottom: 20px; box-sizing: border-box; }
   .vp-modal__textarea:focus { outline: none; border-color: #19aaf8; }
-  .vp-modal__sub { font-size: 15px; font-weight: 700; color: #0d1b2e; margin-bottom: 16px; }
+  .vp-modal__subtitle { font-size: 15px; font-weight: 700; color: #0d1b2e; margin-bottom: 16px; }
   .vp-modal__grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
   .vp-modal__input { width: 100%; border: 1.5px solid #e6e8ef; border-radius: 8px; padding: 10px 12px; font-size: 14px; font-family: inherit; margin-bottom: 12px; box-sizing: border-box; }
   .vp-modal__input:focus { outline: none; border-color: #19aaf8; }
   .vp-modal__error { color: #e53e3e; font-size: 13px; margin-bottom: 12px; }
-  .vp-modal__footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; }
-  .vp-modal__btn-primary { background: #19aaf8; color: #fff; border: none; border-radius: 8px; padding: 12px 20px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+  .vp-modal__footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 4px; }
+  .vp-modal__btn-primary { background: #19aaf8; color: #fff; border: none; border-radius: 8px; padding: 12px 22px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
   .vp-modal__btn-primary:hover { background: #0e8fd6; }
-  .vp-modal__btn-secondary { background: #fff; color: #5b6474; border: 1.5px solid #e6e8ef; border-radius: 8px; padding: 12px 20px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .vp-modal__btn-secondary { background: #fff; color: #5b6474; border: 1.5px solid #e6e8ef; border-radius: 8px; padding: 12px 22px; font-size: 14px; font-weight: 600; cursor: pointer; }
   .vp-modal__success { text-align: center; padding: 20px 0; }
   .vp-modal__success svg { margin-bottom: 16px; }
   .vp-modal__success h3 { font-size: 20px; font-weight: 800; color: #0d1b2e; margin-bottom: 8px; }
   .vp-modal__success p { font-size: 15px; color: #5b6474; margin-bottom: 24px; }
 
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
+  /* ─── Responsive ─── */
+  @media (max-width: 1024px) {
+    .vp__container { gap: 40px; }
+    .vp__about-grid { gap: 40px; }
+  }
+  @media (max-width: 860px) {
     .vp__container { grid-template-columns: 1fr; gap: 32px; }
     .vp__media { position: static; }
-    .vp__about-inner { grid-template-columns: 1fr; gap: 40px; }
-    .vp__trust { grid-template-columns: 1fr 1fr; }
-    .vp__help-inner { flex-direction: column; align-items: flex-start; }
+    .vp__about-grid { grid-template-columns: 1fr; }
+    .vp__similar-grid { grid-template-columns: repeat(2,1fr); }
+    .vp__bullets { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .vp { padding: 20px 16px 0; }
-    .vp__actions { flex-direction: column; }
+    .vp { padding: 0 16px; }
     .vp__trust { grid-template-columns: 1fr; }
-    .vp__steps-grid { grid-template-columns: 1fr; }
-    .vp-modal__grid2 { grid-template-columns: 1fr; }
+    .vp__steps { grid-template-columns: 1fr; }
+    .vp__actions { flex-direction: column; }
     .vp__install-grid { grid-template-columns: repeat(3,1fr); }
+    .vp__similar-grid { grid-template-columns: 1fr 1fr; }
+    .vp-modal__grid2 { grid-template-columns: 1fr; }
+    .vp__help-btns { flex-direction: column; }
   }
 {% endstylesheet %}
 
@@ -408,89 +690,97 @@
   (function() {
     // Thumbnail switcher
     var mainImg = document.querySelector('.vp__img');
-    document.querySelectorAll('.vp__thumb').forEach(function(thumb) {
-      thumb.addEventListener('click', function() {
-        if (mainImg) mainImg.src = thumb.getAttribute('data-img-src');
-        document.querySelectorAll('.vp__thumb').forEach(function(t) { t.classList.remove('vp__thumb--active'); });
-        thumb.classList.add('vp__thumb--active');
+    document.querySelectorAll('.vp__thumb').forEach(function(t) {
+      t.addEventListener('click', function() {
+        if (mainImg) mainImg.src = t.getAttribute('data-src');
+        document.querySelectorAll('.vp__thumb').forEach(function(x) { x.classList.remove('vp__thumb--active'); });
+        t.classList.add('vp__thumb--active');
       });
     });
 
+    // AJAX add to cart
+    var cartBtn = document.getElementById('vp-cart-btn');
+    if (cartBtn) {
+      cartBtn.addEventListener('click', function() {
+        var id = parseInt(cartBtn.getAttribute('data-variant'));
+        var origHTML = cartBtn.innerHTML;
+        cartBtn.disabled = true;
+        cartBtn.textContent = 'Adding...';
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: id, quantity: 1 })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function() {
+          cartBtn.textContent = 'Added!';
+          if (window.varmaCartDrawer) window.varmaCartDrawer.open();
+          setTimeout(function() { cartBtn.innerHTML = origHTML; cartBtn.disabled = false; }, 1800);
+        })
+        .catch(function() { cartBtn.innerHTML = origHTML; cartBtn.disabled = false; });
+      });
+    }
+
     // Quote modal
     var modal = document.getElementById('vp-modal');
-    var quoteBtn = document.getElementById('vp-quote-btn');
-    var closeBtn = document.getElementById('vp-modal-close');
-    var overlay = document.getElementById('vp-modal-overlay');
-    var step1 = document.getElementById('vp-modal-step1');
-    var step2 = document.getElementById('vp-modal-step2');
-    var success = document.getElementById('vp-modal-success');
-    var nextBtn = document.getElementById('vp-modal-next');
-    var backBtn = document.getElementById('vp-modal-back');
-    var submitBtn = document.getElementById('vp-modal-submit');
-    var doneBtn = document.getElementById('vp-modal-done');
-    var continueBtn = document.getElementById('vp-modal-continue-shopping');
-    var stepLabel = document.getElementById('vp-modal-step-label');
-    var errorEl = document.getElementById('vp-modal-error');
-    var dot1 = document.querySelector('.vp-modal__step-dot[data-step="1"]');
-    var dot2 = document.querySelector('.vp-modal__step-dot[data-step="2"]');
+    var step1 = document.getElementById('vp-step1');
+    var step2 = document.getElementById('vp-step2');
+    var success = document.getElementById('vp-success');
+    var dot1 = document.getElementById('vp-dot-1');
+    var dot2 = document.getElementById('vp-dot-2');
+    var stepLabel = document.getElementById('vp-step-label');
+    var errorEl = document.getElementById('vp-error');
 
     function openModal() { modal.classList.add('vp-modal--open'); document.body.style.overflow = 'hidden'; }
-    function closeModal() { modal.classList.remove('vp-modal--open'); document.body.style.overflow = ''; }
+    function closeModal() {
+      modal.classList.remove('vp-modal--open');
+      document.body.style.overflow = '';
+      step1.style.display = ''; step2.style.display = 'none'; success.style.display = 'none';
+      dot1.classList.add('vp-modal__step-dot--active'); dot2.classList.remove('vp-modal__step-dot--active');
+      stepLabel.textContent = 'Step 1 of 2 — Product inquiry';
+    }
 
+    var quoteBtn = document.getElementById('vp-quote-btn');
     if (quoteBtn) quoteBtn.addEventListener('click', openModal);
-    if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    if (overlay) overlay.addEventListener('click', closeModal);
-    if (continueBtn) continueBtn.addEventListener('click', closeModal);
+    document.getElementById('vp-modal-close').addEventListener('click', closeModal);
+    document.getElementById('vp-modal-overlay').addEventListener('click', closeModal);
+    document.getElementById('vp-cancel').addEventListener('click', closeModal);
 
-    if (nextBtn) nextBtn.addEventListener('click', function() {
-      step1.style.display = 'none';
-      step2.style.display = 'block';
-      stepLabel.textContent = 'Step 2: Contact info';
-      dot1.classList.remove('vp-modal__step-dot--active');
-      dot2.classList.add('vp-modal__step-dot--active');
+    document.getElementById('vp-next').addEventListener('click', function() {
+      step1.style.display = 'none'; step2.style.display = '';
+      dot1.classList.remove('vp-modal__step-dot--active'); dot2.classList.add('vp-modal__step-dot--active');
+      stepLabel.textContent = 'Step 2 of 2 — Contact info';
+    });
+    document.getElementById('vp-back').addEventListener('click', function() {
+      step2.style.display = 'none'; step1.style.display = '';
+      dot2.classList.remove('vp-modal__step-dot--active'); dot1.classList.add('vp-modal__step-dot--active');
+      stepLabel.textContent = 'Step 1 of 2 — Product inquiry';
     });
 
-    if (backBtn) backBtn.addEventListener('click', function() {
-      step2.style.display = 'none';
-      step1.style.display = 'block';
-      stepLabel.textContent = 'Step 1: Product inquiry';
-      dot2.classList.remove('vp-modal__step-dot--active');
-      dot1.classList.add('vp-modal__step-dot--active');
-    });
-
-    if (submitBtn) submitBtn.addEventListener('click', function() {
+    document.getElementById('vp-submit').addEventListener('click', function() {
       var fname = document.getElementById('vp-fname').value.trim();
       var lname = document.getElementById('vp-lname').value.trim();
       var email = document.getElementById('vp-email').value.trim();
       var phone = document.getElementById('vp-phone').value.trim();
-      if (!fname || !lname || !email || !phone) {
-        errorEl.style.display = 'block';
-        return;
-      }
+      if (!fname || !lname || !email || !phone) { errorEl.style.display = 'block'; return; }
       errorEl.style.display = 'none';
-      var productTitle = quoteBtn ? quoteBtn.getAttribute('data-product-title') : '';
+      var productTitle = quoteBtn ? quoteBtn.getAttribute('data-product') : '';
       var inquiry = document.getElementById('vp-inquiry').value;
-      var body = JSON.stringify({
-        'contact[first_name]': fname,
-        'contact[last_name]': lname,
-        'contact[email]': email,
-        'contact[phone]': phone,
-        'contact[body]': 'Product: ' + productTitle + '\n\n' + inquiry
-      });
       fetch('/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: body
+        body: JSON.stringify({
+          'contact[first_name]': fname, 'contact[last_name]': lname,
+          'contact[email]': email, 'contact[phone]': phone,
+          'contact[body]': 'Product: ' + productTitle + '\n\n' + inquiry
+        })
       }).then(function() {
-        step2.style.display = 'none';
-        success.style.display = 'block';
+        step2.style.display = 'none'; success.style.display = '';
       }).catch(function() {
-        step2.style.display = 'none';
-        success.style.display = 'block';
+        step2.style.display = 'none'; success.style.display = '';
       });
     });
-
-    if (doneBtn) doneBtn.addEventListener('click', closeModal);
+    document.getElementById('vp-done').addEventListener('click', closeModal);
   })();
 {% endjavascript %}
 
@@ -498,8 +788,6 @@
 {
   "name": "t:general.product",
   "settings": [],
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  }
+  "disabled_on": { "groups": ["header", "footer"] }
 }
 {% endschema %}
