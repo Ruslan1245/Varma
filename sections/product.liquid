@@ -228,36 +228,16 @@
           </div>
           <div class="vp__specs-body">
             <div class="vp__specs-section">PERFORMANCE</div>
-            {%- if product.metafields.custom.energy_class != blank -%}
-              <div class="vp__spec-row"><span>Energy class (heating)</span><span>{{ product.metafields.custom.energy_class }}</span></div>
-            {%- endif -%}
-            {%- if product.metafields.custom.scop != blank -%}
-              <div class="vp__spec-row"><span>SCOP (heating)</span><span>{{ product.metafields.custom.scop }}</span></div>
-            {%- endif -%}
-            {%- if product.metafields.custom.seer != blank -%}
-              <div class="vp__spec-row"><span>SEER (cooling)</span><span>{{ product.metafields.custom.seer }}</span></div>
-            {%- endif -%}
-            {%- if product.metafields.custom.heating_power != blank -%}
-              <div class="vp__spec-row"><span>Heating output</span><span>{{ product.metafields.custom.heating_power }}</span></div>
-            {%- endif -%}
-            {%- if product.metafields.custom.cooling_power != blank -%}
-              <div class="vp__spec-row"><span>Cooling output</span><span>{{ product.metafields.custom.cooling_power }}</span></div>
-            {%- endif -%}
-            {%- if product.metafields.custom.max_area != blank -%}
-              <div class="vp__spec-row"><span>Designed for</span><span>{{ product.metafields.custom.max_area }}</span></div>
-            {%- endif -%}
-            {%- if product.metafields.custom.noise_indoor != blank or product.metafields.custom.noise_outdoor != blank or product.metafields.custom.refrigerant != blank -%}
-              <div class="vp__specs-section">SOUND &amp; COMFORT</div>
-              {%- if product.metafields.custom.noise_indoor != blank -%}
-                <div class="vp__spec-row"><span>Indoor noise level</span><span>{{ product.metafields.custom.noise_indoor }}</span></div>
-              {%- endif -%}
-              {%- if product.metafields.custom.noise_outdoor != blank -%}
-                <div class="vp__spec-row"><span>Outdoor noise level</span><span>{{ product.metafields.custom.noise_outdoor }}</span></div>
-              {%- endif -%}
-              {%- if product.metafields.custom.refrigerant != blank -%}
-                <div class="vp__spec-row"><span>Refrigerant</span><span>{{ product.metafields.custom.refrigerant }}</span></div>
-              {%- endif -%}
-            {%- endif -%}
+            <div class="vp__spec-row"><span>Energy class (heating)</span><span>{{ product.metafields.custom.energy_class | default: '—' }}</span></div>
+            <div class="vp__spec-row"><span>SCOP (heating)</span><span>{{ product.metafields.custom.scop | default: '—' }}</span></div>
+            <div class="vp__spec-row"><span>SEER (cooling)</span><span>{{ product.metafields.custom.seer | default: '—' }}</span></div>
+            <div class="vp__spec-row"><span>Heating output</span><span>{{ product.metafields.custom.heating_power | default: '—' }}</span></div>
+            <div class="vp__spec-row"><span>Cooling output</span><span>{{ product.metafields.custom.cooling_power | default: '—' }}</span></div>
+            <div class="vp__spec-row"><span>Designed for</span><span>{{ product.metafields.custom.max_area | default: '—' }}</span></div>
+            <div class="vp__specs-section">SOUND &amp; COMFORT</div>
+            <div class="vp__spec-row"><span>Indoor noise level</span><span>{{ product.metafields.custom.noise_indoor | default: '—' }}</span></div>
+            <div class="vp__spec-row"><span>Outdoor noise level</span><span>{{ product.metafields.custom.noise_outdoor | default: '—' }}</span></div>
+            <div class="vp__spec-row"><span>Refrigerant</span><span>{{ product.metafields.custom.refrigerant | default: '—' }}</span></div>
             <div class="vp__specs-section">FEATURES</div>
             {%- if product.tags.size > 0 -%}
               <div class="vp__spec-row"><span>Properties</span><span>{{ product.tags | join: ', ' }}</span></div>
@@ -269,7 +249,7 @@
               <div class="vp__spec-row"><span>Type</span><span>{{ product.type }}</span></div>
             {%- endif -%}
             <div class="vp__specs-section">WARRANTY &amp; SERVICE</div>
-            <div class="vp__spec-row"><span>Warranty</span><span>5-year product + installation</span></div>
+            <div class="vp__spec-row"><span>Warranty</span><span>5-year product warranty · 5-year installation warranty</span></div>
             <div class="vp__spec-row"><span>Installation</span><span>Included — authorized VARMA technicians</span></div>
             <div class="vp__spec-row"><span>Delivery</span><span>We manage delivery to installation day</span></div>
           </div>
