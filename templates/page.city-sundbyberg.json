@@ -69,7 +69,7 @@
 					"settings": {
 						"icon": "experience",
 						"title": "Experience",
-						"description": "We have installed heat pumps across all of Sundbyberg – from Hallonbergen to Duvbo."
+						"description": "We have installed heat pumps across all of Sundbyberg city – from Central Sundbyberg to Brotorp."
 					}
 				},
 				"why-2": {
@@ -182,35 +182,35 @@
 					"type": "faq_item",
 					"settings": {
 						"question": "How much does a heat pump cost in Sundbyberg?",
-						"answer": "Air-to-air starts from approx. 18,000 SEK. Air-to-water typically costs 65,000–120,000 SEK. Ground source starts around 180,000 SEK including drilling. After the green deduction (gröna avdraget), which covers 50% of labour costs, the net cost is significantly lower."
+						"answer": "The price in Sundbyberg ranges from approx. 18,000 SEK for an air-to-air heat pump to 260,000 SEK for a complete ground source installation. You get ROT deduction on the labour cost."
 					}
 				},
 				"faq-2": {
 					"type": "faq_item",
 					"settings": {
-						"question": "Do I need housing association approval in Sundbyberg?",
-						"answer": "For homes in a housing association (BRF), approval is usually required for the external unit. We prepare all the documentation and liaise with the association on your behalf."
+						"question": "Does VARMA Energy install ground source heat pumps in Sundbyberg?",
+						"answer": "Yes, we install ground source across all of Sundbyberg city. We handle drilling permits and all contact with the municipality."
 					}
 				},
 				"faq-3": {
 					"type": "faq_item",
 					"settings": {
 						"question": "Which heat pump suits my home in Sundbyberg?",
-						"answer": "For homes with water-based heating (radiators or underfloor), air-to-water delivers the best savings. For direct electric heating, air-to-air is the most cost-effective choice. Our technician recommends the right type during the free home visit."
+						"answer": "It depends on the home's size, existing heating system and budget. Ground source and air-to-water suit homes with water-based systems, air-to-air suits direct electric heating. We offer a free needs analysis."
 					}
 				},
 				"faq-4": {
 					"type": "faq_item",
 					"settings": {
 						"question": "How much can I save on heating in Sundbyberg?",
-						"answer": "Most customers in Sundbyberg reduce annual heating costs by 40–60%. A typical home saves around 32,000 SEK per year after switching from direct electric heating to an air-to-water heat pump."
+						"answer": "A villa in the Stockholm area typically saves 40–70% of heating costs. Use our savings calculator for a quick estimate."
 					}
 				},
 				"faq-5": {
 					"type": "faq_item",
 					"settings": {
 						"question": "Do I get ROT deduction for heat pump installation?",
-						"answer": "Yes. The green deduction (gröna avdraget) covers 50% of the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice so you never pay upfront and apply later."
+						"answer": "Yes, you get a 30% ROT deduction on the labour cost, up to 50,000 SEK per person per year. We deduct this directly on the invoice."
 					}
 				}
 			},
@@ -227,7 +227,7 @@
 				"hero_label": "Sundbyberg's leading installer",
 				"heading_before": "Heat Pump in",
 				"city_name": "Sundbyberg",
-				"hero_description": "From compact terraced houses in Hallonbergen to functionalist villas in Duvbo – we have installed heat pumps in all types of homes in Sundbyberg. Clear quote and fixed price with no hidden costs.",
+				"hero_description": "VARMA Energy was founded in Sundbyberg and we know every neighbourhood. Fast emergency service, short response times and installers who live in the municipality – that is what you get when you choose a local provider.",
 				"cta_text": "Get a quote",
 				"cta_url": "",
 				"phone": "08-12 34 56 78",
@@ -235,14 +235,14 @@
 				"trust_2": "ROT deduction 50%",
 				"trust_3": "10-year warranty",
 				"trust_4": "Fixed price",
-				"hstat_1_value": "280+",
+				"hstat_1_value": "320+",
 				"hstat_1_label": "Installations in Sundbyberg",
-				"hstat_2_value": "32,000 SEK/yr",
-				"hstat_2_label": "Average home savings",
-				"hstat_3_value": "57%",
-				"hstat_3_label": "Air-to-water most common",
-				"hstat_4_value": "On the invoice",
-				"hstat_4_label": "ROT deducted directly",
+				"hstat_2_value": "Under 2 hours",
+				"hstat_2_label": "Emergency response time",
+				"hstat_3_value": "Esplanaden 14",
+				"hstat_3_label": "Local office",
+				"hstat_4_value": "45+",
+				"hstat_4_label": "Housing association jobs",
 				"stat_1_value": "4.9/5 rating",
 				"stat_1_label": "from customers",
 				"stat_2_value": "5-year installation warranty",
@@ -254,22 +254,22 @@
 				"areas_label": "Service areas",
 				"areas_heading": "We serve all of Sundbyberg city",
 				"areas_description": "Certified installers on-site in 7+ areas — fast response and local knowledge.",
-				"districts": "Hallonbergen, Rissne, Lilla Alby, Ursvik, Duvbo, Sundbyberg centrum, Storskogen",
+				"districts": "Centrala Sundbyberg, Hallonbergen, Ör, Storskogen, Duvbo, Rissne, Brotorp",
 				"available_text": "Available today",
 				"services_label": "Heat pumps",
 				"services_heading": "We install in Sundbyberg",
 				"services_sub": "Most popular in Sundbyberg: Air-to-water heat pump.",
 				"local_label": "Local knowledge",
 				"local_heading": "What Sundbyberg's housing stock looks like",
-				"local_description": "Sundbyberg is Sweden's most densely populated municipality, with a mix of million-programme housing, functionalist villas and modern new builds. Air-to-water heat pumps are the most common choice for water-based heating systems, while air-to-air suits homes with direct electric heating.",
-				"local_house_type": "Terraced houses & villas",
+				"local_description": "Sundbyberg has dense villa areas in Duvbo and Brotorp, as well as many housing associations in Hallonbergen and Ör. We have delivered several large conversions from oil and direct electric to air-to-water and ground source in the municipality.",
+				"local_house_type": "Villas & terraced houses",
 				"local_pump_type": "Air-to-water heat pump",
-				"local_savings": "32,000 SEK/yr",
+				"local_savings": "Under 2 hours",
 				"case_label": "Customer case",
 				"case_location": "Duvbo, Sundbyberg",
-				"case_project": "Air-to-water heat pump NIBE F2040",
-				"case_result": "Reduced heating cost from 38,000 SEK to 10,500 SEK/yr",
-				"case_quote": "From the first call to a finished installation took just two weeks. Professional team, clean job.",
+				"case_project": "Air-to-water Toshiba Estia",
+				"case_result": "Replaced oil boiler – saves 41,000 SEK/yr and reduced CO₂ by 4.2 tonnes",
+				"case_quote": "The team was here a week after the quote. Everything done in three days including removal of the oil tank.",
 				"case_attribution": "Verified customer, Duvbo",
 				"why_label": "Why us",
 				"why_heading": "Why Sundbyberg chooses VARMA Energy",
@@ -278,7 +278,7 @@
 				"process_sub": "Four simple steps from first contact to commissioned heat pump.",
 				"expertise_heading": "Local expertise in Sundbyberg city",
 				"contact_name": "VARMA Energy – Sundbyberg",
-				"contact_address": "Esplanaden 14, 172 67 Sundbyberg",
+				"contact_address": "Esplanaden 14, 172 31 Sundbyberg",
 				"contact_phone": "08-12 34 56 78",
 				"maint_label": "Maintenance",
 				"maint_heading": "Service & maintenance in Sundbyberg",
