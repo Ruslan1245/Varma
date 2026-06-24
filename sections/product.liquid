@@ -1,45 +1,493 @@
-{% comment %}
-  This section is used in the product template to render product page with
-  media, content, and add-to-cart form.
+{%- assign current_variant = product.selected_or_first_available_variant -%}
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/product
-{% endcomment %}
+<div class="vp">
+  <div class="vp__container">
 
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
+    {%- comment -%} LEFT: Images {%- endcomment -%}
+    <div class="vp__media">
+      <div class="vp__badges">
+        <span class="vp__badge vp__badge--install">
+          <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          INCL. INSTALLATION
+        </span>
+        {%- if product.compare_at_price_max > product.price_min -%}
+          {%- assign savings = product.compare_at_price_max | minus: product.price_min -%}
+          <span class="vp__badge vp__badge--save">SAVE {{ savings | money_without_trailing_zeros }}</span>
+        {%- endif -%}
+      </div>
+      <div class="vp__img-wrap">
+        {%- if product.featured_image -%}
+          {{ product.featured_image | image_url: width: 700 | image_tag: class: 'vp__img', loading: 'eager', alt: product.title }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'vp__img-placeholder' }}
+        {%- endif -%}
+      </div>
+      {%- if product.images.size > 1 -%}
+        <div class="vp__thumbs">
+          {%- for image in product.images limit: 5 -%}
+            <button class="vp__thumb {% if forloop.first %}vp__thumb--active{% endif %}" data-img-src="{{ image | image_url: width: 700 }}" type="button">
+              {{ image | image_url: width: 100 | image_tag: class: 'vp__thumb-img', alt: product.title }}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} RIGHT: Info {%- endcomment -%}
+    <div class="vp__info">
+      <p class="vp__vendor">{{ product.vendor | upcase }} · {{ product.type | upcase }}</p>
+      <h1 class="vp__title">{{ product.title }}</h1>
+
+      {%- if product.tags.size > 0 -%}
+        <div class="vp__chips">
+          {%- for tag in product.tags limit: 6 -%}
+            <span class="vp__chip">{{ tag }}</span>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      <div class="vp__pricing-box">
+        <p class="vp__price-label">PRICE AFTER ROT DEDUCTION (INCL. INSTALLATION)</p>
+        <div class="vp__price-row">
+          {%- if product.compare_at_price_max > product.price_min -%}
+            <span class="vp__compare">{{ product.compare_at_price_max | money_without_trailing_zeros }}</span>
+          {%- endif -%}
+          <span class="vp__price">{{ product.price_min | money_without_trailing_zeros }}</span>
+        </div>
+        {%- if product.compare_at_price_max > product.price_min -%}
+          {%- assign pct = product.compare_at_price_max | minus: product.price_min | times: 100 | divided_by: product.compare_at_price_max -%}
+          <span class="vp__savings-badge">
+            <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            You save {{ pct }}% with ROT deduction
+          </span>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Installment options {%- endcomment -%}
+      <div class="vp__installments">
+        <p class="vp__install-label">PAY IN INSTALMENTS VIA KLARNA OR LÄNSFÖRSÄKRINGAR</p>
+        <div class="vp__install-grid">
+          {%- assign monthly_12 = product.price_min | divided_by: 1200 -%}
+          {%- assign monthly_24 = product.price_min | divided_by: 2400 -%}
+          {%- assign monthly_36 = product.price_min | divided_by: 3600 -%}
+          <div class="vp__install-item">
+            <span class="vp__install-months">12 MO</span>
+            <span class="vp__install-amount">{{ monthly_12 | money_without_trailing_zeros }}/mo</span>
+          </div>
+          <div class="vp__install-item">
+            <span class="vp__install-months">24 MO</span>
+            <span class="vp__install-amount">{{ monthly_24 | money_without_trailing_zeros }}/mo</span>
+          </div>
+          <div class="vp__install-item">
+            <span class="vp__install-months">36 MO</span>
+            <span class="vp__install-amount">{{ monthly_36 | money_without_trailing_zeros }}/mo</span>
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} Add to cart form {%- endcomment -%}
+      {% form 'product', product, id: 'vp-product-form' %}
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+        <div class="vp__actions">
+          <button type="submit" name="add" class="vp__btn-cart">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Add to cart
+          </button>
+          <a href="{{ routes.cart_url }}" class="vp__btn-checkout">Go to checkout</a>
+        </div>
+      {% endform %}
+
+      {%- comment -%} Request a quote button {%- endcomment -%}
+      <div class="vp__quote-wrap">
+        <button type="button" class="vp__btn-quote" id="vp-quote-btn" data-variant-id="{{ current_variant.id }}" data-product-title="{{ product.title | escape }}">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Request a quote
+        </button>
+        <p class="vp__quote-note">No obligation — we'll contact you within 24 hours</p>
+      </div>
+
+      {%- comment -%} Trust badges {%- endcomment -%}
+      <div class="vp__trust">
+        <div class="vp__trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div><strong>5-year warranty</strong><span>Product &amp; installation</span></div>
+        </div>
+        <div class="vp__trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          <div><strong>Authorized installer</strong><span>Varma technicians</span></div>
+        </div>
+        <div class="vp__trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <div><strong>We handle delivery</strong><span>Logistics managed by us</span></div>
+        </div>
+        <div class="vp__trust-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <div><strong>ROT 30%</strong><span>Deducted directly on invoice</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} ABOUT PRODUCT {%- endcomment -%}
+  {%- if product.description != blank -%}
+    <div class="vp__about">
+      <div class="vp__about-inner">
+        <div class="vp__about-text">
+          <p class="vp__section-label">ABOUT THE PRODUCT</p>
+          <h2 class="vp__about-heading">{{ product.metafields.custom.tagline | default: product.title }}</h2>
+          <div class="vp__about-desc">{{ product.description }}</div>
+        </div>
+        <div class="vp__install-steps">
+          <p class="vp__section-label">HOW INSTALLATION WORKS</p>
+          <div class="vp__steps-grid">
+            <div class="vp__step">
+              <span class="vp__step-num">01</span>
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <div><strong>Home visit &amp; survey</strong><p>Our technician measures up and plans the installation.</p></div>
+            </div>
+            <div class="vp__step">
+              <span class="vp__step-num">02</span>
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <div><strong>We order &amp; deliver</strong><p>You pay nothing for delivery — we handle logistics.</p></div>
+            </div>
+            <div class="vp__step">
+              <span class="vp__step-num">03</span>
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+              <div><strong>Installation in 1 day</strong><p>Two technicians, done quickly and cleanly the same day.</p></div>
+            </div>
+            <div class="vp__step">
+              <span class="vp__step-num">04</span>
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <div><strong>Walkthrough &amp; warranty</strong><p>We show you how it works, register the warranty and clean up.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} HELP CTA {%- endcomment -%}
+  <div class="vp__help-cta">
+    <div class="vp__help-inner">
+      <div>
+        <p class="vp__help-label">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          NEED HELP CHOOSING?
+        </p>
+        <p class="vp__help-text">Call us or book a free home visit — we'll recommend the right model for your home.</p>
+      </div>
+      <div class="vp__help-btns">
+        <a href="tel:0812345678" class="vp__help-btn vp__help-btn--phone">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.18 6.18l.95-.95a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.03z"/></svg>
+          08-12 34 56 78
+        </a>
+        <a href="/pages/fa-offert" class="vp__help-btn vp__help-btn--visit">Book home visit</a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
-  <p>{{ product.description }}</p>
+{%- comment -%} Quote popup modal {%- endcomment -%}
+<div class="vp-modal" id="vp-modal" aria-hidden="true">
+  <div class="vp-modal__overlay" id="vp-modal-overlay"></div>
+  <div class="vp-modal__dialog" role="dialog" aria-modal="true">
+    <button class="vp-modal__close" id="vp-modal-close" aria-label="Close">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="vp-modal__steps">
+      <div class="vp-modal__step-indicator">
+        <span class="vp-modal__step-dot vp-modal__step-dot--active" data-step="1">1</span>
+        <span class="vp-modal__step-line"></span>
+        <span class="vp-modal__step-dot" data-step="2">2</span>
+      </div>
+      <p class="vp-modal__step-label" id="vp-modal-step-label">Step 1: Product inquiry</p>
+    </div>
+
+    <div id="vp-modal-step1">
+      <div class="vp-modal__product-row">
+        <div class="vp-modal__product-img">
+          {%- if product.featured_image -%}
+            {{ product.featured_image | image_url: width: 80 | image_tag: alt: product.title }}
+          {%- endif -%}
+        </div>
+        <div>
+          <p class="vp-modal__product-title">{{ product.title }}</p>
+          <p class="vp-modal__product-price">{{ product.price_min | money_without_trailing_zeros }}</p>
+        </div>
+      </div>
+      <label class="vp-modal__label">Detail inquiry</label>
+      <textarea class="vp-modal__textarea" id="vp-inquiry" placeholder="Describe your home, current heating system, or any specific questions..."></textarea>
+      <div class="vp-modal__footer">
+        <button type="button" class="vp-modal__btn-secondary" id="vp-modal-continue-shopping">Continue shopping</button>
+        <button type="button" class="vp-modal__btn-primary" id="vp-modal-next">Continue to quote →</button>
+      </div>
+    </div>
+
+    <div id="vp-modal-step2" style="display:none">
+      <p class="vp-modal__sub">Contact information</p>
+      <div class="vp-modal__grid2">
+        <div>
+          <label class="vp-modal__label">First name *</label>
+          <input class="vp-modal__input" type="text" id="vp-fname" placeholder="First name">
+        </div>
+        <div>
+          <label class="vp-modal__label">Last name *</label>
+          <input class="vp-modal__input" type="text" id="vp-lname" placeholder="Last name">
+        </div>
+      </div>
+      <label class="vp-modal__label">Email address *</label>
+      <input class="vp-modal__input" type="email" id="vp-email" placeholder="your@email.com">
+      <label class="vp-modal__label">Phone number *</label>
+      <input class="vp-modal__input" type="tel" id="vp-phone" placeholder="+46 70 123 45 67">
+      <p id="vp-modal-error" class="vp-modal__error" style="display:none">Please fill in all required fields.</p>
+      <div class="vp-modal__footer">
+        <button type="button" class="vp-modal__btn-secondary" id="vp-modal-back">← Back</button>
+        <button type="button" class="vp-modal__btn-primary" id="vp-modal-submit">Send quote request</button>
+      </div>
+    </div>
+
+    <div id="vp-modal-success" style="display:none">
+      <div class="vp-modal__success">
+        <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="#19aaf8" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3>Quote request sent!</h3>
+        <p>We'll contact you within 24 hours to discuss your options.</p>
+        <button type="button" class="vp-modal__btn-primary" id="vp-modal-done">Done</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
+{% stylesheet %}
+  .vp { max-width: 1260px; margin: 0 auto; padding: 32px 32px 0; }
+  .vp__container { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
-      {% endfor %}
-    </select>
+  /* MEDIA */
+  .vp__media { position: sticky; top: 24px; }
+  .vp__badges { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+  .vp__badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 6px; }
+  .vp__badge--install { background: #e8f6fe; color: #19aaf8; }
+  .vp__badge--save { background: #224466; color: #fff; }
+  .vp__img-wrap { background: #f8fafc; border-radius: 16px; padding: 32px; display: flex; align-items: center; justify-content: center; min-height: 380px; }
+  .vp__img { max-height: 340px; width: auto; max-width: 100%; object-fit: contain; }
+  .vp__img-placeholder { width: 100%; height: 340px; }
+  .vp__thumbs { display: flex; gap: 8px; margin-top: 12px; }
+  .vp__thumb { border: 2px solid #e6e8ef; border-radius: 8px; padding: 4px; cursor: pointer; background: #fff; transition: border-color 0.15s; }
+  .vp__thumb--active { border-color: #19aaf8; }
+  .vp__thumb-img { width: 56px; height: 56px; object-fit: contain; display: block; }
 
-    <input type="number" name="quantity" min="1" value="1">
+  /* INFO */
+  .vp__vendor { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #5b6474; margin-bottom: 8px; }
+  .vp__title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: #0d1b2e; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
+  .vp__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .vp__chip { background: #f0f7ff; color: #19aaf8; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; border: 1px solid #c8e8fb; }
 
-    <button type="submit" name="add">Add to cart</button>
-    {{ form | payment_button }}
-  {% endform %}
-</div>
+  /* PRICING */
+  .vp__pricing-box { background: #f8fafc; border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .vp__price-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #5b6474; margin-bottom: 8px; }
+  .vp__price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .vp__compare { font-size: 16px; color: #9aa3b0; text-decoration: line-through; }
+  .vp__price { font-size: 36px; font-weight: 800; color: #19aaf8; line-height: 1; }
+  .vp__savings-badge { display: inline-flex; align-items: center; gap: 5px; background: #e8f6fe; color: #0e8fd6; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px; }
+
+  /* INSTALLMENTS */
+  .vp__installments { margin-bottom: 24px; }
+  .vp__install-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; color: #5b6474; margin-bottom: 10px; }
+  .vp__install-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .vp__install-item { background: #fff; border: 1px solid #e6e8ef; border-radius: 8px; padding: 10px; text-align: center; }
+  .vp__install-months { display: block; font-size: 11px; font-weight: 700; color: #5b6474; margin-bottom: 4px; }
+  .vp__install-amount { display: block; font-size: 14px; font-weight: 700; color: #0d1b2e; }
+
+  /* ACTIONS */
+  .vp__actions { display: flex; gap: 12px; margin-bottom: 16px; }
+  .vp__btn-cart { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #19aaf8; color: #fff; border: none; border-radius: 10px; padding: 14px 20px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+  .vp__btn-cart:hover { background: #0e8fd6; }
+  .vp__btn-checkout { display: inline-flex; align-items: center; justify-content: center; background: #fff; color: #0d1b2e; border: 1.5px solid #e6e8ef; border-radius: 10px; padding: 14px 20px; font-size: 15px; font-weight: 600; text-decoration: none; transition: border-color 0.15s; white-space: nowrap; }
+  .vp__btn-checkout:hover { border-color: #19aaf8; color: #19aaf8; }
+
+  /* QUOTE */
+  .vp__quote-wrap { margin-bottom: 24px; }
+  .vp__btn-quote { width: 100%; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #fff; color: #19aaf8; border: 1.5px solid #19aaf8; border-radius: 10px; padding: 13px 20px; font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+  .vp__btn-quote:hover { background: #e8f6fe; }
+  .vp__quote-note { font-size: 12px; color: #5b6474; text-align: center; margin-top: 6px; }
+
+  /* TRUST */
+  .vp__trust { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .vp__trust-item { display: flex; align-items: flex-start; gap: 10px; background: #f8fafc; border-radius: 10px; padding: 12px; }
+  .vp__trust-item svg { flex-shrink: 0; margin-top: 2px; }
+  .vp__trust-item strong { display: block; font-size: 13px; font-weight: 700; color: #0d1b2e; }
+  .vp__trust-item span { font-size: 12px; color: #5b6474; }
+
+  /* ABOUT */
+  .vp__about { padding: 64px 0; border-top: 1px solid #e6e8ef; margin-top: 56px; }
+  .vp__about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .vp__section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: #19aaf8; margin-bottom: 12px; }
+  .vp__about-heading { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: #0d1b2e; line-height: 1.25; margin-bottom: 16px; }
+  .vp__about-desc { font-size: 15px; color: #5b6474; line-height: 1.7; }
+  .vp__about-desc p { margin-bottom: 12px; }
+  .vp__about-desc ul { padding-left: 20px; }
+  .vp__about-desc li { margin-bottom: 6px; }
+
+  /* STEPS */
+  .vp__steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .vp__step { display: flex; gap: 12px; background: #f8fafc; border-radius: 10px; padding: 16px; }
+  .vp__step-num { font-size: 11px; font-weight: 800; color: #19aaf8; letter-spacing: 0.05em; flex-shrink: 0; }
+  .vp__step svg { flex-shrink: 0; color: #19aaf8; margin-top: 1px; }
+  .vp__step strong { display: block; font-size: 13px; font-weight: 700; color: #0d1b2e; margin-bottom: 4px; }
+  .vp__step p { font-size: 12px; color: #5b6474; line-height: 1.5; margin: 0; }
+
+  /* HELP CTA */
+  .vp__help-cta { background: #19aaf8; border-radius: 16px; padding: 28px 36px; margin: 0 0 64px; }
+  .vp__help-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .vp__help-label { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); margin-bottom: 6px; }
+  .vp__help-text { font-size: 16px; font-weight: 600; color: #fff; max-width: 480px; }
+  .vp__help-btns { display: flex; gap: 12px; flex-shrink: 0; }
+  .vp__help-btn { display: inline-flex; align-items: center; gap: 7px; padding: 11px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .vp__help-btn--phone { background: rgba(255,255,255,0.15); color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
+  .vp__help-btn--phone:hover { background: rgba(255,255,255,0.25); }
+  .vp__help-btn--visit { background: #fff; color: #19aaf8; }
+  .vp__help-btn--visit:hover { background: #e8f6fe; }
+
+  /* MODAL */
+  .vp-modal { display: none; position: fixed; inset: 0; z-index: 9999; align-items: center; justify-content: center; }
+  .vp-modal--open { display: flex; }
+  .vp-modal__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.55); }
+  .vp-modal__dialog { position: relative; background: #fff; border-radius: 16px; padding: 32px; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; z-index: 1; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+  .vp-modal__close { position: absolute; top: 16px; right: 16px; background: none; border: none; cursor: pointer; color: #5b6474; padding: 4px; }
+  .vp-modal__close:hover { color: #0d1b2e; }
+  .vp-modal__steps { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .vp-modal__step-indicator { display: flex; align-items: center; gap: 8px; }
+  .vp-modal__step-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #e6e8ef; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #9aa3b0; }
+  .vp-modal__step-dot--active { background: #19aaf8; border-color: #19aaf8; color: #fff; }
+  .vp-modal__step-line { width: 40px; height: 2px; background: #e6e8ef; }
+  .vp-modal__step-label { font-size: 14px; font-weight: 600; color: #0d1b2e; }
+  .vp-modal__product-row { display: flex; align-items: center; gap: 16px; background: #f8fafc; border-radius: 10px; padding: 16px; margin-bottom: 20px; }
+  .vp-modal__product-img img { width: 64px; height: 64px; object-fit: contain; }
+  .vp-modal__product-title { font-size: 14px; font-weight: 700; color: #0d1b2e; margin-bottom: 4px; }
+  .vp-modal__product-price { font-size: 13px; color: #19aaf8; font-weight: 600; }
+  .vp-modal__label { display: block; font-size: 13px; font-weight: 600; color: #0d1b2e; margin-bottom: 6px; }
+  .vp-modal__textarea { width: 100%; border: 1.5px solid #e6e8ef; border-radius: 8px; padding: 12px; font-size: 14px; min-height: 90px; resize: vertical; font-family: inherit; margin-bottom: 20px; box-sizing: border-box; }
+  .vp-modal__textarea:focus { outline: none; border-color: #19aaf8; }
+  .vp-modal__sub { font-size: 15px; font-weight: 700; color: #0d1b2e; margin-bottom: 16px; }
+  .vp-modal__grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .vp-modal__input { width: 100%; border: 1.5px solid #e6e8ef; border-radius: 8px; padding: 10px 12px; font-size: 14px; font-family: inherit; margin-bottom: 12px; box-sizing: border-box; }
+  .vp-modal__input:focus { outline: none; border-color: #19aaf8; }
+  .vp-modal__error { color: #e53e3e; font-size: 13px; margin-bottom: 12px; }
+  .vp-modal__footer { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; }
+  .vp-modal__btn-primary { background: #19aaf8; color: #fff; border: none; border-radius: 8px; padding: 12px 20px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.15s; }
+  .vp-modal__btn-primary:hover { background: #0e8fd6; }
+  .vp-modal__btn-secondary { background: #fff; color: #5b6474; border: 1.5px solid #e6e8ef; border-radius: 8px; padding: 12px 20px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .vp-modal__success { text-align: center; padding: 20px 0; }
+  .vp-modal__success svg { margin-bottom: 16px; }
+  .vp-modal__success h3 { font-size: 20px; font-weight: 800; color: #0d1b2e; margin-bottom: 8px; }
+  .vp-modal__success p { font-size: 15px; color: #5b6474; margin-bottom: 24px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .vp__container { grid-template-columns: 1fr; gap: 32px; }
+    .vp__media { position: static; }
+    .vp__about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .vp__trust { grid-template-columns: 1fr 1fr; }
+    .vp__help-inner { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 600px) {
+    .vp { padding: 20px 16px 0; }
+    .vp__actions { flex-direction: column; }
+    .vp__trust { grid-template-columns: 1fr; }
+    .vp__steps-grid { grid-template-columns: 1fr; }
+    .vp-modal__grid2 { grid-template-columns: 1fr; }
+    .vp__install-grid { grid-template-columns: repeat(3,1fr); }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function() {
+    // Thumbnail switcher
+    var mainImg = document.querySelector('.vp__img');
+    document.querySelectorAll('.vp__thumb').forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        if (mainImg) mainImg.src = thumb.getAttribute('data-img-src');
+        document.querySelectorAll('.vp__thumb').forEach(function(t) { t.classList.remove('vp__thumb--active'); });
+        thumb.classList.add('vp__thumb--active');
+      });
+    });
+
+    // Quote modal
+    var modal = document.getElementById('vp-modal');
+    var quoteBtn = document.getElementById('vp-quote-btn');
+    var closeBtn = document.getElementById('vp-modal-close');
+    var overlay = document.getElementById('vp-modal-overlay');
+    var step1 = document.getElementById('vp-modal-step1');
+    var step2 = document.getElementById('vp-modal-step2');
+    var success = document.getElementById('vp-modal-success');
+    var nextBtn = document.getElementById('vp-modal-next');
+    var backBtn = document.getElementById('vp-modal-back');
+    var submitBtn = document.getElementById('vp-modal-submit');
+    var doneBtn = document.getElementById('vp-modal-done');
+    var continueBtn = document.getElementById('vp-modal-continue-shopping');
+    var stepLabel = document.getElementById('vp-modal-step-label');
+    var errorEl = document.getElementById('vp-modal-error');
+    var dot1 = document.querySelector('.vp-modal__step-dot[data-step="1"]');
+    var dot2 = document.querySelector('.vp-modal__step-dot[data-step="2"]');
+
+    function openModal() { modal.classList.add('vp-modal--open'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { modal.classList.remove('vp-modal--open'); document.body.style.overflow = ''; }
+
+    if (quoteBtn) quoteBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
+    if (continueBtn) continueBtn.addEventListener('click', closeModal);
+
+    if (nextBtn) nextBtn.addEventListener('click', function() {
+      step1.style.display = 'none';
+      step2.style.display = 'block';
+      stepLabel.textContent = 'Step 2: Contact info';
+      dot1.classList.remove('vp-modal__step-dot--active');
+      dot2.classList.add('vp-modal__step-dot--active');
+    });
+
+    if (backBtn) backBtn.addEventListener('click', function() {
+      step2.style.display = 'none';
+      step1.style.display = 'block';
+      stepLabel.textContent = 'Step 1: Product inquiry';
+      dot2.classList.remove('vp-modal__step-dot--active');
+      dot1.classList.add('vp-modal__step-dot--active');
+    });
+
+    if (submitBtn) submitBtn.addEventListener('click', function() {
+      var fname = document.getElementById('vp-fname').value.trim();
+      var lname = document.getElementById('vp-lname').value.trim();
+      var email = document.getElementById('vp-email').value.trim();
+      var phone = document.getElementById('vp-phone').value.trim();
+      if (!fname || !lname || !email || !phone) {
+        errorEl.style.display = 'block';
+        return;
+      }
+      errorEl.style.display = 'none';
+      var productTitle = quoteBtn ? quoteBtn.getAttribute('data-product-title') : '';
+      var inquiry = document.getElementById('vp-inquiry').value;
+      var body = JSON.stringify({
+        'contact[first_name]': fname,
+        'contact[last_name]': lname,
+        'contact[email]': email,
+        'contact[phone]': phone,
+        'contact[body]': 'Product: ' + productTitle + '\n\n' + inquiry
+      });
+      fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: body
+      }).then(function() {
+        step2.style.display = 'none';
+        success.style.display = 'block';
+      }).catch(function() {
+        step2.style.display = 'none';
+        success.style.display = 'block';
+      });
+    });
+
+    if (doneBtn) doneBtn.addEventListener('click', closeModal);
+  })();
+{% endjavascript %}
 
 {% schema %}
 {
