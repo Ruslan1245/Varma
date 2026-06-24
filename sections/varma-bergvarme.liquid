@@ -219,16 +219,25 @@
     </div>
   </div>
 
-  {%- if section.settings.cities_menu != blank -%}
+  {%- assign areas = section.blocks | where: 'type', 'area' -%}
+  {%- if areas.size > 0 -%}
     <div class="vbv__section vbv__section--tinted">
       <div class="vbv__inner">
-        <h2 class="vbv__cities-h">{{ section.settings.cities_heading | default: 'We install ground source across Greater Stockholm' }}</h2>
+        <h2 class="vbv__cities-h">{{ section.settings.cities_heading | default: 'We serve these areas' }}</h2>
         <div class="vbv__cities">
-          {%- for link in section.settings.cities_menu.links -%}
-            <a href="{{ link.url }}" class="vbv__city">
+          {%- for block in areas -%}
+            {%- if block.settings.url != blank -%}
+              <a href="{{ block.settings.url }}" class="vbv__city" {{ block.shopify_attributes }}>
+            {%- else -%}
+              <div class="vbv__city" {{ block.shopify_attributes }}>
+            {%- endif -%}
               <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              {{ link.title }}
-            </a>
+              {{ block.settings.name }}
+            {%- if block.settings.url != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
           {%- endfor -%}
         </div>
       </div>
@@ -428,7 +437,6 @@
     { "type": "url", "id": "products_cta_url", "label": "Products CTA URL" },
     { "type": "header", "content": "Cities coverage" },
     { "type": "text", "id": "cities_heading", "label": "Cities heading", "default": "We install ground source across Greater Stockholm" },
-    { "type": "link_list", "id": "cities_menu", "label": "Cities menu" },
     { "type": "header", "content": "FAQ" },
     { "type": "text", "id": "faq_title", "label": "FAQ heading", "default": "Frequently asked questions about ground source" }
   ],
@@ -454,6 +462,14 @@
       "settings": [
         { "type": "text", "id": "question", "label": "Question", "default": "How deep is a ground source borehole drilled?" },
         { "type": "textarea", "id": "answer", "label": "Answer", "default": "Typically 150–250 metres for a house in Stockholm. We size the system based on the home's energy needs." }
+      ]
+    },
+    {
+      "type": "area",
+      "name": "Service area",
+      "settings": [
+        { "type": "text", "id": "name", "label": "City name", "default": "Stockholm" },
+        { "type": "url", "id": "url", "label": "City page URL" }
       ]
     }
   ],

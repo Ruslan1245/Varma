@@ -219,16 +219,25 @@
     </div>
   </div>
 
-  {%- if section.settings.cities_menu != blank -%}
+  {%- assign areas = section.blocks | where: 'type', 'area' -%}
+  {%- if areas.size > 0 -%}
     <div class="vlv__section vlv__section--tinted">
       <div class="vlv__inner">
-        <h2 class="vlv__cities-h">{{ section.settings.cities_heading | default: 'We install across Greater Stockholm' }}</h2>
+        <h2 class="vlv__cities-h">{{ section.settings.cities_heading | default: 'We serve these areas' }}</h2>
         <div class="vlv__cities">
-          {%- for link in section.settings.cities_menu.links -%}
-            <a href="{{ link.url }}" class="vlv__city">
+          {%- for block in areas -%}
+            {%- if block.settings.url != blank -%}
+              <a href="{{ block.settings.url }}" class="vlv__city" {{ block.shopify_attributes }}>
+            {%- else -%}
+              <div class="vlv__city" {{ block.shopify_attributes }}>
+            {%- endif -%}
               <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              {{ link.title }}
-            </a>
+              {{ block.settings.name }}
+            {%- if block.settings.url != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
           {%- endfor -%}
         </div>
       </div>
@@ -429,7 +438,6 @@
     { "type": "url", "id": "products_cta_url", "label": "Products CTA URL" },
     { "type": "header", "content": "Cities coverage" },
     { "type": "text", "id": "cities_heading", "label": "Cities heading", "default": "We install air-to-water across Greater Stockholm" },
-    { "type": "link_list", "id": "cities_menu", "label": "Cities menu" },
     { "type": "header", "content": "FAQ" },
     { "type": "text", "id": "faq_title", "label": "FAQ heading", "default": "Frequently asked questions about air-to-water" }
   ],
@@ -455,6 +463,14 @@
       "settings": [
         { "type": "text", "id": "question", "label": "Question", "default": "Is air-to-water as good as ground source?" },
         { "type": "textarea", "id": "answer", "label": "Answer", "default": "Ground source has higher efficiency year-round, but air-to-water is cheaper to install and a good choice when drilling is not feasible." }
+      ]
+    },
+    {
+      "type": "area",
+      "name": "Service area",
+      "settings": [
+        { "type": "text", "id": "name", "label": "City name", "default": "Stockholm" },
+        { "type": "url", "id": "url", "label": "City page URL" }
       ]
     }
   ],

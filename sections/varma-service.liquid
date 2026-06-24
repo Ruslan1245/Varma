@@ -195,21 +195,30 @@
     </div>
   {% endif %}
 
-  {% if section.settings.cities_menu != blank %}
+  {%- assign areas = section.blocks | where: 'type', 'area' -%}
+  {%- if areas.size > 0 -%}
     <div class="vsp__section vsp__section--tinted">
       <div class="vsp__inner">
-        <h2 class="vsp__cities-h">{{ section.settings.cities_heading | default: 'We install across Greater Stockholm' }}</h2>
+        <h2 class="vsp__cities-h">{{ section.settings.cities_heading | default: 'We serve these areas' }}</h2>
         <div class="vsp__cities">
-          {% for link in section.settings.cities_menu.links %}
-            <a href="{{ link.url }}" class="vsp__city">
+          {%- for block in areas -%}
+            {%- if block.settings.url != blank -%}
+              <a href="{{ block.settings.url }}" class="vsp__city" {{ block.shopify_attributes }}>
+            {%- else -%}
+              <div class="vsp__city" {{ block.shopify_attributes }}>
+            {%- endif -%}
               <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              {{ link.title }}
-            </a>
-          {% endfor %}
+              {{ block.settings.name }}
+            {%- if block.settings.url != blank -%}
+              </a>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
         </div>
       </div>
     </div>
-  {% endif %}
+  {%- endif -%}
 
   {%- assign faqs = section.blocks | where: 'type', 'faq_item' -%}
   {% if faqs.size > 0 %}
@@ -748,11 +757,6 @@
       "default": "We install air-to-air across Greater Stockholm"
     },
     {
-      "type": "link_list",
-      "id": "cities_menu",
-      "label": "Cities menu"
-    },
-    {
       "type": "header",
       "content": "FAQ"
     },
@@ -816,6 +820,14 @@
           "label": "Answer",
           "default": "The price depends on the model and size of the installation but typically ranges from 18,000 to 35,000 SEK including installation. After the ROT deduction the cost is reduced by 30%."
         }
+      ]
+    },
+    {
+      "type": "area",
+      "name": "Service area",
+      "settings": [
+        { "type": "text", "id": "name", "label": "City name", "default": "Stockholm" },
+        { "type": "url", "id": "url", "label": "City page URL" }
       ]
     }
   ],
