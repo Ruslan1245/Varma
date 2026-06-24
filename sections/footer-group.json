@@ -34,7 +34,7 @@
         "areas_label": "SERVICE AREAS IN GREATER STOCKHOLM",
         "service_areas": "Stockholm, Sundbyberg, Solna, Danderyd, Täby, Nacka, Lidingö, Huddinge, Sollentuna, Järfälla",
         "company_legal": "VARMA Energy AB · Org.nr 559000-0000",
-        "bottom_menu": ""
+        "bottom_menu": "footer-legal"
       }
     }
   },
