@@ -2,7 +2,40 @@
   "sections": {
     "main": {
       "type": "varma-legal-page",
-      "settings": {}
+      "blocks": {
+        "s1": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "What data do we collect?",
+            "body": "Name, contact details and address for quotes and installations. For purchases in the store, payment details are handled by Shopify."
+          }
+        },
+        "s2": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "How is the data used?",
+            "body": "To contact you, provide quotes, carry out installations, and fulfil accounting obligations."
+          }
+        },
+        "s3": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "How long is it retained?",
+            "body": "Quote data is retained for 12 months. Customer agreements are retained for 7 years in accordance with the Bookkeeping Act."
+          }
+        },
+        "s4": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "Your rights",
+            "body": "You have the right to request a data register extract, correction and deletion. Contact info@varmaenergy.se."
+          }
+        }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {
+        "intro": "VARMA Energy AB is the data controller for the personal data you provide through our website."
+      }
     },
     "cta": {
       "type": "varma-cta",

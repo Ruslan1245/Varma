@@ -2,7 +2,61 @@
   "sections": {
     "main": {
       "type": "varma-legal-page",
-      "settings": {}
+      "blocks": {
+        "s1": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "1. Agreement",
+            "body": "A contract is considered entered into when you have accepted the quote in writing or completed a purchase in our online store."
+          }
+        },
+        "s2": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "2. Price and payment",
+            "body": "Prices are stated in SEK incl. VAT. Online purchases are paid via Shopify Checkout (Klarna, card, Swish, Apple Pay, Google Pay)."
+          }
+        },
+        "s3": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "3. Delivery and installation",
+            "body": "Installation is carried out by VARMA Energy according to the agreed schedule. ROT deduction is applied directly to the invoice."
+          }
+        },
+        "s4": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "4. Right of withdrawal",
+            "body": "Consumers have a 14-day right of withdrawal under the Distance Contracts Act. The right of withdrawal does not apply to installed products."
+          }
+        },
+        "s5": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "5. Warranty",
+            "body": "We provide a 5-year installation warranty as well as the manufacturer's product warranty."
+          }
+        },
+        "s6": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "6. Complaints",
+            "body": "Complaints are handled in accordance with the Consumer Sales Act. Contact info@varmaenergy.se."
+          }
+        },
+        "s7": {
+          "type": "legal_section",
+          "settings": {
+            "heading": "7. Disputes",
+            "body": "Any dispute will be resolved under Swedish law. Consumers may refer the matter to the National Board for Consumer Disputes (ARN)."
+          }
+        }
+      },
+      "block_order": ["s1", "s2", "s3", "s4", "s5", "s6", "s7"],
+      "settings": {
+        "intro": "These terms apply between VARMA Energy AB and you as a customer when purchasing products and installation services."
+      }
     },
     "cta": {
       "type": "varma-cta",
