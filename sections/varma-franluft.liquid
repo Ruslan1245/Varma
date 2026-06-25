@@ -382,6 +382,9 @@
     .vfl__stat-val { font-size: 13px; }
     .vfl__stat-lbl { font-size: 12px; }
   }
+  @media (max-width: 425px) {
+    .vfl__stats-card { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  }
 {% endstylesheet %}
 <script src="{{ 'varma-faq.js' | asset_url }}" defer></script>
 
