@@ -267,8 +267,11 @@
     /* Anchor content to top so header doesn't clip the h1 */
     .v-hero__overlay-content { align-items: flex-start; padding: 80px 0 32px; }
     .v-hero__container { flex-direction: column; align-items: flex-start; padding: 0 24px; gap: 24px; }
-    .v-hero__widgets { flex-direction: row; }
-    .v-hero__widget { min-width: 0; }
+    .v-hero__widgets { flex-direction: row; gap: 10px; }
+    .v-hero__widget { min-width: 0; padding: 10px 14px; gap: 8px; }
+    .v-hero__widget-icon { width: 32px; height: 32px; border-radius: 8px; }
+    .v-hero__widget-value { font-size: 15px; }
+    .v-hero__widget-label { font-size: 11px; }
     .v-hero__bg-img { min-height: 560px; object-fit: cover; object-position: center; }
   }
   @media (max-width: 480px) {
