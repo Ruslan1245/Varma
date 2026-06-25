@@ -237,9 +237,21 @@
         "cities_heading": "We install air-to-air across Greater Stockholm",
         "faq_title": "Frequently asked questions about air-to-air"
       }
+    },
+    "cta": {
+      "type": "varma-cta",
+      "settings": {
+        "heading": "Start saving already this spring",
+        "description": "Installations are now being booked for May. Book a free home visit today and get a fixed price within 48 hours.",
+        "btn1_text": "Book home visit",
+        "btn1_url": "/pages/fa-offert",
+        "btn2_text": "Call 08-12 34 56 78",
+        "btn2_url": "tel:0812345678"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "cta"
   ]
 }
