@@ -1,0 +1,186 @@
+<div class="vfp__hero full-width">
+  <div class="vfp__hero-inner">
+    <nav class="vfp__breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">›</span>
+      <span>FAQ</span>
+    </nav>
+    <h1 class="vfp__heading">{{ section.settings.heading }}</h1>
+    {% if section.settings.description != blank %}
+      <p class="vfp__desc">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<div class="vfp__body full-width">
+  <div class="vfp__body-inner">
+    {% if section.settings.list_heading != blank %}
+      <h2 class="vfp__list-h">{{ section.settings.list_heading }}</h2>
+    {% endif %}
+    <div class="vfp__list">
+      {%- for block in section.blocks -%}
+        <details class="vfp__item" {{ block.shopify_attributes }}>
+          <summary class="vfp__q">
+            <span>{{ block.settings.question }}</span>
+            <svg class="vfp__chev" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="vfp__a">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .vfp__hero {
+    background: #e8f6fe;
+    padding: 60px 0 52px;
+  }
+  .vfp__hero-inner,
+  .vfp__body-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .vfp__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #5b6474;
+    margin-bottom: 20px;
+  }
+  .vfp__breadcrumb a {
+    color: #5b6474;
+    text-decoration: none;
+  }
+  .vfp__breadcrumb a:hover { color: #19aaf8; }
+  .vfp__heading {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800;
+    color: #224466;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .vfp__desc {
+    font-size: 16px;
+    color: #5b6474;
+    line-height: 1.65;
+    max-width: 680px;
+  }
+  .vfp__body {
+    background: white;
+    padding: 64px 0 80px;
+  }
+  .vfp__list-h {
+    font-size: 22px;
+    font-weight: 700;
+    color: #224466;
+    margin-bottom: 24px;
+  }
+  .vfp__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .vfp__item {
+    border: 1px solid #e6e8ef;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+  .vfp__item[open] {
+    border-color: #19aaf8;
+  }
+  .vfp__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #224466;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    line-height: 1.4;
+  }
+  .vfp__q::-webkit-details-marker { display: none; }
+  .vfp__q:hover { background: #f5f9fc; }
+  .vfp__chev {
+    flex-shrink: 0;
+    color: #5b6474;
+    transition: transform 0.2s;
+  }
+  .vfp__item[open] .vfp__chev {
+    transform: rotate(180deg);
+    color: #19aaf8;
+  }
+  .vfp__a {
+    padding: 0 24px 18px;
+    font-size: 15px;
+    color: #5b6474;
+    line-height: 1.65;
+  }
+  @media (max-width: 600px) {
+    .vfp__hero-inner,
+    .vfp__body-inner { padding: 0 20px; }
+    .vfp__hero { padding: 40px 0 36px; }
+    .vfp__body { padding: 40px 0 60px; }
+    .vfp__q { padding: 16px 18px; font-size: 14px; }
+    .vfp__a { padding: 0 18px 16px; font-size: 14px; }
+  }
+{% endstylesheet %}
+
+<script src="{{ 'varma-faq.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "FAQ page",
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Page heading",
+      "default": "Frequently asked questions about heat pumps"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Short, straight answers to what Stockholm homeowners ask us most. Can't find your answer – call us or send a quote request."
+    },
+    {
+      "type": "text",
+      "id": "list_heading",
+      "label": "List heading",
+      "default": "All frequently asked questions"
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ page"
+    }
+  ]
+}
+{% endschema %}

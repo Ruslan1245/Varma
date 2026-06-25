@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  var selector = '.v-faq__item, .vlv__faq-item, .vsp__faq-item, .vbv__faq-item, .vfl__faq-item';
+  var selector = '.v-faq__item, .vlv__faq-item, .vsp__faq-item, .vbv__faq-item, .vfl__faq-item, .vfp__item';
 
   document.querySelectorAll(selector).forEach(function (item) {
     var summary = item.querySelector('summary');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   function expandItem(detailsEl) {
-    var answer = detailsEl.querySelector('[class*="__faq-a"], .v-faq__answer');
+    var answer = detailsEl.querySelector('[class*="__faq-a"], .v-faq__answer, .vfp__a');
     if (!answer) { detailsEl.open = true; return; }
 
     detailsEl.open = true;
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function collapseItem(detailsEl) {
-    var answer = detailsEl.querySelector('[class*="__faq-a"], .v-faq__answer');
+    var answer = detailsEl.querySelector('[class*="__faq-a"], .v-faq__answer, .vfp__a');
     if (!answer) { detailsEl.open = false; return; }
 
     var h = answer.scrollHeight;

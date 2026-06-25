@@ -1,0 +1,146 @@
+{
+  "sections": {
+    "faq-main": {
+      "type": "varma-faq-page",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Which heat pump suits my home?",
+            "answer": "It depends on your home's size, existing heating system and budget. Ground source and air-to-water suit homes with a water-based system; air-to-air suits direct electric heating. We offer a free needs analysis."
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "How much can I save with a heat pump?",
+            "answer": "A house in the Stockholm area typically saves 40–70 % of heating costs. Use our savings calculator for a quick estimate."
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Do I get a ROT deduction on heat pump installation?",
+            "answer": "Yes, you get a 30 % ROT deduction on the labour cost, up to 50,000 kr per person per year. We deduct it directly from your invoice."
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "How long does an installation take?",
+            "answer": "Air-to-air is usually installed in one day. Air-to-water and ground source take 2–5 days, plus drilling time for ground source."
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "What warranty does VARMA Energy provide?",
+            "answer": "We provide a five-year installation guarantee and follow the manufacturer's product warranty, typically 5–10 years."
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "What does ground source heating cost in Stockholm?",
+            "answer": "A complete ground source installation for a house in Stockholm typically costs between 180,000 and 260,000 kr incl. drilling, before ROT deduction."
+          }
+        },
+        "q7": {
+          "type": "question",
+          "settings": {
+            "question": "Which heat pump is cheapest to run?",
+            "answer": "Ground source has the lowest running cost over the year as it has the highest and most consistent efficiency across seasons."
+          }
+        },
+        "q8": {
+          "type": "question",
+          "settings": {
+            "question": "How long does a heat pump last?",
+            "answer": "A modern heat pump lasts 15–20 years. The compressor is the most stressed component and is sometimes replaced after 12–15 years."
+          }
+        },
+        "q9": {
+          "type": "question",
+          "settings": {
+            "question": "Does the heat pump disturb the neighbours?",
+            "answer": "A modern air-to-water or air-to-air outdoor unit runs at around 45–55 dB at 1 metre. Ground source is completely silent outdoors."
+          }
+        },
+        "q10": {
+          "type": "question",
+          "settings": {
+            "question": "Can I combine a heat pump with solar panels?",
+            "answer": "Yes. Solar panels reduce the electricity purchase for the heat pump and significantly improve the overall economics."
+          }
+        },
+        "q11": {
+          "type": "question",
+          "settings": {
+            "question": "What is the best heat pump for a housing association?",
+            "answer": "Ground source and exhaust air recovery are most common in multi-family buildings. We always conduct a feasibility study before recommending a solution."
+          }
+        },
+        "q12": {
+          "type": "question",
+          "settings": {
+            "question": "What does an air-to-air heat pump installation cost?",
+            "answer": "Typically 18,000–35,000 kr incl. installation, depending on the model and property conditions. ROT deduction is applied to the labour cost."
+          }
+        },
+        "q13": {
+          "type": "question",
+          "settings": {
+            "question": "Do I need planning permission for an air-to-air heat pump?",
+            "answer": "No, planning permission is not normally required in the Stockholm area. If you live in a housing association, you need board approval."
+          }
+        },
+        "q14": {
+          "type": "question",
+          "settings": {
+            "question": "Is air-to-water as good as ground source?",
+            "answer": "Ground source has higher efficiency over the year, but air-to-water is cheaper to invest in and a good choice when drilling is not possible or practical."
+          }
+        },
+        "q15": {
+          "type": "question",
+          "settings": {
+            "question": "How deep is a ground source borehole drilled?",
+            "answer": "Typically 150–250 metres for a house in Stockholm. We size the system based on the home's energy needs."
+          }
+        },
+        "q16": {
+          "type": "question",
+          "settings": {
+            "question": "Is a permit required for ground source in Stockholm?",
+            "answer": "Yes, the municipality must approve the drilling. We handle the application as part of the installation."
+          }
+        },
+        "q17": {
+          "type": "question",
+          "settings": {
+            "question": "Does exhaust air work in my older home?",
+            "answer": "Exhaust air pumps require mechanical exhaust ventilation. We carry out a site visit and assess whether it works."
+          }
+        }
+      },
+      "block_order": ["q1","q2","q3","q4","q5","q6","q7","q8","q9","q10","q11","q12","q13","q14","q15","q16","q17"],
+      "settings": {
+        "heading": "Frequently asked questions about heat pumps",
+        "description": "Short, straight answers to what Stockholm homeowners ask us most. Can't find your answer – call us or send a quote request.",
+        "list_heading": "All frequently asked questions"
+      }
+    },
+    "varma-cta": {
+      "type": "varma-cta",
+      "settings": {
+        "heading": "Börja spara redan i vår",
+        "description": "Installationer bokas nu in för maj. Boka ett kostnadsfritt hembesök idag och få ett fast pris inom 48 timmar.",
+        "btn1_text": "Book home visit",
+        "btn1_url": "/pages/fa-offert",
+        "btn2_text": "Call 08-12 34 56 78",
+        "btn2_url": "tel:0812345678"
+      }
+    }
+  },
+  "order": ["faq-main", "varma-cta"]
+}
